@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avalanche HQ</title>
+<meta name="description" content="Avalanche HQ: AvCash balances, the class store, local investments and Expeditions.">
+<meta name="theme-color" content="#22392b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#e9b949; --rust:#c8553d; --ink:#22392b; --ink-2:#2f4d3a; --paper:#f3efe4; --card:#fffdf8;
+    --line:#ddd3bd; --muted:#6b6a5c; --blue:#3c7a9e; --green:#4f7d3a; --good:#2f7d4a; --bad:#b3412c; --r:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 "Source Sans 3",system-ui,sans-serif}
+  h1,h2,h3,.brand,.big{font-family:Bitter,Georgia,serif}
+  button,input,select{font:inherit}
+  .wrap{max-width:980px;margin:0 auto;padding:0 16px}
+  header.top{background:var(--ink);color:#fff;position:sticky;top:0;z-index:10}
+  header .bar{display:flex;align-items:center;gap:12px;min-height:58px}
+  .brand{font-size:1.25rem;font-weight:800;display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none}
+  .brand svg{width:28px;height:28px}
+  header .who{margin-left:auto;font-size:.95rem;color:#d9e2d6}
+  .stripe{height:5px;background:linear-gradient(90deg,var(--green),var(--gold),var(--rust))}
+  nav.tabs{display:flex;gap:6px;flex-wrap:wrap;padding:12px 0;-webkit-overflow-scrolling:touch}
+  nav.tabs button{border:2px solid var(--ink);background:var(--card);border-radius:999px;padding:7px 16px;font-weight:700;cursor:pointer;white-space:nowrap;color:var(--ink)}
+  nav.tabs button[aria-selected="true"]{background:var(--ink);color:#fff}
+  .panel{display:none;padding-bottom:40px}
+  .panel.on{display:block}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:0 2px 0 var(--line);margin-bottom:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .grid .card{margin:0}
+  .muted{color:var(--muted)}
+  .small{font-size:.9rem}
+  .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .between{justify-content:space-between}
+  .pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:.82rem;font-weight:700;background:var(--paper);border:1px solid var(--line)}
+  .pill.low{background:#e4efe0;border-color:#b9d3ae}
+  .pill.medium{background:#fbf0d4;border-color:#ecd08a}
+  .pill.high{background:#f6ddd6;border-color:#e2a593}
+  .btn{border:0;border-radius:999px;padding:9px 16px;font-weight:700;background:var(--ink);color:#fff;cursor:pointer}
+  .btn:hover{background:var(--ink-2)}
+  .btn.gold{background:var(--gold);color:var(--ink)}
+  .btn.rust{background:var(--rust)}
+  .btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .big{font-size:2.4rem;font-weight:800;line-height:1}
+  .up{color:var(--good);font-weight:700}
+  .down{color:var(--bad);font-weight:700}
+  input[type=number],input[type=text],select{border:2px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff;min-width:0}
+  input:focus,select:focus{outline:none;border-color:var(--ink)}
+  .list{list-style:none;margin:0;padding:0}
+  .list li{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .list li:last-child{border-bottom:0}
+  .list .amt{margin-left:auto;font-weight:700;white-space:nowrap}
+  .bar-track{height:12px;background:var(--paper);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+  .bar-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--gold))}
+  .emoji{font-size:1.8rem;line-height:1}
+  #toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(120px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .25s;z-index:40;display:flex;gap:12px;align-items:center;max-width:calc(100% - 32px)}
+  #toast.show{transform:translateX(-50%) translateY(0)}
+  #toast.err{background:var(--bad)}
+  #toast button{background:var(--gold);color:var(--ink);border:0;border-radius:999px;padding:5px 12px;font-weight:700;cursor:pointer}
+  .loading{padding:40px 0;text-align:center;color:var(--muted)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+<script>
+  /* shared helpers */
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fmt = n => { n = Math.round(Number(n || 0) * 100) / 100; return n % 1 ? n.toFixed(2) : String(n); };
+  const signed = n => (n > 0 ? '+' : '') + fmt(n);
+  const when = iso => { const d = new Date(iso); return d.toLocaleDateString(undefined, {month:'short', day:'numeric'}); };
+  let toastTimer;
+  function toast(msg, isErr, action) {
+    const t = $('#toast');
+    t.className = isErr ? 'err' : '';
+    t.innerHTML = '<span>' + esc(msg) + '</span>' + (action ? '<button id="toastAct">' + esc(action.label) + '</button>' : '');
+    if (action) $('#toastAct').onclick = () => { t.classList.remove('show'); action.fn(); };
+    requestAnimationFrame(() => t.classList.add('show'));
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), action ? 7000 : 3500);
+  }
+  /* call an Apps Script function: call('name', arg1, ...).then(...) */
+  function call(name, ...args) {
+    return new Promise((res, rej) => google.script.run.withSuccessHandler(res)
+      .withFailureHandler(e => { toast(e.message || String(e), true); rej(e); })[name](...args));
+  }
+  function setupTabs(start) {
+    const btns = document.querySelectorAll('nav.tabs button');
+    const show = id => {
+      btns.forEach(b => b.setAttribute('aria-selected', b.dataset.p === id));
+      document.querySelectorAll('.panel').forEach(p => p.classList.toggle('on', p.id === id));
+    };
+    btns.forEach(b => b.onclick = () => show(b.dataset.p));
+    show(start && document.getElementById(start) ? start : btns[0].dataset.p);
+  }
+  const LOGO = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 27 12 11l5 8 4-6 9 14z" fill="#e9b949"/><path d="M12 11l-3 5 3-1 2 2z" fill="#fffdf8"/></svg>';
+</script>
+
+<style>
+  body{background:var(--paper)}
+  header .who{display:flex;align-items:center;gap:10px}
+  header .who button{background:var(--gold);color:var(--ink);border:0;border-radius:999px;padding:6px 14px;font-weight:700;cursor:pointer}
+  header .who button.out{background:transparent;color:#fff;border:1px solid #6f8a72}
+  .back{color:#d9e2d6;text-decoration:none;font-size:.95rem;white-space:nowrap}
+  .back:hover{color:#fff}
+  #busy{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:50;transition:width .4s}
+  body.busy #busy{width:85%;transition:width 4s ease-out}
+  body.busy .btn{pointer-events:none}
+  .hero{display:grid;grid-template-columns:1.3fr 1fr;gap:14px}
+  @media (max-width:700px){.hero{grid-template-columns:1fr}}
+  .hero .main{background:var(--ink);color:#fff;border:0}
+  .hero .main .muted{color:#cdd8c9}
+  .item{display:flex;flex-direction:column;gap:6px}
+  .item .price{font:800 1.4rem Bitter,serif}
+  .item .row{margin-top:auto}
+  .invest .move{display:flex;gap:8px;margin-top:12px}
+  .invest .move input{flex:1;width:0;min-width:56px}
+  .invest .move .btn{white-space:nowrap;padding:9px 13px}
+  .spark{width:100%;height:46px;display:block;margin:8px 0 2px}
+  .exp.done{opacity:.7}
+  .vocab dt{font-weight:700;margin-top:8px}
+  .vocab dd{margin:0;color:var(--muted)}
+  /* sign in */
+  .signin{max-width:520px;margin:0 auto}
+  .nicks{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-top:12px}
+  .nicks button{border:2px solid var(--line);background:var(--card);border-radius:14px;padding:14px 8px;font:700 1.05rem "Source Sans 3",sans-serif;cursor:pointer;color:var(--ink)}
+  .nicks button:hover{border-color:var(--ink)}
+  .dots{display:flex;gap:14px;justify-content:center;margin:18px 0}
+  .dots i{width:18px;height:18px;border-radius:50%;border:2px solid var(--ink)}
+  .dots i.on{background:var(--ink)}
+  .dots.shake{animation:shake .35s}
+  @keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+  .pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:300px;margin:0 auto}
+  .pad button{border:0;border-radius:16px;padding:16px 0;font:800 1.5rem Bitter,serif;background:var(--ink);color:#fff;cursor:pointer}
+  .pad button.soft{background:var(--card);color:var(--ink);border:2px solid var(--line);font-size:1.1rem}
+  .pad button:active{transform:scale(.96)}
+  .msg{min-height:1.5em;text-align:center;font-weight:600;color:var(--bad)}
+  .tease{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div id="busy"></div>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" id="home" href="../"><span id="logo"></span>Avalanche HQ</a>
+    <span class="who" id="who"></span>
+  </div>
+  <div class="stripe"></div>
+</header>
+
+<main class="wrap">
+  <nav class="tabs" aria-label="Avalanche HQ sections">
+    <button data-p="account">My Account</button>
+    <button data-p="store">Store</button>
+    <button data-p="invest">Invest</button>
+    <button data-p="expeditions">Expeditions</button>
+  </nav>
+  <div id="app"><div class="loading">Loading Avalanche HQ…</div></div>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   EDIT HERE: paste your Student API link (ends in /exec)
+   ============================================================ */
+const API_URL = "PASTE-YOUR-STUDENT-API-LINK-HERE";
+const IDLE_MINUTES = 10;   // signs out after this long with no taps (for shared devices)
+
+let PUB = null, D = null, token = null, nicks = null, picked = null, pin = '';
+try { token = sessionStorage.getItem('avToken'); } catch (e) {}
+$('#logo').innerHTML = LOGO;
+
+/* ---------- talking to the Google Sheet ---------- */
+async function api(action, extra) {
+  document.body.classList.add('busy');
+  try {
+    const res = await fetch(API_URL, { method: 'POST', body: JSON.stringify(Object.assign({ action, token }, extra || {})) });
+    const j = await res.json();
+    if (!j.ok) {
+      if (j.code === 'signin') forget();
+      const e = new Error(j.error); e.code = j.code; throw e;
+    }
+    return j.data;
+  } catch (e) {
+    if (!e.code && e.name === 'TypeError') e.message = 'Could not reach Avalanche HQ. Check your internet and try again.';
+    throw e;
+  } finally { document.body.classList.remove('busy'); }
+}
+function remember(t) { token = t; try { sessionStorage.setItem('avToken', t); } catch (e) {} }
+function forget() { token = null; D = null; try { sessionStorage.removeItem('avToken'); } catch (e) {} }
+
+async function start() {
+  if (API_URL.includes('PASTE')) {
+    $('#app').innerHTML = '<div class="card"><h2 style="margin-top:0">Almost ready</h2><p>Avalanche HQ isn\'t connected yet. Your teacher needs to paste the Student API link into this page (see SETUP.md, step 6).</p></div>';
+    return;
+  }
+  try {
+    if (token) { try { D = await api('view'); } catch (e) { D = null; } }
+    if (!D) PUB = await api('public');
+    render();
+  } catch (e) {
+    $('#app').innerHTML = '<div class="card"><h2 style="margin-top:0">Avalanche HQ is resting</h2><p class="muted">' + esc(e.message) + '</p><button class="btn" onclick="location.reload()">Try again</button></div>';
+  }
+}
+
+/* ---------- page ---------- */
+function render() {
+  const V = D || PUB, C = V.currency, on = !!D;
+  if (V.siteLink) $('#home').href = V.siteLink;
+  $('#who').innerHTML = on
+    ? `<span>${esc(D.nickname)}</span><button class="out" onclick="signOut()">Sign out</button>`
+    : `<a class="back" href="${esc(V.siteLink || '../')}">← Basecamp</a><button onclick="goSignIn()">Sign in</button>`;
+  const prev = document.querySelector('.panel.on');
+  const keep = prev ? prev.id : (location.hash.slice(1) || 'account');
+  const invested = on ? V.accounts.reduce((a, i) => a + i.balance, 0) : 0;
+  const goal = on && V.items.find(i => i.id === D.savingFor);
+  const needSignIn = what => `<button class="btn ghost" onclick="goSignIn()">Sign in to ${what}</button>`;
+
+  $('#app').innerHTML = `
+  <section class="panel" id="account">${on ? `
+    <div class="hero">
+      <div class="card main">
+        <div class="muted small">${C} you can spend</div>
+        <div class="big">${fmt(D.cash)}</div>
+        <div class="row" style="margin-top:14px;gap:24px">
+          <div><div class="muted small">In investments</div><strong>${fmt(invested)}</strong></div>
+          <div><div class="muted small">Total worth</div><strong>${fmt(D.cash + invested)}</strong></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 6px">Saving for</h3>
+        ${goal ? `
+          <div class="row"><span class="emoji">${esc(goal.icon)}</span><strong>${esc(goal.name)}</strong></div>
+          <div class="bar-track" style="margin:10px 0 6px"><div class="bar-fill" style="width:${Math.min(100, D.cash / goal.price * 100)}%"></div></div>
+          <div class="small muted">${fmt(Math.min(D.cash, goal.price))} of ${fmt(goal.price)} ${C}
+            ${D.cash >= goal.price ? ' · <strong class="up">You can afford it!</strong>' : ''}</div>
+          <button class="btn ghost small" style="margin-top:10px" onclick="setGoal('')">Clear goal</button>`
+        : `<p class="muted" style="margin:0">Pick something in the Store and tap <strong>Save for this</strong> to track your progress.</p>`}
+      </div>
+    </div>
+    ${D.pending.length ? `<div class="card"><h3 style="margin:0">Waiting for your teacher</h3>
+      <ul class="list">${D.pending.map(p => `<li><span>${p.type === 'purchase' ? '🛒' : '🧭'}</span>
+        <span>${esc(nameOf(p))}</span><span class="amt muted">${p.type === 'purchase' ? '−' : '+'}${fmt(p.amount)}</span></li>`).join('')}</ul></div>` : ''}
+    <div class="card">
+      <h3 style="margin:0">Recent activity</h3>
+      ${D.transactions.length ? `<ul class="list">${D.transactions.map(t => `<li>
+        <span class="small muted" style="width:52px">${when(t.time)}</span>
+        <span>${label(t)}</span>
+        <span class="amt ${t.amount >= 0 ? 'up' : 'down'}">${signed(t.amount)}</span></li>`).join('')}</ul>`
+      : '<p class="muted">Nothing yet. Your first AvCash is on its way!</p>'}
+    </div>` : signInBox()}
+  </section>
+
+  <section class="panel" id="store">
+    <div class="card row between" style="background:${V.storeOpen ? '#e4efe0' : '#f6ddd6'}">
+      <strong>${V.storeOpen ? '🟢 The store is open' : '🔴 The store is closed'}</strong>
+      <span class="small muted">${esc(V.storeHours || '')}</span>
+    </div>
+    ${on ? '' : `<div class="card tease"><span>Sign in to buy things and set a saving goal.</span>${needSignIn('shop')}</div>`}
+    ${groups(V.items).map(([cat, list]) => `
+      <h2 style="margin:22px 0 10px">${esc(cat)}</h2>
+      <div class="grid">${list.map(i => {
+        const sold = i.stock !== '' && Number(i.stock) <= 0;
+        const cant = on && D.cash < i.price;
+        return `<div class="card item">
+          <span class="emoji">${esc(i.icon)}</span>
+          <strong>${esc(i.name)}</strong>
+          <div class="price">${fmt(i.price)} <span class="small muted">${C}</span></div>
+          <div class="small muted">${i.stock !== '' ? (sold ? 'Sold out' : i.stock + ' left') : ''}${i.weeklyLimit !== '' ? (i.stock !== '' ? ' · ' : '') + i.weeklyLimit + ' per week' : ''}</div>
+          ${on ? `<div class="row">
+            <button class="btn gold" ${(!V.storeOpen || sold || cant) ? 'disabled' : ''} onclick="buy('${esc(i.id)}')">${cant ? 'Need ' + fmt(i.price - D.cash) + ' more' : 'Buy'}</button>
+            ${D.savingFor === i.id ? '<span class="pill">Your goal</span>' : `<button class="btn ghost" onclick="setGoal('${esc(i.id)}')">Save for this</button>`}
+          </div>` : ''}</div>`; }).join('')}</div>`).join('')}
+  </section>
+
+  <section class="panel" id="invest">
+    <div class="card">
+      <h2 style="margin:0 0 4px">Invest in local businesses</h2>
+      <p class="muted" style="margin:0">Move your ${C} into a local investment. Every Monday each one goes up or down. You decide how much to put in and when to take it out.</p>
+    </div>
+    ${on ? '' : `<div class="card tease"><span>Sign in to see your balances and invest.</span>${needSignIn('invest')}</div>`}
+    <div class="grid">${V.accounts.map(i => `
+      <div class="card invest">
+        <div class="row between"><strong>${esc(i.name)}</strong><span class="pill ${esc(String(i.risk).toLowerCase())}">${esc(i.risk)} risk</span></div>
+        <p class="small muted" style="margin:6px 0">${esc(i.description)}</p>
+        ${spark(i.history)}
+        <div class="small">Last week: ${i.last == null ? '<span class="muted">no change yet</span>' : `<span class="${i.last >= 0 ? 'up' : 'down'}">${pct(i.last)}</span>`}
+          · <span class="muted">${i.minWeekly === i.maxWeekly ? 'steady ' + pct(i.minWeekly) + ' a week' : 'usually ' + pct(i.minWeekly) + ' to ' + pct(i.maxWeekly)}</span></div>
+        ${on ? `
+        <div style="margin-top:10px"><span class="muted small">Your balance</span><div class="big" style="font-size:1.8rem">${fmt(i.balance)}</div></div>
+        <div class="move">
+          <label class="sr" for="amt-${esc(i.id)}">Amount</label>
+          <input type="number" min="0" step="1" inputmode="decimal" id="amt-${esc(i.id)}" placeholder="0">
+          <button class="btn" onclick="move('${esc(i.id)}','in')">Put in</button>
+          <button class="btn ghost" onclick="move('${esc(i.id)}','out')" ${i.balance > 0 ? '' : 'disabled'}>Take out</button>
+        </div>` : ''}
+      </div>`).join('')}</div>
+    <div class="card vocab" style="margin-top:14px">
+      <h3 style="margin:0">Investing words</h3>
+      <dl>
+        <dt>Principal</dt><dd>The money you put in to start.</dd>
+        <dt>Return</dt><dd>How much your investment went up or down, shown as a percent.</dd>
+        <dt>Risk</dt><dd>The chance you lose money. Higher risk can mean bigger wins and bigger losses.</dd>
+        <dt>Compound growth</dt><dd>Earning on your earnings. Each week's change is based on your new balance.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="panel" id="expeditions">
+    <div class="card">
+      <h2 style="margin:0 0 4px">Expeditions</h2>
+      <p class="muted" style="margin:0">Take on extra challenges and earn a bonus for yourself or others. When you finish one, tap <strong>I did it</strong> and your teacher will check it.</p>
+    </div>
+    <div class="grid">${V.expeditions.map(x => {
+      const locked = on && !x.repeatable && x.done > 0;
+      return `<div class="card exp ${locked ? 'done' : ''}">
+        <div class="row between"><strong>${esc(x.title)}</strong><span class="pill">+${fmt(x.reward)} ${C}</span></div>
+        <p class="small" style="margin:6px 0 10px">${esc(x.description)}</p>
+        <div class="small muted" style="margin-bottom:10px">${x.repeatable ? 'Can be done again' : 'One time only'}${on && x.done ? ' · completed ' + x.done + '×' : ''}</div>
+        ${!on ? needSignIn('check in')
+          : x.pending ? '<span class="pill">Waiting for teacher</span>'
+          : locked ? '<span class="pill low">✓ Completed</span>'
+          : `<button class="btn rust" onclick="submitExp('${esc(x.id)}')">I did it</button>`}
+      </div>`; }).join('')}</div>
+  </section>`;
+  setupTabs(keep);
+  if (!on) drawSignIn();
+}
+
+/* ---------- sign in: tap your nickname, then your PIN ---------- */
+function signInBox() {
+  return `<div class="card signin" id="signin"><div class="loading">Loading nicknames…</div></div>`;
+}
+async function drawSignIn() {
+  const box = $('#signin'); if (!box) return;
+  if (!picked) {
+    if (!nicks) { try { nicks = await api('nicknames'); } catch (e) { box.innerHTML = '<p class="msg">' + esc(e.message) + '</p>'; return; } }
+    box.innerHTML = `<h2 style="margin:0">Sign in</h2><p class="muted" style="margin:4px 0 0">Tap your nickname.</p>
+      <div class="nicks">${nicks.map(n => `<button onclick="pickNick('${esc(n.id)}')">${esc(n.nickname)}</button>`).join('')}</div>`;
+    return;
+  }
+  box.innerHTML = `<div class="row between"><h2 style="margin:0">Hi, ${esc(picked.nickname)}!</h2>
+      <button class="btn ghost small" onclick="picked=null;pin='';drawSignIn()">Not you?</button></div>
+    <p class="muted" style="margin:4px 0 0">Type your 4-digit PIN.</p>
+    <div class="dots" id="dots">${[0, 1, 2, 3].map(i => `<i class="${i < pin.length ? 'on' : ''}"></i>`).join('')}</div>
+    <div class="msg" id="pinMsg"></div>
+    <div class="pad">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => `<button onclick="key('${n}')">${n}</button>`).join('')}
+      <button class="soft" onclick="key('clear')" aria-label="Clear">Clear</button><button onclick="key('0')">0</button>
+      <button class="soft" onclick="key('back')" aria-label="Delete">⌫</button></div>`;
+}
+function pickNick(id) { picked = nicks.find(n => String(n.id) === String(id)); pin = ''; drawSignIn(); }
+function key(k) {
+  if (!picked || document.body.classList.contains('busy')) return;
+  if (k === 'back') pin = pin.slice(0, -1);
+  else if (k === 'clear') pin = '';
+  else if (pin.length < 4) pin += k;
+  document.querySelectorAll('#dots i').forEach((d, i) => d.classList.toggle('on', i < pin.length));
+  if (pin.length === 4) tryPin();
+}
+async function tryPin() {
+  try {
+    const r = await api('login', { studentId: picked.id, pin });
+    remember(r.token); D = r.view; picked = null; pin = '';
+    render(); toast('Welcome back, ' + D.nickname + '!');
+  } catch (e) {
+    pin = '';
+    const m = $('#pinMsg'); if (m) m.textContent = e.message;
+    const d = $('#dots'); if (d) { d.querySelectorAll('i').forEach(i => i.classList.remove('on')); d.classList.remove('shake'); void d.offsetWidth; d.classList.add('shake'); }
+    if (e.code === 'locked') setTimeout(() => { picked = null; drawSignIn(); }, 2500);
+  }
+}
+document.addEventListener('keydown', e => {
+  if (!picked || !$('#dots')) return;
+  if (/^\d$/.test(e.key)) key(e.key); else if (e.key === 'Backspace') key('back');
+});
+function goSignIn() {
+  document.querySelector('nav.tabs button[data-p="account"]').click();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+async function signOut(quiet) {
+  const t = token; forget(); picked = null; pin = '';
+  try { if (t) fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'logout', token: t }) }); } catch (e) {}
+  try { PUB = await api('public'); } catch (e) {}
+  render(); if (!quiet) toast('Signed out. See you on the trail!');
+}
+
+/* ---------- sign out automatically on shared devices ---------- */
+let idleTimer;
+function poke() {
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => { if (token) { signOut(true); toast('Signed out after ' + IDLE_MINUTES + ' quiet minutes.'); } }, IDLE_MINUTES * 60000);
+}
+['click', 'keydown', 'touchstart'].forEach(ev => document.addEventListener(ev, poke, { passive: true }));
+poke();
+
+/* ---------- actions ---------- */
+async function act(action, extra, msg) {
+  try { D = await api(action, extra); render(); if (msg) toast(msg); }
+  catch (e) { if (e.code === 'signin') { PUB = PUB || await api('public').catch(() => null); render(); } toast(e.message, true); }
+}
+function buy(id) {
+  const i = D.items.find(x => x.id === id);
+  if (!confirm('Buy "' + i.name + '" for ' + fmt(i.price) + ' ' + D.currency + '?')) return;
+  act('buy', { itemId: id }, 'Bought! Your teacher will hand it over.');
+}
+function setGoal(id) { act('goal', { itemId: id }, id ? 'Goal set. Check My Account to track it.' : ''); }
+function move(id, dir) {
+  const n = Number($('#amt-' + id).value);
+  if (!(n > 0)) return toast('Type an amount first.', true);
+  act('move', { accountId: id, amount: n, direction: dir }, dir === 'in' ? 'Invested ' + fmt(n) + ' ' + D.currency : 'Moved ' + fmt(n) + ' back to spending');
+}
+function submitExp(id) { act('expedition', { expId: id }, 'Sent to your teacher!'); }
+
+/* ---------- little helpers ---------- */
+const pct = n => (n > 0 ? '+' : '') + (Math.round(n * 10) / 10) + '%';
+function nameOf(p) {
+  if (p.type === 'purchase') { const i = D.items.find(x => x.id === p.refId); return i ? i.name : 'Store item'; }
+  const x = D.expeditions.find(e => e.id === p.refId); return x ? x.title : 'Expedition';
+}
+function label(t) {
+  const map = { earned: 'Earned', spent: 'Spent', refund: 'Refund', invested: 'Invested', withdrew: 'Took out',
+    market: 'Investment change', expedition: 'Expedition', adjusted: 'Adjustment', undo: 'Correction' };
+  return '<strong>' + (map[t.type] || esc(t.type)) + '</strong>' + (t.detail ? ' <span class="muted small">' + esc(t.detail) + '</span>' : '');
+}
+function groups(items) {
+  const g = {}; items.forEach(i => (g[i.category || 'Other'] = g[i.category || 'Other'] || []).push(i));
+  return Object.entries(g);
+}
+function spark(hist) {
+  if (!hist.length) return '<div class="small muted" style="margin:8px 0">The chart starts after the first Monday update.</div>';
+  let v = 100; const pts = [100].concat(hist.map(h => v = v * (1 + h / 100)));
+  const lo = Math.min(...pts), hi = Math.max(...pts), span = hi - lo || 1;
+  const xy = pts.map((p, i) => [(i / (pts.length - 1 || 1)) * 200, 40 - ((p - lo) / span) * 34 - 3]);
+  const up = pts[pts.length - 1] >= 100;
+  return `<svg class="spark" viewBox="0 0 200 40" preserveAspectRatio="none" aria-label="Value over the last ${hist.length} weeks">
+    <polyline points="${xy.map(p => p.join(',')).join(' ')}" fill="none" stroke="${up ? '#2f7d4a' : '#b3412c'}" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>`;
+}
+
+document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('click', () => { try { history.replaceState(null, '', '#' + b.dataset.p); } catch (e) {} }));
+start();
+</script>
+</body>
+</html>

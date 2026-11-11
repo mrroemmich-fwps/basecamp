@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8/9 Collab Basecamp</title>
+<meta name="description" content="Grade 8 and 9 classroom materials: Math, Language Arts, Science, Social Studies and Career & Financial Literacy.">
+<meta name="theme-color" content="#1f2328">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     EDIT HERE: colours
+     ============================================================ */
+  :root{
+    --hivis:#ffd400;      /* safety yellow */
+    --orange:#ff6b1a;     /* safety orange */
+    --ink:#1f2328;        /* charcoal */
+    --ink-2:#3a4048;
+    --paper:#f5f3ee;      /* concrete */
+    --card:#ffffff;
+    --line:#d9d4c7;
+    --muted:#5f6670;
+    --gr8:#2f7de1;        /* Grade 8 tag */
+    --gr9:#1d9a5b;        /* Grade 9 tag */
+    --both:#8a4fd8;       /* both grades */
+    --radius:10px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Barlow,system-ui,sans-serif}
+  a{color:inherit}
+  h1,h2,h3,.brand,.tag,.chip,.btn{font-family:"Barlow Condensed",Barlow,sans-serif;letter-spacing:.02em}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+  .skip{position:absolute;left:-999px;top:8px;background:var(--hivis);padding:8px 12px;z-index:50}
+  .skip:focus{left:8px}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .stripe{height:10px;background:repeating-linear-gradient(-45deg,var(--hivis) 0 18px,var(--ink) 18px 36px)}
+
+  /* ---------- header / nav ---------- */
+  header.top{background:var(--ink);color:#fff;position:sticky;top:0;z-index:20}
+  .bar{display:flex;align-items:center;gap:16px;min-height:62px}
+  .brand{font-size:1.45rem;font-weight:800;text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
+  .brand .hat{width:30px;height:30px;flex:none}
+  nav.main{margin-left:auto}
+  nav.main>ul{list-style:none;margin:0;padding:0;display:flex;gap:4px}
+  nav.main li{position:relative}
+  nav.main button,nav.main>ul>li>a{background:none;border:0;color:#fff;font:600 1rem Barlow,sans-serif;padding:10px 12px;border-radius:6px;cursor:pointer;text-decoration:none;display:block}
+  nav.main button:hover,nav.main>ul>li>a:hover,nav.main button[aria-expanded="true"]{background:var(--ink-2)}
+  nav.main .accent{color:var(--hivis)}
+  .menu{display:none;position:absolute;top:100%;left:0;min-width:230px;background:#fff;color:var(--ink);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:6px;list-style:none;margin:6px 0 0;border-top:4px solid var(--hivis)}
+  .menu.open{display:block}
+  @media (hover:hover) and (min-width:861px){nav.main li:hover>.menu{display:block}}
+  .menu a{display:block;padding:8px 10px;border-radius:6px;text-decoration:none;font-weight:500}
+  .menu a:hover{background:var(--paper)}
+  .burger{display:none;margin-left:auto;background:var(--hivis);border:0;border-radius:6px;padding:8px 12px;font:700 1rem "Barlow Condensed";cursor:pointer}
+  @media (max-width:860px){
+    .burger{display:block}
+    nav.main{display:none;position:absolute;left:0;right:0;top:100%;background:var(--ink);padding:8px 16px 16px;margin:0}
+    nav.main.open{display:block}
+    nav.main>ul{flex-direction:column}
+    .menu{position:static;box-shadow:none;margin:0 0 6px;background:var(--ink-2);color:#fff;border-top:0}
+    .menu a:hover{background:var(--ink)}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:44px 0 28px}
+  .eyebrow{display:inline-block;background:var(--hivis);font:700 .85rem "Barlow Condensed";text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:4px}
+  .hero h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.02;margin:14px 0 10px;text-transform:uppercase}
+  .hero h1 span{background:linear-gradient(transparent 62%,var(--hivis) 62%)}
+  .hero p{max-width:620px;color:var(--ink-2);font-size:1.1rem;margin:0}
+  .who{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .who a{flex:1 1 180px;text-decoration:none;background:var(--card);border:2px solid var(--line);border-radius:var(--radius);padding:12px 14px}
+  .who a strong{display:block;font:700 1.2rem "Barlow Condensed"}
+  .who a span{color:var(--muted);font-size:.92rem}
+  .who a.on{border-color:var(--ink);box-shadow:4px 4px 0 var(--hivis)}
+
+  /* ---------- feature band: rewards + quests ---------- */
+  .band{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0 34px}
+  @media (max-width:700px){.band{grid-template-columns:1fr}}
+  .feature{position:relative;overflow:hidden;text-decoration:none;border-radius:var(--radius);padding:22px 20px 20px;color:var(--ink);background:var(--hivis);border:3px solid var(--ink);transition:transform .15s}
+  .feature.quests{background:var(--orange)}
+  .feature:hover{transform:translateY(-3px)}
+  .feature::after{content:"";position:absolute;right:-30px;top:0;bottom:0;width:90px;background:repeating-linear-gradient(-45deg,rgba(0,0,0,.14) 0 12px,transparent 12px 24px)}
+  .feature .k{font:700 .8rem "Barlow Condensed";text-transform:uppercase;letter-spacing:.1em}
+  .feature h2{font-size:1.9rem;margin:2px 0 4px;text-transform:uppercase}
+  .feature p{margin:0;max-width:78%}
+  .feature .go{display:inline-block;margin-top:12px;font:700 1rem "Barlow Condensed";border-bottom:2px solid}
+
+  /* ---------- tools: search + grade filter ---------- */
+  .tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+  .tools h2{font-size:1.7rem;margin:0 auto 0 0;text-transform:uppercase}
+  .search{position:relative}
+  .search input{font:500 1rem Barlow;padding:10px 12px;border:2px solid var(--line);border-radius:8px;min-width:220px;background:#fff}
+  .search input:focus{outline:none;border-color:var(--ink)}
+  .filters{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{border:2px solid var(--ink);background:#fff;border-radius:999px;padding:6px 14px;font-weight:700;font-size:1rem;cursor:pointer}
+  @media (max-width:600px){.search,.search input{width:100%}}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--hivis)}
+
+  /* ---------- course cards ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-bottom:40px}
+  .card{background:var(--card);border:2px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;display:flex;flex-direction:column;position:relative}
+  .card:hover{border-color:var(--ink)}
+  .card .top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .badge{width:46px;height:46px;border-radius:8px;display:grid;place-items:center;color:#fff;font:800 1.5rem "Barlow Condensed";flex:none}
+  .tag{font-size:.85rem;font-weight:700;text-transform:uppercase;color:var(--muted);letter-spacing:.08em}
+  .card h3{font-size:1.45rem;margin:0;line-height:1.05}
+  .card p{margin:6px 0 12px;color:var(--ink-2);font-size:.97rem;flex:1}
+  .meta{font-size:.85rem;color:var(--muted);margin-bottom:12px}
+  .btn{display:inline-block;text-decoration:none;background:var(--ink);color:#fff;border-radius:6px;padding:9px 14px;font-weight:700;font-size:1.05rem;align-self:flex-start}
+  .btn:hover{background:var(--orange);color:var(--ink)}
+  .card .btn::after{content:"";position:absolute;inset:0}
+  .empty{display:none;padding:20px;text-align:center;color:var(--muted)}
+
+  footer{background:var(--ink);color:#cfd3d8;padding:22px 0;font-size:.95rem}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+  footer a{color:var(--hivis)}
+
+ :root{--hivis:#e9b949;--orange:#c8553d;--ink:#22392b;--ink-2:#2f4d3a;--paper:#f3efe4;--card:#fffdf8;--line:#ddd3bd;--muted:#6b6a5c;--gr8:#3c7a9e;--gr9:#4f7d3a;--radius:16px}
+ body{font-family:"Source Sans 3",sans-serif;font-size:17px;
+  background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cg fill='none' stroke='%23d9cfb6' stroke-width='1.2'%3E%3Cpath d='M-50 120c120-60 220 40 340-10s200-90 360 0'/%3E%3Cpath d='M-50 170c120-60 220 40 340-10s200-90 360 0'/%3E%3Cpath d='M-50 230c140-50 240 50 360 0s200-80 340 10'/%3E%3Cpath d='M-50 400c120-70 260 30 360-20s220-60 340 20'/%3E%3Cpath d='M-50 460c120-70 260 30 360-20s220-60 340 20'/%3E%3C/g%3E%3C/svg%3E")}
+ h1,h2,h3,.brand,.btn{font-family:Bitter,serif}
+ .chip,.tag,.eyebrow,.feature .k{font-family:"Source Sans 3",sans-serif;font-weight:700}
+ .stripe{height:6px;background:linear-gradient(90deg,var(--gr9),var(--hivis),var(--orange))}
+ .eyebrow{background:var(--ink);color:var(--hivis);border-radius:999px;padding:5px 14px}
+ .hero h1{text-transform:none;font-weight:800}
+ .hero h1 span{background:none;color:var(--orange)}
+ .who a{border-radius:var(--radius)}
+ .who a.on{box-shadow:none;border-color:var(--gr9);background:#eef3e6}
+ .feature{border:0;border-radius:var(--radius);background:var(--ink);color:#fff;box-shadow:0 8px 24px rgba(34,57,43,.2)}
+ .feature.quests{background:var(--orange)}
+ .feature .k{color:var(--hivis)} .feature.quests .k{color:#ffe7c2}
+ .feature h2{text-transform:none}
+ .feature::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 60'%3E%3Cpath d='M0 60 30 18l14 18 14-26 32 50z' fill='rgba(255,255,255,.18)'/%3E%3C/svg%3E") bottom right/100% no-repeat;width:150px;right:-10px}
+ .tools h2{text-transform:none}
+ .chip{border-color:var(--ink)}
+ .chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+ .card{border-radius:var(--radius);box-shadow:0 2px 0 var(--line)}
+ .badge{border-radius:50%}
+ .btn{border-radius:999px;background:var(--ink)}
+ .btn:hover{background:var(--hivis);color:var(--ink)}
+ footer{background:var(--ink)}
+ 
+ /* ---------- option 3: two trail columns ---------- */
+ .trails{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:40px}
+ @media (max-width:760px){.trails{grid-template-columns:1fr}}
+ .trail{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 10px;box-shadow:0 2px 0 var(--line)}
+ .trail>header{display:flex;align-items:center;gap:12px;padding-bottom:12px;border-bottom:2px dashed var(--line);margin-bottom:6px}
+ .marker{width:48px;height:48px;display:grid;place-items:center;color:#fff;font:800 1.5rem Bitter,serif;clip-path:polygon(50% 0,100% 100%,0 100%);padding-top:12px;flex:none}
+ .trail h3{margin:0;font-size:1.6rem}
+ .trail header small{margin-left:auto;color:var(--muted);font-weight:600}
+ .trail ol{list-style:none;margin:0;padding:0 0 0 20px;position:relative}
+ .trail ol::before{content:"";position:absolute;left:40px;top:22px;bottom:30px;border-left:3px dotted var(--line)}
+ .stop a{display:flex;align-items:center;gap:14px;text-decoration:none;padding:10px 10px 10px 0;border-radius:12px;position:relative}
+ .stop a:hover,.stop a:focus-visible{background:var(--paper)}
+ .stop a:hover .arr{transform:translateX(4px);background:var(--ink);color:#fff}
+ .ico{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--paper);border:3px solid var(--tc);color:var(--tc);flex:none;position:relative;z-index:1}
+ .ico svg{width:22px;height:22px}
+ .txt{flex:1;min-width:0}
+ .txt strong{display:block;font:700 1.15rem Bitter,serif;line-height:1.2}
+ .txt small{display:block;color:var(--muted);font-size:.95rem;line-height:1.35}
+ .arr{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--ink);font-weight:700;transition:.15s;flex:none}
+ .trail.g8{--tc:var(--gr8)} .trail.g9{--tc:var(--gr9)}
+ .trail.g8 .marker{background:var(--gr8)} .trail.g9 .marker{background:var(--gr9)}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="./">
+      <svg class="hat" viewBox="0 0 32 32" aria-hidden="true"><path d="M2 27 12 11l5 8 4-6 9 14z" fill="#e9b949"/><path d="M12 11l-3 5 3-1 2 2z" fill="#fffdf8"/></svg>
+      <span id="brandName">8/9 Collab Basecamp</span>
+    </a>
+    <button class="burger" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav class="main" id="mainNav" aria-label="Main">
+      <ul id="navList"></ul>
+    </nav>
+  </div>
+  <div class="stripe"></div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <span class="eyebrow">Grades 8 &amp; 9 · Basecamp</span>
+    <h1>Every subject is a trail. <span>Start yours here.</span></h1>
+    <p>Notes, practice and projects for every subject. Pick a course to get started, check your balance, or set out on an expedition.</p>
+    <div class="who">
+      <a class="on" href="#courses"><strong>Student</strong><span>Notes, practice &amp; projects</span></a>
+      <a id="parentLink" href="parents/"><strong>Parent</strong><span>How to help at home</span></a>
+      <a id="teacherLink" href="teachers/"><strong>Teacher</strong><span>Guides, plans &amp; keys</span></a>
+    </div>
+  </section>
+
+  <section class="band" aria-label="Avalanche HQ and Expeditions">
+    <a class="feature" id="rewardsCard" href="rewards/">
+      <div class="k">Class economy</div>
+      <h2 id="rewardsName">Avalanche HQ</h2>
+      <p>Check your balance, visit the store and manage your AvCash.</p>
+      <span class="go">Open →</span>
+    </a>
+    <a class="feature quests" id="questsCard" href="quests/">
+      <div class="k">Earn extra</div>
+      <h2>Expeditions</h2>
+      <p>Take on extra challenges and earn a bonus for yourself or others.</p>
+      <span class="go">See expeditions →</span>
+    </a>
+  </section>
+
+  <section id="courses" aria-labelledby="coursesH">
+    <div class="tools">
+      <h2 id="coursesH">Choose a course</h2>
+      <label class="search"><span class="sr">Search courses</span>
+        <input id="q" type="search" placeholder="Search courses…">
+      </label>
+    </div>
+    <div class="trails" id="grid"></div>
+    <div class="empty" id="empty">No courses match that search.</div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span id="footName">8/9 Collab Basecamp</span>
+    <span>Grades 8 &amp; 9 · Built for learning</span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   EDIT HERE: your name, links and course list.
+   Links are relative to this page (e.g. "math8/" opens the math8 folder).
+   ============================================================ */
+const SITE = {
+  name: "8/9 Collab Basecamp",          // e.g. "Mr. Smith's Classroom"
+  rewardsName: "Avalanche HQ",         // change once the class picks a name
+  rewardsLink: "avalanche/",
+  questsLink: "avalanche/#expeditions",
+  parentsLink: "parents/",
+  teachersLink: "teachers/"
+};
+
+const COURSES = [
+  { subject:"Mathematics", short:"Math", grade:"8", link:"math8/", tag:"Numbers, money, measuring and data",
+    desc:"Number sense, decimals, fractions and percents, measurement, patterns and data, all in everyday situations.",
+    meta:"Number · Patterns · Shape & Space · Data" },
+  { subject:"Mathematics", short:"Math", grade:"9", link:"math9/", tag:"Rates, percents, angles and spreadsheets",
+    desc:"Rates and prices, percents, rounding, area and angles, graphing relationships and working with spreadsheets.",
+    meta:"Number · Patterns · Shape & Space · Data" },
+  { subject:"Language Arts", short:"LA", grade:"8", link:"la8/", tag:"Novels, media and workplace writing",
+    desc:"Reading novels and media, workplace writing and emails, following instructions, presenting and goal setting.",
+    meta:"Reading · Writing · Viewing · Presenting" },
+  { subject:"Language Arts", short:"LA", grade:"9", link:"la9/", tag:"Stories, essays, media and interviews",
+    desc:"Novel vs film, résumés and cover letters, essays, media and persuasion, interviews and planning your next steps.",
+    meta:"Reading · Writing · Viewing · Presenting" },
+  { subject:"Science", short:"Science", grade:"8", link:"science8/", tag:"Fluids, cells, light, machines and water",
+    desc:"Fluids, cells and body systems, light and optics, simple machines, and fresh and saltwater systems.",
+    meta:"5 units · hands-on labs" },
+  { subject:"Science", short:"Science", grade:"9", link:"science9/", tag:"Life, chemistry, electricity and space",
+    desc:"Biological diversity, chemical change, environmental chemistry, electricity and space exploration.",
+    meta:"5 units · hands-on labs" },
+  { subject:"Social Studies", short:"Social", grade:"8", link:"social8/", tag:"Worldviews: Japan, Renaissance, Aztecs",
+    desc:"How worldviews shape societies: Japan, Renaissance Europe, and the Spanish and Aztec empires.",
+    meta:"3 units · worldviews & contact" },
+  { subject:"Social Studies", short:"Social", grade:"9", link:"social9/", tag:"Canadian government, rights and the economy",
+    desc:"Canada's government, rights and the Charter, and the Canada–US economy, taxes and quality of life.",
+    meta:"2 units · governance & economics" },
+  { subject:"Career & Financial Literacy", short:"CEFL", grade:"8", link:"cefl8/", tag:"Jobs, pay, taxes, saving and investing",
+    desc:"A changing job market, job offers and pay, taxes, budgets, interest and the choice between saving and investing.",
+    meta:"Careers · Experiences · Money" },
+  { subject:"Career & Financial Literacy", short:"CEFL", grade:"9", link:"cefl9/", tag:"Résumés, T4s, credit and your next path",
+    desc:"Résumés and interviews, T4s and taxes, credit and debt, and planning your path after high school.",
+    meta:"Careers · Experiences · Money" }
+];
+
+/* ---------- build the page from the lists above ---------- */
+document.title = SITE.name;
+document.getElementById("brandName").textContent = SITE.name;
+document.getElementById("footName").textContent = SITE.name;
+document.getElementById("rewardsName").textContent = SITE.rewardsName;
+document.getElementById("rewardsCard").href = SITE.rewardsLink;
+document.getElementById("questsCard").href = SITE.questsLink;
+document.getElementById("parentLink").href = SITE.parentsLink;
+document.getElementById("teacherLink").href = SITE.teachersLink;
+
+const colour = g => g === "8" ? "var(--gr8)" : g === "9" ? "var(--gr9)" : "var(--both)";
+
+// Navigation: one dropdown per subject, then Rewards + Quests
+const navList = document.getElementById("navList");
+const grades = [...new Set(COURSES.map(c => c.grade))];
+grades.forEach((g, i) => {
+  const items = COURSES.filter(c => c.grade === g);
+  const li = document.createElement("li");
+  li.innerHTML = `<button aria-expanded="false" aria-controls="m${i}">Grade ${g} ▾</button>
+    <ul class="menu" id="m${i}">${items.map(c => `<li><a href="${c.link}">${c.subject}</a></li>`).join("")}</ul>`;
+  navList.appendChild(li);
+});
+navList.insertAdjacentHTML("beforeend",
+  `<li><a class="accent" href="${SITE.rewardsLink}">${SITE.rewardsName}</a></li>
+   <li><a class="accent" href="${SITE.questsLink}">Expeditions</a></li>`);
+
+navList.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const menu = document.getElementById(b.getAttribute("aria-controls"));
+  const open = b.getAttribute("aria-expanded") !== "true";
+  navList.querySelectorAll("button").forEach(x => { x.setAttribute("aria-expanded","false"); document.getElementById(x.getAttribute("aria-controls")).classList.remove("open"); });
+  b.setAttribute("aria-expanded", open); menu.classList.toggle("open", open);
+});
+document.addEventListener("click", e => {
+  if (!e.target.closest("nav.main")) navList.querySelectorAll("button").forEach(x => { x.setAttribute("aria-expanded","false"); document.getElementById(x.getAttribute("aria-controls")).classList.remove("open"); });
+});
+const burger = document.querySelector(".burger"), nav = document.getElementById("mainNav");
+burger.addEventListener("click", () => { const o = nav.classList.toggle("open"); burger.setAttribute("aria-expanded", o); });
+
+const ICONS = {
+  Math:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 7h5M7.5 4.5v5M14 7h5M5 17h5M14 15l4 4M18 15l-4 4"/></svg>',
+  LA:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M3 5c3-1 6-1 9 1v14c-3-2-6-2-9-1zM21 5c-3-1-6-1-9 1v14c3-2 6-2 9-1z"/></svg>',
+  Science:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 10a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L14 9V3M7.5 15h9"/></svg>',
+  Social:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>',
+  CEFL:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 13h18"/></svg>'
+};
+// Course trails: one column per grade, one stop per subject
+const grid = document.getElementById("grid");
+grid.innerHTML = [...new Set(COURSES.map(c => c.grade))].map(g => {
+  const list = COURSES.filter(c => c.grade === g);
+  return `<section class="trail g${g}" aria-label="Grade ${g} courses">
+    <header><span class="marker">${g}</span><h3>Grade ${g}</h3><small>${list.length} courses</small></header>
+    <ol>${list.map(c => `
+      <li class="stop" data-s="${c.short}" data-text="${(c.subject+" "+c.short+" grade "+c.grade+" "+c.tag+" "+c.desc).toLowerCase()}">
+        <a href="${c.link}" title="${c.desc}">
+          <span class="ico">${ICONS[c.short] || ""}</span>
+          <span class="txt"><strong>${c.subject}</strong><small>${c.tag}</small></span>
+          <span class="arr" aria-hidden="true">→</span>
+        </a>
+      </li>`).join("")}</ol>
+  </section>`;
+}).join("");
+
+// Search
+
+const q = document.getElementById("q"), empty = document.getElementById("empty");
+function applyFilter(){
+  const term = q.value.trim().toLowerCase(); let shown = 0;
+  grid.querySelectorAll(".stop").forEach(card => {
+    const ok = card.dataset.text.includes(term);
+    card.style.display = ok ? "" : "none"; if (ok) shown++;
+  });
+  grid.querySelectorAll(".trail").forEach(t => t.style.display = [...t.querySelectorAll(".stop")].some(x => x.style.display !== "none") ? "" : "none");
+  empty.style.display = shown ? "none" : "block";
+}
+q.addEventListener("input", applyFilter);
+</script>
+</body>
+</html>
