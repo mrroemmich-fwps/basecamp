@@ -135,6 +135,24 @@
       Q(box, 'A price goes from <strong>$' + money(o) + '</strong> to <strong>$' + money(n) + '</strong>. What is the percent change? <span class="hint">(use − for a decrease)</span>');
       return { check: v => near(num(String(v).replace('−', '-')), pc, 0.06), right: '(' + money(n) + ' − ' + money(o) + ') ÷ ' + money(o) + ' = ' + (pc / 100) + ' → ' + (pc > 0 ? '+' : '') + pc + '%' }; },
 
+    /* ----- CEFL 8: pay and total compensation ----- */
+    annual8(box) {
+      const w = pick([15, 15.5, 16, 17, 18.5, 20, 22]), h = pick([20, 25, 30, 37.5, 40]); const ans = w * h * 52;
+      Q(box, 'A job pays <strong>$' + money(w) + ' an hour</strong> for <strong>' + h + ' hours a week</strong>. How much is that in a year (52 weeks)?');
+      return { check: v => near(num(v), ans, 0.6), right: '$' + money(w) + ' × ' + h + ' × 52 = $' + ans.toLocaleString('en-CA', { maximumFractionDigits: 2 }) }; },
+    total8(box) {
+      const sal = pick([32000, 36500, 41000, 45000]), bon = pick([500, 1000, 1500, 2000]), ben = pick([1200, 2400, 3000, 3600]); const ans = sal + bon + ben;
+      Q(box, 'Salary <strong>$' + sal.toLocaleString('en-CA') + '</strong>, a yearly bonus of <strong>$' + bon.toLocaleString('en-CA') + '</strong>, and health benefits worth <strong>$' + ben.toLocaleString('en-CA') + '</strong> a year. What is the total compensation?');
+      return { check: v => near(num(v), ans, 0.6), right: sal.toLocaleString('en-CA') + ' + ' + bon.toLocaleString('en-CA') + ' + ' + ben.toLocaleString('en-CA') + ' = $' + ans.toLocaleString('en-CA') }; },
+    offer8(box) {
+      let a, b, A, B;
+      do { a = pick([16, 17, 18]); b = a + pick([1, 1.5, 2]); const benA = pick([2000, 3000, 4000, 5000]);
+        A = { w: a, ben: benA, t: a * 40 * 52 + benA }; B = { w: b, ben: 0, t: b * 40 * 52 }; } while (A.t === B.t);
+      const best = A.t > B.t ? 'A' : 'B';
+      Q(box, 'Both jobs are 40 hours a week. Which has the higher total compensation?<br><strong>A:</strong> $' + money(A.w) + '/hour + benefits worth $' + A.ben.toLocaleString('en-CA') + ' a year &nbsp; <strong>B:</strong> $' + money(B.w) + '/hour, no benefits<br><span class="hint">Type A or B</span>');
+      const f = o => '$' + money(o.w) + ' × 40 × 52' + (o.ben ? ' + $' + o.ben.toLocaleString('en-CA') : '') + ' = $' + o.t.toLocaleString('en-CA');
+      return { check: v => String(v).trim().toUpperCase() === best, right: best + ' is worth more. A: ' + f(A) + '. B: ' + f(B) + '.' }; },
+
     /* ----- multiple choice (science and anything else) -----
        Put the questions in <script type="application/json" class="qs"> inside the box:
        [{ "q": "...", "options": ["A","B","C"], "answer": 0, "why": "..." }] */
