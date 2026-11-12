@@ -463,6 +463,29 @@
       Q(box, 'Use the chart: <strong>1 ' + from + ' ≈ ' + f + ' ' + to + '</strong>. About how many <strong>' + to + '</strong> are in <strong>' + x + ' ' + from + '</strong>?');
       return { check: v => near(num(v), ans, Math.max(0.05, ans * 0.01)), right: x + ' × ' + f + ' ≈ ' + ans + ' ' + to }; },
 
+    /* ----- science: machines and electricity ----- */
+    ma8(box) {
+      const effort = pick([10, 20, 25, 40, 50, 100]), k = pick([2, 3, 4, 5, 6]), load = effort * k;
+      Q(box, 'A lever lifts a <strong>' + load + ' N</strong> load when you push with <strong>' + effort + ' N</strong> of force. What is the mechanical advantage?');
+      return { check: v => near(num(v), k), right: 'MA = load ÷ effort = ' + load + ' ÷ ' + effort + ' = ' + k + '. The machine multiplies your force ' + k + ' times.' }; },
+    work8(box) {
+      const f = pick([20, 50, 80, 120, 200, 15]), d = pick([2, 3, 1.5, 5, 10, 0.5]), w = Math.round(f * d * 100) / 100;
+      Q(box, 'You push a cart with a force of <strong>' + f + ' N</strong> for <strong>' + d + ' m</strong>. How much work do you do, in joules?');
+      return { check: v => near(num(v), w), right: 'Work = force × distance = ' + f + ' × ' + d + ' = ' + w + ' J' }; },
+    ohm9(box) {
+      const t = rnd(0, 2), I = pick([0.5, 1, 2, 3, 4, 5]), R = pick([2, 3, 4, 6, 10, 12, 24]), V = I * R;
+      if (t === 0) { Q(box, 'A circuit has a current of <strong>' + I + ' A</strong> and a resistance of <strong>' + R + ' Ω</strong>. What is the voltage? <span class="hint">(V = I × R)</span>');
+        return { check: v => near(num(v), V), right: 'V = I × R = ' + I + ' × ' + R + ' = ' + V + ' V' }; }
+      if (t === 1) { Q(box, 'A <strong>' + V + ' V</strong> battery pushes current through a <strong>' + R + ' Ω</strong> resistor. What is the current? <span class="hint">(I = V ÷ R)</span>');
+        return { check: v => near(num(v), I), right: 'I = V ÷ R = ' + V + ' ÷ ' + R + ' = ' + I + ' A' }; }
+      Q(box, 'A <strong>' + V + ' V</strong> battery makes <strong>' + I + ' A</strong> of current. What is the resistance? <span class="hint">(R = V ÷ I)</span>');
+      return { check: v => near(num(v), R), right: 'R = V ÷ I = ' + V + ' ÷ ' + I + ' = ' + R + ' Ω' }; },
+    ecost9(box) {
+      const dev = pick([['a 1,500 W space heater', 1500], ['a 100 W TV', 100], ['a 60 W light bulb', 60], ['a 10 W LED bulb', 10], ['a 1,200 W microwave', 1200], ['a 300 W gaming computer', 300]]);
+      const h = pick([2, 4, 5, 8, 10, 20]), price = pick([0.12, 0.15, 0.2]), kwh = dev[1] * h / 1000, cost = Math.round(kwh * price * 100) / 100;
+      Q(box, 'You run <strong>' + dev[0] + '</strong> for <strong>' + h + ' hours</strong>. Electricity costs <strong>$' + price.toFixed(2) + ' per kWh</strong>. What does it cost? <span class="hint">(kWh = watts × hours ÷ 1,000)</span>');
+      return { check: v => near(num(v), cost, 0.011), right: dev[1] + ' × ' + h + ' ÷ 1,000 = ' + kwh + ' kWh. Cost: ' + kwh + ' × $' + price.toFixed(2) + ' = $' + cost.toFixed(2) }; },
+
     /* ----- CEFL 8: pay and total compensation ----- */
     annual8(box) {
       const w = pick([15, 15.5, 16, 17, 18.5, 20, 22]), h = pick([20, 25, 30, 37.5, 40]); const ans = w * h * 52;

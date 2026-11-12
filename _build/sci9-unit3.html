@@ -1,0 +1,127 @@
+  <!-- ================= UNIT 3 ================= -->
+  <section id="unit-3" aria-labelledby="u3h">
+    <div class="unitHead">
+      <div class="k">Unit 3</div>
+      <h2 id="u3h">Electrical Principles</h2>
+      <p>Phones, furnaces, power tools and the whole Alberta power grid run on electricity. In this unit you'll follow energy as it changes form, build circuits, learn about volts, amps and ohms, stay safe around electricity, and figure out what your devices really cost to run.</p>
+      <div class="jump"><a href="#u3-goals">Learning goals</a><a href="#u3-lessons">Lessons</a><a href="#u3-practice">Practice</a><a href="#u3-resources">Resources</a></div>
+    </div>
+
+    <h2 class="sec" id="u3-goals"><span class="num">1</span>By the end of this unit, I can…</h2>
+    <div class="card"><ul class="goals">
+      <li><span>describe forms of energy and how devices convert them <span class="tag">D1</span></span></li>
+      <li><span>tell static from current electricity, and conductors from insulators <span class="tag">D2</span></span></li>
+      <li><span>build series and parallel circuits and use volts, amps and ohms <span class="tag">D2</span></span></li>
+      <li><span>calculate energy use and find ways to waste less <span class="tag">D3</span></span></li>
+      <li><span>compare ways of making electricity and their effects <span class="tag">D4</span></span></li>
+    </ul></div>
+    <div class="side">⚡ <strong>Career connection:</strong> electricians, power line technicians, wind and solar technicians, and power plant operators are in demand across Alberta.</div>
+
+    <h2 class="sec" id="u3-lessons"><span class="num">2</span>Lessons</h2>
+
+    <details class="lesson" id="u3-l1" open>
+      <summary><span class="lnum">1</span><span class="ltitle"><strong>Energy changes form</strong><span>Inputs and outputs</span></span><span class="chev" aria-hidden="true">›</span></summary>
+      <div class="lbody">
+        <div class="ican"><b>I can</b> describe forms of energy and how devices convert them. <span class="tag">D1</span></div>
+        <div class="big-idea">Energy can't be made or destroyed. It only <strong>changes form</strong>: <strong>chemical</strong> (stored in fuel, food, batteries), <strong>electrical</strong>, <strong>mechanical</strong> (motion), <strong>thermal</strong> (heat), <strong>light</strong> and <strong>sound</strong>.</div>
+        <div class="ex"><h4>Example <small>A flashlight</small></h4>
+          Battery (<strong>chemical</strong>) → wires (<strong>electrical</strong>) → bulb (<strong>light</strong> + some <strong>thermal</strong>). The heat is <span class="ans">wasted energy</span>, since it isn't the output you wanted.</div>
+        <!--MC [
+          {"q":"A toaster changes electrical energy mostly into…","options":["Thermal energy","Sound energy","Chemical energy"],"answer":0,"why":"Toasters make heat."},
+          {"q":"A battery stores energy as…","options":["Chemical energy","Light energy","Mechanical energy"],"answer":0,"why":"Chemicals inside react to make electricity."},
+          {"q":"A blender changes electrical energy into…","options":["Mechanical energy (plus some sound and heat)","Only light","Chemical energy"],"answer":0,"why":"The motor spins the blades."}
+        ]-->
+        <!--EXP Lemon Battery | With an adult, make a wet cell from a lemon (or potato), a copper coin and a galvanized nail. Connect a few in a row and try to light a small LED.-->
+      </div>
+    </details>
+
+    <details class="lesson" id="u3-l2">
+      <summary><span class="lnum">2</span><span class="ltitle"><strong>Static, current and safety</strong><span>Conductors and insulators</span></span><span class="chev" aria-hidden="true">›</span></summary>
+      <div class="lbody">
+        <div class="ican"><b>I can</b> tell static from current electricity, and conductors from insulators. <span class="tag">D2</span></div>
+        <div class="big-idea"><strong>Static electricity</strong> is charge that builds up and jumps all at once (a shock from a doorknob, lightning). <strong>Current electricity</strong> is a steady flow through a circuit. <strong>Conductors</strong> (copper, water, people) let current flow. <strong>Insulators</strong> (rubber, plastic, dry wood) block it.</div>
+        <div class="ex"><h4>Danger depends on voltage and current</h4>A static shock can be thousands of volts but almost no current, so it just stings. A wall outlet is 120 volts with enough current to <strong>kill</strong>. Power lines are much higher. <span class="ans">Stay at least 10 m from downed power lines</span> and call 911.</div>
+        <!--MC [
+          {"q":"Why are wires coated in plastic?","options":["Plastic is an insulator","Plastic is a conductor","To make them heavier"],"answer":0,"why":"The insulation stops current from reaching you."},
+          {"q":"Which is static electricity?","options":["A shock from a doorknob","A lamp that's turned on","A phone charging"],"answer":0,"why":"Built-up charge jumps all at once."},
+          {"q":"Why should you never use a hair dryer near a full bathtub?","options":["Water is a conductor","Water is an insulator","It makes the water cold"],"answer":0,"why":"Water can carry current through your body."}
+        ]-->
+        <!--EXP Safety Sweep | Do an electrical safety check at home with an adult: overloaded power bars, frayed cords, outlets near water. Write down 3 things that are safe and 1 thing to fix.-->
+      </div>
+    </details>
+
+    <details class="lesson" id="u3-l3">
+      <summary><span class="lnum">3</span><span class="ltitle"><strong>Circuits</strong><span>Series, parallel, volts, amps, ohms</span></span><span class="chev" aria-hidden="true">›</span></summary>
+      <div class="lbody">
+        <div class="ican"><b>I can</b> build series and parallel circuits and use volts, amps and ohms. <span class="tag">D2</span></div>
+        <div class="big-idea">A <strong>series circuit</strong> has one path: if one bulb goes out, they all go out. A <strong>parallel circuit</strong> has several paths: the others stay on (that's how homes are wired). <strong>Voltage</strong> (V, volts) is the push, <strong>current</strong> (I, amps) is the flow and <strong>resistance</strong> (R, ohms Ω) slows it down. <span class="math">V = I × R</span></div>
+        <svg class="chart" viewBox="0 0 320 120" aria-label="A series circuit with one loop and two bulbs, and a parallel circuit with two branches">
+          <g fill="none" stroke="#22392b" stroke-width="2"><rect x="15" y="20" width="120" height="75"/><rect x="185" y="20" width="120" height="75"/><line x1="245" y1="20" x2="245" y2="95"/></g>
+          <g fill="#f1d36b" stroke="#22392b"><circle cx="55" cy="20" r="9"/><circle cx="95" cy="20" r="9"/><circle cx="245" cy="57" r="9"/><circle cx="305" cy="57" r="9"/></g>
+          <g stroke="#22392b" stroke-width="3"><line x1="65" y1="88" x2="65" y2="102"/><line x1="185" y1="50" x2="185" y2="64"/></g><g stroke="#22392b" stroke-width="1.5"><line x1="72" y1="91" x2="72" y2="99"/><line x1="178" y1="53" x2="178" y2="61"/></g>
+          <g font-size="11" font-family="sans-serif" fill="#22392b" text-anchor="middle"><text x="75" y="116">series (one path)</text><text x="245" y="116">parallel (two paths)</text></g></svg>
+        <div class="ex"><h4>Example</h4>A 9 V battery is connected to a 3 Ω resistor. Current: I = V ÷ R = 9 ÷ 3 = <span class="ans">3 A</span>.</div>
+        <!--NUM ohm9 | -->
+        <!--MC [
+          {"q":"One bulb in a string of old-style holiday lights burns out and they all go dark. They are wired in…","options":["Series","Parallel"],"answer":0,"why":"Series has only one path."},
+          {"q":"Volts measure…","options":["The push of the electricity","How much flows","How much is blocked"],"answer":0,"why":"Voltage is the electrical push."}
+        ]-->
+        <!--EXP Circuit Builder | Use a circuit kit or the PhET simulation to build a series circuit and a parallel circuit with 2 bulbs each. Remove one bulb from each and record what happens.-->
+      </div>
+    </details>
+
+    <details class="lesson" id="u3-l4">
+      <summary><span class="lnum">4</span><span class="ltitle"><strong>Energy use at home</strong><span>Watts, kilowatt-hours and saving</span></span><span class="chev" aria-hidden="true">›</span></summary>
+      <div class="lbody">
+        <div class="ican"><b>I can</b> calculate energy use and find ways to waste less. <span class="tag">D3</span></div>
+        <div class="big-idea"><strong>Power</strong> is measured in <strong>watts (W)</strong>. Your power bill charges for <strong>kilowatt-hours (kWh)</strong>: <span class="math">kWh = watts × hours ÷ 1,000</span>. Then <span class="math">cost = kWh × price per kWh</span>. <strong>Efficiency</strong> means more useful output for the same input.</div>
+        <div class="ex"><h4>Example <small>Old bulb vs. LED</small></h4>
+          A 60 W bulb on for 5 hours: 60 × 5 ÷ 1,000 = 0.3 kWh. At $0.15/kWh that's $0.045 a day.<br>
+          A 9 W LED gives the same light: 9 × 5 ÷ 1,000 = 0.045 kWh = <span class="ans">about $0.007 a day</span>. That's over 80% less.</div>
+        <!--NUM ecost9 | $-->
+        <!--EXP Energy Detective | Find the wattage label on 5 devices at home. Estimate how many hours a day each runs and calculate the daily kWh. Which one costs the most? Suggest a way to cut it.-->
+      </div>
+    </details>
+
+    <details class="lesson" id="u3-l5">
+      <summary><span class="lnum">5</span><span class="ltitle"><strong>Powering Alberta</strong><span>Sources, impacts and e-waste</span></span><span class="chev" aria-hidden="true">›</span></summary>
+      <div class="lbody">
+        <div class="ican"><b>I can</b> compare ways of making electricity and their effects. <span class="tag">D4</span></div>
+        <div class="big-idea"><strong>Nonrenewable</strong> sources will run out (natural gas, coal, oil). <strong>Renewable</strong> sources are replaced naturally (wind, sun, moving water). Every source has trade-offs in cost, reliability and environmental impact.</div>
+        <table class="fdp" style="max-width:none"><thead><tr><th>Source</th><th>Type</th><th>Plus</th><th>Minus</th></tr></thead><tbody>
+          <tr><td>Natural gas</td><td>Nonrenewable</td><td>Reliable, can ramp up fast</td><td>Releases CO₂</td></tr>
+          <tr><td>Coal</td><td>Nonrenewable</td><td>Was cheap and reliable</td><td>Most CO₂ and air pollution; Alberta stopped burning coal for power in 2024</td></tr>
+          <tr><td>Wind</td><td>Renewable</td><td>No fuel, no emissions while running</td><td>Only works when it's windy</td></tr>
+          <tr><td>Solar</td><td>Renewable</td><td>Southern Alberta is very sunny</td><td>Nothing at night, less in winter</td></tr>
+          <tr><td>Hydro</td><td>Renewable</td><td>Steady, can be stored behind dams</td><td>Dams flood land and change rivers</td></tr></tbody></table>
+        <!--MC [
+          {"q":"Which source is renewable?","options":["Wind","Natural gas","Coal"],"answer":0,"why":"Wind is replaced naturally."},
+          {"q":"Why can't a grid run on solar power alone without storage?","options":["There's no sun at night","Solar panels are too heavy","It's illegal"],"answer":0,"why":"Solar makes no power in the dark."},
+          {"q":"Old phones and laptops (e-waste) should go to…","options":["An electronics recycling drop-off","The garbage","The compost"],"answer":0,"why":"They contain metals that can be recovered and toxins that shouldn't go to landfill."}
+        ]-->
+        <!--EXP Grid Watch | Look up the Alberta Electric System Operator's (AESO) current supply mix. Make a bar graph of how much power comes from each source right now and compare it with another day.-->
+      </div>
+    </details>
+
+    <h2 class="sec" id="u3-practice"><span class="num">3</span>Practice</h2>
+    <!--PRACTICE-->
+    <h2 class="sec" id="u3-resources"><span class="num">4</span>Resources</h2>
+    <div class="card"><ul class="res">
+      <li><span class="ic">🖨️</span><div><a href="#" data-print-cheat="u3">Electrical principles cheat sheet</a><br><span class="hint">Forms of energy, circuits, V = I × R, kWh and energy sources.</span></div></li>
+      <li><span class="ic">🔌</span><div><a href="https://phet.colorado.edu/en/simulations/circuit-construction-kit-dc" target="_blank" rel="noopener">Circuit Construction Kit</a> · PhET</div></li>
+      <li><span class="ic">⚡</span><div><a href="https://www.aeso.ca" target="_blank" rel="noopener">Alberta Electric System Operator</a><br><span class="hint">Where Alberta's power comes from, live.</span></div></li>
+    </ul></div>
+    <div class="card parents"><h3 style="margin:0 0 6px">For parents: helping at home</h3><ul style="margin:0;padding-left:20px">
+      <li>Look at your power bill together and find the kWh used and the price.</li>
+      <li>Walk through the house and talk about which devices could be turned off or switched to LEDs.</li></ul></div>
+  </section>
+<!--CHEAT u3-->
+  <h2>Electrical Principles Cheat Sheet · Grade 9 Science</h2>
+  <p><strong>Forms of energy:</strong> chemical · electrical · mechanical · thermal · light · sound. Energy changes form; it isn't made or destroyed.</p>
+  <p><strong>Static</strong> = charge that builds up and jumps. <strong>Current</strong> = steady flow. <strong>Conductors</strong> let current flow (metal, water). <strong>Insulators</strong> block it (rubber, plastic).</p>
+  <table><tr><th>Quantity</th><th>Symbol</th><th>Unit</th></tr><tr><td>Voltage (push)</td><td>V</td><td>volts (V)</td></tr><tr><td>Current (flow)</td><td>I</td><td>amps (A)</td></tr><tr><td>Resistance</td><td>R</td><td>ohms (Ω)</td></tr></table>
+  <p><strong>V = I × R</strong> · I = V ÷ R · R = V ÷ I</p>
+  <p><strong>Series:</strong> one path, one out = all out. <strong>Parallel:</strong> many paths (how homes are wired).</p>
+  <p><strong>Energy cost:</strong> kWh = watts × hours ÷ 1,000. Cost = kWh × price.</p>
+  <p><strong>Renewable:</strong> wind, solar, hydro. <strong>Nonrenewable:</strong> natural gas, coal, oil.</p>
+<!--/CHEAT-->
