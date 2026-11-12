@@ -151,12 +151,11 @@
   .soonbox{text-align:center;padding:30px 18px}
 
   /* printable cheat sheet */
-  #cheat{display:none}
+  .cheat{display:none}
   @media print{
     body{background:#fff}
-    body.printing > *:not(#cheat){display:none!important}
-    body.printing #cheat{display:block}
-    #cheat{font-size:15px}
+    body.printing > *:not(.printme){display:none!important}
+    body.printing .printme{display:block;font-size:15px}
   }
   .cheat h2{margin:0 0 6px}
   .cheat table{border-collapse:collapse;width:100%;margin:8px 0}
@@ -187,3 +186,13 @@
   .picto b{display:block}
   .side{background:#e8f0f4;border:1px solid #b9d0dc;border-radius:10px;padding:8px 12px;margin:10px 0;font-size:.95rem}
   .eq{font-size:1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;text-align:center;font-weight:600}
+
+  /* probability simulator */
+  .sim{background:#eef3e6;border:1px solid #c9d8bd;border-radius:12px;padding:12px 14px;margin:14px 0}
+  .sim .bars{display:flex;align-items:flex-end;gap:8px;height:130px;margin:10px 0 4px;border-bottom:2px solid var(--ink);padding:0 4px}
+  .sim .bar{flex:1;background:var(--grade);border-radius:6px 6px 0 0;position:relative;min-height:2px;transition:height .3s}
+  .sim .bar b{position:absolute;top:-20px;left:0;right:0;text-align:center;font-size:.85rem}
+  .sim .labels{display:flex;gap:8px;padding:0 4px}
+  .sim .labels span{flex:1;text-align:center;font-weight:700}
+  .chart{width:100%;max-width:460px;height:auto;display:block;margin:8px 0}
+  .timecard td,.timecard th{font-variant-numeric:tabular-nums}
