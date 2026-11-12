@@ -486,6 +486,38 @@
       Q(box, 'You run <strong>' + dev[0] + '</strong> for <strong>' + h + ' hours</strong>. Electricity costs <strong>$' + price.toFixed(2) + ' per kWh</strong>. What does it cost? <span class="hint">(kWh = watts × hours ÷ 1,000)</span>');
       return { check: v => near(num(v), cost, 0.011), right: dev[1] + ' × ' + h + ' ÷ 1,000 = ' + kwh + ' kWh. Cost: ' + kwh + ' × $' + price.toFixed(2) + ' = $' + cost.toFixed(2) }; },
 
+    /* ----- CEFL: tax brackets, interest, budgets and debt ----- */
+    taxbr8(box) {
+      const inc = pick([30000, 42000, 55000, 68000, 80000, 95000]);
+      const b1 = Math.min(inc, 50000) * 0.15, b2 = Math.max(0, inc - 50000) * 0.25, tot = b1 + b2;
+      Q(box, 'In a made-up tax system, the first <strong>$50,000</strong> is taxed at <strong>15%</strong> and anything above $50,000 at <strong>25%</strong>. How much tax is owed on <strong>$' + inc.toLocaleString('en-CA') + '</strong>?');
+      return { check: v => near(num(v), tot, 0.5), right: (inc > 50000 ? '50,000 × 0.15 = $' + b1.toLocaleString('en-CA') + ', plus ' + (inc - 50000).toLocaleString('en-CA') + ' × 0.25 = $' + b2.toLocaleString('en-CA') + '. ' : '') + 'Total: $' + tot.toLocaleString('en-CA') }; },
+    simple8(box) {
+      const P = pick([200, 500, 800, 1000, 1500, 2500]), r = pick([2, 3, 4, 5, 6]), t = pick([1, 2, 3, 4, 5]), I = P * r / 100 * t;
+      Q(box, 'You save <strong>$' + P + '</strong> at <strong>' + r + '% simple interest</strong> per year for <strong>' + t + ' year' + (t > 1 ? 's' : '') + '</strong>. How much interest do you earn? <span class="hint">(I = P × r × t)</span>');
+      return { check: v => near(num(v), I, 0.01), right: P + ' × ' + (r / 100) + ' × ' + t + ' = $' + money(I) }; },
+    comp8(box) {
+      const P = pick([500, 1000, 2000]), r = pick([4, 5, 8, 10]), t = pick([2, 3]); let A = P; const steps = [];
+      for (let i = 1; i <= t; i++) { A = Math.round(A * (1 + r / 100) * 100) / 100; steps.push('Year ' + i + ': $' + money(A)); }
+      Q(box, 'You invest <strong>$' + P + '</strong> at <strong>' + r + '% compound interest</strong> per year. How much will you have after <strong>' + t + ' years</strong>? <span class="hint">(multiply by ' + (1 + r / 100) + ' each year)</span>');
+      return { check: v => near(num(v), A, 0.02), right: steps.join(' · ') + '. Total: $' + money(A) }; },
+    fixvar8(box) {
+      const c = pick([['Rent', 0], ['Groceries', 1], ['Phone plan with a set monthly price', 0], ['Eating out', 1], ['Car insurance', 0], ['Gas for the car', 1], ['Streaming subscription', 0], ['Clothes', 1], ['Bus pass', 0], ['Entertainment', 1]]);
+      Q(box, 'Is <strong>' + c[0].toLowerCase() + '</strong> usually a fixed cost or a variable cost?');
+      return { choices: ['Fixed', 'Variable'], answer: c[1], right: c[1] === 0 ? 'Fixed costs stay the same each month.' : 'Variable costs change with your choices and needs.' }; },
+    dti9(box) {
+      const inc = pick([2000, 2500, 3000, 3600, 4000, 5000]), pay = pick([300, 450, 600, 750, 900, 1200]), r = Math.round(pay / inc * 1000) / 10;
+      Q(box, 'Your monthly gross income is <strong>$' + inc.toLocaleString('en-CA') + '</strong> and your monthly debt payments are <strong>$' + pay + '</strong>. What is your debt-to-income ratio, as a percent?');
+      return { check: v => near(num(v), r, 0.15), right: pay + ' ÷ ' + inc + ' × 100 = ' + r + '%' + (r > 36 ? ' (high: lenders may see this as risky)' : ' (a manageable level)') }; },
+    credit9(box) {
+      const bal = pick([500, 800, 1000, 1500, 2000]), r = pick([19.99, 21.99, 24.99]), m = Math.round(bal * r / 100 / 12 * 100) / 100;
+      Q(box, 'You owe <strong>$' + bal + '</strong> on a credit card with <strong>' + r + '%</strong> yearly interest. About how much interest is charged in <strong>one month</strong>? <span class="hint">(balance × rate ÷ 12)</span>');
+      return { check: v => near(num(v), m, 0.06), right: bal + ' × ' + (r / 100).toFixed(4) + ' ÷ 12 ≈ $' + money(m) }; },
+    taxcred9(box) {
+      const amt = pick([200, 500, 1000, 1500, 3000, 4000]), what = pick(['tuition', 'charitable donations', 'eligible medical expenses']), cred = Math.round(amt * 0.15 * 100) / 100;
+      Q(box, 'A made-up tax credit gives back <strong>15%</strong> of what you spend on <strong>' + what + '</strong>. You spent <strong>$' + amt.toLocaleString('en-CA') + '</strong>. How much does your tax owed go down?');
+      return { check: v => near(num(v), cred, 0.01), right: amt + ' × 0.15 = $' + money(cred) }; },
+
     /* ----- CEFL 8: pay and total compensation ----- */
     annual8(box) {
       const w = pick([15, 15.5, 16, 17, 18.5, 20, 22]), h = pick([20, 25, 30, 37.5, 40]); const ans = w * h * 52;
