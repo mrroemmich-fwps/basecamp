@@ -1,0 +1,126 @@
+  <!-- ================= UNIT 10 ================= -->
+  <section id="unit-10" aria-labelledby="u10h">
+    <div class="unitHead">
+      <div class="k">Unit 10</div>
+      <h2 id="u10h">Data &amp; Graphing</h2>
+      <p>Employers track sales, coaches track stats, and you see graphs in the news every day. In this unit you'll read and build graphs, pick the right graph for the job, describe data with range, median and mean, use a spreadsheet, and talk about how likely things are.</p>
+      <div class="jump"><a href="#u10-goals">Learning goals</a><a href="#u10-lessons">Lessons</a><a href="#u10-practice">Practice</a><a href="#u10-resources">Resources</a></div>
+    </div>
+
+    <h2 class="sec" id="u10-goals"><span class="num">1</span>By the end of this unit, I can…</h2>
+    <div class="card"><ul class="goals">
+      <li><span>read and interpret graphs and charts <span class="tag">Statistics 1</span></span></li>
+      <li><span>collect data and choose the best graph to show it <span class="tag">Statistics 2</span></span></li>
+      <li><span>describe data with range, median, mean, gaps and clusters <span class="tag">Statistics 4–6</span></span></li>
+      <li><span>make conclusions and predictions from data, using a spreadsheet <span class="tag">Statistics 3, 8</span></span></li>
+      <li><span>use probability words to describe how likely something is <span class="tag">Statistics 7</span></span></li>
+    </ul></div>
+    <div class="side">👥 <strong>Side by side:</strong> Grade 8 is running probability experiments in their Unit 10. Team up for the dice simulator in Lesson 5.</div>
+
+    <h2 class="sec" id="u10-lessons"><span class="num">2</span>Lessons</h2>
+
+    <details class="lesson" id="u10-l1" open>
+      <summary><span class="lnum">1</span><span class="ltitle"><strong>Reading graphs</strong><span>Title, axes, trend</span></span><span class="chev" aria-hidden="true">›</span></summary>
+      <div class="lbody">
+        <div class="ican"><b>I can</b> read and interpret graphs and charts. <span class="tag">Statistics 1</span></div>
+        <div class="big-idea">Read in this order: <strong>title</strong> (what is it about?), <strong>axes</strong> (what is measured, and in what units?), <strong>scale</strong> (what does each line stand for?), then the <strong>trend</strong> (going up, down or staying the same?).</div>
+        <div class="ex"><h4>Example <small>Ice cream shop sales</small></h4>
+          <svg class="chart" viewBox="0 0 320 190" aria-label="Broken-line graph of ice cream sales by month: April 2,000, May 4,000, June 7,000, July 9,000, August 8,000, September 3,000 dollars">
+            <g stroke="#cfd8c8"><line x1="50" y1="30" x2="300" y2="30"/><line x1="50" y1="65" x2="300" y2="65"/><line x1="50" y1="100" x2="300" y2="100"/><line x1="50" y1="135" x2="300" y2="135"/></g>
+            <line x1="50" y1="170" x2="300" y2="170" stroke="#22392b" stroke-width="2"/><line x1="50" y1="20" x2="50" y2="170" stroke="#22392b" stroke-width="2"/>
+            <polyline points="70,142 115,114 160,72 205,44 250,58 295,128" fill="none" stroke="#4f7d3a" stroke-width="3"/>
+            <g fill="#4f7d3a"><circle cx="70" cy="142" r="4"/><circle cx="115" cy="114" r="4"/><circle cx="160" cy="72" r="4"/><circle cx="205" cy="44" r="4"/><circle cx="250" cy="58" r="4"/><circle cx="295" cy="128" r="4"/></g>
+            <g font-size="11" font-family="sans-serif" fill="#22392b" text-anchor="middle"><text x="70" y="184">Apr</text><text x="115" y="184">May</text><text x="160" y="184">Jun</text><text x="205" y="184">Jul</text><text x="250" y="184">Aug</text><text x="295" y="184">Sep</text></g>
+            <g font-size="11" font-family="sans-serif" fill="#22392b" text-anchor="end"><text x="44" y="174">0</text><text x="44" y="104">$5k</text><text x="44" y="34">$10k</text></g></svg>
+          Sales climb from April to a peak in <span class="ans">July (about $9,000)</span>, then drop as the weather cools. The owner might hire summer staff for June to August.</div>
+        <!--MC [
+          {"q":"Between which two months did sales drop the most?","options":["Jul to Aug","Aug to Sep","Apr to May"],"answer":1,"why":"From about $8,000 to $3,000, a drop of about $5,000."},
+          {"q":"About how much were sales in June?","options":["$7,000","$5,000","$9,000"],"answer":0,"why":"The June point is a bit below the $7,500 line."},
+          {"q":"What does each grid line stand for?","options":["$1,000","$2,500","$5,000"],"answer":1,"why":"There are 4 spaces between $0 and $10,000, so each is $2,500."}
+        ]-->
+        <!--EXP Graph in the Wild | Find a graph in the news, a sports site or an app. Write its title, what each axis shows, and one conclusion you can make from it.-->
+      </div>
+    </details>
+
+    <details class="lesson" id="u10-l2">
+      <summary><span class="lnum">2</span><span class="ltitle"><strong>Choosing a graph</strong><span>The right graph for the job</span></span><span class="chev" aria-hidden="true">›</span></summary>
+      <div class="lbody">
+        <div class="ican"><b>I can</b> collect data and choose the best graph to show it. <span class="tag">Statistics 2</span></div>
+        <table class="fdp" style="max-width:none"><thead><tr><th>Graph</th><th>Best for</th><th>Example</th></tr></thead><tbody>
+          <tr><td><strong>Bar graph</strong></td><td>Comparing separate groups</td><td>Votes for the class store's next item</td></tr>
+          <tr><td><strong>Broken-line graph</strong></td><td>Change over time</td><td>Your AvCash balance each week</td></tr>
+          <tr><td><strong>Circle graph</strong></td><td>Parts of a whole (adds to 100%)</td><td>How you spend a $50 budget</td></tr>
+          <tr><td><strong>Frequency table / tally</strong></td><td>Counting while you collect</td><td>Cars of each colour in the parking lot</td></tr></tbody></table>
+        <!--CH graph9-->
+        <!--EXP Class Survey | Survey at least 15 people with one question (favourite snack for the store, how they get to school). Make a frequency table and choose the best graph to show the results.-->
+      </div>
+    </details>
+
+    <details class="lesson" id="u10-l3">
+      <summary><span class="lnum">3</span><span class="ltitle"><strong>Describing data</strong><span>Range, median, mean, gaps and clusters</span></span><span class="chev" aria-hidden="true">›</span></summary>
+      <div class="lbody">
+        <div class="ican"><b>I can</b> describe data with range, median, mean, gaps and clusters. <span class="tag">Statistics 4–6</span></div>
+        <div class="big-idea"><strong>Range</strong> = biggest − smallest (how spread out). <strong>Median</strong> = the middle value when the data is in order. <strong>Mean</strong> = total ÷ how many. A <strong>cluster</strong> is where lots of values bunch together. A <strong>gap</strong> is where there are none. An <strong>outlier</strong> is a value far from the rest.</div>
+        <div class="ex"><h4>Example <small>Hourly wages at a small business</small></h4>
+          $15, $15, $16, $16, $17, $18, $42 (the owner)<br>
+          Range: 42 − 15 = $27. Median: the 4th value = <span class="ans">$16</span>. Mean: 139 ÷ 7 ≈ $19.86.<br>
+          The $42 is an outlier. It pulls the mean up, so the <strong>median</strong> better describes what most workers earn.</div>
+        <!--NUM stat9 | -->
+        <!--EXP Stat Line | Pick a sports team or player. Collect their points (or goals) for 7 games and find the range, median and mean. Which number best describes how they're doing?-->
+      </div>
+    </details>
+
+    <details class="lesson" id="u10-l4">
+      <summary><span class="lnum">4</span><span class="ltitle"><strong>Conclusions and spreadsheets</strong><span>What does the data say?</span></span><span class="chev" aria-hidden="true">›</span></summary>
+      <div class="lbody">
+        <div class="ican"><b>I can</b> make conclusions and predictions from data, using a spreadsheet. <span class="tag">Statistics 3, 8</span></div>
+        <div class="big-idea">A good conclusion is <strong>backed up by the data</strong>. Ask: Is there enough data? Where did it come from? Could something else explain it? A spreadsheet can sort data, find <span class="math">=MEDIAN()</span>, <span class="math">=AVERAGE()</span>, <span class="math">=MAX()</span> and <span class="math">=MIN()</span>, and make a graph in a few clicks.</div>
+        <div class="ex"><h4>Example</h4>
+          A cafeteria sold 40 pizza slices on Monday and 12 on Tuesday. Someone says "students don't like pizza anymore." But Tuesday was a field trip day. <span class="ans">The conclusion isn't supported</span>. More days of data are needed.</div>
+        <!--MC [
+          {"q":"Which formula finds the biggest value in B2 to B20?","options":["=MAX(B2:B20)","=BIG(B2:B20)","=TOP(B2:B20)"],"answer":0,"why":"MAX finds the largest value."},
+          {"q":"You survey 3 friends and they all like the same game. Can you say the whole school likes it?","options":["Yes","No, the sample is too small"],"answer":1,"why":"3 people isn't enough to speak for a whole school."},
+          {"q":"Sales went up every month for 6 months. A fair prediction for next month is…","options":["Sales will probably go up again","Sales will definitely double","Sales will drop to zero"],"answer":0,"why":"A trend helps you predict, but it's never a guarantee."}
+        ]-->
+        <!--EXP Data Detective | Put your Class Survey data into Google Sheets. Use =MAX, =MIN, =AVERAGE and =MEDIAN, make a chart, and write 2 conclusions the data supports.-->
+      </div>
+    </details>
+
+    <details class="lesson" id="u10-l5">
+      <summary><span class="lnum">5</span><span class="ltitle"><strong>Probability words</strong><span>How likely is it?</span></span><span class="chev" aria-hidden="true">›</span></summary>
+      <div class="lbody">
+        <div class="ican"><b>I can</b> use probability words to describe how likely something is. <span class="tag">Statistics 7</span></div>
+        <div class="big-idea">Probability goes from <strong>0 (impossible)</strong> to <strong>1 or 100% (certain)</strong>. In between: <strong>improbable</strong> (unlikely), <strong>equally likely</strong> (50/50), <strong>probable</strong> (likely). In the workplace you'll hear "best case" and "worst case" too.</div>
+        <div class="ex"><h4>Example</h4>
+          A die has 6 sides. Rolling a 4: 1 out of 6 ≈ 17%, so it's <strong>improbable</strong>. Rolling a number less than 6: 5 out of 6 ≈ 83%, so it's <span class="ans">probable</span>.</div>
+        <!--NUM prob9 | -->
+        <!--SIM dice-->
+        <!--MC [
+          {"q":"The weather app says a 90% chance of snow. That's…","options":["Improbable","Probable","Impossible"],"answer":1,"why":"90% is very likely."},
+          {"q":"Flipping heads or tails on a fair coin is…","options":["Equally likely","Certain","Impossible"],"answer":0,"why":"Each has a 50% chance."}
+        ]-->
+        <!--EXP Run the Odds | With a Grade 8 partner, roll a real die 60 times and record the results. Compare your results with the simulator. How close did each number get to 1 out of 6?-->
+      </div>
+    </details>
+
+    <h2 class="sec" id="u10-practice"><span class="num">3</span>Practice</h2>
+    <!--PRACTICE-->
+    <h2 class="sec" id="u10-resources"><span class="num">4</span>Resources</h2>
+    <div class="card"><ul class="res">
+      <li><span class="ic">🖨️</span><div><a href="#" data-print-cheat="u10">Data &amp; graphing cheat sheet</a><br><span class="hint">Graph types, range, median, mean, spreadsheet formulas and probability words.</span></div></li>
+      <li><span class="ic">📊</span><div><a href="https://www150.statcan.gc.ca/n1/edu/index-eng.htm" target="_blank" rel="noopener">Statistics Canada learning resources</a><br><span class="hint">Real Canadian data to graph.</span></div></li>
+      <li><span class="ic">📘</span><div><a href="https://www.mathsisfun.com/data/index.html" target="_blank" rel="noopener">Data</a> · Math is Fun</div></li>
+    </ul></div>
+    <div class="card parents"><h3 style="margin:0 0 6px">For parents: helping at home</h3><ul style="margin:0;padding-left:20px">
+      <li>Look at a graph in the news together and ask, "What is this trying to show? Do you believe it?"</li>
+      <li>Talk about the chance of rain or snow in the forecast and what you'd do differently.</li></ul></div>
+  </section>
+<!--CHEAT u10-->
+  <h2>Data &amp; Graphing Cheat Sheet · Grade 9 Math</h2>
+  <p><strong>Read a graph:</strong> title → axes and units → scale → trend.</p>
+  <table><tr><th>Graph</th><th>Use it for</th></tr><tr><td>Bar</td><td>Comparing separate groups</td></tr><tr><td>Broken-line</td><td>Change over time</td></tr><tr><td>Circle</td><td>Parts of a whole (100%)</td></tr></table>
+  <p><strong>Range</strong> = biggest − smallest · <strong>Median</strong> = middle value in order · <strong>Mean</strong> = total ÷ how many. An outlier pulls the mean, so use the median.</p>
+  <p><strong>Spreadsheet:</strong> =AVERAGE() · =MEDIAN() · =MAX() · =MIN() · =SUM()</p>
+  <p><strong>Good conclusions</strong> have enough data, a trusted source, and no other obvious explanation.</p>
+  <p><strong>Probability:</strong> impossible (0%) · improbable · equally likely (50%) · probable · certain (100%)</p>
+<!--/CHEAT-->

@@ -30,19 +30,24 @@
 
   /* ---------- unit trail ---------- */
   const unitsEl = $('#units');
+  // Teacher preview: add ?preview to the address to see units that are still "Coming soon".
+  const PREVIEW = new URLSearchParams(location.search).has('preview');
   function showUnit(n) {
     const u = PAGE.units.find(x => x.n === n) || PAGE.units.find(x => x.n === PAGE.current);
     if (!u) return;
     document.querySelectorAll('main > section[id^="unit-"]').forEach(s => s.hidden = true);
     const sec = document.getElementById('unit-' + u.n);
-    if (u.open && sec) sec.hidden = false;
+    if ((u.open || PREVIEW) && sec) {
+      sec.hidden = false;
+      if (!u.open && !sec.querySelector('.previewNote')) sec.insertAdjacentHTML('afterbegin', '<div class="previewNote">👀 <strong>Teacher preview.</strong> Students see this unit as "Coming soon." Only you can see it with this preview link.</div>');
+    }
     else { $('#unit-soon').hidden = false; $('#soonTitle').textContent = 'Unit ' + u.n + ': ' + u.title; }
     unitsEl.querySelectorAll('.unit').forEach(a => a.setAttribute('aria-current', a.dataset.n == u.n));
   }
   window.showUnit = showUnit;
   if (unitsEl) {
     unitsEl.innerHTML = PAGE.units.map(u => `<a class="unit ${u.open ? 'open' : 'soon'}" href="#unit-${u.n}" data-n="${u.n}">
-      <small>Unit ${u.n}</small><strong>${u.title}</strong><span class="st">${u.n === PAGE.current ? 'On the trail now' : u.open ? 'Open' : 'Coming soon'}</span></a>`).join('');
+      <small>Unit ${u.n}</small><strong>${u.title}</strong><span class="st">${u.n === PAGE.current ? 'On the trail now' : u.open ? 'Open' : PREVIEW ? 'Coming soon (preview)' : 'Coming soon'}</span></a>`).join('');
     unitsEl.addEventListener('click', e => { const a = e.target.closest('.unit'); if (a) showUnit(Number(a.dataset.n)); });
     const back = $('#backToCurrent');
     if (back) { back.href = '#unit-' + PAGE.current; back.textContent = 'Back to Unit ' + PAGE.current; back.addEventListener('click', () => showUnit(PAGE.current)); }
@@ -71,6 +76,7 @@
   const num = s => Number(String(s).replace(/[$,%\s]/g, ''));
   const near = (a, b, tol) => Math.abs(a - b) < (tol || 0.006);
   const say = (box, ok, msg) => { const f = box.querySelector('.fb'); f.className = 'fb ' + (ok ? 'ok' : 'no'); f.textContent = msg; };
+  const sup = n => String(n).split('').map(d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]).join('');
   const Q = (box, html) => { box.querySelector('[data-role=q]').innerHTML = html; };
 
   // Each maker sets up a question and returns { check(value) → bool, right: 'explanation' }.
@@ -135,6 +141,163 @@
       Q(box, 'A price goes from <strong>$' + money(o) + '</strong> to <strong>$' + money(n) + '</strong>. What is the percent change? <span class="hint">(use − for a decrease)</span>');
       return { check: v => near(num(String(v).replace('−', '-')), pc, 0.06), right: '(' + money(n) + ' − ' + money(o) + ') ÷ ' + money(o) + ' = ' + (pc / 100) + ' → ' + (pc > 0 ? '+' : '') + pc + '%' }; },
 
+
+    /* ----- Grade 9 math: big numbers and rounding ----- */
+    pow9(box) {
+      if (Math.random() < .5) { const n = rnd(2, 7); Q(box, 'What is <strong>10<sup>' + n + '</sup></strong> as a regular number?');
+        return { check: v => near(num(v), Math.pow(10, n)), right: '10' + sup(n) + ' is 1 followed by ' + n + ' zeros = ' + Math.pow(10, n).toLocaleString('en-CA') }; }
+      const a = pick([2, 3, 4, 5, 1.5, 2.5, 3.2, 6.8]), n = rnd(3, 7), ans = Math.round(a * Math.pow(10, n));
+      Q(box, 'Write <strong>' + a + ' × 10<sup>' + n + '</sup></strong> in standard form.');
+      return { check: v => near(num(v), ans), right: 'Move the decimal ' + n + ' places right: ' + a + ' × 10' + sup(n) + ' = ' + ans.toLocaleString('en-CA') }; },
+    round9(box) {
+      const to = pick([1, 0.1, 0.01]); const x = rnd(10000, 999999) / 1000;
+      const ans = Math.round(x / to) * to, d = to === 1 ? 0 : to === 0.1 ? 1 : 2, name = { 1: 'whole number', 0.1: 'tenth', 0.01: 'hundredth' }[to];
+      Q(box, 'Round <strong>' + x.toFixed(3) + '</strong> to the nearest <strong>' + name + '</strong>.');
+      return { check: v => near(num(v), ans, 0.0001), right: x.toFixed(3) + ' rounds to ' + ans.toFixed(d) + '. Look at the next digit to the right: 5 or more rounds up.' }; },
+    est9(box) {
+      const a = rnd(11, 89) * 10 + rnd(1, 9), b = rnd(3, 9) * 10 + rnd(1, 4); const ra = Math.round(a / 100) * 100, rb = Math.round(b / 10) * 10;
+      Q(box, 'Estimate <strong>' + a + ' × ' + b + '</strong> by rounding ' + a + ' to the nearest hundred and ' + b + ' to the nearest ten.');
+      return { check: v => near(num(v), ra * rb), right: ra + ' × ' + rb + ' = ' + (ra * rb).toLocaleString('en-CA') + ' (the exact answer is ' + (a * b).toLocaleString('en-CA') + ')' }; },
+
+    /* ----- integers and debt ----- */
+    bank9(box) {
+      let bal = rnd(-60, 120); const start = bal; const steps = [];
+      for (let i = 0; i < 3; i++) { const dep = Math.random() < .45, amt = rnd(1, 15) * 5; bal += dep ? amt : -amt; steps.push([dep, amt]); }
+      const f = n => (n < 0 ? '−$' + (-n) : '$' + n);
+      Q(box, 'Your account starts at <strong>' + f(start) + '</strong>. Then: ' + steps.map(s => (s[0] ? 'deposit ' : 'withdraw ') + '<strong>$' + s[1] + '</strong>').join(', ') + '. What is the balance now? <span class="hint">(use − if it is negative)</span>');
+      return { check: v => near(num(String(v).replace(/−/g, '-').replace('$', '')), bal), right: start + steps.map(s => (s[0] ? ' + ' : ' − ') + s[1]).join('') + ' = ' + bal + (bal < 0 ? ' (overdrawn by $' + (-bal) + ')' : '') }; },
+    int9(box) {
+      const a = rnd(-15, 15), b = rnd(-12, 12), op = pick(['+', '−', '×']); if (!a || !b) return MAKERS.int9(box);
+      const ans = op === '+' ? a + b : op === '−' ? a - b : a * b, w = n => n < 0 ? '(' + n + ')' : n;
+      Q(box, 'Work it out: <span class="math">' + w(a) + ' ' + op + ' ' + w(b) + '</span>');
+      const how = op === '−' ? 'Subtracting is adding the opposite: ' + w(a) + ' + ' + w(-b) : op === '×' ? (a * b < 0 ? 'Signs are different, so the answer is negative' : 'Signs are the same, so the answer is positive') : 'Start at ' + a + ' and move ' + Math.abs(b) + (b > 0 ? ' right' : ' left');
+      return { check: v => near(num(String(v).replace(/−/g, '-')), ans), right: how + ' = ' + ans }; },
+
+    /* ----- decimals and averages ----- */
+    decmul9(box) {
+      const p = pick([1.29, 2.49, 3.75, 0.89, 4.6, 12.5, 18.25]), q = pick([1.5, 2.5, 0.75, 3.2, 1.25, 12, 24]); const ans = Math.round(p * q * 100) / 100;
+      Q(box, 'Grapes cost <strong>$' + p.toFixed(2) + ' per kg</strong>. What do <strong>' + q + ' kg</strong> cost? <span class="hint">(round to the cent)</span>');
+      return { check: v => near(num(v), ans, 0.011), right: p.toFixed(2) + ' × ' + q + ' = $' + ans.toFixed(2) }; },
+    decdiv9(box) {
+      if (Math.random() < .5) { const tot = pick([7.5, 12.6, 4.8, 22.5, 9.75, 15.6]), d = pick([0.3, 1.5, 0.25, 0.6, 2.5]); const ans = Math.round(tot / d * 100) / 100;
+        Q(box, 'A <strong>' + tot + ' m</strong> board is cut into pieces <strong>' + d + ' m</strong> long. How many pieces? <span class="hint">(round to the hundredth)</span>');
+        return { check: v => near(num(v), ans, 0.011), right: tot + ' ÷ ' + d + ' = ' + ans }; }
+      const bill = pick([86.4, 157.5, 243.6, 98.75, 312]), n = pick([12, 15, 16, 24, 25]), ans = Math.round(bill / n * 100) / 100;
+      Q(box, 'A team of <strong>' + n + '</strong> splits a <strong>$' + bill.toFixed(2) + '</strong> bill evenly. How much does each person pay? <span class="hint">(round to the cent)</span>');
+      return { check: v => near(num(v), ans, 0.011), right: bill.toFixed(2) + ' ÷ ' + n + ' ≈ $' + ans.toFixed(2) }; },
+    mean9(box) {
+      const n = rnd(4, 6); const xs = Array.from({ length: n }, () => rnd(4, 30)); const s = xs.reduce((a, b) => a + b, 0), ans = Math.round(s / n * 10) / 10;
+      Q(box, 'Hours worked each week: <strong>' + xs.join(', ') + '</strong>. What is the <strong>mean</strong>? <span class="hint">(round to the tenth)</span>');
+      return { check: v => near(num(v), ans, 0.051), right: 'Add them: ' + s + '. Divide by ' + n + ': ' + s + ' ÷ ' + n + ' ≈ ' + ans }; },
+
+    /* ----- factors and fractions ----- */
+    lcm9(box) {
+      const g = (a, b) => b ? g(b, a % b) : a; const a = pick([4, 6, 8, 9, 10, 12, 15]), b = pick([3, 4, 5, 6, 8, 9, 10]); if (a === b) return MAKERS.lcm9(box);
+      const l = a * b / g(a, b);
+      Q(box, 'Hot dogs come in packs of <strong>' + a + '</strong> and buns in packs of <strong>' + b + '</strong>. What is the smallest number of each you can buy so they match? <span class="hint">(the lowest common multiple)</span>');
+      return { check: v => near(num(v), l), right: 'Multiples of ' + a + ' and ' + b + ' first meet at LCM = ' + l }; },
+    gcf9(box) {
+      const g = (a, b) => b ? g(b, a % b) : a; const k = pick([2, 3, 4, 5, 6, 8]), a = k * rnd(2, 7), b = k * rnd(2, 9); if (a === b) return MAKERS.gcf9(box);
+      const ans = g(a, b);
+      Q(box, 'You have <strong>' + a + ' granola bars</strong> and <strong>' + b + ' juice boxes</strong>. What is the greatest number of identical snack bags you can make with nothing left over? <span class="hint">(the greatest common factor)</span>');
+      return { check: v => near(num(v), ans), right: 'The biggest number that divides both ' + a + ' and ' + b + ' is GCF = ' + ans }; },
+    prime9(box) {
+      const n = pick([12, 18, 20, 24, 28, 30, 36, 40, 42, 45, 48, 60, 72]); const f = []; let m = n, d = 2;
+      while (m > 1) { while (m % d === 0) { f.push(d); m /= d; } d++; }
+      const right = f.join(' × '), wrong1 = f.length > 2 ? [f[0] * f[1], ...f.slice(2)].join(' × ') : (n / 2) + ' × 2', wrong2 = [...f.slice(0, -1), f[f.length - 1] + 1].join(' × ');
+      const opts = [right, wrong1, wrong2].filter((v, i, a) => a.indexOf(v) === i); if (opts.length < 3) return MAKERS.prime9(box);
+      const order = opts.map(o => [Math.random(), o]).sort().map(x => x[1]);
+      Q(box, 'Which is the <strong>prime factorization</strong> of <strong>' + n + '</strong>?');
+      return { choices: order, answer: order.indexOf(right), right: n + ' = ' + right + ', and every factor is prime.' }; },
+    fracunl9(box) {
+      const g = (a, b) => b ? g(b, a % b) : a; const pairs = [[2, 3], [2, 5], [3, 4], [4, 6], [2, 8], [3, 6], [5, 10], [4, 3], [6, 8]];
+      const [d1, d2] = pick(pairs); const n1 = rnd(1, d1 - 1), n2 = rnd(1, d2 - 1), add = Math.random() < .6, L = d1 * d2 / g(d1, d2);
+      const t1 = n1 * L / d1, t2 = n2 * L / d2, top = add ? t1 + t2 : t1 - t2; if (top <= 0) return MAKERS.fracunl9(box);
+      const parse = v => { v = String(v).trim(); let m;
+        if ((m = v.match(/^(\d+)\s+(\d+)\/(\d+)$/))) return Number(m[1]) + m[2] / m[3];
+        if ((m = v.match(/^(\d+)\/(\d+)$/))) return m[1] / m[2]; return num(v); };
+      const k = g(top, L), simple = top % L === 0 ? String(top / L) : top > L ? Math.floor(top / L) + ' ' + ((top % L) / g(top % L, L)) + '/' + (L / g(top % L, L)) : (top / k) + '/' + (L / k);
+      Q(box, '<strong>' + n1 + '/' + d1 + ' ' + (add ? '+' : '−') + ' ' + n2 + '/' + d2 + '</strong> = ? <span class="hint">(type a fraction like 5/6 or a mixed number like 1 1/4)</span>');
+      return { check: v => near(parse(v), top / L, 0.001), right: 'Common denominator ' + L + ': ' + t1 + '/' + L + (add ? ' + ' : ' − ') + t2 + '/' + L + ' = ' + top + '/' + L + (simple !== top + '/' + L ? ' = ' + simple : '') }; },
+
+    /* ----- paycheques and time ----- */
+    timeadd9(box) {
+      const days = ['Mon', 'Tue', 'Wed', 'Thu']; const n = rnd(3, 4); const t = Array.from({ length: n }, () => [rnd(3, 8), pick([0, 15, 30, 45])]);
+      const mins = t.reduce((a, x) => a + x[0] * 60 + x[1], 0), ans = mins / 60;
+      Q(box, 'Time card: ' + t.map((x, i) => days[i] + ' <strong>' + x[0] + ' h ' + x[1] + ' min</strong>').join(', ') + '. How many hours in total? <span class="hint">(a decimal, like 19.5)</span>');
+      return { check: v => near(num(v), ans, 0.01), right: 'Hours: ' + t.reduce((a, x) => a + x[0], 0) + ', minutes: ' + t.reduce((a, x) => a + x[1], 0) + ' → ' + Math.floor(mins / 60) + ' h ' + (mins % 60) + ' min = ' + ans }; },
+    ot9(box) {
+      const r = pick([15, 16, 17, 18, 20]), h = rnd(45, 52), reg = 44, ot = h - reg, ans = r * reg + r * 1.5 * ot;
+      Q(box, 'You earn <strong>$' + r + ' an hour</strong> and work <strong>' + h + ' hours</strong> this week. Hours over 44 are overtime at <strong>1.5 ×</strong> your wage. What is your gross pay?');
+      return { check: v => near(num(v), ans, 0.011), right: '44 × $' + r + ' = $' + (r * reg) + ', plus ' + ot + ' × $' + money(r * 1.5) + ' = $' + money(r * 1.5 * ot) + '. Total: $' + money(ans) }; },
+    net9(box) {
+      const gross = pick([612.5, 840, 1125, 486, 960.75]), cpp = Math.round(gross * pick([5, 6]) ) / 100, ei = Math.round(gross * 1.6) / 100, tax = Math.round(gross * pick([8, 10, 12])) / 100;
+      const ans = Math.round((gross - cpp - ei - tax) * 100) / 100;
+      Q(box, 'Gross pay <strong>$' + money(gross) + '</strong>. Deductions: CPP <strong>$' + money(cpp) + '</strong>, EI <strong>$' + money(ei) + '</strong>, income tax <strong>$' + money(tax) + '</strong>. What is your net pay?');
+      return { check: v => near(num(v), ans, 0.011), right: money(gross) + ' − ' + money(cpp) + ' − ' + money(ei) + ' − ' + money(tax) + ' = $' + money(ans) }; },
+
+    /* ----- patterns and equations ----- */
+    eq9(box) {
+      const x = rnd(2, 15), a = rnd(2, 9), b = rnd(1, 30), minus = Math.random() < .35, c = minus ? a * x - b : a * x + b;
+      if (minus && c <= 0) return MAKERS.eq9(box);
+      Q(box, 'Solve for <strong>x</strong>: <span class="math">' + a + 'x ' + (minus ? '−' : '+') + ' ' + b + ' = ' + c + '</span>');
+      return { check: v => near(num(String(v).replace(/x\s*=\s*/i, '')), x), right: (minus ? 'Add ' : 'Subtract ') + b + ' from both sides: ' + a + 'x = ' + (a * x) + '. Divide by ' + a + ': x = ' + x }; },
+    expr9(box) {
+      const f = pick([[4, 2.5, 'A taxi charges $4 plus $2.50 per km', 'km'], [25, 15, 'A plumber charges $25 to come out plus $15 per half hour', 'half hours'], [10, 3, 'A gym charges a $10 sign-up fee plus $3 per visit', 'visits'], [6, 1.75, 'Bowling costs $6 for shoes plus $1.75 per game', 'games']]);
+      const n = rnd(3, 12), ans = Math.round((f[0] + f[1] * n) * 100) / 100;
+      Q(box, f[2] + '. Cost = <span class="math">' + f[0] + ' + ' + f[1] + 'n</span>. What is the cost for <strong>' + n + ' ' + f[3] + '</strong>?');
+      return { check: v => near(num(v), ans, 0.011), right: f[0] + ' + ' + f[1] + ' × ' + n + ' = $' + money(ans) }; },
+
+    /* ----- perimeter, area and angles ----- */
+    tri9(box) {
+      const b = rnd(3, 20), h = rnd(2, 15);
+      if (Math.random() < .5) { const ans = b * h / 2; Q(box, 'A triangle has a base of <strong>' + b + ' m</strong> and a height of <strong>' + h + ' m</strong>. What is its area?');
+        return { check: v => near(num(v), ans), right: b + ' × ' + h + ' ÷ 2 = ' + ans + ' m²' }; }
+      Q(box, 'A parallelogram has a base of <strong>' + b + ' cm</strong> and a height of <strong>' + h + ' cm</strong>. What is its area?');
+      return { check: v => near(num(v), b * h), right: b + ' × ' + h + ' = ' + (b * h) + ' cm²' }; },
+    angle9(box) {
+      const a = pick([rnd(10, 85), 90, rnd(95, 175), 180]); const kind = a < 90 ? 0 : a === 90 ? 1 : a < 180 ? 2 : 3;
+      Q(box, 'An angle measures <strong>' + a + '°</strong>. What kind of angle is it?');
+      return { choices: ['Acute', 'Right', 'Obtuse', 'Straight'], answer: kind, right: ['Acute angles are less than 90°.', 'A right angle is exactly 90°.', 'Obtuse angles are between 90° and 180°.', 'A straight angle is exactly 180°.'][kind] }; },
+    tri180(box) {
+      const a = rnd(25, 80), b = rnd(25, 80), c = 180 - a - b; if (c < 10) return MAKERS.tri180(box);
+      Q(box, 'Two angles of a triangle are <strong>' + a + '°</strong> and <strong>' + b + '°</strong>. What is the third angle?');
+      return { check: v => near(num(String(v).replace('°', '')), c), right: 'Angles in a triangle add to 180°: 180 − ' + a + ' − ' + b + ' = ' + c + '°' }; },
+    scale9(box) {
+      if (Math.random() < .5) { const s = pick([2, 5, 10, 25, 50]), cm = pick([3, 4.5, 6, 7.5, 12]), ans = Math.round(s * cm * 100) / 100;
+        Q(box, 'On a map, <strong>1 cm = ' + s + ' km</strong>. Two towns are <strong>' + cm + ' cm</strong> apart on the map. How far apart are they really?');
+        return { check: v => near(num(v), ans), right: cm + ' × ' + s + ' = ' + ans + ' km' }; }
+      const s = pick([50, 100, 200]), m = pick([4, 5, 6, 8, 3.5]), ans = m * 100 / s;
+      Q(box, 'A floor plan uses the scale <strong>1 cm = ' + s + ' cm</strong>. A wall is <strong>' + m + ' m</strong> long. How long is it on the plan, in cm?');
+      return { check: v => near(num(v), ans, 0.01), right: m + ' m = ' + (m * 100) + ' cm, and ' + (m * 100) + ' ÷ ' + s + ' = ' + ans + ' cm' }; },
+
+    /* ----- circles and 3-D objects ----- */
+    vol9(box) {
+      if (Math.random() < .5) { const l = rnd(2, 12), w = rnd(2, 10), h = rnd(2, 10); Q(box, 'A rectangular planter is <strong>' + l + ' dm × ' + w + ' dm × ' + h + ' dm</strong>. How many litres of soil fill it? <span class="hint">(1 dm³ = 1 L)</span>');
+        return { check: v => near(num(v), l * w * h), right: l + ' × ' + w + ' × ' + h + ' = ' + (l * w * h) + ' L' }; }
+      const r = rnd(3, 10), h = rnd(5, 20), ans = Math.round(3.14 * r * r * h * 100) / 100;
+      Q(box, 'A can (cylinder) has a radius of <strong>' + r + ' cm</strong> and a height of <strong>' + h + ' cm</strong>. What is its volume? <span class="hint">(V ≈ 3.14 × r × r × h)</span>');
+      return { check: v => near(num(v), ans, Math.max(1, ans * 0.01)), right: '3.14 × ' + r + ' × ' + r + ' × ' + h + ' ≈ ' + ans + ' cm³' }; },
+    sa9(box) {
+      const l = rnd(2, 12), w = rnd(2, 10), h = rnd(2, 10), ans = 2 * (l * w + l * h + w * h);
+      Q(box, 'How much wrapping paper covers a box <strong>' + l + ' cm × ' + w + ' cm × ' + h + ' cm</strong> with no overlap? <span class="hint">(surface area: add all 6 faces)</span>');
+      return { check: v => near(num(v), ans), right: '2 × (' + l + '×' + w + ' + ' + l + '×' + h + ' + ' + w + '×' + h + ') = 2 × ' + (l * w + l * h + w * h) + ' = ' + ans + ' cm²' }; },
+
+    /* ----- data and graphing ----- */
+    stat9(box) {
+      const n = pick([5, 7]); const xs = Array.from({ length: n }, () => rnd(2, 40)); const s = [...xs].sort((a, b) => a - b);
+      const t = pick(['range', 'median']); const ans = t === 'range' ? s[n - 1] - s[0] : s[(n - 1) / 2];
+      Q(box, 'Points scored in ' + n + ' games: <strong>' + xs.join(', ') + '</strong>. What is the <strong>' + t + '</strong>?');
+      return { check: v => near(num(v), ans), right: 'In order: ' + s.join(', ') + '. ' + (t === 'range' ? 'Range: ' + s[n - 1] + ' − ' + s[0] + ' = ' + ans : 'The middle number is the median = ' + ans) }; },
+    graph9(box) {
+      const c = pick([['How your height changed from age 5 to 14', 2], ['Favourite pizza toppings in the class', 0], ['How a $40 budget is split between food, fun and savings', 1], ['The number of students who walk, bus or drive to school', 0], ['The temperature every hour during one day', 2], ['What percent of your day you spend sleeping, at school and other', 1]]);
+      Q(box, 'Which graph fits best? <strong>' + c[0] + '</strong>');
+      return { choices: ['Bar graph', 'Circle graph', 'Broken-line graph'], answer: c[1], right: ['Bar graphs compare separate categories.', 'Circle graphs show parts of a whole.', 'Broken-line graphs show change over time.'][c[1]] }; },
+    prob9(box) {
+      const c = pick([['rolling a 6 on a die', 1, 6], ['flipping heads on a coin', 1, 2], ['rolling an even number on a die', 3, 6], ['pulling a red marble from a bag with 3 red and 7 blue', 3, 10], ['spinning blue on a spinner with 4 equal parts, 1 blue', 1, 4]]);
+      const ans = Math.round(c[1] / c[2] * 100);
+      Q(box, 'What is the probability of <strong>' + c[0] + '</strong>, as a percent? <span class="hint">(round to the whole number)</span>');
+      return { check: v => near(num(v), ans, 0.6), right: c[1] + ' out of ' + c[2] + ' = ' + c[1] + ' ÷ ' + c[2] + ' ≈ ' + ans + '%' }; },
 
     /* ----- Grade 8 math: number sense ----- */
     placeval(box) {
