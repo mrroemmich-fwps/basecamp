@@ -5,11 +5,11 @@
    Leave any of these as '' and that line simply won't show.
    ============================================================ */
 window.HUB = {
-  teacher: '',        // how parents should address you, e.g. 'Mr. Smith'
+  teacher: 'Mr. Roemmich',        // how parents should address you, e.g. 'Mr. Smith'
   email: 'michael.roemmich@sturgeon.ab.ca',          // school email for parents
   phone: '825-349-0021',          // school office phone
   school: '',         // school name
-  bestTimes: '',      // e.g. 'Email anytime; I reply within one school day.'
+  bestTimes: 'Phone: 8:00 am to 3:30 pm on school days. Emails are returned within one school day.',      // e.g. 'Email anytime; I reply within one school day.'
   teacherApp: '',     // your Avalanche HQ teacher app link (the one behind your school login)
   subFolder: ''       // link to your sub plans folder in Google Drive (behind your school login)
 };
