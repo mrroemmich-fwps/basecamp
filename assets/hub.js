@@ -6,8 +6,8 @@
    ============================================================ */
 window.HUB = {
   teacher: '',        // how parents should address you, e.g. 'Mr. Smith'
-  email: '',          // school email for parents
-  phone: '',          // school office phone
+  email: 'michael.roemmich@sturgeon.ab.ca',          // school email for parents
+  phone: '825-349-0021',          // school office phone
   school: '',         // school name
   bestTimes: '',      // e.g. 'Email anytime; I reply within one school day.'
   teacherApp: '',     // your Avalanche HQ teacher app link (the one behind your school login)
