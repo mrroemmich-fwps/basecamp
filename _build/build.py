@@ -93,7 +93,7 @@ window.PAGE = {{
 }};
 </script>
 <script src="../assets/subject.js"></script>
-</body>
+{extra_js}</body>
 </html>
 '''
 
@@ -160,9 +160,13 @@ def build(spec):
     units_js = ',\n'.join('    {{ n: {n}, title: {t}, open: {o} }}'.format(n=n, t=json.dumps(t), o='true' if n in spec['open'] else 'false')
                           for n, t in enumerate(spec['units'], 1))
     units_html, unit_cheats = pull_cheats(expand(''.join(open(os.path.join(B, f)).read() for f in spec['unit_files'])))
+    extra_js = ''
+    if spec.get('practice'):   # math pages: the interactive Practice section (assets/practice.js)
+        units_html = units_html.replace(PRACTICE, '<div class="pr"><noscript>Turn on JavaScript to use the practice tools.</noscript></div>')
+        extra_js = '<script src="../assets/practice-%s.js"></script>\n<script src="../assets/practice.js"></script>\n' % spec['practice']
     page_cheat = '<div id="cheat" class="cheat">%s</div>' % open(os.path.join(B, spec['cheat'])).read() if spec.get('cheat') else ''
     html = SHELL.format(title=spec['title'], grade=spec['grade'], subject=spec['subject'], tagline=spec['tagline'], nav=NAV,
-                        units_html=units_html, cheat=page_cheat + unit_cheats, current=spec['current'], units_js=units_js)
+                        units_html=units_html, cheat=page_cheat + unit_cheats, extra_js=extra_js, current=spec['current'], units_js=units_js)
     os.makedirs(os.path.join(SITE, spec['folder']), exist_ok=True)
     open(os.path.join(SITE, spec['folder'], 'index.html'), 'w').write(html)
     print('built', spec['folder'], len(html))
@@ -172,12 +176,12 @@ PAGES = {
     tagline='Numbers, money, measuring and data, all in everyday situations at home, at work and in the community.',
     units=['Number Sense', 'Integers & Temperature', 'Decimals & Money', 'Factors & Fractions', 'Percents & Discounts',
            'Time & Wages', 'Patterns & Equations', 'Perimeter & Area', 'Mass, Volume & Capacity', 'Data & Probability'],
-    open=[1, 2, 3, 4, 5], current=5, unit_files=['math8-unit%d.html' % n for n in range(1, 11)], cheat=None),
+    open=[1, 2, 3, 4, 5], current=5, unit_files=['math8-unit%d.html' % n for n in range(1, 11)], cheat=None, practice='math8'),
   'math9': dict(folder='math9', grade=9, subject='Mathematics', title='Grade 9 Math',
     tagline='Rates, percents, measuring, graphing and spreadsheets, the math you will use for shopping, paycheques and the job site.',
     units=['Big Numbers & Rounding', 'Integers & Debt', 'Decimals & Averages', 'Factors & Fractions', 'Percents & Consumer Math',
            'Paycheques & Time', 'Patterns & Equations', 'Perimeter, Area & Angles', 'Circles & 3-D Objects', 'Data & Graphing'],
-    open=[1, 2, 3, 4, 5], current=5, unit_files=['math9-unit%d.html' % n for n in range(1, 11)], cheat=None),
+    open=[1, 2, 3, 4, 5], current=5, unit_files=['math9-unit%d.html' % n for n in range(1, 11)], cheat=None, practice='math9'),
   'science8': dict(folder='science8', grade=8, subject='Science', title='Grade 8 Science',
     tagline='Fluids, cells, light, machines and water: how science works at home, at work and in the community.',
     units=['Mix & Flow of Matter', 'Fresh & Saltwater Systems', 'Mechanical Systems', 'Cells & Systems', 'Light & Optical Systems'],

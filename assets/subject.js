@@ -70,10 +70,23 @@
   document.querySelectorAll('.grid100[data-shade]').forEach(g => fillGrid(g, Number(g.dataset.shade)));
 
   /* ---------- "Try it" boxes ---------- */
-  const rnd = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
-  const pick = arr => arr[rnd(0, arr.length - 1)];
+  /* Random numbers. R() can be swapped for a seeded generator (so a printed worksheet
+     can be made again exactly), and LV (1 Base Camp, 2 Climb, 3 Summit) narrows ranges:
+     Base Camp uses the smaller end of each range, Summit the bigger end. */
+  let R = Math.random, LV = 2;
+  const seeded = s => () => { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  const rawrnd = (a, b) => a + Math.floor(R() * (b - a + 1));
+  const rnd = (a, b) => {
+    if (LV === 2 || b - a < 4) return rawrnd(a, b);
+    if (a < 0 && b > 0) {           // ranges across zero: Base Camp stays near 0, Summit goes far from it
+      if (LV === 1) return rawrnd(Math.ceil(a * .45), Math.floor(b * .45));
+      return R() < .5 ? rawrnd(a, Math.ceil(a / 2)) : rawrnd(Math.floor(b / 2), b);
+    }
+    return LV === 1 ? rawrnd(a, a + Math.floor((b - a) * .45)) : rawrnd(a + Math.ceil((b - a) * .5), b);
+  };
+  const pick = arr => arr[Math.floor(R() * arr.length)];
   const money = n => Number.isInteger(Math.round(n * 100) / 100) ? String(Math.round(n * 100) / 100) : (Math.round(n * 100) / 100).toFixed(2);
-  const num = s => Number(String(s).replace(/[$,%\s]/g, ''));
+  const num = s => Number(String(s).replace(/[−–]/g, '-').replace(/[$,%\s]/g, ''));
   const near = (a, b, tol) => Math.abs(a - b) < (tol || 0.006);
   const say = (box, ok, msg) => { const f = box.querySelector('.fb'); f.className = 'fb ' + (ok ? 'ok' : 'no'); f.textContent = msg; };
   const sup = n => String(n).split('').map(d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]).join('');
@@ -83,15 +96,16 @@
   const MAKERS = {
     /* ----- Grade 8 math ----- */
     grid(box) { const n = rnd(3, 97); fillGrid(box.querySelector('[data-role=grid]'), n);
+      const q = box.querySelector('[data-role=q]'); if (q) q.innerHTML = 'What percent of the grid is shaded?';
       return { check: v => near(num(v), n), right: n + '% (' + n + ' out of 100 squares)' }; },
     pd(box) {
-      if (Math.random() < .5) { const p = pick([5, 8, 12, 25, 30, 45, 60, 75, 3, 90, 100]); Q(box, 'Write <strong>' + p + '%</strong> as a decimal.');
+      if (R() < .5) { const p = pick([5, 8, 12, 25, 30, 45, 60, 75, 3, 90, 100]); Q(box, 'Write <strong>' + p + '%</strong> as a decimal.');
         return { check: v => near(num(v), p / 100), right: p + '% = ' + (p / 100) + ' (move the decimal 2 places left)' }; }
       const d = pick([0.4, 0.07, 0.35, 0.9, 0.15, 0.5, 0.02, 0.66]); Q(box, 'Write <strong>' + d + '</strong> as a percent.');
       return { check: v => near(num(v), Math.round(d * 100)), right: d + ' = ' + Math.round(d * 100) + '% (move the decimal 2 places right)' }; },
     bench(box) {
       const [f, d, p] = pick([['1/10', 0.1, 10], ['1/4', 0.25, 25], ['1/2', 0.5, 50], ['3/4', 0.75, 75], ['3/10', 0.3, 30], ['7/10', 0.7, 70]]);
-      const askPct = Math.random() < .5; Q(box, 'What is <strong>' + f + '</strong> as a ' + (askPct ? 'percent' : 'decimal') + '?');
+      const askPct = R() < .5; Q(box, 'What is <strong>' + f + '</strong> as a ' + (askPct ? 'percent' : 'decimal') + '?');
       return { check: v => near(num(v), askPct ? p : d), right: f + ' = ' + d + ' = ' + p + '%' }; },
     ofamt(box) {
       const p = pick([10, 50, 25, 20, 5]); const a = p === 25 ? pick([20, 40, 60, 80, 100, 12, 16]) : pick([20, 30, 40, 50, 60, 70, 80, 90, 14, 36, 120]);
@@ -104,14 +118,14 @@
       return { check: v => near(num(v), ans), right: 'Discount: ' + p + '% of $' + a + ' = $' + money(disc) + '. Sale price: $' + a + ' − $' + money(disc) + ' = $' + money(ans) }; },
     reason(box) {
       const p = pick([10, 25, 50, 20]); const a = pick([40, 60, 80, 100]); const real = a - a * p / 100;
-      const ok = Math.random() < .5; const shown = ok ? real : pick([a - p, a - a * p / 1000, a + a * p / 100].filter(x => !near(x, real)));
+      const ok = R() < .5; const shown = ok ? real : pick([a - p, a - a * p / 1000, a + a * p / 100].filter(x => !near(x, real)));
       Q(box, 'Someone says <strong>' + p + '% off $' + a + '</strong> is <strong>$' + money(shown) + '</strong>.');
       return { ok, right: p + '% of $' + a + ' is $' + money(a * p / 100) + ', so the sale price should be about $' + money(real) + '.' }; },
 
     /* ----- Grade 9 math ----- */
     fdp9(box) {
       const rows = [['3/8', 0.375, 37.5], ['1/5', 0.2, 20], ['2/5', 0.4, 40], ['3/5', 0.6, 60], ['1/8', 0.125, 12.5], ['7/20', 0.35, 35], ['9/25', 0.36, 36], ['4/5', 0.8, 80]];
-      const [f, d, p] = pick(rows); const askPct = Math.random() < .6;
+      const [f, d, p] = pick(rows); const askPct = R() < .6;
       Q(box, 'Write <strong>' + f + '</strong> as a ' + (askPct ? 'percent' : 'decimal') + '.');
       return { check: v => near(num(v), askPct ? p : d), right: f + ' → ' + f.replace('/', ' ÷ ') + ' = ' + d + ' = ' + p + '%' }; },
     pctof9(box) {
@@ -120,7 +134,7 @@
       return { check: v => near(num(v), ans), right: (p / 100) + ' × ' + money(a) + ' = $' + money(ans) }; },
     tax9(box) {
       const a = pick([18, 24.5, 39.99, 52, 7.6, 129, 64.25]);
-      if (Math.random() < .5) { const ans = Math.round(a * 105) / 100; Q(box, 'A game costs <strong>$' + money(a) + '</strong>. What is the total with <strong>5% GST</strong>?');
+      if (R() < .5) { const ans = Math.round(a * 105) / 100; Q(box, 'A game costs <strong>$' + money(a) + '</strong>. What is the total with <strong>5% GST</strong>?');
         return { check: v => near(num(v), ans), right: money(a) + ' × 1.05 = $' + money(ans) }; }
       const t = pick([15, 18, 20]); const tip = Math.round(a * t) / 100; Q(box, 'Dinner costs <strong>$' + money(a) + '</strong>. How much is a <strong>' + t + '% tip</strong>?');
       return { check: v => near(num(v), tip, 0.02), right: (t / 100) + ' × ' + money(a) + ' = $' + money(tip) }; },
@@ -144,7 +158,7 @@
 
     /* ----- Grade 9 math: big numbers and rounding ----- */
     pow9(box) {
-      if (Math.random() < .5) { const n = rnd(2, 7); Q(box, 'What is <strong>10<sup>' + n + '</sup></strong> as a regular number?');
+      if (R() < .5) { const n = rnd(2, 7); Q(box, 'What is <strong>10<sup>' + n + '</sup></strong> as a regular number?');
         return { check: v => near(num(v), Math.pow(10, n)), right: '10' + sup(n) + ' is 1 followed by ' + n + ' zeros = ' + Math.pow(10, n).toLocaleString('en-CA') }; }
       const a = pick([2, 3, 4, 5, 1.5, 2.5, 3.2, 6.8]), n = rnd(3, 7), ans = Math.round(a * Math.pow(10, n));
       Q(box, 'Write <strong>' + a + ' × 10<sup>' + n + '</sup></strong> in standard form.');
@@ -162,7 +176,7 @@
     /* ----- integers and debt ----- */
     bank9(box) {
       let bal = rnd(-60, 120); const start = bal; const steps = [];
-      for (let i = 0; i < 3; i++) { const dep = Math.random() < .45, amt = rnd(1, 15) * 5; bal += dep ? amt : -amt; steps.push([dep, amt]); }
+      for (let i = 0; i < 3; i++) { const dep = R() < .45, amt = rnd(1, 15) * 5; bal += dep ? amt : -amt; steps.push([dep, amt]); }
       const f = n => (n < 0 ? '−$' + (-n) : '$' + n);
       Q(box, 'Your account starts at <strong>' + f(start) + '</strong>. Then: ' + steps.map(s => (s[0] ? 'deposit ' : 'withdraw ') + '<strong>$' + s[1] + '</strong>').join(', ') + '. What is the balance now? <span class="hint">(use − if it is negative)</span>');
       return { check: v => near(num(String(v).replace(/−/g, '-').replace('$', '')), bal), right: start + steps.map(s => (s[0] ? ' + ' : ' − ') + s[1]).join('') + ' = ' + bal + (bal < 0 ? ' (overdrawn by $' + (-bal) + ')' : '') }; },
@@ -179,7 +193,7 @@
       Q(box, 'Grapes cost <strong>$' + p.toFixed(2) + ' per kg</strong>. What do <strong>' + q + ' kg</strong> cost? <span class="hint">(round to the cent)</span>');
       return { check: v => near(num(v), ans, 0.011), right: p.toFixed(2) + ' × ' + q + ' = $' + ans.toFixed(2) }; },
     decdiv9(box) {
-      if (Math.random() < .5) { const tot = pick([7.5, 12.6, 4.8, 22.5, 9.75, 15.6]), d = pick([0.3, 1.5, 0.25, 0.6, 2.5]); const ans = Math.round(tot / d * 100) / 100;
+      if (R() < .5) { const tot = pick([7.5, 12.6, 4.8, 22.5, 9.75, 15.6]), d = pick([0.3, 1.5, 0.25, 0.6, 2.5]); const ans = Math.round(tot / d * 100) / 100;
         Q(box, 'A <strong>' + tot + ' m</strong> board is cut into pieces <strong>' + d + ' m</strong> long. How many pieces? <span class="hint">(round to the hundredth)</span>');
         return { check: v => near(num(v), ans, 0.011), right: tot + ' ÷ ' + d + ' = ' + ans }; }
       const bill = pick([86.4, 157.5, 243.6, 98.75, 312]), n = pick([12, 15, 16, 24, 25]), ans = Math.round(bill / n * 100) / 100;
@@ -206,12 +220,12 @@
       while (m > 1) { while (m % d === 0) { f.push(d); m /= d; } d++; }
       const right = f.join(' × '), wrong1 = f.length > 2 ? [f[0] * f[1], ...f.slice(2)].join(' × ') : (n / 2) + ' × 2', wrong2 = [...f.slice(0, -1), f[f.length - 1] + 1].join(' × ');
       const opts = [right, wrong1, wrong2].filter((v, i, a) => a.indexOf(v) === i); if (opts.length < 3) return MAKERS.prime9(box);
-      const order = opts.map(o => [Math.random(), o]).sort().map(x => x[1]);
+      const order = opts.map(o => [R(), o]).sort().map(x => x[1]);
       Q(box, 'Which is the <strong>prime factorization</strong> of <strong>' + n + '</strong>?');
       return { choices: order, answer: order.indexOf(right), right: n + ' = ' + right + ', and every factor is prime.' }; },
     fracunl9(box) {
       const g = (a, b) => b ? g(b, a % b) : a; const pairs = [[2, 3], [2, 5], [3, 4], [4, 6], [2, 8], [3, 6], [5, 10], [4, 3], [6, 8]];
-      const [d1, d2] = pick(pairs); const n1 = rnd(1, d1 - 1), n2 = rnd(1, d2 - 1), add = Math.random() < .6, L = d1 * d2 / g(d1, d2);
+      const [d1, d2] = pick(pairs); const n1 = rnd(1, d1 - 1), n2 = rnd(1, d2 - 1), add = R() < .6, L = d1 * d2 / g(d1, d2);
       const t1 = n1 * L / d1, t2 = n2 * L / d2, top = add ? t1 + t2 : t1 - t2; if (top <= 0) return MAKERS.fracunl9(box);
       const parse = v => { v = String(v).trim(); let m;
         if ((m = v.match(/^(\d+)\s+(\d+)\/(\d+)$/))) return Number(m[1]) + m[2] / m[3];
@@ -238,7 +252,7 @@
 
     /* ----- patterns and equations ----- */
     eq9(box) {
-      const x = rnd(2, 15), a = rnd(2, 9), b = rnd(1, 30), minus = Math.random() < .35, c = minus ? a * x - b : a * x + b;
+      const x = rnd(2, 15), a = rnd(2, 9), b = rnd(1, 30), minus = R() < .35, c = minus ? a * x - b : a * x + b;
       if (minus && c <= 0) return MAKERS.eq9(box);
       Q(box, 'Solve for <strong>x</strong>: <span class="math">' + a + 'x ' + (minus ? '−' : '+') + ' ' + b + ' = ' + c + '</span>');
       return { check: v => near(num(String(v).replace(/x\s*=\s*/i, '')), x), right: (minus ? 'Add ' : 'Subtract ') + b + ' from both sides: ' + a + 'x = ' + (a * x) + '. Divide by ' + a + ': x = ' + x }; },
@@ -251,7 +265,7 @@
     /* ----- perimeter, area and angles ----- */
     tri9(box) {
       const b = rnd(3, 20), h = rnd(2, 15);
-      if (Math.random() < .5) { const ans = b * h / 2; Q(box, 'A triangle has a base of <strong>' + b + ' m</strong> and a height of <strong>' + h + ' m</strong>. What is its area?');
+      if (R() < .5) { const ans = b * h / 2; Q(box, 'A triangle has a base of <strong>' + b + ' m</strong> and a height of <strong>' + h + ' m</strong>. What is its area?');
         return { check: v => near(num(v), ans), right: b + ' × ' + h + ' ÷ 2 = ' + ans + ' m²' }; }
       Q(box, 'A parallelogram has a base of <strong>' + b + ' cm</strong> and a height of <strong>' + h + ' cm</strong>. What is its area?');
       return { check: v => near(num(v), b * h), right: b + ' × ' + h + ' = ' + (b * h) + ' cm²' }; },
@@ -264,7 +278,7 @@
       Q(box, 'Two angles of a triangle are <strong>' + a + '°</strong> and <strong>' + b + '°</strong>. What is the third angle?');
       return { check: v => near(num(String(v).replace('°', '')), c), right: 'Angles in a triangle add to 180°: 180 − ' + a + ' − ' + b + ' = ' + c + '°' }; },
     scale9(box) {
-      if (Math.random() < .5) { const s = pick([2, 5, 10, 25, 50]), cm = pick([3, 4.5, 6, 7.5, 12]), ans = Math.round(s * cm * 100) / 100;
+      if (R() < .5) { const s = pick([2, 5, 10, 25, 50]), cm = pick([3, 4.5, 6, 7.5, 12]), ans = Math.round(s * cm * 100) / 100;
         Q(box, 'On a map, <strong>1 cm = ' + s + ' km</strong>. Two towns are <strong>' + cm + ' cm</strong> apart on the map. How far apart are they really?');
         return { check: v => near(num(v), ans), right: cm + ' × ' + s + ' = ' + ans + ' km' }; }
       const s = pick([50, 100, 200]), m = pick([4, 5, 6, 8, 3.5]), ans = m * 100 / s;
@@ -273,7 +287,7 @@
 
     /* ----- circles and 3-D objects ----- */
     vol9(box) {
-      if (Math.random() < .5) { const l = rnd(2, 12), w = rnd(2, 10), h = rnd(2, 10); Q(box, 'A rectangular planter is <strong>' + l + ' dm × ' + w + ' dm × ' + h + ' dm</strong>. How many litres of soil fill it? <span class="hint">(1 dm³ = 1 L)</span>');
+      if (R() < .5) { const l = rnd(2, 12), w = rnd(2, 10), h = rnd(2, 10); Q(box, 'A rectangular planter is <strong>' + l + ' dm × ' + w + ' dm × ' + h + ' dm</strong>. How many litres of soil fill it? <span class="hint">(1 dm³ = 1 L)</span>');
         return { check: v => near(num(v), l * w * h), right: l + ' × ' + w + ' × ' + h + ' = ' + (l * w * h) + ' L' }; }
       const r = rnd(3, 10), h = rnd(5, 20), ans = Math.round(3.14 * r * r * h * 100) / 100;
       Q(box, 'A can (cylinder) has a radius of <strong>' + r + ' cm</strong> and a height of <strong>' + h + ' cm</strong>. What is its volume? <span class="hint">(V ≈ 3.14 × r × r × h)</span>');
@@ -318,7 +332,7 @@
 
     /* ----- integers and temperature ----- */
     temp8(box) {
-      const start = rnd(-20, 10), ch = rnd(3, 15), rise = Math.random() < .5, end = rise ? start + ch : start - ch;
+      const start = rnd(-20, 10), ch = rnd(3, 15), rise = R() < .5, end = rise ? start + ch : start - ch;
       Q(box, 'It is <strong>' + start + '°C</strong> in the morning. The temperature ' + (rise ? 'rises' : 'drops') + ' <strong>' + ch + '°</strong>. What is the new temperature?');
       return { check: v => near(num(String(v).replace('−', '-').replace('°', '').replace(/c/i, '')), end), right: start + (rise ? ' + ' : ' − ') + ch + ' = ' + end + '°C' }; },
     tempdiff8(box) {
@@ -333,7 +347,7 @@
       Q(box, 'A customer buys something for <strong>$' + price.toFixed(2) + '</strong> and pays with a <strong>$' + paid + ' bill</strong>. How much change do they get?');
       return { check: v => near(num(v), ans), right: '$' + paid + '.00 − $' + price.toFixed(2) + ' = $' + ans.toFixed(2) + '. Count up from $' + price.toFixed(2) + ' to $' + paid + '.' }; },
     money8(box) {
-      if (Math.random() < .5) { const k = rnd(2, 6), p = pick([1.25, 2.5, 3.75, 0.99, 4.5, 6.25]), ans = Math.round(k * p * 100) / 100;
+      if (R() < .5) { const k = rnd(2, 6), p = pick([1.25, 2.5, 3.75, 0.99, 4.5, 6.25]), ans = Math.round(k * p * 100) / 100;
         Q(box, 'You buy <strong>' + k + '</strong> items at <strong>$' + p.toFixed(2) + '</strong> each. What is the total?');
         return { check: v => near(num(v), ans), right: k + ' × $' + p.toFixed(2) + ' = $' + ans.toFixed(2) }; }
       const people = pick([2, 3, 4, 5]), bill = pick([24, 36, 45, 60, 72, 50]), ans = Math.round(bill / people * 100) / 100;
@@ -347,18 +361,18 @@
 
     /* ----- factors and fractions ----- */
     factor8(box) {
-      if (Math.random() < .5) { const n = rnd(2, 99), isP = n > 1 && [...Array(n).keys()].slice(2).every(d => n % d);
+      if (R() < .5) { const n = rnd(2, 99), isP = n > 1 && [...Array(n).keys()].slice(2).every(d => n % d);
         const f = [...Array(n + 1).keys()].slice(1).filter(d => n % d === 0);
         Q(box, 'Is <strong>' + n + '</strong> prime or composite?');
         return { choices: ['Prime', 'Composite'], answer: isP ? 0 : 1, right: n + ' has the factors ' + f.join(', ') + (isP ? ' only, so it is prime.' : ', so it is composite.') }; }
-      const a = rnd(2, 9), b = rnd(3, 12) * (Math.random() < .6 ? a : 1) + (Math.random() < .3 ? 1 : 0); const yes = b % a === 0;
+      const a = rnd(2, 9), b = rnd(3, 12) * (R() < .6 ? a : 1) + (R() < .3 ? 1 : 0); const yes = b % a === 0;
       Q(box, 'Is <strong>' + a + '</strong> a factor of <strong>' + b + '</strong>?');
       return { choices: ['Yes', 'No'], answer: yes ? 0 : 1, right: yes ? b + ' ÷ ' + a + ' = ' + (b / a) + ' with no remainder, so yes.' : b + ' ÷ ' + a + ' has a remainder, so no.' }; },
     multiple8(box) {
       const a = rnd(3, 12), k = rnd(4, 12); Q(box, 'What is the <strong>' + k + 'th multiple</strong> of <strong>' + a + '</strong>? <span class="hint">(Count by ' + a + 's)</span>');
       return { check: v => near(num(v), a * k), right: a + ' × ' + k + ' = ' + (a * k) }; },
     fracadd8(box) {
-      const d = pick([4, 5, 6, 8, 10, 12]); let x = rnd(1, d - 1), y = rnd(1, d - 1); const add = Math.random() < .6;
+      const d = pick([4, 5, 6, 8, 10, 12]); let x = rnd(1, d - 1), y = rnd(1, d - 1); const add = R() < .6;
       if (!add && y > x) [x, y] = [y, x]; if (!add && x === y) return MAKERS.fracadd8(box);
       const top = add ? x + y : x - y;
       const parse = v => { v = String(v).trim(); let m;
@@ -370,7 +384,7 @@
       return { check: v => near(parse(v), top / d, 0.001), right: 'Same denominator, so ' + (add ? 'add' : 'subtract') + ' the tops: ' + x + (add ? ' + ' : ' − ') + y + ' = ' + top + '. ' + top + '/' + d + (nice !== top + '/' + d ? ' = ' + nice : '') }; },
     fraccomp8(box) {
       const d = pick([4, 5, 6, 8, 10]); let a = rnd(1, d - 1), b = rnd(1, d - 1); if (a === b) return MAKERS.fraccomp8(box);
-      if (Math.random() < .5) { const n = rnd(1, 3), d1 = rnd(n + 1, 9), d2 = rnd(n + 1, 9); if (d1 === d2) return MAKERS.fraccomp8(box);
+      if (R() < .5) { const n = rnd(1, 3), d1 = rnd(n + 1, 9), d2 = rnd(n + 1, 9); if (d1 === d2) return MAKERS.fraccomp8(box);
         Q(box, 'Which fraction is <strong>greater</strong>?');
         return { choices: [n + '/' + d1, n + '/' + d2], answer: d1 < d2 ? 0 : 1, right: 'Same top number: the smaller bottom number means bigger pieces, so ' + n + '/' + Math.min(d1, d2) + ' is greater.' }; }
       Q(box, 'Which fraction is <strong>greater</strong>?');
@@ -381,12 +395,12 @@
       const h = rnd(0, 23), m = pick([0, 5, 15, 20, 30, 45, 50]); const mm = String(m).padStart(2, '0');
       const t24 = String(h).padStart(2, '0') + ':' + mm, h12 = h % 12 || 12, ap = h < 12 ? 'a.m.' : 'p.m.', t12 = h12 + ':' + mm + ' ' + ap;
       const wrongH = [(h + 12) % 24, (h + 2) % 24];
-      if (Math.random() < .5) { const opts = [t12, ...wrongH.map(w => (w % 12 || 12) + ':' + mm + ' ' + (w < 12 ? 'a.m.' : 'p.m.'))].filter((v, i, a) => a.indexOf(v) === i);
-        const order = opts.map((o, i) => [Math.random(), o]).sort().map(x => x[1]);
+      if (R() < .5) { const opts = [t12, ...wrongH.map(w => (w % 12 || 12) + ':' + mm + ' ' + (w < 12 ? 'a.m.' : 'p.m.'))].filter((v, i, a) => a.indexOf(v) === i);
+        const order = opts.map((o, i) => [R(), o]).sort().map(x => x[1]);
         Q(box, 'What is <strong>' + t24 + '</strong> on a 12-hour clock?');
         return { choices: order, answer: order.indexOf(t12), right: t24 + ' = ' + t12 + (h >= 13 ? ' (' + h + ' − 12 = ' + h12 + ')' : '') }; }
       const opts = [t24, ...wrongH.map(w => String(w).padStart(2, '0') + ':' + mm)].filter((v, i, a) => a.indexOf(v) === i);
-      const order = opts.map(o => [Math.random(), o]).sort().map(x => x[1]);
+      const order = opts.map(o => [R(), o]).sort().map(x => x[1]);
       Q(box, 'What is <strong>' + t12 + '</strong> on a 24-hour clock?');
       return { choices: order, answer: order.indexOf(t24), right: t12 + ' = ' + t24 + (h >= 13 ? ' (' + h12 + ' + 12 = ' + h + ')' : '') }; },
     hm8(box) {
@@ -413,7 +427,7 @@
     pattern8(box) {
       const a = rnd(1, 20), d = pick([2, 3, 4, 5, 6, 10, -2, -3]); const seq = [0, 1, 2, 3, 4].map(i => a + d * i);
       if (seq.some(x => x < 0)) return MAKERS.pattern8(box);
-      if (Math.random() < .6) { Q(box, 'What comes next? <strong>' + seq.slice(0, 4).join(', ') + ', …</strong>');
+      if (R() < .6) { Q(box, 'What comes next? <strong>' + seq.slice(0, 4).join(', ') + ', …</strong>');
         return { check: v => near(num(v), seq[4]), right: 'The rule is "start at ' + a + ', ' + (d > 0 ? 'add ' + d : 'subtract ' + (-d)) + '." Next: ' + seq[4] }; }
       const n = pick([8, 10, 12]); const ans = a + d * (n - 1); if (ans < 0) return MAKERS.pattern8(box);
       Q(box, 'The pattern is <strong>' + seq.slice(0, 4).join(', ') + ', …</strong> What is the <strong>' + n + 'th</strong> number?');
@@ -428,21 +442,21 @@
 
     /* ----- measurement ----- */
     perim8(box) {
-      if (Math.random() < .5) { const l = rnd(3, 20), w = rnd(2, 12), ans = 2 * (l + w);
+      if (R() < .5) { const l = rnd(3, 20), w = rnd(2, 12), ans = 2 * (l + w);
         Q(box, 'A rectangular garden is <strong>' + l + ' m</strong> long and <strong>' + w + ' m</strong> wide. How much fencing goes around it?');
         return { check: v => near(num(v), ans), right: l + ' + ' + w + ' + ' + l + ' + ' + w + ' = ' + ans + ' m' }; }
       const s = [rnd(3, 12), rnd(3, 12), rnd(3, 12)].sort((p, q) => p - q); if (s[0] + s[1] <= s[2]) return MAKERS.perim8(box);
       Q(box, 'A triangle has sides <strong>' + s.join(' cm, ') + ' cm</strong>. What is its perimeter?');
       return { check: v => near(num(v), s[0] + s[1] + s[2]), right: s.join(' + ') + ' = ' + (s[0] + s[1] + s[2]) + ' cm' }; },
     area8(box) {
-      if (Math.random() < .5) { const l = rnd(3, 15), w = rnd(2, 10);
+      if (R() < .5) { const l = rnd(3, 15), w = rnd(2, 10);
         Q(box, 'A rug is <strong>' + l + ' m</strong> by <strong>' + w + ' m</strong>. What is its area in m²?');
         return { check: v => near(num(v), l * w), right: l + ' × ' + w + ' = ' + (l * w) + ' m²' }; }
       const a = rnd(4, 10), b = rnd(3, 6), c = rnd(2, 6), d = rnd(2, 5), ans = a * b + c * d;
       Q(box, 'An L-shaped room is made of two rectangles: <strong>' + a + ' m × ' + b + ' m</strong> and <strong>' + c + ' m × ' + d + ' m</strong>. What is the total area?');
       return { check: v => near(num(v), ans), right: a + ' × ' + b + ' = ' + (a * b) + ', ' + c + ' × ' + d + ' = ' + (c * d) + '. Total: ' + ans + ' m²' }; },
     circ8(box) {
-      if (Math.random() < .35) { const r = rnd(2, 30); Q(box, 'A circle has a radius of <strong>' + r + ' cm</strong>. What is its diameter?');
+      if (R() < .35) { const r = rnd(2, 30); Q(box, 'A circle has a radius of <strong>' + r + ' cm</strong>. What is its diameter?');
         return { check: v => near(num(v), 2 * r), right: 'diameter = 2 × radius = 2 × ' + r + ' = ' + (2 * r) + ' cm' }; }
       const d = pick([10, 20, 30, 50, 66, 4, 12]); const ans = Math.round(3.14 * d * 100) / 100;
       Q(box, 'A bike wheel has a diameter of <strong>' + d + ' cm</strong>. About how far does it roll in one turn? <span class="hint">(circumference ≈ 3.14 × diameter)</span>');
@@ -557,6 +571,11 @@
     }
   };
 
+  // Shared with practice.js (the Practice section on math pages).
+  const NEG = new Set(['temp8', 'bank9', 'int9']);   // answers that can be negative get a +/- key
+  window.BC = { MAKERS, NEG, fillGrid, money, num, near, PREVIEW,
+    level(l) { LV = l || 2; }, seed(n) { R = seeded(n); }, unseed() { R = Math.random; } };
+
   // Makers can return { choices: [...], answer: index, right } to show answer buttons instead of a box.
   function drawChoices(box, cur) {
     const opts = box.querySelector('[data-role=opts]'); if (!opts || !cur.choices) return;
@@ -572,6 +591,8 @@
     let cur = MAKERS[type](box), tries = 0;
     drawChoices(box, cur);
     const input = box.querySelector('input');
+    if (input && NEG.has(type)) { const pm = document.createElement('button'); pm.type = 'button'; pm.className = 'btn ghost pm'; pm.textContent = '+/−'; pm.title = 'Make the answer negative or positive';
+      pm.addEventListener('click', () => { const v = input.value.trim(); input.value = /^[-−]/.test(v) ? v.replace(/^[-−]/, '') : '-' + v; input.focus(); }); input.after(pm); }
     const fresh = () => { cur = MAKERS[type](box); tries = 0; if (input) input.value = ''; box.querySelector('.fb').textContent = ''; drawChoices(box, cur); };
     const nb = box.querySelector('[data-role=new]'); if (nb) nb.addEventListener('click', fresh);
     const check = () => {
@@ -610,8 +631,42 @@
     };
     box.querySelectorAll('button[data-n]').forEach(b => b.addEventListener('click', () => {
       const n = Number(b.dataset.n); if (!n) counts = faces.map(() => 0);
-      for (let i = 0; i < n; i++) counts[Math.floor(Math.random() * faces.length)]++;
+      for (let i = 0; i < n; i++) counts[Math.floor(R() * faces.length)]++;
       draw();
     }));
   });
+
+  /* ---------- reading tools: larger text and read-aloud (bottom-right buttons) ---------- */
+  const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+  const root = document.documentElement, canSpeak = 'speechSynthesis' in window;
+  const tools = document.createElement('div'); tools.className = 'a11y'; tools.setAttribute('aria-label', 'Reading tools');
+  tools.innerHTML = '<button type="button" data-t="big" aria-pressed="false" title="Larger text"><span aria-hidden="true">A</span><b aria-hidden="true">A</b><span class="sr">Larger text</span></button>' +
+    (canSpeak ? '<button type="button" data-t="speak" aria-pressed="false" title="Read aloud">🔊<span class="sr">Read aloud</span></button>' : '');
+  document.body.appendChild(tools);
+  const setT = (k, on) => { root.classList.toggle(k, on); const b = tools.querySelector('[data-t=' + k + ']'); if (b) b.setAttribute('aria-pressed', on); store.set('bc-' + k, on ? '1' : '0'); if (!on && k === 'speak' && canSpeak) speechSynthesis.cancel(); };
+  tools.querySelectorAll('button').forEach(b => b.addEventListener('click', () => setT(b.dataset.t, !root.classList.contains(b.dataset.t))));
+  setT('big', store.get('bc-big') === '1'); if (canSpeak) setT('speak', store.get('bc-speak') === '1');
+
+  // Turn math symbols into words so the voice reads them sensibly.
+  const supW = { '⁰': 0, '¹': 1, '²': 2, '³': 3, '⁴': 4, '⁵': 5, '⁶': 6, '⁷': 7, '⁸': 8, '⁹': 9 };
+  const spoken = t => t.replace(/🔊|✓|✗/g, '').replace(/(\d)\s*\/\s*(\d)/g, '$1 over $2')
+    .replace(/²/g, ' squared').replace(/³/g, ' cubed').replace(/[⁰¹⁴-⁹]+/g, m => ' to the power of ' + [...m].map(c => supW[c]).join(''))
+    .replace(/°C/g, ' degrees Celsius').replace(/°F/g, ' degrees Fahrenheit').replace(/°/g, ' degrees')
+    .replace(/×/g, ' times ').replace(/÷/g, ' divided by ').replace(/≈/g, ' is about ').replace(/=/g, ' equals ')
+    .replace(/(^|\s)[−-](?=\$?\d)/g, '$1negative ').replace(/−/g, ' minus ').replace(/→/g, ', then, ').replace(/·/g, ', ').replace(/\s+/g, ' ').trim();
+  const speak = text => { if (!canSpeak) return; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(spoken(text)); u.lang = 'en-CA'; u.rate = .92; speechSynthesis.speak(u); };
+  const textOf = el => { const c = el.cloneNode(true); c.querySelectorAll('.spk,script,.sr,button.pm').forEach(x => x.remove()); c.querySelectorAll('button').forEach(b => b.insertAdjacentText('afterend', '. ')); return c.textContent; };
+  const spkBtn = () => { const b = document.createElement('button'); b.type = 'button'; b.className = 'spk'; b.title = 'Read this aloud'; b.innerHTML = '🔊<span class="sr">Read aloud</span>'; return b; };
+  // Static blocks: read the block. Try-it boxes: read the current question and answer choices.
+  function addSpeak(scope) {
+    if (!canSpeak) return;
+    (scope || document).querySelectorAll('.big-idea, .ex, .ican, .expd > div').forEach(el => {
+      if (el.querySelector(':scope > .spk')) return; const b = spkBtn(); b.addEventListener('click', () => speak(textOf(el))); el.prepend(b); });
+    (scope || document).querySelectorAll('.try h4').forEach(h => {
+      if (h.querySelector('.spk')) return; const box = h.closest('.try'); const b = spkBtn();
+      b.addEventListener('click', () => { const q = box.querySelector('[data-role=q]'), o = box.querySelector('[data-role=opts]'); speak(textOf(q) + (o && o.textContent.trim() ? '. Choices: ' + textOf(o) : '')); });
+      h.appendChild(b); });
+  }
+  addSpeak();
+  Object.assign(window.BC, { speak, textOf, spkBtn, addSpeak, store });
 })();

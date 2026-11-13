@@ -199,3 +199,76 @@
 
   .previewNote{background:#fff4d6;border:2px dashed #c8553d;border-radius:10px;padding:10px 14px;margin:0 0 14px;font-size:.95rem}
   @media print{.previewNote{display:none}}
+
+  /* reading tools */
+  .a11y{position:fixed;right:12px;bottom:12px;display:flex;gap:6px;z-index:30}
+  .a11y button{width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-weight:800;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.18);font-size:1.05rem;line-height:1;padding:0}
+  .a11y button b{font-size:1.35em}
+  .a11y button[aria-pressed=true]{background:var(--ink);color:#fff}
+  html.big{font-size:118%} html.big body{font-size:20px}
+  .spk{border:1px solid var(--line);background:#fff;border-radius:999px;cursor:pointer;font-size:.95rem;line-height:1;padding:3px 7px;margin-right:6px;vertical-align:1px}
+  html:not(.speak) .spk{display:none}
+  .try h4 .spk{margin:0 0 0 8px}
+  .pm{padding:6px 12px}
+  @media print{.a11y,.spk{display:none!important}}
+
+  /* ---------- Practice section (math) ---------- */
+  .pr{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+  .prlv{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .prlv .lbl{font-weight:700;margin-right:4px}
+  .prlv button,.prtabs button{border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:999px;padding:6px 14px;font-weight:700;cursor:pointer;font-family:inherit}
+  .prlv button[aria-pressed=true]{background:var(--grade);border-color:var(--grade);color:#fff}
+  .prlv .lvdesc{flex-basis:100%;margin:2px 0 0}
+  .prtabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;border-top:1px solid var(--line);padding-top:12px}
+  .prtabs button{border-width:1px;border-color:var(--line);font-weight:600}
+  .prtabs button[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .prstart{text-align:center;padding:14px}
+  .pq{background:#eef3e6;border:1px solid #c9d8bd;border-radius:12px;padding:12px 14px;margin:10px 0}
+  .pq.got{border-color:var(--good)} .pq.missed{border-color:var(--bad)}
+  .pq-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.85rem}
+  .pq-top .from{font-weight:700;color:var(--muted)}
+  .pq-top .spk{margin:0 0 0 auto}
+  .pq .q{font-size:1.12rem;font-weight:600;margin:8px 0}
+  .pq .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .pq input{border:2px solid var(--line);border-radius:10px;padding:8px 10px;width:150px;background:#fff}
+  .pq .opts{display:flex;flex-wrap:wrap;gap:8px}
+  .pq .opts button{border:2px solid var(--line);background:#fff;border-radius:10px;padding:8px 14px;cursor:pointer;font-weight:600}
+  .pq .opts button.right{border-color:var(--good);background:#e2f2e6} .pq .opts button.wrong{border-color:var(--bad);background:#f8e3de}
+  .pq .opts button.picked{border-color:var(--ink);background:#dfe8d6}
+  .hintbox{background:#fff7df;border:1px solid #ecd08a;border-radius:8px;padding:6px 10px;margin:6px 0;font-size:.95rem}
+  .hintline{display:block;color:var(--ink);font-weight:500;margin-top:4px}
+  .calc{display:inline-block;font-size:.78rem;font-weight:700;border-radius:999px;padding:1px 8px;border:1px solid;vertical-align:2px;font-family:"Source Sans 3",system-ui,sans-serif}
+  .calc.ok{color:#2f6b3f;border-color:#a9cdb3;background:#eef7f0} .calc.no{color:#8a4b14;border-color:#e3c29a;background:#fdf3e6}
+  .progress{height:10px;background:var(--paper);border-radius:999px;overflow:hidden}
+  .progress span{display:block;height:100%;width:0;background:var(--grade);transition:width .3s}
+  .count{margin:6px 0 0}
+  .nav{margin-top:6px}
+  .result{text-align:center;padding:10px} .result .big{font-size:2.2rem;font-weight:800;font-family:Bitter,serif;margin:0} .result ul{text-align:left;display:inline-block}
+  .qn{font-size:1rem;color:var(--ink)}
+  .task h4{margin:0 0 6px;font-size:1.15rem} .task .story{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+  .flash{text-align:center}
+  .fcard{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;max-width:520px;min-height:190px;margin:0 auto;background:#fff;border:2px solid var(--grade);border-radius:16px;padding:20px;cursor:pointer;position:relative;color:var(--ink);font-family:inherit}
+  .fcard.back{background:#f2f7fa}
+  .fcard .side{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+  .fcard .fterm{font-family:Bitter,serif;font-size:1.8rem;font-weight:800} .fcard .fdef{font-size:1.15rem}
+  .fcard .spk{position:absolute;top:8px;right:8px}
+  .fnav{display:flex;justify-content:center;align-items:center;gap:10px;margin:10px 0;flex-wrap:wrap}
+  .wsform fieldset{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:4px 12px}
+  .wsform legend{font-weight:700;padding:0 4px}
+  .chk{display:flex;gap:6px;align-items:flex-start}
+  .wsrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:8px 0}
+  .wsrow select{font:inherit;padding:4px 8px;border-radius:8px;border:1px solid var(--line);margin-left:4px}
+  .wspaper{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px;margin-top:10px;max-height:560px;overflow:auto}
+  .wshead{display:flex;justify-content:space-between;gap:12px;border-bottom:2px solid #333;padding-bottom:6px;margin-bottom:10px;flex-wrap:wrap}
+  .wsname{text-align:right;line-height:2}
+  .wslist{padding-left:22px} .wsq{margin:0 0 14px;break-inside:avoid} .wsq .q{font-weight:600;margin:2px 0}
+  .wsmeta{float:right;margin-left:8px} .wshint{font-size:.9rem;font-style:italic;margin:2px 0}
+  .wswork{height:70px} .wsans{margin:2px 0} .wsopts{margin:4px 0}
+  .wskey{margin-top:24px;border-top:2px dashed #999;padding-top:12px} .wskey li{margin:0 0 6px}
+  .ws{display:none}
+  @media print{
+    body.printing .ws.printme{display:block;font-size:14px}
+    .ws .wskey{break-before:page;border-top:0;margin-top:0}
+    .ws .calc{border:1px solid #999;background:none;color:#000}
+    .ws .grid100 i.on{background:#555!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
