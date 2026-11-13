@@ -216,6 +216,57 @@ PAGES = {
     open=[1, 2], current=2, unit_files=['cefl9-unit%d.html' % n for n in range(1, 6)], cheat=None, practice='cefl9'),
 }
 
+
+INFO = '''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title} · 8/9 Collab Basecamp</title>
+<meta name="description" content="{desc}">
+<meta name="theme-color" content="#22392b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/subject.css">
+</head>
+<body class="hub">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="../">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 27 12 11l5 8 4-6 9 14z" fill="#e9b949"/><path d="M12 11l-3 5 3-1 2 2z" fill="#fffdf8"/></svg>
+      <span>8/9 Collab Basecamp</span>
+    </a>
+    <button class="burger" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav class="main" id="mainNav" aria-label="Main">
+{nav}
+    </nav>
+  </div>
+  <div class="stripe"></div>
+</header>
+<main id="main" class="wrap">
+{body}
+</main>
+<footer>
+  <div class="wrap"><span>8/9 Collab Basecamp · {title}</span><a href="../">← Back to Basecamp</a></div>
+</footer>
+<script src="../assets/subject.js"></script>
+<script src="../assets/hub.js"></script>
+</body>
+</html>
+'''
+INFO_PAGES = {
+  'parents': dict(title='For families', desc='What Grade 8 and 9 students are learning now, tools to use at home, and how families can help.', body='parents.html'),
+  'teachers': dict(title='Teacher & sub hub', desc='Course status, preview links, worksheet answer keys and how-to guides for teachers and substitute teachers.', body='teachers.html'),
+}
+def build_info(name):
+    sp = INFO_PAGES[name]
+    html = INFO.format(title=sp['title'], desc=sp['desc'], nav=NAV, body=open(os.path.join(B, sp['body'])).read())
+    os.makedirs(os.path.join(SITE, name), exist_ok=True)
+    open(os.path.join(SITE, name, 'index.html'), 'w').write(html)
+    print('built', name, len(html))
+
 if __name__ == '__main__':
-    for k in (sys.argv[1:] or PAGES):
-        build(PAGES[k])
+    for k in (sys.argv[1:] or list(PAGES) + list(INFO_PAGES)):
+        build_info(k) if k in INFO_PAGES else build(PAGES[k])

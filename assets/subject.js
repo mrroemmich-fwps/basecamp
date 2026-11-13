@@ -30,8 +30,18 @@
 
   /* ---------- unit trail ---------- */
   const unitsEl = $('#units');
-  // Teacher preview: add ?preview to the address to see units that are still "Coming soon".
-  const PREVIEW = new URLSearchParams(location.search).has('preview');
+  /* Teacher preview: add ?preview to a course address to see units that are still "Coming soon"
+     and to print worksheet answer keys. It only works on a device where the teacher code has been
+     entered (on the Teacher page, or once as ?preview=CODE). To change the code, ask Claude:
+     TEACHER_HASH is a scrambled version of the code, not the code itself. */
+  const TEACHER_HASH = 'hiy28l';
+  const codeHash = c => { let x = 2166136261; for (const ch of String(c).trim().toLowerCase()) { x ^= ch.charCodeAt(0); x = Math.imul(x, 16777619); } return (x >>> 0).toString(36); };
+  const qs = new URLSearchParams(location.search);
+  if (qs.get('preview') && codeHash(qs.get('preview')) === TEACHER_HASH) { try { localStorage.setItem('bc-teacher', TEACHER_HASH); } catch (e) {} }
+  const TEACHER = (() => { try { return localStorage.getItem('bc-teacher') === TEACHER_HASH; } catch (e) { return false; } })();
+  const PREVIEW = qs.has('preview') && TEACHER;
+  window.BC_TEACHER = { ok: TEACHER, check: c => codeHash(c) === TEACHER_HASH,
+    unlock() { try { localStorage.setItem('bc-teacher', TEACHER_HASH); } catch (e) {} }, lock() { try { localStorage.removeItem('bc-teacher'); } catch (e) {} } };
   function showUnit(n) {
     const u = PAGE.units.find(x => x.n === n) || PAGE.units.find(x => x.n === PAGE.current);
     if (!u) return;
