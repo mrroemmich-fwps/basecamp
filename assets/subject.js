@@ -650,12 +650,36 @@
   const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
   const root = document.documentElement, canSpeak = 'speechSynthesis' in window;
   const tools = document.createElement('div'); tools.className = 'a11y'; tools.setAttribute('aria-label', 'Reading tools');
-  tools.innerHTML = '<button type="button" data-t="big" aria-pressed="false" title="Larger text"><span aria-hidden="true">A</span><b aria-hidden="true">A</b><span class="sr">Larger text</span></button>' +
+  // Text size: 5 steps. 1 is the normal size; each step makes everything on the page bigger.
+  const SIZES = [['1', 'Normal'], ['2', 'Larger'], ['3', 'Large'], ['4', 'Extra large'], ['5', 'Largest']];
+  tools.innerHTML = '<div class="sizes" id="sizePick" role="group" aria-label="Text size" hidden><span class="lbl">Text size</span>' +
+      SIZES.map(([n, name]) => `<button type="button" data-size="${n}" aria-pressed="false" title="${name}"><span aria-hidden="true" class="s${n}">A</span><span class="sr">${name}</span></button>`).join('') + '</div>' +
+    '<button type="button" data-t="size" aria-expanded="false" aria-controls="sizePick" title="Text size"><span aria-hidden="true">A</span><b aria-hidden="true">A</b><span class="sr">Text size</span></button>' +
     (canSpeak ? '<button type="button" data-t="speak" aria-pressed="false" title="Read aloud">🔊<span class="sr">Read aloud</span></button>' : '');
   document.body.appendChild(tools);
+  const sizeBox = tools.querySelector('#sizePick'), sizeBtn = tools.querySelector('[data-t=size]');
+  const setSize = n => {
+    n = String(Math.min(5, Math.max(1, Number(n) || 1)));
+    if (n === '1') root.removeAttribute('data-size'); else root.setAttribute('data-size', n);
+    sizeBox.querySelectorAll('[data-size]').forEach(b => b.setAttribute('aria-pressed', b.dataset.size === n));
+    sizeBtn.classList.toggle('on', n !== '1'); store.set('bc-size', n);
+  };
+  const openPick = open => { sizeBox.hidden = !open; sizeBtn.setAttribute('aria-expanded', open); if (open) (sizeBox.querySelector('[aria-pressed=true]') || sizeBox.querySelector('button')).focus(); };
+  sizeBtn.addEventListener('click', () => openPick(sizeBox.hidden));
+  sizeBox.addEventListener('click', e => { const b = e.target.closest('[data-size]'); if (b) setSize(b.dataset.size); });
+  sizeBox.addEventListener('keydown', e => {
+    const cur = Number(root.getAttribute('data-size') || 1);
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); setSize(cur + 1); sizeBox.querySelector('[aria-pressed=true]').focus(); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); setSize(cur - 1); sizeBox.querySelector('[aria-pressed=true]').focus(); }
+    if (e.key === 'Escape') { openPick(false); sizeBtn.focus(); }
+  });
+  document.addEventListener('click', e => { if (!sizeBox.hidden && !e.target.closest('.a11y')) openPick(false); });
+  // The older on/off "larger text" setting becomes step 2.
+  setSize(store.get('bc-size') || (store.get('bc-big') === '1' ? '2' : '1'));
+
   const setT = (k, on) => { root.classList.toggle(k, on); const b = tools.querySelector('[data-t=' + k + ']'); if (b) b.setAttribute('aria-pressed', on); store.set('bc-' + k, on ? '1' : '0'); if (!on && k === 'speak' && canSpeak) speechSynthesis.cancel(); };
-  tools.querySelectorAll('button').forEach(b => b.addEventListener('click', () => setT(b.dataset.t, !root.classList.contains(b.dataset.t))));
-  setT('big', store.get('bc-big') === '1'); if (canSpeak) setT('speak', store.get('bc-speak') === '1');
+  const spk = tools.querySelector('[data-t=speak]');
+  if (spk) { spk.addEventListener('click', () => setT('speak', !root.classList.contains('speak'))); setT('speak', store.get('bc-speak') === '1'); }
 
   // Turn math symbols into words so the voice reads them sensibly.
   const supW = { '⁰': 0, '¹': 1, '²': 2, '³': 3, '⁴': 4, '⁵': 5, '⁶': 6, '⁷': 7, '⁸': 8, '⁹': 9 };
