@@ -272,3 +272,5 @@
     .ws .calc{border:1px solid #999;background:none;color:#000}
     .ws .grid100 i.on{background:#555!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   }
+  .pq.written textarea{width:100%;border:2px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;background:#fff;margin:4px 0 8px}
+  .pq .model{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-top:8px}

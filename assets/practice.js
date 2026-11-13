@@ -16,6 +16,11 @@
     { n: 1, ic: '🥾', name: 'Base Camp', desc: 'Smaller numbers, a hint on every question, and a calculator is always OK.' },
     { n: 2, ic: '🌲', name: 'Climb', desc: 'Everyday numbers. A hint shows up after one wrong try.' },
     { n: 3, ic: '🏔️', name: 'Summit', desc: 'Bigger numbers and no hints. Show what you know.' }];
+  if (D.numeric === false) {   // subjects without number generators: levels change hints and question difficulty
+    LEVELS[0].desc = 'A hint on every question, with the more straightforward questions.';
+    LEVELS[1].desc = 'A hint shows up after one wrong try.';
+    LEVELS[2].desc = 'No hints, and the trickier questions. Show what you know.';
+  }
   let level = Number(BC.store.get('bc-level')) || 2;
 
   /* ---------- random helpers (seedable, so worksheets can be printed again) ---------- */
@@ -31,7 +36,13 @@
         return { type: b.dataset.try, pre: pre ? pre.textContent.trim() : '', text: !!inp && !inp.hasAttribute('inputmode') };
       });
       const meta = (D.lessons || {})[d.id] || {};
-      return { id: d.id, el: d, title: ($('.ltitle strong', d) || {}).textContent || d.id, gens, bank: (D.banks || {})[d.id] || [], hint: meta.hint || '', calc: meta.calc !== false };
+      // Written bank items, plus the lesson's own quick-check questions (reused automatically).
+      const norm = it => Array.isArray(it) ? { q: it[0], o: it[1], a: it[2], why: it[3], lv: it[4] } : it;
+      const bank = ((D.banks || {})[d.id] || []).map(norm);
+      $$('.try[data-try=mc] script.qs', d).forEach(sc => { try { JSON.parse(sc.textContent).forEach(m => bank.push({ q: m.q, o: m.options, a: m.answer, why: m.why })); } catch (e) {} });
+      let hint = meta.hint || '';
+      if (!hint) { const bi = $('.big-idea', d); if (bi) { const t = BC.textOf(bi).replace(/\s+/g, ' ').trim(); hint = t.length > 190 ? t.slice(0, t.indexOf('. ', 80) > 0 ? t.indexOf('. ', 80) + 1 : 190) : t; } }
+      return { id: d.id, el: d, title: ($('.ltitle strong', d) || {}).textContent || d.id, gens, bank, hint, calc: meta.calc !== false };
     }).filter(l => l.gens.length || l.bank.length);
   }
 
@@ -48,9 +59,12 @@
     else Object.assign(q, { kind: 'num', check: cur.check });
     return q;
   }
-  function fromBank(L, it) {
+  function fromBank(L, it, rng) {
     const q = { html: it.q, lesson: L, hint: it.hint || L.hint, calc: 'calc' in it ? it.calc : L.calc, pre: it.pre || '', neg: !!it.neg };
-    if (it.o) return Object.assign(q, { kind: 'choice', choices: it.o, answer: it.a, right: it.why || it.o[it.a] });
+    if (it.o) {   // shuffle the choices so the right answer isn't always in the same spot
+      const idx = it.keep ? it.o.map((_, i) => i) : shuffle(it.o.map((_, i) => i), rng || Math.random);
+      return Object.assign(q, { kind: 'choice', choices: idx.map(i => it.o[i]), answer: idx.indexOf(it.a), right: it.why || it.o[it.a] });
+    }
     const answers = [].concat(it.a), isNum = answers.every(a => typeof a === 'number');
     q.text = !isNum; q.ans = answers[0];
     q.check = v => isNum ? answers.some(a => BC.near(BC.num(v), a, it.tol || 0.006))
@@ -70,12 +84,12 @@
       else if (bankOK.length) {
         used[L.id] = used[L.id] || shuffle(bankOK.map((_, k) => k), rng);
         if (!used[L.id].length) used[L.id] = shuffle(bankOK.map((_, k) => k), rng);
-        out.push(fromBank(L, bankOK[used[L.id].pop()]));
+        out.push(fromBank(L, bankOK[used[L.id].pop()], rng));
       }
     }
     return out;
   }
-  const calcBadge = (q, lv) => (lv === 1 || q.calc) ? '<span class="calc ok" title="You may use a calculator">🧮 Calculator OK</span>' : '<span class="calc no" title="Try it without a calculator">✏️ No calculator</span>';
+  const calcBadge = (q, lv) => D.calcNotes === false ? '' : (lv === 1 || q.calc) ? '<span class="calc ok" title="You may use a calculator">🧮 Calculator OK</span>' : '<span class="calc no" title="Try it without a calculator">✏️ No calculator</span>';
 
   /* ---------- an interactive question card ---------- */
   function card(q, lv, opts) {
@@ -165,10 +179,24 @@
     const parts = $('.parts', panel);
     t.parts.forEach((p, k) => {
       const L = { title: 'Part ' + String.fromCharCode(65 + k), id: '' };
-      const q = fromBank(L, { q: p.q, a: p.a, tol: p.tol, pre: p.pre, unit: p.unit, why: p.work, hint: p.hint, calc: p.calc !== false, neg: p.neg });
-      q.right = p.work + ' Answer: ' + (p.pre || '') + [].concat(p.a)[0] + (p.unit ? ' ' + p.unit : '');
+      if (p.model) { parts.appendChild(written(L, p)); return; }
+      const q = fromBank(L, p.o ? { q: p.q, o: p.o, a: p.a, why: p.work, hint: p.hint } : { q: p.q, a: p.a, tol: p.tol, pre: p.pre, unit: p.unit, why: p.work, hint: p.hint, calc: p.calc !== false, neg: p.neg }, Math.random);
+      if (!p.o) q.right = p.work + ' Answer: ' + (p.pre || '') + [].concat(p.a)[0] + (p.unit ? ' ' + p.unit : '');
       parts.appendChild(card(q, level, {}));
     });
+  }
+
+  // A written-response part: students write, then compare with a sample answer and a checklist.
+  function written(L, p) {
+    const el = document.createElement('div'); el.className = 'pq written';
+    el.innerHTML = `<div class="pq-top"><span class="from">${esc(L.title)} · written answer</span></div><div class="q readq">${p.q}</div>
+      ${level === 1 && p.hint ? `<p class="hintbox">💡 ${p.hint}</p>` : ''}
+      <textarea rows="4" aria-label="Your answer"></textarea>
+      <button class="btn ghost" data-role="model">Compare with a sample answer</button>
+      <div class="model" hidden><p><strong>Sample answer:</strong> ${p.model}</p>${p.look ? '<p><strong>Check that yours has:</strong></p><ul>' + p.look.map(x => `<li>${x}</li>`).join('') + '</ul>' : ''}</div>`;
+    const sp = BC.spkBtn(); sp.addEventListener('click', () => BC.speak(BC.textOf($('.readq', el)))); $('.pq-top', el).appendChild(sp);
+    $('[data-role=model]', el).addEventListener('click', e => { const m = $('.model', el); m.hidden = !m.hidden; e.target.textContent = m.hidden ? 'Compare with a sample answer' : 'Hide the sample answer'; });
+    return el;
   }
 
   /* ---------- 4. Flashcards ---------- */
