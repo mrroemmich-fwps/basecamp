@@ -38,6 +38,7 @@
   .between{justify-content:space-between}
   .pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:.82rem;font-weight:700;background:var(--paper);border:1px solid var(--line)}
   .pill.low{background:#e4efe0;border-color:#b9d3ae}
+  .pips{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 10px}.pips i{width:12px;height:12px;border-radius:50%;border:2px solid #b9d3ae;background:#fff}.pips i.u{background:#5b8a4f;border-color:#5b8a4f}
   .pill.medium{background:#fbf0d4;border-color:#ecd08a}
   .pill.high{background:#f6ddd6;border-color:#e2a593}
   .btn{border:0;border-radius:999px;padding:9px 16px;font-weight:700;background:var(--ink);color:#fff;cursor:pointer}
@@ -314,11 +315,17 @@ function render() {
       <p class="muted" style="margin:0">Take on extra challenges and earn a bonus for yourself or others. When you finish one, tap <strong>I did it</strong> and your teacher will check it.</p>
     </div>
     <div class="grid">${V.expeditions.map(x => {
-      const locked = on && !x.repeatable && x.done > 0;
+      const max = x.max || (x.max === undefined && !x.repeatable ? 1 : null);   // older script: no max field
+      const left = on ? (x.left !== undefined && x.left !== null ? x.left : max ? Math.max(0, max - (x.done || 0)) : null) : max;
+      const used = max ? max - left : 0;
+      const locked = on && max && left <= 0 && !x.pending;
+      const limit = !max ? 'No limit' : max === 1 ? 'One time only' : 'Up to ' + max + ' times';
+      const track = on && max > 1 ? `<div class="pips" role="img" aria-label="${used} used, ${left} left">${'<i class="u"></i>'.repeat(used)}${'<i></i>'.repeat(left)}</div>` : '';
       return `<div class="card exp ${locked ? 'done' : ''}">
         <div class="row between"><strong>${esc(x.title)}</strong><span class="pill">+${fmt(x.reward)} ${C}</span></div>
         <p class="small" style="margin:6px 0 10px">${esc(x.description)}</p>
-        <div class="small muted" style="margin-bottom:10px">${x.repeatable ? 'Can be done again' : 'One time only'}${on && x.done ? ' · completed ' + x.done + '×' : ''}</div>
+        <div class="small muted" style="margin-bottom:${track ? 4 : 10}px">${limit}${on && max > 1 ? ' · <strong>' + left + ' left</strong>' : ''}${on && !max && x.done ? ' · completed ' + x.done + '×' : ''}</div>
+        ${track}
         ${!on ? needSignIn('check in')
           : x.pending ? '<span class="pill">Waiting for teacher</span>'
           : locked ? '<span class="pill low">✓ Completed</span>'
