@@ -38,6 +38,8 @@
   .between{justify-content:space-between}
   .pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:.82rem;font-weight:700;background:var(--paper);border:1px solid var(--line)}
   .pill.low{background:#e4efe0;border-color:#b9d3ae}
+  .mix{margin:8px 0}.mix .bar{display:flex;height:10px;border-radius:999px;overflow:hidden;margin-bottom:6px}.mix .key{display:inline-flex;align-items:center;gap:5px;margin:0 10px 2px 0}.mix .key i{width:10px;height:10px;border-radius:2px;display:inline-block}
+  .mix .c0{background:#e9b949}.mix .c1{background:#c8553d}.mix .c2{background:#4f7d3a}.mix .c3{background:#3c7a9e}
   .pips{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 10px}.pips i{width:12px;height:12px;border-radius:50%;border:2px solid #b9d3ae;background:#fff}.pips i.u{background:#5b8a4f;border-color:#5b8a4f}
   .pill.medium{background:#fbf0d4;border-color:#ecd08a}
   .pill.high{background:#f6ddd6;border-color:#e2a593}
@@ -279,13 +281,15 @@ function render() {
   <section class="panel" id="invest">
     <div class="card">
       <h2 style="margin:0 0 4px">Invest in local businesses</h2>
-      <p class="muted" style="margin:0">Move your ${C} into a local investment. Every Monday each one goes up or down. You decide how much to put in and when to take it out.</p>
+      <p class="muted" style="margin:0">Move your ${C} into a local investment. Every Monday each one changes in value. You decide how much to put in and when to take it out.</p>
     </div>
     ${on ? '' : `<div class="card tease"><span>Sign in to see your balances and invest.</span>${needSignIn('invest')}</div>`}
     <div class="grid">${V.accounts.map(i => `
       <div class="card invest">
         <div class="row between"><strong>${esc(i.name)}</strong><span class="pill ${esc(String(i.risk).toLowerCase())}">${esc(i.risk)} risk</span></div>
         <p class="small muted" style="margin:6px 0">${esc(i.description)}</p>
+        ${i.mix && i.mix.length ? `<div class="mix" aria-label="What's inside"><div class="bar">${i.mix.map((m, k) => `<span style="width:${Number(m.pct)}%" class="c${k % 4}"></span>`).join('')}</div>
+          <div class="small">${i.mix.map((m, k) => `<span class="key"><i class="c${k % 4}"></i>${esc(m.name)} ${fmt(m.pct)}%</span>`).join('')}</div></div>` : ''}
         ${spark(i.history)}
         <div class="small">Last week: ${i.last == null ? '<span class="muted">no change yet</span>' : `<span class="${i.last >= 0 ? 'up' : 'down'}">${pct(i.last)}</span>`}
           · <span class="muted">${i.minWeekly === i.maxWeekly ? 'steady ' + pct(i.minWeekly) + ' a week' : 'usually ' + pct(i.minWeekly) + ' to ' + pct(i.maxWeekly)}</span></div>
@@ -303,6 +307,8 @@ function render() {
       <dl>
         <dt>Principal</dt><dd>The money you put in to start.</dd>
         <dt>Return</dt><dd>How much your investment went up or down, shown as a percent.</dd>
+        <dt>GIC</dt><dd>A Guaranteed Investment Certificate. A bank or credit union pays you a set amount of interest, so it can't go down.</dd>
+        <dt>ETF</dt><dd>An Exchange-Traded Fund: one investment that holds a mix of others. Spreading your money out is called diversifying.</dd>
         <dt>Risk</dt><dd>The chance you lose money. Higher risk can mean bigger wins and bigger losses.</dd>
         <dt>Compound growth</dt><dd>Earning on your earnings. Each week's change is based on your new balance.</dd>
       </dl>
