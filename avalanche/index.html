@@ -38,6 +38,7 @@
   .between{justify-content:space-between}
   .pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:.82rem;font-weight:700;background:var(--paper);border:1px solid var(--line)}
   .pill.low{background:#e4efe0;border-color:#b9d3ae}
+  .lxcard{border:2px solid #c8553d;margin-bottom:14px}
   .mix{margin:8px 0}.mix .bar{display:flex;height:10px;border-radius:999px;overflow:hidden;margin-bottom:6px}.mix .key{display:inline-flex;align-items:center;gap:5px;margin:0 10px 2px 0}.mix .key i{width:10px;height:10px;border-radius:2px;display:inline-block}
   .mix .c0{background:#e9b949}.mix .c1{background:#c8553d}.mix .c2{background:#4f7d3a}.mix .c3{background:#3c7a9e}
   .pips{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 10px}.pips i{width:12px;height:12px;border-radius:50%;border:2px solid #b9d3ae;background:#fff}.pips i.u{background:#5b8a4f;border-color:#5b8a4f}
@@ -172,6 +173,8 @@ const API_URL = "https://script.google.com/macros/s/AKfycbxDcPBwBXI4-6xRHIJWYJLN
 const IDLE_MINUTES = 10;   // signs out after this long with no taps (for shared devices)
 
 let PUB = null, D = null, token = null, nicks = null, picked = null, pin = '';
+const LESSON_ID = new URLSearchParams(location.search).get('lesson');   // came from a lesson's "I did it" button
+let LX = null;
 try { token = sessionStorage.getItem('avToken'); } catch (e) {}
 $('#logo').innerHTML = LOGO;
 
@@ -202,10 +205,38 @@ async function start() {
   try {
     if (token) { try { D = await api('view'); } catch (e) { D = null; } }
     if (!D) PUB = await api('public');
+    if (LESSON_ID) await loadLesson();
     render();
   } catch (e) {
     $('#app').innerHTML = '<div class="card"><h2 style="margin-top:0">Avalanche HQ is resting</h2><p class="muted">' + esc(e.message) + '</p><button class="btn" onclick="location.reload()">Try again</button></div>';
   }
+}
+
+async function loadLesson() {
+  try {
+    LX = await api('lesson', { id: LESSON_ID });
+    const list = await fetch('../assets/lesson-expeditions.json').then(r => r.json()).catch(() => []);
+    const more = list.find(e => e.id === LESSON_ID);
+    if (more) Object.assign(LX, { text: more.text, lessonTitle: more.lessonTitle, unitTitle: more.unitTitle });
+  } catch (e) { LX = { error: e.message }; }
+  if (location.hash !== '#expeditions') history.replaceState(null, '', location.pathname + location.search + '#expeditions');
+}
+function lessonLink(id) { const c = id.split('-')[0]; return '../' + c + '/#' + id.slice(c.length + 1); }
+function lessonCard(on, needSignIn) {
+  if (!LX) return '';
+  if (LX.error) return `<div class="card lxcard"><strong>Lesson Expedition</strong><p class="small muted" style="margin:6px 0 0">${esc(LX.error)}</p></div>`;
+  const mine = on && (D.lessons || []).find(l => l.id === LX.id);
+  const left = mine ? mine.left : LX.max;
+  return `<div class="card lxcard">
+    <div class="small muted">${esc(LX.course)} · Unit ${esc(LX.unit)}, Lesson ${esc(LX.lesson)}${LX.lessonTitle ? ': ' + esc(LX.lessonTitle) : ''}</div>
+    <div class="row between" style="margin-top:4px"><strong style="font-size:1.15rem">🧭 ${esc(LX.title)}</strong><span class="pill">+${fmt(LX.reward)} ${D ? D.currency : PUB.currency}</span></div>
+    ${LX.text ? `<p class="small" style="margin:6px 0 10px">${esc(LX.text)}</p>` : ''}
+    ${!on ? needSignIn('claim it')
+      : mine && mine.pending ? '<span class="pill">Waiting for teacher</span>'
+      : left === 0 ? '<span class="pill low">✓ Completed</span>'
+      : `<button class="btn rust" onclick="submitExp('${esc(LX.id)}')">I did it</button>`}
+    <a class="small" style="margin-left:10px" href="${esc(lessonLink(LX.id))}">← Back to the lesson</a>
+  </div>`;
 }
 
 /* ---------- page ---------- */
@@ -320,6 +351,7 @@ function render() {
       <h2 style="margin:0 0 4px">Expeditions</h2>
       <p class="muted" style="margin:0">Take on extra challenges and earn a bonus for yourself or others. When you finish one, tap <strong>I did it</strong> and your teacher will check it.</p>
     </div>
+    ${lessonCard(on, needSignIn)}
     <div class="grid">${V.expeditions.map(x => {
       const max = x.max || (x.max === undefined && !x.repeatable ? 1 : null);   // older script: no max field
       const left = on ? (x.left !== undefined && x.left !== null ? x.left : max ? Math.max(0, max - (x.done || 0)) : null) : max;
@@ -337,6 +369,10 @@ function render() {
           : locked ? '<span class="pill low">✓ Completed</span>'
           : `<button class="btn rust" onclick="submitExp('${esc(x.id)}')">I did it</button>`}
       </div>`; }).join('')}</div>
+    ${on && D.lessons && D.lessons.length ? `<div class="card" style="margin-top:14px"><h3 style="margin:0 0 6px">Your lesson Expeditions</h3><ul class="list">${D.lessons.map(l => `
+      <li><div><a href="${esc(lessonLink(l.id))}"><strong>${esc(l.title)}</strong></a><div class="small muted">${esc(l.course)} · Unit ${esc(l.unit)}, Lesson ${esc(l.lesson)}</div></div>
+      <span class="amt">${l.pending ? 'Waiting' : l.done ? '✓ +' + fmt(l.reward * l.done) : ''}</span></li>`).join('')}</ul>
+      <p class="small muted" style="margin:8px 0 0">Find more at the end of each lesson on Basecamp.</p></div>` : ''}
   </section>`;
   setupTabs(keep);
   if (!on) drawSignIn();
@@ -430,7 +466,7 @@ function submitExp(id) { act('expedition', { expId: id }, 'Sent to your teacher!
 const pct = n => (n > 0 ? '+' : '') + (Math.round(n * 100) / 100) + '%';
 function nameOf(p) {
   if (p.type === 'purchase') { const i = D.items.find(x => x.id === p.refId); return i ? i.name : 'Store item'; }
-  const x = D.expeditions.find(e => e.id === p.refId); return x ? x.title : 'Expedition';
+  const x = D.expeditions.find(e => e.id === p.refId) || (D.lessons || []).find(e => e.id === p.refId); return x ? x.title : 'Expedition';
 }
 function label(t) {
   const map = { earned: 'Earned', spent: 'Spent', refund: 'Refund', invested: 'Invested', withdrew: 'Took out',

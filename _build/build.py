@@ -109,6 +109,30 @@ MC_TPL = """<div class="try" data-try="mc">
         </div>"""
 EXP_TPL = """<div class="expd"><span class="ic">🧭</span><div><strong>Expedition: %s</strong>
           <p>%s</p></div></div>"""
+LX_TPL = """<div class="expd" data-lx="%s"><span class="ic">🧭</span><div><strong>Expedition: %s</strong>
+          <p>%s</p></div></div>"""
+LESSON_EXPS = []   # filled by build(); written to assets/lesson-expeditions.json for Avalanche HQ
+
+def tag_lesson_exps(html, spec):
+    """Give each lesson's Expedition an ID like math8-u3-l1 (course + lesson id) so Avalanche HQ can pay AvCash for it."""
+    out, pos, cur, unit = [], 0, None, None
+    pat = re.compile(r'<section id="unit-(\d+)"|<details class="lesson" id="([^"]+)"[^>]*>\s*<summary>.*?<span class="lnum">(\d+)</span>.*?<strong>(.*?)</strong>|<!--EXP (.*?) \| (.*?)-->', re.S)
+    for m in pat.finditer(html):
+        if m.group(1): unit = int(m.group(1)); continue
+        if m.group(2): cur = (m.group(2), int(m.group(3)), re.sub('<[^>]+>', '', m.group(4))); continue
+        title, text = m.group(5).strip(), m.group(6).strip()
+        if not cur: continue   # not inside a lesson: leave as a plain callout
+        lid = spec['folder'] + '-' + cur[0]
+        LESSON_EXPS.append(dict(id=lid, course=spec['title'], unit=unit, unitTitle=spec['units'][unit - 1] if unit else '',
+                                lesson=cur[1], lessonTitle=html_unescape(cur[2]), title=html_unescape(title), text=html_unescape(re.sub('<[^>]+>', '', text)),
+                                open=unit in spec['open']))
+        out.append(html[pos:m.start()]); out.append(LX_TPL % (lid, title, text)); pos = m.end()
+    out.append(html[pos:])
+    return ''.join(out)
+
+def html_unescape(t):
+    import html as H
+    return H.unescape(t)
 PRACTICE = """<div class="levels">
       <div class="level"><strong>🥾 Trailhead</strong><p class="hint">Warm-up questions. Practice questions are coming soon.</p></div>
       <div class="level"><strong>🌲 On the trail</strong><p class="hint">Everyday problems. Coming soon.</p></div>
@@ -159,7 +183,7 @@ def pull_cheats(html):
 def build(spec):
     units_js = ',\n'.join('    {{ n: {n}, title: {t}, open: {o} }}'.format(n=n, t=json.dumps(t), o='true' if n in spec['open'] else 'false')
                           for n, t in enumerate(spec['units'], 1))
-    units_html, unit_cheats = pull_cheats(expand(''.join(open(os.path.join(B, f)).read() for f in spec['unit_files'])))
+    units_html, unit_cheats = pull_cheats(expand(tag_lesson_exps(''.join(open(os.path.join(B, f)).read() for f in spec['unit_files']), spec)))
     extra_js = ''
     if spec.get('practice'):   # math pages: the interactive Practice section (assets/practice.js)
         units_html = units_html.replace(PRACTICE, '<div class="pr"><noscript>Turn on JavaScript to use the practice tools.</noscript></div>')
@@ -270,3 +294,11 @@ def build_info(name):
 if __name__ == '__main__':
     for k in (sys.argv[1:] or list(PAGES) + list(INFO_PAGES)):
         build_info(k) if k in INFO_PAGES else build(PAGES[k])
+    # lesson Expeditions list for Avalanche HQ (merged, so building one course keeps the others)
+    jp = os.path.join(SITE, 'assets', 'lesson-expeditions.json')
+    built = {e['course'] for e in LESSON_EXPS}
+    old = [e for e in (json.load(open(jp)) if os.path.exists(jp) else []) if e['course'] not in built]
+    order = {spec['title']: i for i, spec in enumerate(PAGES.values())}
+    allx = sorted(old + LESSON_EXPS, key=lambda e: (order.get(e['course'], 99), e['unit'] or 0, e['lesson']))
+    json.dump(allx, open(jp, 'w'), ensure_ascii=False, indent=0)
+    print('lesson expeditions', len(allx))

@@ -61,7 +61,7 @@
     unitsEl.addEventListener('click', e => { const a = e.target.closest('.unit'); if (a) showUnit(Number(a.dataset.n)); });
     const back = $('#backToCurrent');
     if (back) { back.href = '#unit-' + PAGE.current; back.textContent = 'Back to Unit ' + PAGE.current; back.addEventListener('click', () => showUnit(PAGE.current)); }
-    const fromHash = (location.hash.match(/^#unit-(\d+)/) || [])[1];
+    const fromHash = (location.hash.match(/^#u(?:nit-)?(\d+)(?:-l\d+)?$/) || [])[1];   // #unit-3 or a lesson like #u3-l2
     showUnit(fromHash ? Number(fromHash) : PAGE.current);
     const cur = unitsEl.querySelector('[aria-current="true"]');
     if (cur) unitsEl.scrollLeft = cur.offsetLeft - unitsEl.clientWidth / 2 + cur.clientWidth / 2;
@@ -703,4 +703,29 @@
   }
   addSpeak();
   Object.assign(window.BC, { speak, textOf, spkBtn, addSpeak, store });
+})();
+
+/* ---------- AvCash for lesson Expeditions (amounts come from the Lessons tab of the Avalanche HQ sheet) ---------- */
+(function () {
+  const AV_API = 'https://script.google.com/macros/s/AKfycbxDcPBwBXI4-6xRHIJWYJLNxRyDhZLDHHgWo8BN2h6J9cMj9iEkdXGa3UuxRJxcYUd2fw/exec';
+  const boxes = Array.from(document.querySelectorAll('.expd[data-lx]'));
+  if (!boxes.length || !window.fetch) return;
+  const course = boxes[0].dataset.lx.split('-')[0];
+  let cached = null;
+  try { cached = JSON.parse(sessionStorage.getItem('bc-lx-' + course) || 'null'); } catch (e) {}
+  const paint = rewards => boxes.forEach(b => {
+    const r = rewards[b.dataset.lx]; const old = b.querySelector('.lx'); if (old) old.remove();
+    if (!r) return;
+    const d = document.createElement('div'); d.className = 'lx';
+    d.innerHTML = '<span class="lxpill">+' + r.reward + ' AvCash</span>' + (r.max > 1 ? '<span class="lxmax">up to ' + r.max + ' times</span>' : '') +
+      '<a class="lxbtn" href="../avalanche/?lesson=' + encodeURIComponent(b.dataset.lx) + '#expeditions">I did it →</a>';
+    b.querySelector('div').appendChild(d);
+  });
+  if (cached && Date.now() - cached.t < 120000) { paint(cached.r); return; }
+  fetch(AV_API, { method: 'POST', body: JSON.stringify({ action: 'lessonRewards', course }) })
+    .then(r => r.json()).then(j => {
+      if (!j.ok) return;
+      paint(j.data);
+      try { sessionStorage.setItem('bc-lx-' + course, JSON.stringify({ t: Date.now(), r: j.data })); } catch (e) {}
+    }).catch(() => {});   // offline or not set up yet: the callout just shows without AvCash
 })();
