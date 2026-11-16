@@ -300,5 +300,8 @@ if __name__ == '__main__':
     old = [e for e in (json.load(open(jp)) if os.path.exists(jp) else []) if e['course'] not in built]
     order = {spec['title']: i for i, spec in enumerate(PAGES.values())}
     allx = sorted(old + LESSON_EXPS, key=lambda e: (order.get(e['course'], 99), e['unit'] or 0, e['lesson']))
+    proofs = dict(l.rstrip('\n').split(' | ', 1) for l in open(os.path.join(B, 'lesson-proofs.txt')) if ' | ' in l and not l.startswith('#'))
+    for e in allx:   # starting Proof of Work; the teacher's own copy lives in the Lessons tab (column I)
+        e['proof'] = proofs.get(e['id'], 'Show your teacher what you made or found, and explain what you learned.')
     json.dump(allx, open(jp, 'w'), ensure_ascii=False, indent=0)
     print('lesson expeditions', len(allx))

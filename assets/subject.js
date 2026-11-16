@@ -712,12 +712,13 @@
   if (!boxes.length || !window.fetch) return;
   const course = boxes[0].dataset.lx.split('-')[0];
   let cached = null;
-  try { cached = JSON.parse(sessionStorage.getItem('bc-lx-' + course) || 'null'); } catch (e) {}
+  try { cached = JSON.parse(sessionStorage.getItem('bc-lx2-' + course) || 'null'); } catch (e) {}
   const paint = rewards => boxes.forEach(b => {
     const r = rewards[b.dataset.lx]; const old = b.querySelector('.lx'); if (old) old.remove();
     if (!r) return;
     const d = document.createElement('div'); d.className = 'lx';
     d.innerHTML = '<span class="lxpill">+' + r.reward + ' AvCash</span>' + (r.max > 1 ? '<span class="lxmax">up to ' + r.max + ' times</span>' : '') +
+      (r.proof ? '<p class="lxproof"><b>Proof of work:</b> ' + r.proof.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]) + '</p>' : '') +
       '<a class="lxbtn" href="../avalanche/?lesson=' + encodeURIComponent(b.dataset.lx) + '#expeditions">I did it →</a>';
     b.querySelector('div').appendChild(d);
   });
@@ -726,6 +727,6 @@
     .then(r => r.json()).then(j => {
       if (!j.ok) return;
       paint(j.data);
-      try { sessionStorage.setItem('bc-lx-' + course, JSON.stringify({ t: Date.now(), r: j.data })); } catch (e) {}
+      try { sessionStorage.setItem('bc-lx2-' + course, JSON.stringify({ t: Date.now(), r: j.data })); } catch (e) {}
     }).catch(() => {});   // offline or not set up yet: the callout just shows without AvCash
 })();

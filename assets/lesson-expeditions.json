@@ -8,7 +8,8 @@
 "lessonTitle": "Place value to a million",
 "title": "Big Number Hunt",
 "text": "Find 5 numbers over 10,000 in real life (a car's odometer, a house price, a town's population). Write each one and the value of its biggest digit.",
-"open": true
+"open": true,
+"proof": "Show your list of 5 numbers over 10,000. For each one, write where you found it and circle its biggest digit with its value written beside it (for example, 4 = 40,000)."
 },
 {
 "id": "math8-u1-l2",
@@ -19,7 +20,8 @@
 "lessonTitle": "Reading and writing big numbers",
 "title": "Cheque Writer",
 "text": "With an adult, look at a sample cheque or a form that asks for an amount in words. Write 3 amounts over $1,000 in words with no spelling mistakes.",
-"open": true
+"open": true,
+"proof": "Show 3 amounts over $1,000 written in numbers and in words, with no spelling mistakes."
 },
 {
 "id": "math8-u1-l3",
@@ -30,7 +32,8 @@
 "lessonTitle": "Comparing and ordering",
 "title": "Price Ranking",
 "text": "Find 5 used vehicles or houses for sale online with an adult. Order them from least to greatest price. Which would you choose, and why?",
-"open": true
+"open": true,
+"proof": "Show your 5 prices in order from least to greatest, what each one is, and 1–2 sentences on which you'd choose and why."
 },
 {
 "id": "math8-u1-l4",
@@ -41,7 +44,8 @@
 "lessonTitle": "Rounding and estimating",
 "title": "Grocery Estimator",
 "text": "Go shopping with an adult. Round each item to the nearest dollar and keep a running estimate in your head. How close were you to the real total?",
-"open": true
+"open": true,
+"proof": "Show your list of rounded prices, your estimate, the real total (receipt or adult's note) and how far off you were."
 },
 {
 "id": "math8-u1-l5",
@@ -52,7 +56,8 @@
 "lessonTitle": "Does it make sense?",
 "title": "Calculator Coach",
 "text": "Make 5 calculator problems with one mistake hidden in each. Trade with a classmate and see who finds all the mistakes by estimating.",
-"open": true
+"open": true,
+"proof": "Hand in your 5 problems with the hidden mistakes marked on an answer key, plus your classmate's name and how many they found."
 },
 {
 "id": "math8-u2-l1",
@@ -63,7 +68,8 @@
 "lessonTitle": "Positive and negative numbers",
 "title": "Integer Spotter",
 "text": "Find 5 places integers show up in your life this week (weather app, a bank balance, sports stats, an elevator with basement floors). Write each one as an integer.",
-"open": true
+"open": true,
+"proof": "Show your list of 5 real integers, where you saw each one, and each one written as a positive or negative integer."
 },
 {
 "id": "math8-u2-l2",
@@ -74,7 +80,8 @@
 "lessonTitle": "The number line",
 "title": "Weather Week",
 "text": "Record the low temperature in your town for 7 days. Put the temperatures in order on a number line and circle the coldest day.",
-"open": true
+"open": true,
+"proof": "Show your 7 dated temperatures on a number line in order, with the coldest day circled."
 },
 {
 "id": "math8-u2-l3",
@@ -85,7 +92,8 @@
 "lessonTitle": "Temperature changes",
 "title": "Morning to Afternoon",
 "text": "For 5 days, record the temperature before school and after school. Calculate how much it rose or fell each day.",
-"open": true
+"open": true,
+"proof": "Show a 5-day table with the before- and after-school temperatures and the rise or fall for each day, with + or −."
 },
 {
 "id": "math8-u2-l4",
@@ -96,7 +104,8 @@
 "lessonTitle": "Temperature differences",
 "title": "Chinook Watch",
 "text": "Find a news story or weather record about a big Alberta chinook. How many degrees did the temperature change, and how fast?",
-"open": true
+"open": true,
+"proof": "Show the date and place of the chinook, the starting and ending temperatures, your calculated change in degrees and how long it took."
 },
 {
 "id": "math8-u2-l5",
@@ -107,7 +116,8 @@
 "lessonTitle": "Celsius and Fahrenheit",
 "title": "Oven Translator",
 "text": "Find 2 recipes at home or online that use °F. Use the chart to give the oven temperature in °C, then help an adult bake one of them.",
-"open": true
+"open": true,
+"proof": "Show the 2 recipes' °F temperatures and your °C conversions, plus an adult's note or a photo showing you baked one."
 },
 {
 "id": "math8-u3-l1",
@@ -118,7 +128,8 @@
 "lessonTitle": "Tenths and hundredths",
 "title": "Coin Count",
 "text": "Empty a jar or wallet of coins with an adult. Count the total and write it as a decimal. Bonus: show it with the fewest coins possible.",
-"open": true
+"open": true,
+"proof": "Show the total written as a decimal (for example, $7.35) with a count of each type of coin. Bonus: the fewest-coins version."
 },
 {
 "id": "math8-u3-l2",
@@ -129,7 +140,8 @@
 "lessonTitle": "Comparing decimals",
 "title": "Gas Price Check",
 "text": "Record the price per litre at 3 gas stations (or on an app). Order them from cheapest to most expensive.",
-"open": true
+"open": true,
+"proof": "Show the 3 station names, their prices per litre with the date, and the list in order from cheapest to most expensive."
 },
 {
 "id": "math8-u3-l3",
@@ -140,7 +152,8 @@
 "lessonTitle": "Adding and subtracting money",
 "title": "Receipt Audit",
 "text": "Ask an adult for a grocery receipt. Add up 5 items yourself and check them against the receipt.",
-"open": true
+"open": true,
+"proof": "Show the receipt (cover anything private) with your 5 items, your own addition and whether it matched."
 },
 {
 "id": "math8-u3-l4",
@@ -151,7 +164,8 @@
 "lessonTitle": "Making change",
 "title": "Store Cashier",
 "text": "Work a shift as the class store cashier (or practise at home with play money). Make change correctly for 5 customers in a row.",
-"open": true
+"open": true,
+"proof": "Your teacher (or an adult at home, with a signed note) watched you make correct change for 5 customers in a row."
 },
 {
 "id": "math8-u3-l5",
@@ -162,7 +176,8 @@
 "lessonTitle": "Multiplying and dividing money",
 "title": "Party Planner",
 "text": "Plan snacks for a class celebration with a $40 budget. List the items, quantities and prices, and show the total and cost per student.",
-"open": true
+"open": true,
+"proof": "Hand in your plan: items, quantities, prices, the total (at or under $40) and the cost per student."
 },
 {
 "id": "math8-u4-l1",
@@ -173,7 +188,8 @@
 "lessonTitle": "Multiples",
 "title": "Pack Planner",
 "text": "Find 2 things at the grocery store that come in different pack sizes (hot dogs and buns, cups and plates). Figure out the smallest number of packs for no leftovers.",
-"open": true
+"open": true,
+"proof": "Show both item pairs, their pack sizes, and your work finding the smallest number of packs with no leftovers."
 },
 {
 "id": "math8-u4-l2",
@@ -184,7 +200,8 @@
 "lessonTitle": "Factors, primes and composites",
 "title": "Prime Hunter",
 "text": "Make a hundreds chart and cross out multiples of 2, 3, 5 and 7 (but not those numbers themselves). Circle what's left: those are the primes up to 100.",
-"open": true
+"open": true,
+"proof": "Hand in your hundreds chart with the multiples crossed out and the 25 primes circled."
 },
 {
 "id": "math8-u4-l3",
@@ -195,7 +212,8 @@
 "lessonTitle": "Fractions and mixed numbers",
 "title": "Recipe Remix",
 "text": "Find a recipe with at least 3 fractions in it. Rewrite each amount as an equivalent fraction, then cut the recipe in half.",
-"open": true
+"open": true,
+"proof": "Show the original recipe amounts, an equivalent fraction for each, and the halved recipe."
 },
 {
 "id": "math8-u4-l4",
@@ -206,7 +224,8 @@
 "lessonTitle": "Comparing fractions",
 "title": "Wrench Sorter",
 "text": "Find a set of wrenches or drill bits marked in inches (3/8, 1/2, 5/16…). Put them in order from smallest to largest using fractions. Ask an adult to check.",
-"open": true
+"open": true,
+"proof": "Show your list of sizes in order from smallest to largest, plus an adult's initials saying they checked it."
 },
 {
 "id": "math8-u4-l5",
@@ -217,7 +236,80 @@
 "lessonTitle": "Adding and subtracting fractions",
 "title": "Kitchen Fractions",
 "text": "Help cook or bake something at home. Add up all the cups (or teaspoons) of ingredients using fractions. Show your work.",
-"open": true
+"open": true,
+"proof": "Show the recipe you made, the fractions you added with your work, and a photo or an adult's note that you cooked it."
+},
+{
+"id": "math8-u5-l1",
+"course": "Grade 8 Math",
+"unit": 5,
+"unitTitle": "Percents & Discounts",
+"lesson": 1,
+"lessonTitle": "What is a percent?",
+"title": "Percent Spotter",
+"text": "Find 5 percents in the real world (a food label, a sale sign, a weather app, a battery). Write down where you found each one and what it means. Bring your list to class.",
+"open": true,
+"proof": "Bring your list of 5 percents: where you found each one and what it means in your own words."
+},
+{
+"id": "math8-u5-l2",
+"course": "Grade 8 Math",
+"unit": 5,
+"unitTitle": "Percents & Discounts",
+"lesson": 2,
+"lessonTitle": "Percents and decimals",
+"title": "Teach It Back",
+"text": "Teach someone at home how to change 3 percents into decimals. Have them sign your sheet with one thing they learned from you.",
+"open": true,
+"proof": "Show your sheet with the 3 percents changed to decimals and the signature of the person you taught, with one thing they learned."
+},
+{
+"id": "math8-u5-l3",
+"course": "Grade 8 Math",
+"unit": 5,
+"unitTitle": "Percents & Discounts",
+"lesson": 3,
+"lessonTitle": "Benchmark fractions",
+"title": "Match Maker",
+"text": "Make a set of 15 matching cards (fraction, decimal, percent) and play a matching game with a classmate who needs practice.",
+"open": true,
+"proof": "Show your 15 matching cards (5 sets) and tell your teacher who you played with."
+},
+{
+"id": "math8-u5-l4",
+"course": "Grade 8 Math",
+"unit": 5,
+"unitTitle": "Percents & Discounts",
+"lesson": 4,
+"lessonTitle": "Mental math: 10%, 25% and 50%",
+"title": "Mental Math Coach",
+"text": "Coach a classmate through finding 10%, 25% and 50% of five prices, with no calculator. When they can do it on their own, you both check in with the teacher.",
+"open": true,
+"proof": "Bring your classmate to your teacher. They find 10%, 25% and 50% of a price without a calculator or help from you."
+},
+{
+"id": "math8-u5-l5",
+"course": "Grade 8 Math",
+"unit": 5,
+"unitTitle": "Percents & Discounts",
+"lesson": 5,
+"lessonTitle": "Discounts and sale prices",
+"title": "Flyer Hunter",
+"text": "Find 3 real sales in a store flyer or website. For each one, show the regular price, the percent off, the discount and the sale price. Which one is the best deal?",
+"open": true,
+"proof": "Show 3 sales with the regular price, percent off, discount and sale price worked out, and which is the best deal."
+},
+{
+"id": "math8-u5-l6",
+"course": "Grade 8 Math",
+"unit": 5,
+"unitTitle": "Percents & Discounts",
+"lesson": 6,
+"lessonTitle": "Does my answer make sense?",
+"title": "Receipt Check",
+"text": "With an adult, look at a real receipt. Estimate the GST (5%) on the subtotal, then compare it to what the receipt says. Was the store's number reasonable?",
+"open": true,
+"proof": "Show the receipt (cover anything private), your 5% estimate, the store's GST and whether it was reasonable."
 },
 {
 "id": "math8-u6-l1",
@@ -228,7 +320,8 @@
 "lessonTitle": "Units of time",
 "title": "Time Audit",
 "text": "Track how you spend one full day in hours and minutes (sleep, school, screens, chores). Make a chart. Does it add up to 24 hours?",
-"open": false
+"open": false,
+"proof": "Show your chart of one full day in hours and minutes, with the total, and whether it added to 24 hours."
 },
 {
 "id": "math8-u6-l2",
@@ -239,7 +332,8 @@
 "lessonTitle": "12-hour and 24-hour clocks",
 "title": "Schedule Switch",
 "text": "Rewrite your weekly class schedule (or a bus schedule) in 24-hour time.",
-"open": false
+"open": false,
+"proof": "Hand in your schedule rewritten in 24-hour time, with every time converted correctly."
 },
 {
 "id": "math8-u6-l3",
@@ -250,7 +344,8 @@
 "lessonTitle": "Converting hours, minutes and seconds",
 "title": "Workout Timer",
 "text": "Time 5 activities in seconds (a lap, a set of push-ups, tying shoes). Convert each one to minutes as a decimal.",
-"open": false
+"open": false,
+"proof": "Show a table of 5 activities with the time in seconds and in minutes as a decimal."
 },
 {
 "id": "math8-u6-l4",
@@ -261,7 +356,8 @@
 "lessonTitle": "Elapsed time and timecards",
 "title": "Shift Tracker",
 "text": "Ask an adult who works shifts to show you a schedule or timecard (no pay amounts needed). Calculate their total hours for one week.",
-"open": false
+"open": false,
+"proof": "Show the daily hours from the schedule or timecard (no pay amounts) and your total for the week."
 },
 {
 "id": "math8-u6-l5",
@@ -272,7 +368,8 @@
 "lessonTitle": "Earning wages",
 "title": "Summer Job Budget",
 "text": "Imagine a summer job: pick a wage and hours per week for 8 weeks. Calculate your total gross pay and plan what you'd do with it.",
-"open": false
+"open": false,
+"proof": "Show your wage, hours per week, total gross pay for 8 weeks with your work, and your plan for the money."
 },
 {
 "id": "math8-u7-l1",
@@ -283,7 +380,8 @@
 "lessonTitle": "Patterns all around",
 "title": "Pattern Photographer",
 "text": "Take or draw 5 pictures of patterns you find at home, outside or in town. Describe what repeats or grows in each one.",
-"open": false
+"open": false,
+"proof": "Show your 5 photos or drawings, each with a sentence describing what repeats or grows."
 },
 {
 "id": "math8-u7-l2",
@@ -294,7 +392,8 @@
 "lessonTitle": "Pattern rules and predictions",
 "title": "Saving Goal",
 "text": "Pick something you want to buy. Make a table showing how much you'd save each week and predict the week you'll reach your goal.",
-"open": false
+"open": false,
+"proof": "Show the item and price, your weekly savings table, and the week you'll reach your goal."
 },
 {
 "id": "math8-u7-l3",
@@ -305,7 +404,8 @@
 "lessonTitle": "Variables",
 "title": "Variable Menu",
 "text": "Make a price list for a pretend food truck. Write an expression for the cost of buying any number of each item, like 5b for b burgers at $5.",
-"open": false
+"open": false,
+"proof": "Show your food truck price list with a correct expression for each item (like 5b)."
 },
 {
 "id": "math8-u7-l4",
@@ -316,7 +416,8 @@
 "lessonTitle": "Keeping it balanced",
 "title": "Balance Builder",
 "text": "Build a simple balance with a ruler and cups, or draw one. Show 3 equations with real objects and explain how you kept each one balanced.",
-"open": false
+"open": false,
+"proof": "Show your balance (or a drawing) with 3 equations and how you kept each balanced."
 },
 {
 "id": "math8-u7-l5",
@@ -327,7 +428,8 @@
 "lessonTitle": "Solving equations",
 "title": "Mystery Number Cards",
 "text": "Make 5 \"mystery number\" cards with real-life equations (like 12n = 60 for movie tickets). Trade with a classmate and solve each other's.",
-"open": false
+"open": false,
+"proof": "Show your 5 cards with answers, and the name of the classmate whose cards you solved."
 },
 {
 "id": "math8-u8-l1",
@@ -338,7 +440,8 @@
 "lessonTitle": "Measuring length",
 "title": "Measure Up",
 "text": "Measure 5 things at home in both inches and centimetres (a door, a table, your height). Use the chart to check your measurements match.",
-"open": false
+"open": false,
+"proof": "Show a table of 5 things measured in both inches and centimetres, checked against the chart."
 },
 {
 "id": "math8-u8-l2",
@@ -349,7 +452,8 @@
 "lessonTitle": "Perimeter",
 "title": "Baseboard Estimate",
 "text": "Measure the perimeter of your bedroom (subtract the door width). How many metres of baseboard would you need?",
-"open": false
+"open": false,
+"proof": "Show a sketch of your room with the measurements, the door subtracted and the metres of baseboard."
 },
 {
 "id": "math8-u8-l3",
@@ -360,7 +464,8 @@
 "lessonTitle": "Area",
 "title": "Paint Planner",
 "text": "Measure one wall at home. Find its area, subtract any window or door, and find out how many cans of paint you'd need (check the coverage on a paint can or website).",
-"open": false
+"open": false,
+"proof": "Show the wall's measurements, your area work with the window or door subtracted, the paint coverage and the number of cans."
 },
 {
 "id": "math8-u8-l4",
@@ -371,7 +476,8 @@
 "lessonTitle": "Circles",
 "title": "String Test",
 "text": "Wrap a string around 3 round things (a can, a plate, a bucket). Measure the string and the diameter. Divide: do you get close to 3.14 every time?",
-"open": false
+"open": false,
+"proof": "Show a table for 3 round objects: string length, diameter and circumference ÷ diameter for each."
 },
 {
 "id": "math8-u8-l5",
@@ -382,7 +488,8 @@
 "lessonTitle": "Grids, symmetry and floor plans",
 "title": "Dream Room",
 "text": "Draw a floor plan of your dream bedroom on grid paper (1 square = 0.5 m). Label furniture with ordered pairs, and find the floor area and perimeter.",
-"open": false
+"open": false,
+"proof": "Hand in your floor plan on grid paper with the scale, furniture labelled with ordered pairs, and the area and perimeter."
 },
 {
 "id": "math8-u9-l1",
@@ -393,7 +500,8 @@
 "lessonTitle": "Mass",
 "title": "Scale Detective",
 "text": "Use a kitchen or bathroom scale to weigh 5 things at home. Record each in grams or kilograms AND pounds.",
-"open": false
+"open": false,
+"proof": "Show a table of 5 items with each mass in grams or kilograms and in pounds."
 },
 {
 "id": "math8-u9-l2",
@@ -404,7 +512,8 @@
 "lessonTitle": "Capacity",
 "title": "Pour Test",
 "text": "Use a measuring cup to find how much your favourite mug, a water bottle and a bowl hold. Record each in mL and L.",
-"open": false
+"open": false,
+"proof": "Show what each container holds in mL and in L."
 },
 {
 "id": "math8-u9-l3",
@@ -415,7 +524,8 @@
 "lessonTitle": "Volume: cm³ and mL",
 "title": "Box Check",
 "text": "Measure a small box or container in cm, calculate its volume, then fill it with water using a measuring cup. How close were you?",
-"open": false
+"open": false,
+"proof": "Show the box's measurements, your volume calculation in cm³, the amount of water it actually held and how close you were."
 },
 {
 "id": "math8-u9-l4",
@@ -426,7 +536,8 @@
 "lessonTitle": "3-D objects",
 "title": "Shape Scavenger Hunt",
 "text": "Find and photograph a real example of each 3-D object at home or school. Label the faces, edges and vertices on one of them.",
-"open": false
+"open": false,
+"proof": "Show a photo of each 3-D object, with the faces, edges and vertices labelled on one of them."
 },
 {
 "id": "math8-u9-l5",
@@ -437,7 +548,8 @@
 "lessonTitle": "Nets",
 "title": "Package Designer",
 "text": "Design and build a gift box from a net you draw yourself. Measure it and find its volume in cm³.",
-"open": false
+"open": false,
+"proof": "Bring in your box and the net you drew, with its measurements and volume in cm³."
 },
 {
 "id": "math8-u10-l1",
@@ -448,7 +560,8 @@
 "lessonTitle": "Where data comes from",
 "title": "Class Survey",
 "text": "Survey the class about one question (favourite store item, how they get to school). Record the results in a tally chart.",
-"open": false
+"open": false,
+"proof": "Show your survey question and a tally chart with the class's answers."
 },
 {
 "id": "math8-u10-l2",
@@ -459,7 +572,8 @@
 "lessonTitle": "Reading graphs",
 "title": "Graph in the News",
 "text": "Find a graph in a news story, sports website or flyer. Write the title, what each axis shows, and one thing the graph tells you.",
-"open": false
+"open": false,
+"proof": "Show the graph (or a link or printout) with its title, what each axis shows, and one thing it tells you."
 },
 {
 "id": "math8-u10-l3",
@@ -470,7 +584,8 @@
 "lessonTitle": "Organizing and displaying data",
 "title": "Spreadsheet Chart",
 "text": "Put your class survey results into a spreadsheet (Google Sheets or Excel) and make a bar graph with a title and labels.",
-"open": false
+"open": false,
+"proof": "Show your spreadsheet with the survey data and a bar graph with a title and labelled axes."
 },
 {
 "id": "math8-u10-l4",
@@ -481,7 +596,8 @@
 "lessonTitle": "Predictions and conclusions",
 "title": "Store Advisor",
 "text": "Look at a month of Avalanche HQ sales with your teacher. Write a short report with one conclusion and one prediction, and suggest a change to the store.",
-"open": false
+"open": false,
+"proof": "Hand in your short report with one conclusion, one prediction and one suggested change to the store."
 },
 {
 "id": "math8-u10-l5",
@@ -492,7 +608,8 @@
 "lessonTitle": "Probability experiments",
 "title": "Probability Lab",
 "text": "Do a real experiment at home: flip a coin 50 times or roll a die 60 times. Record the results in a table and graph, and compare them to what you expected.",
-"open": false
+"open": false,
+"proof": "Show your results table, a graph, and 1–2 sentences comparing them with what you expected."
 },
 {
 "id": "math9-u1-l1",
@@ -503,7 +620,8 @@
 "lessonTitle": "Numbers in the millions",
 "title": "Million Hunt",
 "text": "Find 3 real numbers in the millions in the news, on a sports contract or on a real estate site. Write each one in numerals and in words.",
-"open": true
+"open": true,
+"proof": "Show 3 numbers in the millions, where you found each, and each one written in numerals and in words."
 },
 {
 "id": "math9-u1-l2",
@@ -514,7 +632,8 @@
 "lessonTitle": "Powers of 10",
 "title": "Zero Count",
 "text": "Teach a Grade 8 classmate the \"count the zeros\" trick for powers of 10. Have them write 3 numbers in expanded form and check their work.",
-"open": true
+"open": true,
+"proof": "Bring your Grade 8 classmate's 3 expanded-form numbers that you checked together, with their name."
 },
 {
 "id": "math9-u1-l3",
@@ -525,7 +644,8 @@
 "lessonTitle": "Scientific notation",
 "title": "Space Numbers",
 "text": "Look up 3 distances in space (Earth to Moon, Earth to Mars, Earth to Sun). Write each in standard form and in scientific notation.",
-"open": true
+"open": true,
+"proof": "Show the 3 distances in standard form and in scientific notation, with where you found them."
 },
 {
 "id": "math9-u1-l4",
@@ -536,7 +656,8 @@
 "lessonTitle": "Rounding",
 "title": "Receipt Rounder",
 "text": "Collect a grocery receipt or flyer. Round 5 prices to the nearest dollar and add them up. How close is your estimate to the real total?",
-"open": true
+"open": true,
+"proof": "Show the receipt or flyer, your 5 rounded prices, your estimated total and how close it was."
 },
 {
 "id": "math9-u1-l5",
@@ -547,7 +668,8 @@
 "lessonTitle": "Estimating",
 "title": "Estimate First",
 "text": "For one week, estimate the total before you pay for anything (snacks, groceries with family, a game). Record your estimate and the real total.",
-"open": true
+"open": true,
+"proof": "Show your one-week log: what you bought, your estimate and the real total each time."
 },
 {
 "id": "math9-u2-l1",
@@ -558,7 +680,8 @@
 "lessonTitle": "Integers in real life",
 "title": "Money Diary",
 "text": "For one week, record every time money comes in or goes out for you (or pretend with a $100 budget). Write each as a positive or negative integer.",
-"open": true
+"open": true,
+"proof": "Show your one-week money diary with every entry written as a positive or negative integer."
 },
 {
 "id": "math9-u2-l2",
@@ -569,7 +692,8 @@
 "lessonTitle": "Comparing and ordering",
 "title": "Weather Watch",
 "text": "Check the overnight low for 5 Canadian cities on a weather app. Put them in order from coldest to warmest.",
-"open": true
+"open": true,
+"proof": "Show the 5 cities with their overnight lows and the date, in order from coldest to warmest."
 },
 {
 "id": "math9-u2-l3",
@@ -580,7 +704,8 @@
 "lessonTitle": "Deposits and withdrawals",
 "title": "Statement Builder",
 "text": "Make a pretend bank statement for one month with at least 6 deposits and withdrawals. Have a classmate check your running balance.",
-"open": true
+"open": true,
+"proof": "Hand in your one-month statement with 6+ transactions, a correct running balance and the name of the classmate who checked it."
 },
 {
 "id": "math9-u2-l4",
@@ -591,7 +716,8 @@
 "lessonTitle": "Debt and overdrafts",
 "title": "Debt Detective",
 "text": "Ask a family member or look online: what does your bank charge for an overdraft or NSF fee? Write a short tip sheet for a friend on how to avoid it.",
-"open": true
+"open": true,
+"proof": "Hand in your tip sheet with the real fee amount and where you found it, plus how to avoid it."
 },
 {
 "id": "math9-u2-l5",
@@ -602,7 +728,8 @@
 "lessonTitle": "Finding the change",
 "title": "Chinook Tracker",
 "text": "Teach a Grade 8 classmate how to find the change in temperature across zero. Use real high and low temperatures from this week.",
-"open": true
+"open": true,
+"proof": "Bring your Grade 8 classmate. They can work out the change in this week's temperatures across zero."
 },
 {
 "id": "math9-u3-l1",
@@ -613,7 +740,8 @@
 "lessonTitle": "Multiplying decimals",
 "title": "Flyer Math",
 "text": "Use a grocery flyer to pick 4 items sold by weight. Choose an amount for each and calculate what you'd pay. Round to the cent.",
-"open": true
+"open": true,
+"proof": "Show your 4 items, the price per kg or lb, your amounts and the cost of each, rounded to the cent."
 },
 {
 "id": "math9-u3-l2",
@@ -624,7 +752,8 @@
 "lessonTitle": "Dividing decimals",
 "title": "Fair Share",
 "text": "Plan a pizza party for your class: find the real price of the pizzas and drinks, then work out what each person would pay.",
-"open": true
+"open": true,
+"proof": "Show the real prices you found, the total and the cost per person, with your work."
 },
 {
 "id": "math9-u3-l3",
@@ -635,7 +764,8 @@
 "lessonTitle": "Is it reasonable?",
 "title": "Catch the Mistake",
 "text": "Write 5 decimal problems with answers. Make 2 of them wrong on purpose. Trade with a classmate and see if they can catch the mistakes by estimating.",
-"open": true
+"open": true,
+"proof": "Hand in your 5 problems with the 2 mistakes marked on an answer key, and whether your classmate caught them."
 },
 {
 "id": "math9-u3-l4",
@@ -646,7 +776,8 @@
 "lessonTitle": "The mean (average)",
 "title": "Average Me",
 "text": "Track something about yourself for 7 days (hours of sleep, minutes on your phone, steps). Find your mean and decide if it surprised you.",
-"open": true
+"open": true,
+"proof": "Show your 7-day data, your mean with your work, and a sentence on whether it surprised you."
 },
 {
 "id": "math9-u3-l5",
@@ -657,7 +788,8 @@
 "lessonTitle": "Spreadsheets",
 "title": "Spreadsheet Coach",
 "text": "Set up a Google Sheet that tracks a Grade 8 classmate's AvCash for 5 weeks. Show them how =SUM and =AVERAGE work.",
-"open": true
+"open": true,
+"proof": "Show the Google Sheet with 5 weeks of AvCash using =SUM and =AVERAGE, and tell your teacher who you coached."
 },
 {
 "id": "math9-u4-l1",
@@ -668,7 +800,8 @@
 "lessonTitle": "Lowest common multiple",
 "title": "Shift Schedules",
 "text": "Two friends work part-time. One works every 3rd day and one every 4th day. Mark a one-month calendar to show the days they both work. Explain how the LCM helps you predict those days.",
-"open": true
+"open": true,
+"proof": "Hand in the marked calendar and 1–2 sentences on how the LCM predicts the shared days."
 },
 {
 "id": "math9-u4-l2",
@@ -679,7 +812,8 @@
 "lessonTitle": "Greatest common factor",
 "title": "Care Packages",
 "text": "Plan care packages for a food bank or shelter using real amounts of 2 or 3 items. Use the GCF to find the most identical packages you can make.",
-"open": true
+"open": true,
+"proof": "Show your items and amounts, the GCF with your work, and what goes in each package."
 },
 {
 "id": "math9-u4-l3",
@@ -690,7 +824,8 @@
 "lessonTitle": "Prime factorization",
 "title": "Tree Challenge",
 "text": "Make factor trees for 60 two different ways (start with 6 × 10, then 4 × 15). Do you get the same primes? Show a classmate why.",
-"open": true
+"open": true,
+"proof": "Show both factor trees for 60 and their prime factors, and the name of the classmate you explained it to."
 },
 {
 "id": "math9-u4-l4",
@@ -701,7 +836,8 @@
 "lessonTitle": "Mixed numbers",
 "title": "Measure It",
 "text": "Use a tape measure to find the length and width of 3 things at home to the nearest 1/4 inch. Add the length and width of each as mixed numbers.",
-"open": true
+"open": true,
+"proof": "Show the 3 items, their lengths and widths to the nearest ¼ inch, and each sum as a mixed number."
 },
 {
 "id": "math9-u4-l5",
@@ -712,7 +848,80 @@
 "lessonTitle": "Unlike denominators",
 "title": "Recipe Remix",
 "text": "Find a recipe that uses at least 3 different fractions. Add up all the dry ingredients in cups using a common denominator.",
-"open": true
+"open": true,
+"proof": "Show the recipe's fractions, the common denominator and your total of the dry ingredients in cups."
+},
+{
+"id": "math9-u5-l1",
+"course": "Grade 9 Math",
+"unit": 5,
+"unitTitle": "Percents & Consumer Math",
+"lesson": 1,
+"lessonTitle": "Fractions, decimals and percents",
+"title": "Trail Guide",
+"text": "Coach a Grade 8 classmate through the benchmark table (½, ¼, ¾, 1/10). When they can do 5 in a row without help, you both check in with the teacher.",
+"open": true,
+"proof": "Bring your Grade 8 classmate. They do 5 benchmark conversions in a row without help."
+},
+{
+"id": "math9-u5-l2",
+"course": "Grade 9 Math",
+"unit": 5,
+"unitTitle": "Percents & Consumer Math",
+"lesson": 2,
+"lessonTitle": "Percent of an amount",
+"title": "Nutrition Label Math",
+"text": "Pick a food label at home. It lists \"% Daily Value.\" Choose 3 nutrients and figure out how many servings it would take to reach 100% of each.",
+"open": true,
+"proof": "Show the label (or a photo), the 3 nutrients and how many servings it takes to reach 100% of each, with your work."
+},
+{
+"id": "math9-u5-l3",
+"course": "Grade 9 Math",
+"unit": 5,
+"unitTitle": "Percents & Consumer Math",
+"lesson": 3,
+"lessonTitle": "GST and tips",
+"title": "Family Bill",
+"text": "Next time your family orders food or eats out, figure out the GST and a 15% tip before the bill comes. Compare with the real bill.",
+"open": true,
+"proof": "Show your before-the-bill GST and 15% tip estimates and the real bill amounts (cover anything private)."
+},
+{
+"id": "math9-u5-l4",
+"course": "Grade 9 Math",
+"unit": 5,
+"unitTitle": "Percents & Consumer Math",
+"lesson": 4,
+"lessonTitle": "Sale prices and \"extra\" discounts",
+"title": "Store Sale Planner",
+"text": "Plan an Avalanche HQ sale day: pick 4 store items, choose a discount for each, and make a sale sign showing the regular and sale prices in AvCash.",
+"open": true,
+"proof": "Show your sale sign with 4 items, the discount on each, and the regular and sale prices in AvCash."
+},
+{
+"id": "math9-u5-l5",
+"course": "Grade 9 Math",
+"unit": 5,
+"unitTitle": "Percents & Consumer Math",
+"lesson": 5,
+"lessonTitle": "Unit rates and the best buy",
+"title": "Grocery Detective",
+"text": "At a store or on a grocery website, find 3 products that come in two sizes. Calculate the unit price of each. Was the bigger size always the better deal?",
+"open": true,
+"proof": "Show 3 products in two sizes, the unit price of each with your work, and whether bigger was always cheaper."
+},
+{
+"id": "math9-u5-l6",
+"course": "Grade 9 Math",
+"unit": 5,
+"unitTitle": "Percents & Consumer Math",
+"lesson": 6,
+"lessonTitle": "Percent increase and decrease",
+"title": "Price Watch",
+"text": "Ask an adult what something cost 5 or 10 years ago (gas, bread, a movie ticket). Find today's price and calculate the percent increase.",
+"open": true,
+"proof": "Show the old price (and who told you), today's price and where you found it, and the percent increase with your work."
 },
 {
 "id": "math9-u6-l1",
@@ -723,7 +932,8 @@
 "lessonTitle": "Adding hours and minutes",
 "title": "Time Card",
 "text": "Make a time card for a week of your life: school, sports, homework, screen time. Add up each category in hours and minutes.",
-"open": false
+"open": false,
+"proof": "Show your one-week time card with each category totalled in hours and minutes."
 },
 {
 "id": "math9-u6-l2",
@@ -734,7 +944,8 @@
 "lessonTitle": "Hourly pay",
 "title": "Job Shopping",
 "text": "Find 3 real part-time job postings for teens in your area. Calculate what each would pay for 15 hours a week and for a whole summer (10 weeks).",
-"open": false
+"open": false,
+"proof": "Show the 3 job postings (title, employer, wage) and your pay for 15 hours a week and for 10 weeks."
 },
 {
 "id": "math9-u6-l3",
@@ -745,7 +956,8 @@
 "lessonTitle": "Overtime",
 "title": "Know Your Rights",
 "text": "Visit Alberta's employment standards website and find 3 rules that protect young workers (breaks, hours, overtime). Make a poster for the class.",
-"open": false
+"open": false,
+"proof": "Bring your poster with 3 rules for young workers in Alberta and the website you used."
 },
 {
 "id": "math9-u6-l4",
@@ -756,7 +968,8 @@
 "lessonTitle": "Other ways to get paid",
 "title": "Career Pay Check",
 "text": "Pick 2 careers you're interested in on ALIS. Find out how each is usually paid (wage, salary, commission or tips) and the typical pay.",
-"open": false
+"open": false,
+"proof": "Show your 2 careers, how each is paid and the typical pay from ALIS."
 },
 {
 "id": "math9-u6-l5",
@@ -767,7 +980,8 @@
 "lessonTitle": "The pay stub",
 "title": "Stub Decoder",
 "text": "Ask a family member if you can look at an old pay stub (cover the private parts). Find the gross pay, each deduction and the net pay. What percent of the gross was taken off?",
-"open": false
+"open": false,
+"proof": "Show a list (no stub needed) with the gross pay, each deduction, the net pay and the percent taken off."
 },
 {
 "id": "math9-u7-l1",
@@ -778,7 +992,8 @@
 "lessonTitle": "Patterns and predictions",
 "title": "Pattern Predictor",
 "text": "Find a real pattern in your life (a bus schedule, bowling scores, savings, a growing plant). Make a table and predict the next 5 steps. Check one prediction later.",
-"open": false
+"open": false,
+"proof": "Show your pattern table, your next 5 predictions, and the result when you checked one."
 },
 {
 "id": "math9-u7-l2",
@@ -789,7 +1004,8 @@
 "lessonTitle": "Expressions and rules",
 "title": "Plan Comparison",
 "text": "Find 2 real phone or streaming plans. Write a rule for each and figure out which is cheaper for how you actually use it.",
-"open": false
+"open": false,
+"proof": "Show the 2 real plans, a rule for each, and which is cheaper for your use, with your work."
 },
 {
 "id": "math9-u7-l3",
@@ -800,7 +1016,8 @@
 "lessonTitle": "Two-step equations",
 "title": "Equation Coach",
 "text": "Help a Grade 8 classmate solve 3 one-step equations, then show them how a two-step equation is just one more step. Make up the problems from real prices.",
-"open": false
+"open": false,
+"proof": "Show the 3 one-step and 1 two-step equations you made from real prices, and the name of the Grade 8 you helped."
 },
 {
 "id": "math9-u7-l4",
@@ -811,7 +1028,8 @@
 "lessonTitle": "Tables and graphs",
 "title": "Graph It",
 "text": "Pick a rule from Lesson 2 (like a taxi or phone plan). Make a table of values with 6 rows and graph it on grid paper or in Google Sheets.",
-"open": false
+"open": false,
+"proof": "Show your 6-row table of values and the graph with labelled axes."
 },
 {
 "id": "math9-u7-l5",
@@ -822,7 +1040,8 @@
 "lessonTitle": "Reading graphs",
 "title": "Best Deal Graph",
 "text": "Compare 2 real options with different starting fees (bowling alleys, rental places, ride shares). Graph both and find where they cross. Share your advice with a family member.",
-"open": false
+"open": false,
+"proof": "Show both graphs, where they cross, and the advice you gave your family member."
 },
 {
 "id": "math9-u8-l1",
@@ -833,7 +1052,8 @@
 "lessonTitle": "Designing rectangles",
 "title": "Garden Planner",
 "text": "You have 20 m of fence. Draw 4 different rectangular gardens on grid paper and find each area. Which one would you build, and why?",
-"open": false
+"open": false,
+"proof": "Hand in 4 gardens on grid paper with each perimeter equal to 20 m, each area, and your choice with a reason."
 },
 {
 "id": "math9-u8-l2",
@@ -844,7 +1064,8 @@
 "lessonTitle": "Triangles and parallelograms",
 "title": "Roof Finder",
 "text": "Find a triangle shape on a building near you (a roof, a sign, a bridge). Estimate or measure its base and height and find its area.",
-"open": false
+"open": false,
+"proof": "Show a photo or sketch of the triangle, its base and height, and your area calculation."
 },
 {
 "id": "math9-u8-l3",
@@ -855,7 +1076,8 @@
 "lessonTitle": "Angles",
 "title": "Angle Hunt",
 "text": "Photograph one example of each kind of angle at home or school. Estimate each one, then measure it with a protractor.",
-"open": false
+"open": false,
+"proof": "Show a photo of each kind of angle with your estimate and your protractor measurement."
 },
 {
 "id": "math9-u8-l4",
@@ -866,7 +1088,8 @@
 "lessonTitle": "Triangles",
 "title": "Truss Builder",
 "text": "Build a triangle truss out of straws or popsicle sticks. Measure its angles with a protractor and check that they add to 180°.",
-"open": false
+"open": false,
+"proof": "Bring your truss (or a photo) with the 3 measured angles and their sum."
 },
 {
 "id": "math9-u8-l5",
@@ -877,7 +1100,8 @@
 "lessonTitle": "Scale and grids",
 "title": "Treasure Map",
 "text": "Draw a map of your neighbourhood or school with a scale. Write step-by-step directions (like \"go 3 squares left, 2 up\") to a hidden \"treasure\" and have a classmate follow them.",
-"open": false
+"open": false,
+"proof": "Hand in your map with a scale and directions, and the name of the classmate who found the treasure."
 },
 {
 "id": "math9-u9-l1",
@@ -888,7 +1112,8 @@
 "lessonTitle": "Circles",
 "title": "Trunk Detective",
 "text": "Wrap a measuring tape around 3 trees or poles. Use the circumference to work out each diameter. Which is the widest?",
-"open": false
+"open": false,
+"proof": "Show the 3 circumferences, each diameter with your work, and which is widest."
 },
 {
 "id": "math9-u9-l2",
@@ -899,7 +1124,8 @@
 "lessonTitle": "Measuring and converting",
 "title": "Kitchen Converter",
 "text": "Find 5 packages at home that show both metric and imperial (cans, cereal boxes, milk jugs). Check one conversion on each with the chart.",
-"open": false
+"open": false,
+"proof": "Show the 5 packages (or photos), their metric and imperial amounts, and one checked conversion for each."
 },
 {
 "id": "math9-u9-l3",
@@ -910,7 +1136,8 @@
 "lessonTitle": "Volume and surface area",
 "title": "Gift Wrapper",
 "text": "Pick a real box at home. Measure it, find its surface area, then cut wrapping paper (or newspaper) to cover it. How much extra did you need for overlap?",
-"open": false
+"open": false,
+"proof": "Show the box's measurements, your surface area work, and how much extra paper you needed."
 },
 {
 "id": "math9-u9-l4",
@@ -921,7 +1148,8 @@
 "lessonTitle": "3-D objects and sketches",
 "title": "Skeleton Crew",
 "text": "Build skeletons of 3 different 3-D objects with toothpicks and modelling clay (or straws and tape). Count the edges and vertices of each and sketch them.",
-"open": false
+"open": false,
+"proof": "Bring your 3 skeletons (or photos) with sketches and the edge and vertex counts for each."
 },
 {
 "id": "math9-u9-l5",
@@ -932,7 +1160,8 @@
 "lessonTitle": "Symmetry and designs",
 "title": "Logo Lab",
 "text": "Design a logo for Avalanche HQ or a pretend business using at least 2 transformations. Label each flip, slide or turn and show any lines of symmetry.",
-"open": false
+"open": false,
+"proof": "Show your logo with each transformation labelled and any lines of symmetry drawn."
 },
 {
 "id": "math9-u10-l1",
@@ -943,7 +1172,8 @@
 "lessonTitle": "Reading graphs",
 "title": "Graph in the Wild",
 "text": "Find a graph in the news, a sports site or an app. Write its title, what each axis shows, and one conclusion you can make from it.",
-"open": false
+"open": false,
+"proof": "Show the graph (or a link or printout) with its title, what each axis shows, and one conclusion."
 },
 {
 "id": "math9-u10-l2",
@@ -954,7 +1184,8 @@
 "lessonTitle": "Choosing a graph",
 "title": "Class Survey",
 "text": "Survey at least 15 people with one question (favourite snack for the store, how they get to school). Make a frequency table and choose the best graph to show the results.",
-"open": false
+"open": false,
+"proof": "Show your question, your frequency table from 15+ people, and the graph you chose with a reason."
 },
 {
 "id": "math9-u10-l3",
@@ -965,7 +1196,8 @@
 "lessonTitle": "Describing data",
 "title": "Stat Line",
 "text": "Pick a sports team or player. Collect their points (or goals) for 7 games and find the range, median and mean. Which number best describes how they're doing?",
-"open": false
+"open": false,
+"proof": "Show the 7 game scores and where you got them, the range, median and mean, and which one describes them best."
 },
 {
 "id": "math9-u10-l4",
@@ -976,7 +1208,8 @@
 "lessonTitle": "Conclusions and spreadsheets",
 "title": "Data Detective",
 "text": "Put your Class Survey data into Google Sheets. Use =MAX, =MIN, =AVERAGE and =MEDIAN, make a chart, and write 2 conclusions the data supports.",
-"open": false
+"open": false,
+"proof": "Show the Google Sheet using =MAX, =MIN, =AVERAGE and =MEDIAN, a chart, and 2 conclusions."
 },
 {
 "id": "math9-u10-l5",
@@ -987,7 +1220,80 @@
 "lessonTitle": "Probability words",
 "title": "Run the Odds",
 "text": "With a Grade 8 partner, roll a real die 60 times and record the results. Compare your results with the simulator. How close did each number get to 1 out of 6?",
-"open": false
+"open": false,
+"proof": "Show your 60-roll table, the simulator results and a comparison, plus your partner's name."
+},
+{
+"id": "science8-u1-l1",
+"course": "Grade 8 Science",
+"unit": 1,
+"unitTitle": "Mix & Flow of Matter",
+"lesson": 1,
+"lessonTitle": "Safety first: reading the symbols",
+"title": "Home Safety Audit",
+"text": "With an adult, find 5 products at home with safety symbols. Record the symbol, the frame and the signal word. Is each one stored safely? Suggest one fix.",
+"open": true,
+"proof": "Show a chart of 5 products with the symbol, frame and signal word, whether each is stored safely and one fix."
+},
+{
+"id": "science8-u1-l2",
+"course": "Grade 8 Science",
+"unit": 1,
+"unitTitle": "Mix & Flow of Matter",
+"lesson": 2,
+"lessonTitle": "Pure substances, mixtures and solutions",
+"title": "Kitchen Sort",
+"text": "Find 9 things in your kitchen: 3 pure substances, 3 mechanical mixtures and 3 solutions. Take a photo or make a chart and explain each choice.",
+"open": true,
+"proof": "Show a photo or chart of 9 items sorted into pure substances, mechanical mixtures and solutions, with a reason for each."
+},
+{
+"id": "science8-u1-l3",
+"course": "Grade 8 Science",
+"unit": 1,
+"unitTitle": "Mix & Flow of Matter",
+"lesson": 3,
+"lessonTitle": "Solubility and concentration",
+"title": "Taste Test Lab",
+"text": "With an adult, make 3 cups of drink mix with different amounts of powder in the same amount of water. Rank them by concentration, then calculate g/mL for each.",
+"open": true,
+"proof": "Show the amounts of powder and water for each cup, their ranking and the g/mL for each."
+},
+{
+"id": "science8-u1-l4",
+"course": "Grade 8 Science",
+"unit": 1,
+"unitTitle": "Mix & Flow of Matter",
+"lesson": 4,
+"lessonTitle": "Viscosity and flow rate",
+"title": "Fluid Race",
+"text": "Race 4 kitchen fluids down a tilted plate and time each one. Make a bar graph of your results and bring it to class.",
+"open": true,
+"proof": "Bring your bar graph of the 4 fluids' times, with a title and labelled axes."
+},
+{
+"id": "science8-u1-l5",
+"course": "Grade 8 Science",
+"unit": 1,
+"unitTitle": "Mix & Flow of Matter",
+"lesson": 5,
+"lessonTitle": "Density and buoyancy",
+"title": "Density Tower",
+"text": "With an adult, build a density tower in a clear glass using 3 or 4 liquids (honey, dish soap, water, oil). Drop in small objects and explain where each one stops.",
+"open": true,
+"proof": "Show a photo of your density tower and a sentence on where each object stopped and why."
+},
+{
+"id": "science8-u1-l6",
+"course": "Grade 8 Science",
+"unit": 1,
+"unitTitle": "Mix & Flow of Matter",
+"lesson": 6,
+"lessonTitle": "Pressure and fluid technology",
+"title": "Fluid Careers",
+"text": "Look up one Alberta career that works with fluids (pipefitter, heavy-duty mechanic, water treatment operator, paramedic) on alis.alberta.ca. Share 3 facts with the class: what they do, the training and the pay.",
+"open": true,
+"proof": "Share or hand in 3 facts about the career (what they do, training and pay) from alis.alberta.ca."
 },
 {
 "id": "science8-u2-l1",
@@ -998,7 +1304,8 @@
 "lessonTitle": "Water on Earth",
 "title": "Where Does My Water Come From?",
 "text": "Find out where your town or farm gets its water (a river, a lake, a well). Draw a map from the source to your tap.",
-"open": false
+"open": false,
+"proof": "Hand in your labelled map from the water source to your tap."
 },
 {
 "id": "science8-u2-l2",
@@ -1009,7 +1316,8 @@
 "lessonTitle": "Water quality",
 "title": "Water Tester",
 "text": "With your teacher's kit or test strips, test tap water, rain or snowmelt, and pond or slough water. Compare the pH and hardness in a chart.",
-"open": false
+"open": false,
+"proof": "Show your chart comparing the pH and hardness of all 3 water samples."
 },
 {
 "id": "science8-u2-l3",
@@ -1020,7 +1328,8 @@
 "lessonTitle": "The water cycle and the land",
 "title": "Water Cycle in a Bag",
 "text": "Put a little water in a sealed zip bag, tape it to a sunny window and watch it for a week. Draw and label each step of the water cycle you see.",
-"open": false
+"open": false,
+"proof": "Show your labelled drawing of each step of the water cycle you saw, with the dates."
 },
 {
 "id": "science8-u2-l4",
@@ -1031,7 +1340,8 @@
 "lessonTitle": "Life in the water",
 "title": "Pond Life",
 "text": "Look up (or visit with an adult) 3 animals that live in an Alberta pond, slough or lake. Draw each one and label one adaptation that helps it survive.",
-"open": false
+"open": false,
+"proof": "Hand in drawings of 3 Alberta water animals, each with one adaptation labelled."
 },
 {
 "id": "science8-u2-l5",
@@ -1042,7 +1352,8 @@
 "lessonTitle": "People and water",
 "title": "Water Saver",
 "text": "Track how much water your household uses in one day (showers, dishes, laundry). Make a plan with 3 ways your family could save water, and try one for a week.",
-"open": false
+"open": false,
+"proof": "Show your one-day water log, your 3 ideas, and a note on the one your family tried for a week."
 },
 {
 "id": "science8-u3-l1",
@@ -1053,7 +1364,8 @@
 "lessonTitle": "Machines over time",
 "title": "Then and Now",
 "text": "Interview a grandparent or older neighbour about a machine they used growing up (a wringer washer, a hand pump, a crank phone). Compare it with what we use now.",
-"open": false
+"open": false,
+"proof": "Hand in 3–5 sentences comparing the old machine with today's, and who you interviewed."
 },
 {
 "id": "science8-u3-l2",
@@ -1064,7 +1376,8 @@
 "lessonTitle": "Simple machines",
 "title": "Machine Hunt",
 "text": "Find all six simple machines at home or in the school shop. Photograph or sketch each one and label it.",
-"open": false
+"open": false,
+"proof": "Show a labelled photo or sketch of all six simple machines."
 },
 {
 "id": "science8-u3-l3",
@@ -1075,7 +1388,8 @@
 "lessonTitle": "Levers and mechanical advantage",
 "title": "Lever Lab",
 "text": "Build a lever with a ruler and a pencil as the fulcrum. Lift a stack of coins with coins on the other end. Move the fulcrum and record how many coins it takes each time.",
-"open": false
+"open": false,
+"proof": "Show your table of fulcrum positions and how many coins it took each time."
 },
 {
 "id": "science8-u3-l4",
@@ -1086,7 +1400,8 @@
 "lessonTitle": "Gears, linkages and work",
 "title": "Bike Tech",
 "text": "Look at a bike (yours or a shop's). Count the teeth on the front and back gears. Explain which combination is best for hills and which is best for speed.",
-"open": false
+"open": false,
+"proof": "Show the tooth counts and which gear combination is best for hills and for speed, with a reason."
 },
 {
 "id": "science8-u3-l5",
@@ -1097,7 +1412,8 @@
 "lessonTitle": "Judging a machine",
 "title": "Build and Test",
 "text": "Design and build a machine that lifts a small load (a pulley, crane or catapult) from recycled materials. Test it, then rate it on function, safety and efficiency.",
-"open": false
+"open": false,
+"proof": "Bring your machine (or a video) and your ratings for function, safety and efficiency."
 },
 {
 "id": "science8-u4-l1",
@@ -1108,7 +1424,8 @@
 "lessonTitle": "Living things as systems",
 "title": "Food Finders",
 "text": "Pick 4 Alberta animals or plants. Make a chart showing how each one gets food, water and oxygen.",
-"open": false
+"open": false,
+"proof": "Show your chart for 4 Alberta species and how each gets food, water and oxygen."
 },
 {
 "id": "science8-u4-l2",
@@ -1119,7 +1436,8 @@
 "lessonTitle": "Cells and microscopes",
 "title": "Cell Model",
 "text": "Build a model of a plant or animal cell with food or craft supplies. Label every part and explain what it does.",
-"open": false
+"open": false,
+"proof": "Bring your cell model (or a photo) with every part labelled and its job explained."
 },
 {
 "id": "science8-u4-l3",
@@ -1130,7 +1448,8 @@
 "lessonTitle": "Cells to systems",
 "title": "Workplace Comparison",
 "text": "Compare your body's levels to a business: cells are workers, tissues are teams, organs are departments. Make a poster that shows the comparison.",
-"open": false
+"open": false,
+"proof": "Bring your poster comparing cells, tissues, organs and systems to a business."
 },
 {
 "id": "science8-u4-l4",
@@ -1141,7 +1460,8 @@
 "lessonTitle": "Body systems",
 "title": "Heart Rate Lab",
 "text": "Take your pulse for 15 seconds and multiply by 4. Do it resting, after walking and after 1 minute of jumping jacks. Graph your results.",
-"open": false
+"open": false,
+"proof": "Show your 3 heart rates (resting, walking, jumping jacks) and a graph."
 },
 {
 "id": "science8-u4-l5",
@@ -1152,7 +1472,8 @@
 "lessonTitle": "Keeping systems healthy",
 "title": "Healthy Habit Challenge",
 "text": "Pick one habit that helps a body system (more water, 30 minutes of activity, earlier bedtime). Track it for 2 weeks and report how you felt.",
-"open": false
+"open": false,
+"proof": "Show your 2-week tracker with a check for each day, and a few sentences on how you felt."
 },
 {
 "id": "science8-u5-l1",
@@ -1163,7 +1484,8 @@
 "lessonTitle": "What is light?",
 "title": "Lighting Then and Now",
 "text": "Ask an older relative how homes were lit when they were young. Count the light sources in your home now and sort them as incandescent, fluorescent or LED.",
-"open": false
+"open": false,
+"proof": "Show what your relative told you and your count of light sources sorted into incandescent, fluorescent and LED."
 },
 {
 "id": "science8-u5-l2",
@@ -1174,7 +1496,8 @@
 "lessonTitle": "Reflection",
 "title": "Periscope Builder",
 "text": "Build a periscope from a milk carton and two small mirrors. Use it to see over a table. Draw the path the light takes.",
-"open": false
+"open": false,
+"proof": "Bring your periscope (or a photo) and a drawing of the light's path."
 },
 {
 "id": "science8-u5-l3",
@@ -1185,7 +1508,8 @@
 "lessonTitle": "Refraction and materials",
 "title": "Material Sort",
 "text": "Test 10 materials at home with a flashlight. Sort them as transparent, translucent or opaque in a chart.",
-"open": false
+"open": false,
+"proof": "Show your chart of 10 materials sorted as transparent, translucent or opaque."
 },
 {
 "id": "science8-u5-l4",
@@ -1196,7 +1520,8 @@
 "lessonTitle": "Lenses",
 "title": "Water Lens",
 "text": "Put a drop of water on clear plastic wrap over newspaper print. What happens to the letters? Explain what kind of lens the drop makes.",
-"open": false
+"open": false,
+"proof": "Show a sketch of what the letters looked like and a sentence naming the kind of lens."
 },
 {
 "id": "science8-u5-l5",
@@ -1207,7 +1532,80 @@
 "lessonTitle": "Eyes, cameras and imaging",
 "title": "Eye Exam Explainer",
 "text": "Find out what happens at an eye exam (ask an optometrist, a family member or look it up). Make a short guide for a classmate who has never had one.",
-"open": false
+"open": false,
+"proof": "Hand in your short guide explaining what happens at an eye exam."
+},
+{
+"id": "science9-u1-l1",
+"course": "Grade 9 Science",
+"unit": 1,
+"unitTitle": "Matter & Chemical Change",
+"lesson": 1,
+"lessonTitle": "Chemical safety: home and workplace",
+"title": "Safety Interview",
+"text": "Interview an adult who works with chemicals (cleaning, mechanics, hair salon, farming, health care). Ask what symbols they see and what safety gear they wear. Share 3 things you learned.",
+"open": true,
+"proof": "Share 3 things you learned and the person's job (no name needed)."
+},
+{
+"id": "science9-u1-l2",
+"course": "Grade 9 Science",
+"unit": 1,
+"unitTitle": "Matter & Chemical Change",
+"lesson": 2,
+"lessonTitle": "The particle model and states of matter",
+"title": "Particle Dance",
+"text": "Teach a Grade 8 group the particle model by having them act it out as a solid, a liquid and a gas. Record a short video or have the teacher watch.",
+"open": true,
+"proof": "Show the video or have your teacher watch the Grade 8s act out a solid, a liquid and a gas."
+},
+{
+"id": "science9-u1-l3",
+"course": "Grade 9 Science",
+"unit": 1,
+"unitTitle": "Matter & Chemical Change",
+"lesson": 3,
+"lessonTitle": "Elements, compounds and mixtures",
+"title": "Ingredient Detective",
+"text": "Read the ingredients on 3 products at home (toothpaste, salt, baking soda, a cleaner). Find one element, one compound and one mixture. Bring your list to class.",
+"open": true,
+"proof": "Bring your list of 3 products with one element, one compound and one mixture named."
+},
+{
+"id": "science9-u1-l4",
+"course": "Grade 9 Science",
+"unit": 1,
+"unitTitle": "Matter & Chemical Change",
+"lesson": 4,
+"lessonTitle": "Atoms and the periodic table",
+"title": "Element Trading Card",
+"text": "Make a trading card for one element: symbol, atomic number, metal or non-metal, and 2 places it's used in everyday life or at work. The class collection goes on the wall.",
+"open": true,
+"proof": "Hand in your trading card with the symbol, atomic number, metal or non-metal, and 2 uses."
+},
+{
+"id": "science9-u1-l5",
+"course": "Grade 9 Science",
+"unit": 1,
+"unitTitle": "Matter & Chemical Change",
+"lesson": 5,
+"lessonTitle": "Physical and chemical change",
+"title": "Change Hunter",
+"text": "Find 3 physical changes and 3 chemical changes at home or around town this week. Photograph or draw each one and list your evidence.",
+"open": true,
+"proof": "Show photos or drawings of 3 physical and 3 chemical changes, with evidence for each."
+},
+{
+"id": "science9-u1-l6",
+"course": "Grade 9 Science",
+"unit": 1,
+"unitTitle": "Matter & Chemical Change",
+"lesson": 6,
+"lessonTitle": "Reactants, products and word equations",
+"title": "Kitchen Chemist",
+"text": "With an adult, do the baking soda and vinegar reaction. Write the word equation (baking soda + vinegar → carbon dioxide + water + sodium acetate) and list your evidence of a chemical change.",
+"open": true,
+"proof": "Show the word equation and your list of evidence that a chemical change happened."
 },
 {
 "id": "science9-u2-l1",
@@ -1218,7 +1616,8 @@
 "lessonTitle": "Chemicals for life",
 "title": "Plate Planner",
 "text": "Plan 3 meals for one day that follow Canada's Food Guide. Include at least one traditional or cultural food that matters to you or your family.",
-"open": false
+"open": false,
+"proof": "Hand in your 3-meal plan that follows Canada's Food Guide, with the cultural or traditional food marked."
 },
 {
 "id": "science9-u2-l2",
@@ -1229,7 +1628,8 @@
 "lessonTitle": "How chemicals spread",
 "title": "Fish Advisory",
 "text": "Look up Alberta's fish consumption advice for a lake near you. Make a simple poster for anglers explaining why it exists.",
-"open": false
+"open": false,
+"proof": "Bring your poster with the lake's fish advice and why it exists."
 },
 {
 "id": "science9-u2-l3",
@@ -1240,7 +1640,8 @@
 "lessonTitle": "Acids, bases and pH",
 "title": "Cabbage Indicator",
 "text": "With an adult, make red cabbage juice indicator. Test 6 kitchen liquids (vinegar, baking soda water, milk, lemon juice, soap, tap water) and rank them by pH.",
-"open": false
+"open": false,
+"proof": "Show your results for the 6 liquids, ranked by pH, with the indicator colours."
 },
 {
 "id": "science9-u2-l4",
@@ -1251,7 +1652,8 @@
 "lessonTitle": "Air and water quality",
 "title": "Quality Report",
 "text": "Check today's AQHI for your area and find your town's latest drinking water report online. Write a short \"quality report\" for your class.",
-"open": false
+"open": false,
+"proof": "Hand in your quality report with today's AQHI and the water report's main finding."
 },
 {
 "id": "science9-u2-l5",
@@ -1262,7 +1664,8 @@
 "lessonTitle": "Hazardous chemicals",
 "title": "Eco-Station Guide",
 "text": "Find where your community takes household hazardous waste. Make a one-page guide for your family listing what goes there and when it's open.",
-"open": false
+"open": false,
+"proof": "Hand in your one-page guide: the location, what goes there and the hours."
 },
 {
 "id": "science9-u3-l1",
@@ -1273,7 +1676,8 @@
 "lessonTitle": "Energy changes form",
 "title": "Lemon Battery",
 "text": "With an adult, make a wet cell from a lemon (or potato), a copper coin and a galvanized nail. Connect a few in a row and try to light a small LED.",
-"open": false
+"open": false,
+"proof": "Show a photo or video of your cells connected in a row and whether the LED lit."
 },
 {
 "id": "science9-u3-l2",
@@ -1284,7 +1688,8 @@
 "lessonTitle": "Static, current and safety",
 "title": "Safety Sweep",
 "text": "Do an electrical safety check at home with an adult: overloaded power bars, frayed cords, outlets near water. Write down 3 things that are safe and 1 thing to fix.",
-"open": false
+"open": false,
+"proof": "Show your list of 3 safe things and 1 thing to fix, with an adult's initials."
 },
 {
 "id": "science9-u3-l3",
@@ -1295,7 +1700,8 @@
 "lessonTitle": "Circuits",
 "title": "Circuit Builder",
 "text": "Use a circuit kit or the PhET simulation to build a series circuit and a parallel circuit with 2 bulbs each. Remove one bulb from each and record what happens.",
-"open": false
+"open": false,
+"proof": "Show both circuits (photo or screenshot) and what happened when you removed a bulb from each."
 },
 {
 "id": "science9-u3-l4",
@@ -1306,7 +1712,8 @@
 "lessonTitle": "Energy use at home",
 "title": "Energy Detective",
 "text": "Find the wattage label on 5 devices at home. Estimate how many hours a day each runs and calculate the daily kWh. Which one costs the most? Suggest a way to cut it.",
-"open": false
+"open": false,
+"proof": "Show your table of 5 devices with watts, hours and daily kWh, which costs the most and your idea to cut it."
 },
 {
 "id": "science9-u3-l5",
@@ -1317,7 +1724,8 @@
 "lessonTitle": "Powering Alberta",
 "title": "Grid Watch",
 "text": "Look up the Alberta Electric System Operator's (AESO) current supply mix. Make a bar graph of how much power comes from each source right now and compare it with another day.",
-"open": false
+"open": false,
+"proof": "Show your bar graph of the supply mix with the date and time, and the other day you compared."
 },
 {
 "id": "science9-u4-l1",
@@ -1328,7 +1736,8 @@
 "lessonTitle": "What is biodiversity?",
 "title": "Diversity Count",
 "text": "In a 1 m × 1 m square of lawn, field or garden, count how many different kinds of plants and bugs you can find. Compare with a classmate's square.",
-"open": false
+"open": false,
+"proof": "Show your counts of plant and bug kinds and how they compared with a classmate's square."
 },
 {
 "id": "science9-u4-l2",
@@ -1339,7 +1748,8 @@
 "lessonTitle": "Living together",
 "title": "Food Web",
 "text": "Make a food web for an Alberta habitat (prairie, boreal forest, wetland) with at least 8 species. Circle one species and explain what would happen if it disappeared.",
-"open": false
+"open": false,
+"proof": "Hand in your food web with 8+ species, one circled and an explanation of what would happen."
 },
 {
 "id": "science9-u4-l3",
@@ -1350,7 +1760,8 @@
 "lessonTitle": "Reproduction",
 "title": "Grow a Clone",
 "text": "Grow a new plant from a cutting (a spider plant, a pothos or a potato with eyes). Track it for 3 weeks. Explain why it's a clone of the parent.",
-"open": false
+"open": false,
+"proof": "Show your plant (or photos) with a 3-week log and a sentence on why it's a clone."
 },
 {
 "id": "science9-u4-l4",
@@ -1361,7 +1772,8 @@
 "lessonTitle": "Traits and selection",
 "title": "Trait Survey",
 "text": "Survey 10 people for 3 inherited traits (attached earlobes, can roll tongue, dimples). Make a bar graph. Bonus: help a Grade 8 classmate graph theirs.",
-"open": false
+"open": false,
+"proof": "Show your survey results for 10 people and a bar graph of the 3 traits."
 },
 {
 "id": "science9-u4-l5",
@@ -1372,7 +1784,8 @@
 "lessonTitle": "Protecting species",
 "title": "Species Spotlight",
 "text": "Pick an Alberta species at risk. Make a poster or short video: where it lives, why it's at risk and one thing people can do to help. Share it with a younger class.",
-"open": false
+"open": false,
+"proof": "Show your poster or video and tell your teacher which class you shared it with."
 },
 {
 "id": "science9-u5-l1",
@@ -1383,7 +1796,8 @@
 "lessonTitle": "Looking up",
 "title": "Sky Stories",
 "text": "Learn one star story or constellation from a First Nations, Métis or Inuit source, and one from another culture. Compare what each says about the sky.",
-"open": false
+"open": false,
+"proof": "Show both stories and a few sentences comparing them, with your sources."
 },
 {
 "id": "science9-u5-l2",
@@ -1394,7 +1808,8 @@
 "lessonTitle": "Our solar system",
 "title": "Scale Model",
 "text": "Make a scale model of planet distances in a hallway or field using toilet paper squares or steps. Teach a Grade 8 class what you learned.",
-"open": false
+"open": false,
+"proof": "Show a photo or sketch of your model with the scale, and tell your teacher which Grade 8 class you taught."
 },
 {
 "id": "science9-u5-l3",
@@ -1405,7 +1820,8 @@
 "lessonTitle": "Sun, Earth and Moon",
 "title": "Moon Journal",
 "text": "Sketch the Moon every clear night for 2 weeks and note the date. Label the phases and predict what it will look like next week.",
-"open": false
+"open": false,
+"proof": "Show your 2 weeks of dated sketches with the phases labelled and your prediction."
 },
 {
 "id": "science9-u5-l4",
@@ -1416,7 +1832,8 @@
 "lessonTitle": "Living in space",
 "title": "Mission Planner",
 "text": "Plan the supplies for a 6-month space mission for 4 people: air, water, food, exercise and waste. Explain how you'd recycle as much as possible.",
-"open": false
+"open": false,
+"proof": "Hand in your supply plan for air, water, food, exercise and waste, with your recycling ideas."
 },
 {
 "id": "science9-u5-l5",
@@ -1427,7 +1844,8 @@
 "lessonTitle": "Canada in space",
 "title": "Space Debate",
 "text": "Should countries be allowed to mine the Moon? Write or record a 1-minute argument for one side, then list the best point the other side would make.",
-"open": false
+"open": false,
+"proof": "Show your 1-minute argument (written or recorded) and the best point for the other side."
 },
 {
 "id": "la8-u1-l1",
@@ -1438,7 +1856,8 @@
 "lessonTitle": "What shapes who I am?",
 "title": "Identity Map",
 "text": "Make your own identity map with at least 6 branches. Add a photo, drawing or object for each one.",
-"open": true
+"open": true,
+"proof": "Show your identity map with at least 6 branches and a photo, drawing or object for each."
 },
 {
 "id": "la8-u1-l2",
@@ -1449,7 +1868,8 @@
 "lessonTitle": "Telling my story",
 "title": "Story Swap",
 "text": "Write a narrative paragraph about a moment that changed you. Read it to a family member and ask them to tell you a story from their life in return.",
-"open": true
+"open": true,
+"proof": "Hand in your narrative paragraph and 1–2 sentences about the story your family member told you."
 },
 {
 "id": "la8-u1-l3",
@@ -1460,7 +1880,8 @@
 "lessonTitle": "Stories and culture",
 "title": "Family Story",
 "text": "Ask an older family member or community member to tell you a story they were told when they were young. Retell it to the class (with their permission) and explain what it teaches.",
-"open": true
+"open": true,
+"proof": "Retell the story to the class (or your teacher) and say what it teaches. Tell your teacher you had permission."
 },
 {
 "id": "la8-u1-l4",
@@ -1471,7 +1892,8 @@
 "lessonTitle": "Me as a learner",
 "title": "Goal Tracker",
 "text": "Set one SMART reading or writing goal. Track it for 4 weeks and write 3 sentences about how it went.",
-"open": true
+"open": true,
+"proof": "Show your SMART goal, your 4-week tracker and your 3 sentences on how it went."
 },
 {
 "id": "la8-u1-l5",
@@ -1482,7 +1904,8 @@
 "lessonTitle": "Belonging in a group",
 "title": "Kindness Crew",
 "text": "Plan and run a small act that helps someone new feel welcome at school (a lunch invite, a welcome card, showing them around). Write about how it went.",
-"open": true
+"open": true,
+"proof": "Hand in a short write-up: what you did, who it helped and how it went."
 },
 {
 "id": "la8-u2-l1",
@@ -1493,7 +1916,8 @@
 "lessonTitle": "Formal or informal?",
 "title": "Translator",
 "text": "Collect 5 texts or social posts (no names!) and rewrite each one in formal language, as if it were going to a boss.",
-"open": true
+"open": true,
+"proof": "Show your 5 texts (no names) beside your formal rewrites."
 },
 {
 "id": "la8-u2-l2",
@@ -1504,7 +1928,8 @@
 "lessonTitle": "Writing a workplace email",
 "title": "Inbox Helper",
 "text": "Write a real, polite email to a teacher, coach or club leader asking a question you actually have. Show it to your teacher before you send it.",
-"open": true
+"open": true,
+"proof": "Show your teacher the email before you send it, then show the sent copy."
 },
 {
 "id": "la8-u2-l3",
@@ -1515,7 +1940,8 @@
 "lessonTitle": "Personal letters",
 "title": "Gratitude Letter",
 "text": "Write a real thank-you letter to someone who helped you or the class this year (a bus driver, custodian, coach or family member) and deliver it.",
-"open": true
+"open": true,
+"proof": "Show your teacher the letter before you deliver it, and tell them who got it."
 },
 {
 "id": "la8-u2-l4",
@@ -1526,7 +1952,8 @@
 "lessonTitle": "Filling out forms",
 "title": "Form Pro",
 "text": "Fill out a practice job application from your teacher with zero mistakes. Use made-up information for anything private.",
-"open": true
+"open": true,
+"proof": "Hand in the practice application, complete and with zero mistakes."
 },
 {
 "id": "la8-u2-l5",
@@ -1537,7 +1964,8 @@
 "lessonTitle": "Following instructions",
 "title": "Recipe Run",
 "text": "Follow a written recipe at home from start to finish with no help, then teach a family member how to make it using only your own words.",
-"open": true
+"open": true,
+"proof": "Show a photo of what you made and a note from your family member saying you taught them using your own words."
 },
 {
 "id": "la8-u2-l6",
@@ -1548,7 +1976,8 @@
 "lessonTitle": "Proofread before you send",
 "title": "Editor on Duty",
 "text": "Be the class editor for a week: proofread 3 classmates' emails or letters and help them fix every mistake before they hand them in.",
-"open": true
+"open": true,
+"proof": "Your 3 classmates' names, and their final copies showing the fixes you helped with."
 },
 {
 "id": "la8-u3-l1",
@@ -1559,7 +1988,8 @@
 "lessonTitle": "The plot mountain",
 "title": "Movie Mountain",
 "text": "Pick your favourite movie or show episode and draw its plot mountain with all six parts labelled.",
-"open": false
+"open": false,
+"proof": "Hand in your plot mountain with all six parts labelled with events from the movie or show."
 },
 {
 "id": "la8-u3-l2",
@@ -1570,7 +2000,8 @@
 "lessonTitle": "Characters who change",
 "title": "Then and Now",
 "text": "Choose a character from a book, show or game who changes. Make a two-column chart: what they were like at the start and at the end, with proof for each.",
-"open": false
+"open": false,
+"proof": "Show your two-column chart with a piece of proof for both the start and the end."
 },
 {
 "id": "la8-u3-l3",
@@ -1581,7 +2012,8 @@
 "lessonTitle": "Hooks and suspense",
 "title": "Hook Challenge",
 "text": "Write 3 different opening sentences for the same story: one with a question, one with action, one with a strange detail. Ask 3 people which one makes them want to keep reading.",
-"open": false
+"open": false,
+"proof": "Show your 3 opening sentences and which one each of your 3 readers picked."
 },
 {
 "id": "la8-u3-l4",
@@ -1592,7 +2024,8 @@
 "lessonTitle": "Setting and mood",
 "title": "Mood Swap",
 "text": "Take a photo of one place at home or school. Write two short descriptions of it: one cozy, one creepy.",
-"open": false
+"open": false,
+"proof": "Show your photo and your two short descriptions, one cozy and one creepy."
 },
 {
 "id": "la8-u3-l5",
@@ -1603,7 +2036,8 @@
 "lessonTitle": "From story to script",
 "title": "Readers Theatre",
 "text": "With 2–4 classmates, turn a short story or fable into a 2-minute script. Rehearse and perform it for another class or record it.",
-"open": false
+"open": false,
+"proof": "Hand in your script, then perform it for another class or show your teacher the recording."
 },
 {
 "id": "la8-u4-l1",
@@ -1614,7 +2048,8 @@
 "lessonTitle": "Reading everyday texts",
 "title": "Scavenger Scan",
 "text": "Find 5 everyday texts at home (a recipe, a label, a flyer, a schedule, a menu). Write one question for each and time how fast a family member can find the answer.",
-"open": false
+"open": false,
+"proof": "Show your 5 texts (or photos), your question for each, and how long your family member took."
 },
 {
 "id": "la8-u4-l2",
@@ -1625,7 +2060,8 @@
 "lessonTitle": "Fact or opinion?",
 "title": "Fact Hunt",
 "text": "Find a product review or a sports article. Highlight facts in one colour and opinions in another. Which was there more of?",
-"open": false
+"open": false,
+"proof": "Hand in the article with facts and opinions highlighted in two colours, and which there was more of."
 },
 {
 "id": "la8-u4-l3",
@@ -1636,7 +2072,8 @@
 "lessonTitle": "Can I trust it?",
 "title": "Fact Checker",
 "text": "Find one surprising claim online. Check it with 2 trusted sources and report whether it's true, false or misleading.",
-"open": false
+"open": false,
+"proof": "Show the claim, your 2 trusted sources (with links) and your verdict: true, false or misleading."
 },
 {
 "id": "la8-u4-l4",
@@ -1647,7 +2084,8 @@
 "lessonTitle": "Same news, different media",
 "title": "News Compare",
 "text": "Follow one local news story on two different media (a radio station and a website, for example). Write what each one included and left out.",
-"open": false
+"open": false,
+"proof": "Show both sources and your notes on what each one included and left out."
 },
 {
 "id": "la8-u4-l5",
@@ -1658,7 +2096,8 @@
 "lessonTitle": "Ad tricks",
 "title": "Ad Detective",
 "text": "Collect 5 ads (flyers, video ads, social posts). Name the technique each one uses and rate how well it worked on you.",
-"open": false
+"open": false,
+"proof": "Show your 5 ads (or photos), the technique each uses and your rating for each."
 },
 {
 "id": "la8-u5-l1",
@@ -1669,7 +2108,8 @@
 "lessonTitle": "Audience and purpose",
 "title": "Change Maker",
 "text": "Pick a real change you want at home, school or in your town. Write who the audience is and what you want them to do.",
-"open": false
+"open": false,
+"proof": "Hand in your change, your audience and what you want them to do."
 },
 {
 "id": "la8-u5-l2",
@@ -1680,7 +2120,8 @@
 "lessonTitle": "The persuasive paragraph",
 "title": "Letter of Change",
 "text": "Write a persuasive paragraph or letter about your Change Maker topic and send it to the real person who can make it happen (with your teacher's help).",
-"open": false
+"open": false,
+"proof": "Show your teacher your letter, then show it was sent (an email copy or a note saying who you gave it to)."
 },
 {
 "id": "la8-u5-l3",
@@ -1691,7 +2132,8 @@
 "lessonTitle": "Revise and edit",
 "title": "Editing Buddy",
 "text": "Trade persuasive paragraphs with a classmate. Give 2 compliments, 1 revising idea and check their CUPS.",
-"open": false
+"open": false,
+"proof": "Hand in your feedback for your classmate: 2 compliments, 1 revising idea and CUPS checked."
 },
 {
 "id": "la8-u5-l4",
@@ -1702,7 +2144,8 @@
 "lessonTitle": "Designing a PSA",
 "title": "PSA Poster",
 "text": "Design a PSA poster or 30-second video for a real issue at your school or in your community. Ask to display or share it.",
-"open": false
+"open": false,
+"proof": "Show your poster or video, and where it was displayed or shared."
 },
 {
 "id": "la8-u5-l5",
@@ -1713,7 +2156,8 @@
 "lessonTitle": "Presenting with confidence",
 "title": "Pitch It",
 "text": "Present your PSA to a younger class, a family member or the school announcements. Ask for one piece of feedback.",
-"open": false
+"open": false,
+"proof": "Tell your teacher who you presented to and the feedback you got."
 },
 {
 "id": "la8-u6-l1",
@@ -1724,7 +2168,8 @@
 "lessonTitle": "Planning research",
 "title": "Career Pick",
 "text": "Choose 3 careers you're curious about. Write 5W + H questions for the one you'll research first.",
-"open": false
+"open": false,
+"proof": "Show your 3 careers and your 5W + H questions for the first one."
 },
 {
 "id": "la8-u6-l2",
@@ -1735,7 +2180,8 @@
 "lessonTitle": "Using ALIS",
 "title": "ALIS Explorer",
 "text": "Find your career on ALIS. Record 3 duties, the education needed, the wage range and one reading or writing task the job uses.",
-"open": false
+"open": false,
+"proof": "Show your notes from ALIS: 3 duties, education, wage range and one reading or writing task."
 },
 {
 "id": "la8-u6-l3",
@@ -1746,7 +2192,8 @@
 "lessonTitle": "Notes and sources",
 "title": "Interview Notes",
 "text": "Interview someone about their job (5 questions). Take point-form notes and turn them into a short profile.",
-"open": false
+"open": false,
+"proof": "Hand in your interview notes and the short profile you wrote from them."
 },
 {
 "id": "la8-u6-l4",
@@ -1757,7 +2204,8 @@
 "lessonTitle": "Successful worker habits",
 "title": "Habit Tracker",
 "text": "Pick 2 worker habits. Track them every school day for 2 weeks and ask a teacher or coach to sign off when they notice.",
-"open": false
+"open": false,
+"proof": "Show your 2-week tracker for both habits, signed by a teacher or coach."
 },
 {
 "id": "la8-u6-l5",
@@ -1768,7 +2216,8 @@
 "lessonTitle": "Building the portfolio",
 "title": "Portfolio Launch",
 "text": "Set up a Google Drive folder or binder for your portfolio with at least 5 items. Show it to a family member and explain each piece.",
-"open": false
+"open": false,
+"proof": "Show your portfolio with at least 5 items and tell your teacher who you explained it to."
 },
 {
 "id": "la9-u1-l1",
@@ -1779,7 +2228,8 @@
 "lessonTitle": "Choices reveal character",
 "title": "Choice Map",
 "text": "Pick a character from a book, show or game. Map 3 big choices they made, the motive behind each, and what each one shows about them.",
-"open": true
+"open": true,
+"proof": "Show your map with 3 big choices, the motive behind each, and what each shows about the character."
 },
 {
 "id": "la9-u1-l2",
@@ -1790,7 +2240,8 @@
 "lessonTitle": "Theme and point of view",
 "title": "Theme Song",
 "text": "Choose a song or short film (school-appropriate). Write its topic, its theme in one sentence and 2 pieces of evidence.",
-"open": true
+"open": true,
+"proof": "Show the song or film, its topic, its theme in one sentence and 2 pieces of evidence."
 },
 {
 "id": "la9-u1-l3",
@@ -1801,7 +2252,8 @@
 "lessonTitle": "Stories across cultures",
 "title": "Story Keeper",
 "text": "Record or write down a story from an Elder, grandparent or community member (with permission). Explain what it shows about their values and traditions.",
-"open": true
+"open": true,
+"proof": "Show the story (written or recorded) and a few sentences on the values and traditions it shows. Tell your teacher you had permission."
 },
 {
 "id": "la9-u1-l4",
@@ -1812,7 +2264,8 @@
 "lessonTitle": "The personal essay",
 "title": "Identity Essay",
 "text": "Write a three-paragraph essay about an experience that shaped who you are. Add it to your portfolio.",
-"open": true
+"open": true,
+"proof": "Hand in your three-paragraph essay and show it in your portfolio."
 },
 {
 "id": "la9-u1-l5",
@@ -1823,7 +2276,8 @@
 "lessonTitle": "My role in a group",
 "title": "Lead the Way",
 "text": "Volunteer to lead a group task (in class, sports, a club or at home). Afterwards, rate yourself out of 5 on listening, organizing and encouraging, with a reason for each.",
-"open": true
+"open": true,
+"proof": "Tell your teacher what you led, and show your 3 ratings out of 5 with a reason for each."
 },
 {
 "id": "la9-u2-l1",
@@ -1834,7 +2288,8 @@
 "lessonTitle": "Know your skills",
 "title": "Skills Inventory",
 "text": "Interview 2 adults who know you (family, coach, teacher). Ask them for 3 skills they see in you. Add the best ones to your career portfolio.",
-"open": true
+"open": true,
+"proof": "Show who you interviewed (relationship, not names), the skills they named and the ones you added to your portfolio."
 },
 {
 "id": "la9-u2-l2",
@@ -1845,7 +2300,8 @@
 "lessonTitle": "Building a résumé",
 "title": "Résumé Ready",
 "text": "Finish a full one-page résumé, get feedback from one adult outside school, and revise it. Add the final copy to your career portfolio.",
-"open": true
+"open": true,
+"proof": "Show your first draft, the feedback you got and your final one-page résumé in your portfolio."
 },
 {
 "id": "la9-u2-l3",
@@ -1856,7 +2312,8 @@
 "lessonTitle": "Writing a cover letter",
 "title": "Real Posting",
 "text": "Find a real job posting in your town (Job Bank or a store website). Write a cover letter for it, as if you were 16.",
-"open": true
+"open": true,
+"proof": "Show the job posting (or a link) and your cover letter for it."
 },
 {
 "id": "la9-u2-l4",
@@ -1867,7 +2324,8 @@
 "lessonTitle": "Writing a memo",
 "title": "Store Memo",
 "text": "Write a real memo to the class about an Avalanche HQ change (new item, sale day, store hours) and post it in the classroom.",
-"open": true
+"open": true,
+"proof": "Show your teacher the memo, then post it in the classroom."
 },
 {
 "id": "la9-u2-l5",
@@ -1878,7 +2336,8 @@
 "lessonTitle": "Job applications",
 "title": "Reference Ask",
 "text": "Ask 2 adults (not family) to be your references, using a polite email or in person. Record their contact information in your portfolio.",
-"open": true
+"open": true,
+"proof": "Show your references' contact information in your portfolio, and the email or how you asked."
 },
 {
 "id": "la9-u2-l6",
@@ -1889,7 +2348,8 @@
 "lessonTitle": "Interview skills",
 "title": "Mock Interview",
 "text": "Complete a mock interview with an adult who isn't your teacher (a family friend or a local business owner). Ask them to fill out the feedback checklist.",
-"open": true
+"open": true,
+"proof": "Hand in the feedback checklist filled out by your interviewer."
 },
 {
 "id": "la9-u3-l1",
@@ -1900,7 +2360,8 @@
 "lessonTitle": "Reading a longer text",
 "title": "Chapter Log",
 "text": "Keep a one-line summary and one question for every chapter you read. Share your favourite question with the class.",
-"open": false
+"open": false,
+"proof": "Show your chapter log with a summary and a question for every chapter, and share your favourite question."
 },
 {
 "id": "la9-u3-l2",
@@ -1911,7 +2372,8 @@
 "lessonTitle": "Tracking the story",
 "title": "Arc Chart",
 "text": "Make an arc chart for the main character in your novel with a quote or event for the beginning, middle and end.",
-"open": false
+"open": false,
+"proof": "Hand in your arc chart with a quote or event for the beginning, middle and end."
 },
 {
 "id": "la9-u3-l3",
@@ -1922,7 +2384,8 @@
 "lessonTitle": "The language of film",
 "title": "Shot Spotter",
 "text": "Watch a 3-minute movie trailer. List 5 shots and explain what each camera angle, lighting or sound choice makes you feel.",
-"open": false
+"open": false,
+"proof": "Show the trailer's name and your list of 5 shots with what each choice makes you feel."
 },
 {
 "id": "la9-u3-l4",
@@ -1933,7 +2396,8 @@
 "lessonTitle": "Book vs. movie",
 "title": "Double Feature",
 "text": "Pick a book and movie pair you know (or a graphic novel and its show). Make a Venn diagram and decide which version is better, with 3 reasons.",
-"open": false
+"open": false,
+"proof": "Show your Venn diagram and which version is better, with 3 reasons."
 },
 {
 "id": "la9-u3-l5",
@@ -1944,7 +2408,8 @@
 "lessonTitle": "Writing a review",
 "title": "Critic's Corner",
 "text": "Write a review of the novel or film and post it (with your teacher's help) on the school library page or in a class \"Critic's Corner\" binder.",
-"open": false
+"open": false,
+"proof": "Show your review and where it was posted."
 },
 {
 "id": "la9-u4-l1",
@@ -1955,7 +2420,8 @@
 "lessonTitle": "What is bias?",
 "title": "Headline Flip",
 "text": "Find a news headline. Rewrite it twice: once biased for, once biased against. Then write the most neutral version.",
-"open": false
+"open": false,
+"proof": "Show the real headline and your three rewrites: biased for, biased against and neutral."
 },
 {
 "id": "la9-u4-l2",
@@ -1966,7 +2432,8 @@
 "lessonTitle": "Is this source reliable?",
 "title": "CRAAP Test",
 "text": "Pick 2 websites on the same topic. Score each out of 5 for every part of the CRAAP test and decide which one to trust.",
-"open": false
+"open": false,
+"proof": "Show both websites, a score out of 5 for each part of the test, and which one you'd trust."
 },
 {
 "id": "la9-u4-l3",
@@ -1977,7 +2444,8 @@
 "lessonTitle": "Words and images",
 "title": "Crop It",
 "text": "Take one photo and crop it 2 ways to tell 2 different stories. Write a caption for each.",
-"open": false
+"open": false,
+"proof": "Show both crops of your photo with a caption for each."
 },
 {
 "id": "la9-u4-l4",
@@ -1988,7 +2456,8 @@
 "lessonTitle": "Purpose, audience, point of view",
 "title": "Media Breakdown",
 "text": "Analyze one ad, music video or influencer post using the 5 questions. Present your breakdown to a Grade 8 group.",
-"open": false
+"open": false,
+"proof": "Show your notes on the 5 questions, and tell your teacher which Grade 8 group you presented to."
 },
 {
 "id": "la9-u4-l5",
@@ -1999,7 +2468,8 @@
 "lessonTitle": "My digital footprint",
 "title": "Footprint Check",
 "text": "With a family member, search your name online and check your privacy settings on one app. Write 3 changes you made or will make.",
-"open": false
+"open": false,
+"proof": "Hand in your 3 privacy changes with a family member's initials."
 },
 {
 "id": "la9-u5-l1",
@@ -2010,7 +2480,8 @@
 "lessonTitle": "Taking a position",
 "title": "Both Sides",
 "text": "Choose an issue you care about. Make a T-chart with 4 reasons for each side, then write your thesis.",
-"open": false
+"open": false,
+"proof": "Show your T-chart with 4 reasons for each side and your thesis."
 },
 {
 "id": "la9-u5-l2",
@@ -2021,7 +2492,8 @@
 "lessonTitle": "Evidence",
 "title": "Evidence Bank",
 "text": "Find 2 pieces of evidence for each of your 3 reasons. Record the source for each.",
-"open": false
+"open": false,
+"proof": "Show 6 pieces of evidence (2 for each reason) with a source for each."
 },
 {
 "id": "la9-u5-l3",
@@ -2032,7 +2504,8 @@
 "lessonTitle": "The five-paragraph essay",
 "title": "Essay Draft",
 "text": "Draft your five-paragraph essay. Add it to your portfolio once it's final.",
-"open": false
+"open": false,
+"proof": "Hand in your five-paragraph draft and show the final version in your portfolio."
 },
 {
 "id": "la9-u5-l4",
@@ -2043,7 +2516,8 @@
 "lessonTitle": "Polish it",
 "title": "Read It Aloud",
 "text": "Read your essay out loud to someone. Fix every spot where you stumble or they look confused.",
-"open": false
+"open": false,
+"proof": "Show your essay with the spots you fixed marked, and who you read it to."
 },
 {
 "id": "la9-u5-l5",
@@ -2054,7 +2528,8 @@
 "lessonTitle": "From essay to PSA",
 "title": "PSA Campaign",
 "text": "Team up with a Grade 8 group to launch a PSA campaign at school: posters, an announcement and a short video on the same issue.",
-"open": false
+"open": false,
+"proof": "Show your team's poster, announcement and video, and the names of the Grade 8 group you worked with."
 },
 {
 "id": "la9-u6-l1",
@@ -2065,7 +2540,8 @@
 "lessonTitle": "Where am I now?",
 "title": "Growth Proof",
 "text": "Find your first and best piece of writing from this year. Write what improved and how you know.",
-"open": false
+"open": false,
+"proof": "Show both pieces of writing and your notes on what improved and how you know."
 },
 {
 "id": "la9-u6-l2",
@@ -2076,7 +2552,8 @@
 "lessonTitle": "Pathways and careers",
 "title": "Pathway Visit",
 "text": "Visit (or look up) your future high school's course guide. Find 3 courses or programs that connect to a career you're interested in.",
-"open": false
+"open": false,
+"proof": "Show the 3 courses or programs and the career each connects to."
 },
 {
 "id": "la9-u6-l3",
@@ -2087,7 +2564,8 @@
 "lessonTitle": "How did my research go?",
 "title": "Research Reflection",
 "text": "Write a 5-sentence reflection on your career research: what worked, what didn't and one change for next time.",
-"open": false
+"open": false,
+"proof": "Hand in your 5-sentence reflection."
 },
 {
 "id": "la9-u6-l4",
@@ -2098,7 +2576,8 @@
 "lessonTitle": "Writing the plan",
 "title": "My Plan",
 "text": "Write your transition plan and share it with a parent or guardian. Ask them to add one support or idea.",
-"open": false
+"open": false,
+"proof": "Show your transition plan with the support or idea your parent or guardian added."
 },
 {
 "id": "la9-u6-l5",
@@ -2109,7 +2588,8 @@
 "lessonTitle": "Presenting my plan",
 "title": "Showcase Night",
 "text": "Present your portfolio at a student-led conference or a class showcase. Invite a family member or a mentor.",
-"open": false
+"open": false,
+"proof": "Present your portfolio, and tell your teacher who you invited."
 },
 {
 "id": "social8-u1-l1",
@@ -2120,7 +2600,8 @@
 "lessonTitle": "My worldview",
 "title": "Worldview Shield",
 "text": "Design a shield with 4 sections: family, beliefs, place and experiences. Fill each with words or pictures that shape your worldview.",
-"open": true
+"open": true,
+"proof": "Show your shield with all 4 sections filled with words or pictures."
 },
 {
 "id": "social8-u1-l2",
@@ -2131,7 +2612,8 @@
 "lessonTitle": "Perspectives",
 "title": "Three Views",
 "text": "Pick a current issue in your community. Interview or research 3 people with different perspectives on it and summarize each.",
-"open": true
+"open": true,
+"proof": "Hand in a short summary of each of the 3 perspectives and who or where each came from."
 },
 {
 "id": "social8-u1-l3",
@@ -2142,7 +2624,8 @@
 "lessonTitle": "Thinking like a historian",
 "title": "Family Artifact",
 "text": "Bring in (or photograph) an old object or photo from your family. Explain what it tells us about the past and who made it.",
-"open": true
+"open": true,
+"proof": "Bring the object or a photo, and explain to your teacher what it tells us about the past and who made it."
 },
 {
 "id": "social8-u1-l4",
@@ -2153,7 +2636,8 @@
 "lessonTitle": "Timelines and maps",
 "title": "My Timeline",
 "text": "Make a timeline of your life (or your family's history) with at least 8 events. Mark each decade.",
-"open": true
+"open": true,
+"proof": "Show your timeline with 8+ events and each decade marked."
 },
 {
 "id": "social8-u1-l5",
@@ -2164,7 +2648,8 @@
 "lessonTitle": "Worldviews and the land",
 "title": "Land Connection",
 "text": "Find out whose traditional territory your school is on (Treaty 6, 7 or 8, or Métis homeland). Learn one teaching or place name from that Nation and share it.",
-"open": true
+"open": true,
+"proof": "Share the territory, the Nation and the teaching or place name with your teacher or the class, and where you learned it."
 },
 {
 "id": "social8-u2-l1",
@@ -2175,7 +2660,8 @@
 "lessonTitle": "What is a worldview?",
 "title": "My Worldview Map",
 "text": "Make a poster or slide showing 3 beliefs, 3 values and 3 things you know that shape how you see the world, and where each one came from.",
-"open": true
+"open": true,
+"proof": "Show your poster or slide with 3 beliefs, 3 values and 3 knowledge items, and where each came from."
 },
 {
 "id": "social8-u2-l2",
@@ -2186,7 +2672,8 @@
 "lessonTitle": "Japan's geography",
 "title": "Map Maker",
 "text": "Draw a labelled map of Japan showing the 4 main islands, Tokyo (once called Edo), Nagasaki and the Pacific Ocean. Add a key.",
-"open": true
+"open": true,
+"proof": "Hand in your map with the 4 main islands, Tokyo (Edo), Nagasaki, the Pacific Ocean and a key."
 },
 {
 "id": "social8-u2-l3",
@@ -2197,7 +2684,8 @@
 "lessonTitle": "Closing the doors",
 "title": "Pros and Cons Debate",
 "text": "Prepare 3 reasons FOR and 3 reasons AGAINST Japan's isolation. Lead a 5-minute class debate.",
-"open": true
+"open": true,
+"proof": "Show your 3 reasons for and 3 against, and lead the 5-minute debate in class."
 },
 {
 "id": "social8-u2-l4",
@@ -2208,7 +2696,8 @@
 "lessonTitle": "The black ships arrive",
 "title": "Two Points of View",
 "text": "Write two short diary entries about the day the black ships arrived: one from a Japanese fisher and one from an American sailor.",
-"open": true
+"open": true,
+"proof": "Hand in both diary entries: one from a Japanese fisher and one from an American sailor."
 },
 {
 "id": "social8-u2-l5",
@@ -2219,7 +2708,8 @@
 "lessonTitle": "Rapid adaptation",
 "title": "Then and Now",
 "text": "Interview an adult about the biggest change they've seen in their lifetime (phones, jobs, technology). What did people gain, and what did they lose? Compare it to the Meiji era.",
-"open": true
+"open": true,
+"proof": "Hand in your interview notes: the change, what people gained and lost, and one way it compares to the Meiji era."
 },
 {
 "id": "social8-u2-l6",
@@ -2230,7 +2720,8 @@
 "lessonTitle": "Change and tradition here at home",
 "title": "Local Voices",
 "text": "With your teacher's help, find out which First Nations or Métis communities are near your school and one way they keep their language or traditions strong today. Share what you learned respectfully with the class.",
-"open": true
+"open": true,
+"proof": "Share what you learned with the class (with your teacher's OK) and tell your teacher where you learned it."
 },
 {
 "id": "social8-u3-l1",
@@ -2241,7 +2732,8 @@
 "lessonTitle": "A rebirth",
 "title": "Modern Patron",
 "text": "Who are today's \"patrons\" of art, music or sport (sponsors, grants, crowdfunding)? Find one example and explain how it works.",
-"open": false
+"open": false,
+"proof": "Show your example of a modern patron and 2–3 sentences on how it works."
 },
 {
 "id": "social8-u3-l2",
@@ -2252,7 +2744,8 @@
 "lessonTitle": "Humanism",
 "title": "Renaissance Me",
 "text": "List 5 different skills you have or want to build (art, sport, tech, cooking, music). Make a \"Renaissance résumé\" for yourself.",
-"open": false
+"open": false,
+"proof": "Hand in your Renaissance résumé with 5 skills."
 },
 {
 "id": "social8-u3-l3",
@@ -2263,7 +2756,8 @@
 "lessonTitle": "Ideas spread",
 "title": "Then and Now Ideas",
 "text": "Compare the printing press to the internet or social media. Make a chart showing 3 ways they're similar and 3 ways they're different.",
-"open": false
+"open": false,
+"proof": "Show your chart with 3 similarities and 3 differences."
 },
 {
 "id": "social8-u3-l4",
@@ -2274,7 +2768,8 @@
 "lessonTitle": "Trade and exploration",
 "title": "Trade Route Map",
 "text": "Draw a map of one Renaissance trade or exploration route. Label what was traded and what dangers sailors faced.",
-"open": false
+"open": false,
+"proof": "Hand in your map with the route, the goods traded and the dangers labelled."
 },
 {
 "id": "social8-u3-l5",
@@ -2285,7 +2780,8 @@
 "lessonTitle": "The western worldview today",
 "title": "Renaissance Today",
 "text": "Find 3 things in your life (a school subject, an invention, a value) with roots in the Renaissance. Make a poster connecting then and now.",
-"open": false
+"open": false,
+"proof": "Bring your poster connecting 3 things in your life to the Renaissance."
 },
 {
 "id": "social8-u4-l1",
@@ -2296,7 +2792,8 @@
 "lessonTitle": "The Aztec world",
 "title": "City Planner",
 "text": "Draw or build a model of Tenochtitlan with its causeways, temple and chinampas. Label how each part met people's needs.",
-"open": false
+"open": false,
+"proof": "Bring your drawing or model with the causeways, temple and chinampas labelled with how each met people's needs."
 },
 {
 "id": "social8-u4-l2",
@@ -2307,7 +2804,8 @@
 "lessonTitle": "Spain expands",
 "title": "Motive Ranking",
 "text": "Rank gold, God and glory for Spain from most to least important. Defend your ranking in a paragraph or a short recording.",
-"open": false
+"open": false,
+"proof": "Show your ranking of gold, God and glory and your paragraph or recording defending it."
 },
 {
 "id": "social8-u4-l3",
@@ -2318,7 +2816,8 @@
 "lessonTitle": "Contact and conquest",
 "title": "Cause Web",
 "text": "Make a cause-and-effect web showing why Tenochtitlan fell. Rank the causes and explain your top one.",
-"open": false
+"open": false,
+"proof": "Show your cause-and-effect web with the causes ranked and your top one explained."
 },
 {
 "id": "social8-u4-l4",
@@ -2329,7 +2828,8 @@
 "lessonTitle": "After contact",
 "title": "Word Detective",
 "text": "Find 5 words in English that come from Nahuatl or another Indigenous language of the Americas. Make a mini-dictionary.",
-"open": false
+"open": false,
+"proof": "Hand in your mini-dictionary of 5 words with the language each comes from and its meaning."
 },
 {
 "id": "social8-u4-l5",
@@ -2340,7 +2840,8 @@
 "lessonTitle": "Comparing contact",
 "title": "Contact Debate",
 "text": "With a partner, argue which society faced the bigger challenge at contact: the Aztecs or Japan. Use at least 3 facts each.",
-"open": false
+"open": false,
+"proof": "Show your notes with at least 3 facts from each of you, and tell your teacher your partner's name."
 },
 {
 "id": "social8-u5-l1",
@@ -2351,7 +2852,8 @@
 "lessonTitle": "Three stories of contact",
 "title": "Contact Comic",
 "text": "Make a 3-panel comic: one panel each for Japan, the Renaissance and the Aztecs, showing how each met another worldview.",
-"open": false
+"open": false,
+"proof": "Hand in your 3-panel comic with one panel each for Japan, the Renaissance and the Aztecs."
 },
 {
 "id": "social8-u5-l2",
@@ -2362,7 +2864,8 @@
 "lessonTitle": "Keeping traditions, adapting to change",
 "title": "Language Learner",
 "text": "Learn 10 words in Cree, Blackfoot, Dene, Michif or another language spoken in Alberta. Teach them to someone at home.",
-"open": false
+"open": false,
+"proof": "Say your 10 words (with meanings) to your teacher and tell them who you taught at home."
 },
 {
 "id": "social8-u5-l3",
@@ -2373,7 +2876,8 @@
 "lessonTitle": "Media and other cultures",
 "title": "Media Check",
 "text": "Watch a show, movie or ad that includes a culture different from yours. Was it fair and accurate? Who made it? Write a short review.",
-"open": false
+"open": false,
+"proof": "Hand in your short review: what you watched, who made it, and whether it was fair and accurate, with a reason."
 },
 {
 "id": "social8-u5-l4",
@@ -2384,7 +2888,8 @@
 "lessonTitle": "Analyzing an issue",
 "title": "Issue Watch",
 "text": "Follow a current issue in the news for 2 weeks. Complete all 4 steps of the issue-analysis model.",
-"open": false
+"open": false,
+"proof": "Show your notes from 2 weeks and all 4 steps of the issue-analysis model completed."
 },
 {
 "id": "social8-u5-l5",
@@ -2395,7 +2900,8 @@
 "lessonTitle": "Taking action",
 "title": "Action Project",
 "text": "With a small group, plan and carry out one action on an issue (a food drive, a cultural celebration, an awareness poster campaign). Report on what you did and what changed.",
-"open": false
+"open": false,
+"proof": "Hand in your group's report on what you did and what changed, with your group members' names."
 },
 {
 "id": "social9-u1-l1",
@@ -2406,7 +2912,8 @@
 "lessonTitle": "The Charter",
 "title": "Rights in Real Life",
 "text": "Find a news story where someone's Charter right was involved. Explain which right and what happened.",
-"open": true
+"open": true,
+"proof": "Show the news story (or link), which Charter right was involved and a short explanation of what happened."
 },
 {
 "id": "social9-u1-l2",
@@ -2417,7 +2924,8 @@
 "lessonTitle": "Individual vs. collective rights",
 "title": "Rights Sort",
 "text": "Make a two-column chart of 6 individual and 4 collective rights, with a real example of each.",
-"open": true
+"open": true,
+"proof": "Show your chart with 6 individual and 4 collective rights and a real example for each."
 },
 {
 "id": "social9-u1-l3",
@@ -2428,7 +2936,8 @@
 "lessonTitle": "Francophone rights",
 "title": "Francophone Alberta",
 "text": "Find one Francophone community, school or festival in Alberta. Share 3 facts about it and one French phrase you learned.",
-"open": true
+"open": true,
+"proof": "Share your 3 facts and your French phrase with your teacher, with where you found them."
 },
 {
 "id": "social9-u1-l4",
@@ -2439,7 +2948,8 @@
 "lessonTitle": "Treaties and Indigenous rights",
 "title": "Treaty Territory",
 "text": "Find out which treaty area your school is in and which Nations signed it. Make a map with the date and one promise from the treaty.",
-"open": true
+"open": true,
+"proof": "Hand in your map with the treaty number, the date, the Nations that signed and one promise."
 },
 {
 "id": "social9-u1-l5",
@@ -2450,7 +2960,8 @@
 "lessonTitle": "Immigration",
 "title": "Journey Story",
 "text": "Interview someone who immigrated to Canada (or research a newcomer's story). What brought them here? What challenges did they face?",
-"open": true
+"open": true,
+"proof": "Hand in your notes: who the person is (no last name needed), what brought them here and the challenges they faced."
 },
 {
 "id": "social9-u2-l1",
@@ -2461,7 +2972,8 @@
 "lessonTitle": "What is an economy?",
 "title": "Price Tracker",
 "text": "Track the price of one thing (gas, eggs, a game) for 3 weeks. Graph it and explain any change using supply and demand.",
-"open": true
+"open": true,
+"proof": "Show 3 weeks of dated prices, your graph and a supply-and-demand explanation of any change."
 },
 {
 "id": "social9-u2-l2",
@@ -2472,7 +2984,8 @@
 "lessonTitle": "Market and mixed economies",
 "title": "Debate Prep",
 "text": "Write a one-minute speech arguing for MORE government involvement in one area (like daycare or housing), then a one-minute speech arguing for LESS. Which was easier to argue, and why?",
-"open": true
+"open": true,
+"proof": "Show both speeches and 1–2 sentences on which was easier to argue and why."
 },
 {
 "id": "social9-u2-l3",
@@ -2483,7 +2996,8 @@
 "lessonTitle": "Canada and the U.S.: trading partners",
 "title": "Label Hunt",
 "text": "Check 10 products at home and record where each was made. How many came from the U.S.? Make a chart and bring it to class.",
-"open": true
+"open": true,
+"proof": "Bring your chart of 10 products, where each was made and how many came from the U.S."
 },
 {
 "id": "social9-u2-l4",
@@ -2494,7 +3008,8 @@
 "lessonTitle": "Alberta's resources and jobs",
 "title": "Resource Career Card",
 "text": "Use ALIS to research one Alberta career that depends on a natural resource. Make a card showing what they do, the training needed and the average pay.",
-"open": true
+"open": true,
+"proof": "Hand in your career card with what they do, the training and the average pay from ALIS."
 },
 {
 "id": "social9-u2-l5",
@@ -2505,7 +3020,8 @@
 "lessonTitle": "Governments, resources and the environment",
 "title": "Town Hall",
 "text": "Pick a real Alberta resource issue in the news. Write a short letter to your MLA explaining your position, using one fact for each side. Show your teacher before sending.",
-"open": true
+"open": true,
+"proof": "Show your teacher the letter before sending, with your position and one fact for each side."
 },
 {
 "id": "social9-u2-l6",
@@ -2516,7 +3032,8 @@
 "lessonTitle": "Labour unions",
 "title": "Union Interview",
 "text": "Interview an adult who is in a union or professional association. Ask what it does for them and one thing they'd change. Share both sides with the class.",
-"open": true
+"open": true,
+"proof": "Share what the union does for them and one thing they'd change (no names needed)."
 },
 {
 "id": "social9-u3-l1",
@@ -2527,7 +3044,8 @@
 "lessonTitle": "Three branches",
 "title": "Who's Who",
 "text": "Find out who your MP, MLA, mayor or reeve, and a Supreme Court justice are. Make a \"who's who\" chart for your family.",
-"open": false
+"open": false,
+"proof": "Hand in your who's who chart with all 4 names and their roles."
 },
 {
 "id": "social9-u3-l2",
@@ -2538,7 +3056,8 @@
 "lessonTitle": "How a bill becomes law",
 "title": "Bill Tracker",
 "text": "Find a real bill being debated in Parliament or the Alberta Legislature. Track which stage it's at and what it would change.",
-"open": false
+"open": false,
+"proof": "Show the bill's name or number, its current stage and what it would change."
 },
 {
 "id": "social9-u3-l3",
@@ -2549,7 +3068,8 @@
 "lessonTitle": "Elections, parties and media",
 "title": "Platform Compare",
 "text": "Pick 2 parties and one issue you care about. Compare what each party's website says about it.",
-"open": false
+"open": false,
+"proof": "Show the 2 parties' positions on your issue, in their own words, with their websites."
 },
 {
 "id": "social9-u3-l4",
@@ -2560,7 +3080,8 @@
 "lessonTitle": "The justice system",
 "title": "Court Visit",
 "text": "Visit a courthouse open session (with an adult), watch a mock trial video, or interview a lawyer or police officer about their job. Write 3 things that surprised you.",
-"open": false
+"open": false,
+"proof": "Hand in what you did (visit, video or interview) and 3 things that surprised you."
 },
 {
 "id": "social9-u3-l5",
@@ -2571,7 +3092,8 @@
 "lessonTitle": "Making your voice heard",
 "title": "Write Your Rep",
 "text": "Write a respectful email or letter to your MP or MLA about an issue you care about. Share any reply you get.",
-"open": false
+"open": false,
+"proof": "Show your teacher the email or letter before sending, then show it was sent. Share any reply you get."
 },
 {
 "id": "social9-u4-l1",
@@ -2582,7 +3104,8 @@
 "lessonTitle": "Quality of life",
 "title": "Good Life Survey",
 "text": "Ask 5 people of different ages what makes a good life. Sort their answers into standard of living and quality of life.",
-"open": false
+"open": false,
+"proof": "Show your 5 people's answers (ages only, no names) sorted into standard of living and quality of life."
 },
 {
 "id": "social9-u4-l2",
@@ -2593,7 +3116,8 @@
 "lessonTitle": "Consumerism and ads",
 "title": "Buy Nothing Day",
 "text": "Go 3 days without buying anything you don't need. Track every time an ad tempted you, and how you felt.",
-"open": false
+"open": false,
+"proof": "Show your 3-day log of each ad that tempted you and how you felt."
 },
 {
 "id": "social9-u4-l3",
@@ -2604,7 +3128,8 @@
 "lessonTitle": "Taxes",
 "title": "Tax Trail",
 "text": "Pick one public service you used this week (a road, a hospital, a park). Find out which level of government pays for it.",
-"open": false
+"open": false,
+"proof": "Show the service you used, which level of government pays for it and where you found that out."
 },
 {
 "id": "social9-u4-l4",
@@ -2615,7 +3140,8 @@
 "lessonTitle": "Social programs",
 "title": "Program Profile",
 "text": "Choose one social program. Find out who it helps, how it's paid for, and one argument for and against expanding it.",
-"open": false
+"open": false,
+"proof": "Hand in who the program helps, how it's paid for, and one argument for and one against expanding it."
 },
 {
 "id": "social9-u4-l5",
@@ -2626,7 +3152,8 @@
 "lessonTitle": "Parties and platforms",
 "title": "Platform Detective",
 "text": "Choose one issue (housing, health care, jobs). Compare what 2 or 3 parties' platforms say about it, using their own websites. Stay neutral and just report.",
-"open": false
+"open": false,
+"proof": "Show what each party says about the issue, from their own websites, written neutrally."
 },
 {
 "id": "social9-u5-l1",
@@ -2637,7 +3164,8 @@
 "lessonTitle": "Resources and decisions",
 "title": "Resource Map",
 "text": "Map 3 resource industries near where you live. For each, list one benefit and one concern for your community.",
-"open": false
+"open": false,
+"proof": "Hand in your map of 3 industries, each with one benefit and one concern."
 },
 {
 "id": "social9-u5-l2",
@@ -2648,7 +3176,8 @@
 "lessonTitle": "Viewpoints",
 "title": "Role Play Hearing",
 "text": "Hold a mock public hearing on an Alberta issue. Each person plays one stakeholder and argues their interests. Then vote as \"council.\"",
-"open": false
+"open": false,
+"proof": "Show your stakeholder notes and tell your teacher the role you played and the \"council\" vote."
 },
 {
 "id": "social9-u5-l3",
@@ -2659,7 +3188,8 @@
 "lessonTitle": "Reading the data",
 "title": "Trend Spotter",
 "text": "Find one graph about Alberta's energy, water or wildlife from a government or StatCan site. Describe the trend and one possible cause.",
-"open": false
+"open": false,
+"proof": "Show the graph (and its source), a description of the trend and one possible cause."
 },
 {
 "id": "social9-u5-l4",
@@ -2670,7 +3200,8 @@
 "lessonTitle": "Fact, opinion and media",
 "title": "Two Sides Media",
 "text": "Find two articles or videos with different views on the same environmental issue. Highlight facts and opinions in each.",
-"open": false
+"open": false,
+"proof": "Show both sources with facts and opinions highlighted in each."
 },
 {
 "id": "social9-u5-l5",
@@ -2681,7 +3212,8 @@
 "lessonTitle": "My position",
 "title": "Future Forum",
 "text": "Present your position on an Alberta environmental issue in a short speech, poster or video. Invite a community member or local councillor to hear it.",
-"open": false
+"open": false,
+"proof": "Give your speech or show your poster or video, and tell your teacher who you invited."
 },
 {
 "id": "cefl8-u1-l1",
@@ -2692,7 +3224,8 @@
 "lessonTitle": "A changing labour market",
 "title": "Job Then and Now",
 "text": "Interview an adult about a job they had that has changed (or disappeared) because of technology. What new skills did they need?",
-"open": true
+"open": true,
+"proof": "Hand in your interview notes: the job, how technology changed it and the new skills needed."
 },
 {
 "id": "cefl8-u1-l2",
@@ -2703,7 +3236,8 @@
 "lessonTitle": "Skills that travel",
 "title": "Skill Ranking",
 "text": "List 8 skills you have. Rank them from strongest to weakest and give a real example for your top 3.",
-"open": true
+"open": true,
+"proof": "Show your ranked list of 8 skills with a real example for your top 3."
 },
 {
 "id": "cefl8-u1-l3",
@@ -2714,7 +3248,8 @@
 "lessonTitle": "Career resilience",
 "title": "Learn Something New",
 "text": "Learn a new skill in 2 weeks (a coding basic, a recipe, a tool, a language phrase set). Show what you learned and how it adds to your human capital.",
-"open": true
+"open": true,
+"proof": "Show or demonstrate your new skill, with 1–2 sentences on how it adds to your human capital."
 },
 {
 "id": "cefl8-u1-l4",
@@ -2725,7 +3260,8 @@
 "lessonTitle": "Who does this job?",
 "title": "Role Model Profile",
 "text": "Find someone from a group that's under-represented in their career (in your community or online). Make a profile of their path and the barriers they overcame.",
-"open": true
+"open": true,
+"proof": "Hand in your profile: the person, their career path and the barriers they overcame."
 },
 {
 "id": "cefl8-u1-l5",
@@ -2736,7 +3272,8 @@
 "lessonTitle": "Career goals",
 "title": "Milestone Map",
 "text": "Draw a career path map with one long-term goal and at least 4 milestones. Add one backup route.",
-"open": true
+"open": true,
+"proof": "Show your career map with a long-term goal, 4+ milestones and a backup route."
 },
 {
 "id": "cefl8-u2-l1",
@@ -2747,7 +3284,8 @@
 "lessonTitle": "Reading a job offer",
 "title": "Offer Detective",
 "text": "Ask an adult you trust what their first job offer included. Fill out a chart with the pay, hours, duties and extras.",
-"open": true
+"open": true,
+"proof": "Show your chart with the pay, hours, duties and extras from the offer."
 },
 {
 "id": "cefl8-u2-l2",
@@ -2758,7 +3296,8 @@
 "lessonTitle": "Hourly, weekly and yearly pay",
 "title": "Dream Job Math",
 "text": "Look up the hourly wage for a job you'd like on ALIS. Calculate the weekly and yearly pay for full-time work.",
-"open": true
+"open": true,
+"proof": "Show the job, its ALIS hourly wage, and your weekly and yearly pay with your work."
 },
 {
 "id": "cefl8-u2-l3",
@@ -2769,7 +3308,8 @@
 "lessonTitle": "Total compensation",
 "title": "Benefits Value",
 "text": "With an adult's help, find out what one benefit costs without insurance (an eye exam and glasses, or a dental cleaning). That's how much a benefit can be worth!",
-"open": true
+"open": true,
+"proof": "Show the benefit you chose, what it costs without insurance and where you found the price."
 },
 {
 "id": "cefl8-u2-l4",
@@ -2780,7 +3320,8 @@
 "lessonTitle": "More than money",
 "title": "My Top 3",
 "text": "Rank the 6 non-salary factors from most to least important to you, and explain your top 3 to a family member. Did their list match yours?",
-"open": true
+"open": true,
+"proof": "Show your ranked list with your top 3 explained, and whether your family member's list matched."
 },
 {
 "id": "cefl8-u2-l5",
@@ -2791,7 +3332,8 @@
 "lessonTitle": "Comparing two job offers",
 "title": "Offer Showdown",
 "text": "Find 2 real job postings in your area for teens or students. Make a comparison chart and choose one. Explain your choice to the class.",
-"open": true
+"open": true,
+"proof": "Show both postings, your comparison chart and your choice, then explain it to the class."
 },
 {
 "id": "cefl8-u2-l6",
@@ -2802,7 +3344,8 @@
 "lessonTitle": "Networking",
 "title": "Career Conversation",
 "text": "Have a 10-minute conversation with an adult about their career using at least 3 of the starters. Write down the 3 most useful things you learned.",
-"open": true
+"open": true,
+"proof": "Hand in the 3 most useful things you learned and which starters you used."
 },
 {
 "id": "cefl8-u3-l1",
@@ -2813,7 +3356,8 @@
 "lessonTitle": "Gross vs. net",
 "title": "First Paycheque",
 "text": "Ask a family member how they felt about their first paycheque. Was it more or less than they expected?",
-"open": false
+"open": false,
+"proof": "Share how your family member felt and whether it was more or less than they expected."
 },
 {
 "id": "cefl8-u3-l2",
@@ -2824,7 +3368,8 @@
 "lessonTitle": "Tax brackets",
 "title": "Bracket Myth Buster",
 "text": "Many people think a raise into a higher bracket means you take home less. Make a short explainer (poster or video) showing why that's not true.",
-"open": false
+"open": false,
+"proof": "Show your poster or video explaining why a raise into a higher bracket doesn't lower take-home pay."
 },
 {
 "id": "cefl8-u3-l3",
@@ -2835,7 +3380,8 @@
 "lessonTitle": "Fair share?",
 "title": "Fair Tax Debate",
 "text": "Which system is fairest? Write your opinion with 2 reasons, then write the best argument from someone who disagrees.",
-"open": false
+"open": false,
+"proof": "Hand in your opinion with 2 reasons and the best argument from someone who disagrees."
 },
 {
 "id": "cefl8-u3-l4",
@@ -2846,7 +3392,8 @@
 "lessonTitle": "What taxes pay for",
 "title": "Tax Spotter",
 "text": "For one day, list every public service you use (bus, school, streetlights, library). Estimate what your day would cost if you paid for each yourself.",
-"open": false
+"open": false,
+"proof": "Show your list of public services from one day and your estimated cost for each."
 },
 {
 "id": "cefl8-u3-l5",
@@ -2857,7 +3404,8 @@
 "lessonTitle": "Young worker rights",
 "title": "Safety Poster",
 "text": "Make a poster for teen workers showing the 3 safety rights, with a real example of each.",
-"open": false
+"open": false,
+"proof": "Bring your poster showing the 3 safety rights, each with a real example."
 },
 {
 "id": "cefl8-u4-l1",
@@ -2868,7 +3416,8 @@
 "lessonTitle": "Fixed and variable costs",
 "title": "Cost Detective",
 "text": "With a family member, list 10 household costs. Sort them into fixed and variable, and circle the one that would be easiest to lower.",
-"open": false
+"open": false,
+"proof": "Show your 10 costs sorted into fixed and variable, with the easiest to lower circled."
 },
 {
 "id": "cefl8-u4-l2",
@@ -2879,7 +3428,8 @@
 "lessonTitle": "Building a budget",
 "title": "Goal Budget",
 "text": "Pick something you want to buy. Make a real or pretend monthly budget that reaches the goal, then find one variable cost to cut to get there sooner.",
-"open": false
+"open": false,
+"proof": "Show your goal, your monthly budget and the variable cost you'd cut, with how much sooner you'd reach it."
 },
 {
 "id": "cefl8-u4-l3",
@@ -2890,7 +3440,8 @@
 "lessonTitle": "Simple interest",
 "title": "Bank Shopper",
 "text": "Find the interest rate on 2 real savings accounts for youth. Calculate the simple interest on $500 for one year at each.",
-"open": false
+"open": false,
+"proof": "Show the 2 accounts and their rates, and your simple interest on $500 for each."
 },
 {
 "id": "cefl8-u4-l4",
@@ -2901,7 +3452,8 @@
 "lessonTitle": "Compound interest",
 "title": "Time Machine",
 "text": "Use an online compound interest calculator. Compare saving $50 a month starting at age 14 vs. age 30, both until age 60 at 5%. Share the difference.",
-"open": false
+"open": false,
+"proof": "Show both results from the calculator (age 14 and age 30) and the difference."
 },
 {
 "id": "cefl8-u4-l5",
@@ -2912,7 +3464,8 @@
 "lessonTitle": "Saving vs. investing",
 "title": "AvCash Investor",
 "text": "Track your Avalanche HQ investment for 4 weeks. Calculate your return as a percent each week and explain your choice.",
-"open": false
+"open": false,
+"proof": "Show your 4 weeks of balances, the percent return for each week and why you chose that investment."
 },
 {
 "id": "cefl8-u5-l1",
@@ -2923,7 +3476,8 @@
 "lessonTitle": "Pathways after high school",
 "title": "Program Lookup",
 "text": "Find one program at NAIT, SAIT, Olds College, a university or a trade school. Record the admission requirements and length.",
-"open": false
+"open": false,
+"proof": "Show the program, the school, the admission requirements and how long it takes."
 },
 {
 "id": "cefl8-u5-l2",
@@ -2934,7 +3488,8 @@
 "lessonTitle": "Reality check",
 "title": "Dream vs Data",
 "text": "Pick a dream career. Find its Alberta wage and outlook on ALIS. Write whether the data matches your expectations.",
-"open": false
+"open": false,
+"proof": "Show the career, its Alberta wage and outlook from ALIS, and whether it matched what you expected."
 },
 {
 "id": "cefl8-u5-l3",
@@ -2945,7 +3500,8 @@
 "lessonTitle": "Paying for school",
 "title": "Scholarship Hunt",
 "text": "Find 3 scholarships or bursaries for Alberta high school graduates (try alis.alberta.ca or a local business). Record who qualifies and how to apply.",
-"open": false
+"open": false,
+"proof": "Show 3 scholarships or bursaries, who qualifies for each and how to apply."
 },
 {
 "id": "cefl8-u5-l4",
@@ -2956,7 +3512,8 @@
 "lessonTitle": "Networking",
 "title": "Career Chat",
 "text": "Have a 10-minute career conversation with an adult in a job you're curious about. Use the starters and send a thank-you message afterwards.",
-"open": false
+"open": false,
+"proof": "Hand in what you learned from the conversation and show the thank-you message you sent."
 },
 {
 "id": "cefl8-u5-l5",
@@ -2967,7 +3524,8 @@
 "lessonTitle": "My course plan",
 "title": "Course Plan",
 "text": "Draft a Grade 10–12 course plan for one pathway. Have a parent, teacher or counsellor check it and sign off.",
-"open": false
+"open": false,
+"proof": "Show your Grade 10–12 course plan signed by a parent, teacher or counsellor."
 },
 {
 "id": "cefl9-u1-l1",
@@ -2978,7 +3536,8 @@
 "lessonTitle": "Automation",
 "title": "Robot Watch",
 "text": "Find 3 examples of automation in your town (self-checkout, automated milking, online ordering). For each, list one job lost and one job created.",
-"open": true
+"open": true,
+"proof": "Show your 3 examples, each with one job lost and one job created."
 },
 {
 "id": "cefl9-u1-l2",
@@ -2989,7 +3548,8 @@
 "lessonTitle": "Where's the work going?",
 "title": "Industry Sort",
 "text": "Use ALIS or Job Bank to sort 6 Alberta industries into growing, stable or declining. Back up each with one piece of data.",
-"open": true
+"open": true,
+"proof": "Show your sort of 6 industries with one piece of data for each from ALIS or Job Bank."
 },
 {
 "id": "cefl9-u1-l3",
@@ -3000,7 +3560,8 @@
 "lessonTitle": "Reliable LMI",
 "title": "Source Check",
 "text": "Find one career claim online and check it against ALIS or Job Bank. Was it accurate?",
-"open": true
+"open": true,
+"proof": "Show the claim, what ALIS or Job Bank says and whether it was accurate."
 },
 {
 "id": "cefl9-u1-l4",
@@ -3011,7 +3572,8 @@
 "lessonTitle": "Learning by doing",
 "title": "Try It Out",
 "text": "Volunteer for at least 3 hours or run a mini-business (bake sale, lawn care, crafts). Reflect on 3 skills you used.",
-"open": true
+"open": true,
+"proof": "Show proof of your 3+ hours (a note from the organizer) or your mini-business results, plus your reflection on 3 skills."
 },
 {
 "id": "cefl9-u1-l5",
@@ -3022,7 +3584,8 @@
 "lessonTitle": "Language as a skill",
 "title": "Language Asset",
 "text": "Search Job Bank for 3 postings that list a second language as required or an asset. What languages and jobs did you find?",
-"open": true
+"open": true,
+"proof": "Show the 3 postings (job and language) from Job Bank."
 },
 {
 "id": "cefl9-u2-l1",
@@ -3033,7 +3596,8 @@
 "lessonTitle": "Decoding a job posting",
 "title": "Posting Match",
 "text": "Find 2 real job postings on Job Bank for jobs a 15–16-year-old could do. Highlight the skills and qualifications, then list which ones you already have.",
-"open": true
+"open": true,
+"proof": "Show both postings with the skills highlighted and your list of the ones you already have."
 },
 {
 "id": "cefl9-u2-l2",
@@ -3044,7 +3608,8 @@
 "lessonTitle": "Your personal brand",
 "title": "Brand Check",
 "text": "Write your brand statement, then ask 3 people who know you if it sounds like you. Revise it using their feedback.",
-"open": true
+"open": true,
+"proof": "Show your first brand statement, your 3 people's feedback and your revised version."
 },
 {
 "id": "cefl9-u2-l3",
@@ -3055,7 +3620,8 @@
 "lessonTitle": "Tailoring your résumé",
 "title": "Two Versions",
 "text": "Make 2 versions of your résumé for 2 very different jobs. Highlight what you changed and why.",
-"open": true
+"open": true,
+"proof": "Show both résumés with the changes highlighted and a sentence on why for each."
 },
 {
 "id": "cefl9-u2-l4",
@@ -3066,7 +3632,8 @@
 "lessonTitle": "Where are the jobs?",
 "title": "Job Map",
 "text": "Make a map or list of 10 places within walking or bus distance of home that hire teens. Note how each one hires: online, in person, or through people you know.",
-"open": true
+"open": true,
+"proof": "Show your map or list of 10 places and how each one hires."
 },
 {
 "id": "cefl9-u2-l5",
@@ -3077,7 +3644,8 @@
 "lessonTitle": "Your digital identity",
 "title": "Digital Clean-Up",
 "text": "Search your name online with an adult, set your accounts to private, and remove anything you wouldn't want an employer to see. Write a short reflection on what you found.",
-"open": true
+"open": true,
+"proof": "Hand in your short reflection with an adult's initials saying you did the search together."
 },
 {
 "id": "cefl9-u2-l6",
@@ -3088,7 +3656,8 @@
 "lessonTitle": "Interviews and self-advocacy",
 "title": "Panel Practice",
 "text": "Do a mock interview with the Grade 8 panel, then interview a Grade 8 student about their goals so they can practise answering too.",
-"open": true
+"open": true,
+"proof": "Tell your teacher when you did your mock interview, and show your notes from interviewing a Grade 8."
 },
 {
 "id": "cefl9-u3-l1",
@@ -3099,7 +3668,8 @@
 "lessonTitle": "The T4 and the tax return",
 "title": "Mock Return",
 "text": "Use a sample T4 and the CRA's free learning tools to walk through a simple tax return. Did the sample person get a refund or owe money?",
-"open": false
+"open": false,
+"proof": "Show your completed sample return and whether the person got a refund or owed money."
 },
 {
 "id": "cefl9-u3-l2",
@@ -3110,7 +3680,8 @@
 "lessonTitle": "Credits and deductions",
 "title": "Credit Finder",
 "text": "Research 3 tax credits a young person or student could use. Explain each one in plain language for a classmate.",
-"open": false
+"open": false,
+"proof": "Hand in your plain-language explanation of 3 tax credits."
 },
 {
 "id": "cefl9-u3-l3",
@@ -3121,7 +3692,8 @@
 "lessonTitle": "RRSP vs. TFSA",
 "title": "Account Advisor",
 "text": "Write advice for two people: a 19-year-old saving for a car and a 45-year-old saving for retirement. Which account fits each, and why?",
-"open": false
+"open": false,
+"proof": "Hand in your advice for both people: which account fits each and why."
 },
 {
 "id": "cefl9-u3-l4",
@@ -3132,7 +3704,8 @@
 "lessonTitle": "All income counts",
 "title": "Gig Math",
 "text": "A delivery driver earns $500 in a week from an app. Research what costs and taxes they're responsible for, and estimate what they really keep.",
-"open": false
+"open": false,
+"proof": "Show the costs and taxes you found and your estimate of what the driver really keeps."
 },
 {
 "id": "cefl9-u3-l5",
@@ -3143,7 +3716,8 @@
 "lessonTitle": "Rights and benefits",
 "title": "Rights Quick Guide",
 "text": "Make a one-page \"know your rights\" guide for a teen starting their first job in Alberta.",
-"open": false
+"open": false,
+"proof": "Hand in your one-page \"know your rights\" guide."
 },
 {
 "id": "cefl9-u4-l1",
@@ -3154,7 +3728,8 @@
 "lessonTitle": "Credit and debt",
 "title": "Credit Offers",
 "text": "Collect 3 credit offers from ads, mail or websites (store cards, BNPL, loans). Find the interest rate and fees in the fine print.",
-"open": false
+"open": false,
+"proof": "Show your 3 offers with the interest rate and fees for each."
 },
 {
 "id": "cefl9-u4-l2",
@@ -3165,7 +3740,8 @@
 "lessonTitle": "The minimum payment trap",
 "title": "Payoff Race",
 "text": "Use an online credit card payoff calculator. Compare paying the minimum vs. $100 a month on a $1,500 balance. Record the time and total interest.",
-"open": false
+"open": false,
+"proof": "Show the time and total interest for paying the minimum and for $100 a month."
 },
 {
 "id": "cefl9-u4-l3",
@@ -3176,7 +3752,8 @@
 "lessonTitle": "Credit scores",
 "title": "Credit Plan",
 "text": "Write a 5-step plan to build good credit starting at 18 (for example: one card with a low limit, pay in full, on time, every month).",
-"open": false
+"open": false,
+"proof": "Hand in your 5-step credit plan."
 },
 {
 "id": "cefl9-u4-l4",
@@ -3187,7 +3764,8 @@
 "lessonTitle": "Predatory lending",
 "title": "Ad Breakdown",
 "text": "Find a payday or quick-loan ad. List the tricks it uses and calculate the real cost of borrowing $500 from it.",
-"open": false
+"open": false,
+"proof": "Show the ad, the tricks it uses and your calculation of the real cost of borrowing $500."
 },
 {
 "id": "cefl9-u4-l5",
@@ -3198,7 +3776,8 @@
 "lessonTitle": "Getting out of debt",
 "title": "Debt Plan",
 "text": "Make up a person with 3 debts. Plan their payoff with the avalanche and snowball methods. Which would you choose for them, and why?",
-"open": false
+"open": false,
+"proof": "Show both payoff plans for your 3 debts and which you'd choose, with a reason."
 },
 {
 "id": "cefl9-u5-l1",
@@ -3209,7 +3788,8 @@
 "lessonTitle": "The true cost",
 "title": "True Cost Calc",
 "text": "Pick a real Alberta program. Find tuition, fees and books, estimate living costs, and add opportunity cost. Share the true cost.",
-"open": false
+"open": false,
+"proof": "Show the program and your true cost: tuition, fees, books, living costs and opportunity cost."
 },
 {
 "id": "cefl9-u5-l2",
@@ -3220,7 +3800,8 @@
 "lessonTitle": "Is it worth it?",
 "title": "ROI Compare",
 "text": "Compare 2 pathways (for example, a trade and a university degree). Use ALIS wages to estimate how many years each takes to \"pay back\" its true cost.",
-"open": false
+"open": false,
+"proof": "Show both pathways, their true costs, ALIS wages and your payback estimate for each."
 },
 {
 "id": "cefl9-u5-l3",
@@ -3231,7 +3812,8 @@
 "lessonTitle": "Student loans and aid",
 "title": "Aid Explorer",
 "text": "Visit Alberta Student Aid's website. List the types of help available and one thing you'd need to qualify.",
-"open": false
+"open": false,
+"proof": "Show your list of types of help and one thing you'd need to qualify."
 },
 {
 "id": "cefl9-u5-l4",
@@ -3242,7 +3824,8 @@
 "lessonTitle": "Earn while you learn",
 "title": "Apprentice Q&A",
 "text": "Interview an apprentice, journeyperson or co-op student (or watch a Tradesecrets video). Write 3 things you learned about earning while learning.",
-"open": false
+"open": false,
+"proof": "Hand in 3 things you learned about earning while learning, and who you interviewed or what you watched."
 },
 {
 "id": "cefl9-u5-l5",
@@ -3253,6 +3836,7 @@
 "lessonTitle": "My post-secondary plan",
 "title": "Plan A + B",
 "text": "Write your post-secondary plan with a primary pathway, a backup and a rationale. Present it to a family member or counsellor and add it to your portfolio.",
-"open": false
+"open": false,
+"proof": "Show your plan A, plan B and rationale in your portfolio, and tell your teacher who you presented it to."
 }
 ]

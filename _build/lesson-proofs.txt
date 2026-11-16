@@ -1,0 +1,322 @@
+# Proof of Work for each lesson Expedition: id | what the student shows the teacher to get the AvCash.
+# These are the starting text only. The teacher's copy lives in the Lessons tab (column I) of the Avalanche HQ sheet.
+math8-u1-l1 | Show your list of 5 numbers over 10,000. For each one, write where you found it and circle its biggest digit with its value written beside it (for example, 4 = 40,000).
+math8-u1-l2 | Show 3 amounts over $1,000 written in numbers and in words, with no spelling mistakes.
+math8-u1-l3 | Show your 5 prices in order from least to greatest, what each one is, and 1–2 sentences on which you'd choose and why.
+math8-u1-l4 | Show your list of rounded prices, your estimate, the real total (receipt or adult's note) and how far off you were.
+math8-u1-l5 | Hand in your 5 problems with the hidden mistakes marked on an answer key, plus your classmate's name and how many they found.
+math8-u2-l1 | Show your list of 5 real integers, where you saw each one, and each one written as a positive or negative integer.
+math8-u2-l2 | Show your 7 dated temperatures on a number line in order, with the coldest day circled.
+math8-u2-l3 | Show a 5-day table with the before- and after-school temperatures and the rise or fall for each day, with + or −.
+math8-u2-l4 | Show the date and place of the chinook, the starting and ending temperatures, your calculated change in degrees and how long it took.
+math8-u2-l5 | Show the 2 recipes' °F temperatures and your °C conversions, plus an adult's note or a photo showing you baked one.
+math8-u3-l1 | Show the total written as a decimal (for example, $7.35) with a count of each type of coin. Bonus: the fewest-coins version.
+math8-u3-l2 | Show the 3 station names, their prices per litre with the date, and the list in order from cheapest to most expensive.
+math8-u3-l3 | Show the receipt (cover anything private) with your 5 items, your own addition and whether it matched.
+math8-u3-l4 | Your teacher (or an adult at home, with a signed note) watched you make correct change for 5 customers in a row.
+math8-u3-l5 | Hand in your plan: items, quantities, prices, the total (at or under $40) and the cost per student.
+math8-u4-l1 | Show both item pairs, their pack sizes, and your work finding the smallest number of packs with no leftovers.
+math8-u4-l2 | Hand in your hundreds chart with the multiples crossed out and the 25 primes circled.
+math8-u4-l3 | Show the original recipe amounts, an equivalent fraction for each, and the halved recipe.
+math8-u4-l4 | Show your list of sizes in order from smallest to largest, plus an adult's initials saying they checked it.
+math8-u4-l5 | Show the recipe you made, the fractions you added with your work, and a photo or an adult's note that you cooked it.
+math8-u5-l1 | Bring your list of 5 percents: where you found each one and what it means in your own words.
+math8-u5-l2 | Show your sheet with the 3 percents changed to decimals and the signature of the person you taught, with one thing they learned.
+math8-u5-l3 | Show your 15 matching cards (5 sets) and tell your teacher who you played with.
+math8-u5-l4 | Bring your classmate to your teacher. They find 10%, 25% and 50% of a price without a calculator or help from you.
+math8-u5-l5 | Show 3 sales with the regular price, percent off, discount and sale price worked out, and which is the best deal.
+math8-u5-l6 | Show the receipt (cover anything private), your 5% estimate, the store's GST and whether it was reasonable.
+math8-u6-l1 | Show your chart of one full day in hours and minutes, with the total, and whether it added to 24 hours.
+math8-u6-l2 | Hand in your schedule rewritten in 24-hour time, with every time converted correctly.
+math8-u6-l3 | Show a table of 5 activities with the time in seconds and in minutes as a decimal.
+math8-u6-l4 | Show the daily hours from the schedule or timecard (no pay amounts) and your total for the week.
+math8-u6-l5 | Show your wage, hours per week, total gross pay for 8 weeks with your work, and your plan for the money.
+math8-u7-l1 | Show your 5 photos or drawings, each with a sentence describing what repeats or grows.
+math8-u7-l2 | Show the item and price, your weekly savings table, and the week you'll reach your goal.
+math8-u7-l3 | Show your food truck price list with a correct expression for each item (like 5b).
+math8-u7-l4 | Show your balance (or a drawing) with 3 equations and how you kept each balanced.
+math8-u7-l5 | Show your 5 cards with answers, and the name of the classmate whose cards you solved.
+math8-u8-l1 | Show a table of 5 things measured in both inches and centimetres, checked against the chart.
+math8-u8-l2 | Show a sketch of your room with the measurements, the door subtracted and the metres of baseboard.
+math8-u8-l3 | Show the wall's measurements, your area work with the window or door subtracted, the paint coverage and the number of cans.
+math8-u8-l4 | Show a table for 3 round objects: string length, diameter and circumference ÷ diameter for each.
+math8-u8-l5 | Hand in your floor plan on grid paper with the scale, furniture labelled with ordered pairs, and the area and perimeter.
+math8-u9-l1 | Show a table of 5 items with each mass in grams or kilograms and in pounds.
+math8-u9-l2 | Show what each container holds in mL and in L.
+math8-u9-l3 | Show the box's measurements, your volume calculation in cm³, the amount of water it actually held and how close you were.
+math8-u9-l4 | Show a photo of each 3-D object, with the faces, edges and vertices labelled on one of them.
+math8-u9-l5 | Bring in your box and the net you drew, with its measurements and volume in cm³.
+math8-u10-l1 | Show your survey question and a tally chart with the class's answers.
+math8-u10-l2 | Show the graph (or a link or printout) with its title, what each axis shows, and one thing it tells you.
+math8-u10-l3 | Show your spreadsheet with the survey data and a bar graph with a title and labelled axes.
+math8-u10-l4 | Hand in your short report with one conclusion, one prediction and one suggested change to the store.
+math8-u10-l5 | Show your results table, a graph, and 1–2 sentences comparing them with what you expected.
+math9-u1-l1 | Show 3 numbers in the millions, where you found each, and each one written in numerals and in words.
+math9-u1-l2 | Bring your Grade 8 classmate's 3 expanded-form numbers that you checked together, with their name.
+math9-u1-l3 | Show the 3 distances in standard form and in scientific notation, with where you found them.
+math9-u1-l4 | Show the receipt or flyer, your 5 rounded prices, your estimated total and how close it was.
+math9-u1-l5 | Show your one-week log: what you bought, your estimate and the real total each time.
+math9-u2-l1 | Show your one-week money diary with every entry written as a positive or negative integer.
+math9-u2-l2 | Show the 5 cities with their overnight lows and the date, in order from coldest to warmest.
+math9-u2-l3 | Hand in your one-month statement with 6+ transactions, a correct running balance and the name of the classmate who checked it.
+math9-u2-l4 | Hand in your tip sheet with the real fee amount and where you found it, plus how to avoid it.
+math9-u2-l5 | Bring your Grade 8 classmate. They can work out the change in this week's temperatures across zero.
+math9-u3-l1 | Show your 4 items, the price per kg or lb, your amounts and the cost of each, rounded to the cent.
+math9-u3-l2 | Show the real prices you found, the total and the cost per person, with your work.
+math9-u3-l3 | Hand in your 5 problems with the 2 mistakes marked on an answer key, and whether your classmate caught them.
+math9-u3-l4 | Show your 7-day data, your mean with your work, and a sentence on whether it surprised you.
+math9-u3-l5 | Show the Google Sheet with 5 weeks of AvCash using =SUM and =AVERAGE, and tell your teacher who you coached.
+math9-u4-l1 | Hand in the marked calendar and 1–2 sentences on how the LCM predicts the shared days.
+math9-u4-l2 | Show your items and amounts, the GCF with your work, and what goes in each package.
+math9-u4-l3 | Show both factor trees for 60 and their prime factors, and the name of the classmate you explained it to.
+math9-u4-l4 | Show the 3 items, their lengths and widths to the nearest ¼ inch, and each sum as a mixed number.
+math9-u4-l5 | Show the recipe's fractions, the common denominator and your total of the dry ingredients in cups.
+math9-u5-l1 | Bring your Grade 8 classmate. They do 5 benchmark conversions in a row without help.
+math9-u5-l2 | Show the label (or a photo), the 3 nutrients and how many servings it takes to reach 100% of each, with your work.
+math9-u5-l3 | Show your before-the-bill GST and 15% tip estimates and the real bill amounts (cover anything private).
+math9-u5-l4 | Show your sale sign with 4 items, the discount on each, and the regular and sale prices in AvCash.
+math9-u5-l5 | Show 3 products in two sizes, the unit price of each with your work, and whether bigger was always cheaper.
+math9-u5-l6 | Show the old price (and who told you), today's price and where you found it, and the percent increase with your work.
+math9-u6-l1 | Show your one-week time card with each category totalled in hours and minutes.
+math9-u6-l2 | Show the 3 job postings (title, employer, wage) and your pay for 15 hours a week and for 10 weeks.
+math9-u6-l3 | Bring your poster with 3 rules for young workers in Alberta and the website you used.
+math9-u6-l4 | Show your 2 careers, how each is paid and the typical pay from ALIS.
+math9-u6-l5 | Show a list (no stub needed) with the gross pay, each deduction, the net pay and the percent taken off.
+math9-u7-l1 | Show your pattern table, your next 5 predictions, and the result when you checked one.
+math9-u7-l2 | Show the 2 real plans, a rule for each, and which is cheaper for your use, with your work.
+math9-u7-l3 | Show the 3 one-step and 1 two-step equations you made from real prices, and the name of the Grade 8 you helped.
+math9-u7-l4 | Show your 6-row table of values and the graph with labelled axes.
+math9-u7-l5 | Show both graphs, where they cross, and the advice you gave your family member.
+math9-u8-l1 | Hand in 4 gardens on grid paper with each perimeter equal to 20 m, each area, and your choice with a reason.
+math9-u8-l2 | Show a photo or sketch of the triangle, its base and height, and your area calculation.
+math9-u8-l3 | Show a photo of each kind of angle with your estimate and your protractor measurement.
+math9-u8-l4 | Bring your truss (or a photo) with the 3 measured angles and their sum.
+math9-u8-l5 | Hand in your map with a scale and directions, and the name of the classmate who found the treasure.
+math9-u9-l1 | Show the 3 circumferences, each diameter with your work, and which is widest.
+math9-u9-l2 | Show the 5 packages (or photos), their metric and imperial amounts, and one checked conversion for each.
+math9-u9-l3 | Show the box's measurements, your surface area work, and how much extra paper you needed.
+math9-u9-l4 | Bring your 3 skeletons (or photos) with sketches and the edge and vertex counts for each.
+math9-u9-l5 | Show your logo with each transformation labelled and any lines of symmetry drawn.
+math9-u10-l1 | Show the graph (or a link or printout) with its title, what each axis shows, and one conclusion.
+math9-u10-l2 | Show your question, your frequency table from 15+ people, and the graph you chose with a reason.
+math9-u10-l3 | Show the 7 game scores and where you got them, the range, median and mean, and which one describes them best.
+math9-u10-l4 | Show the Google Sheet using =MAX, =MIN, =AVERAGE and =MEDIAN, a chart, and 2 conclusions.
+math9-u10-l5 | Show your 60-roll table, the simulator results and a comparison, plus your partner's name.
+science8-u1-l1 | Show a chart of 5 products with the symbol, frame and signal word, whether each is stored safely and one fix.
+science8-u1-l2 | Show a photo or chart of 9 items sorted into pure substances, mechanical mixtures and solutions, with a reason for each.
+science8-u1-l3 | Show the amounts of powder and water for each cup, their ranking and the g/mL for each.
+science8-u1-l4 | Bring your bar graph of the 4 fluids' times, with a title and labelled axes.
+science8-u1-l5 | Show a photo of your density tower and a sentence on where each object stopped and why.
+science8-u1-l6 | Share or hand in 3 facts about the career (what they do, training and pay) from alis.alberta.ca.
+science8-u2-l1 | Hand in your labelled map from the water source to your tap.
+science8-u2-l2 | Show your chart comparing the pH and hardness of all 3 water samples.
+science8-u2-l3 | Show your labelled drawing of each step of the water cycle you saw, with the dates.
+science8-u2-l4 | Hand in drawings of 3 Alberta water animals, each with one adaptation labelled.
+science8-u2-l5 | Show your one-day water log, your 3 ideas, and a note on the one your family tried for a week.
+science8-u3-l1 | Hand in 3–5 sentences comparing the old machine with today's, and who you interviewed.
+science8-u3-l2 | Show a labelled photo or sketch of all six simple machines.
+science8-u3-l3 | Show your table of fulcrum positions and how many coins it took each time.
+science8-u3-l4 | Show the tooth counts and which gear combination is best for hills and for speed, with a reason.
+science8-u3-l5 | Bring your machine (or a video) and your ratings for function, safety and efficiency.
+science8-u4-l1 | Show your chart for 4 Alberta species and how each gets food, water and oxygen.
+science8-u4-l2 | Bring your cell model (or a photo) with every part labelled and its job explained.
+science8-u4-l3 | Bring your poster comparing cells, tissues, organs and systems to a business.
+science8-u4-l4 | Show your 3 heart rates (resting, walking, jumping jacks) and a graph.
+science8-u4-l5 | Show your 2-week tracker with a check for each day, and a few sentences on how you felt.
+science8-u5-l1 | Show what your relative told you and your count of light sources sorted into incandescent, fluorescent and LED.
+science8-u5-l2 | Bring your periscope (or a photo) and a drawing of the light's path.
+science8-u5-l3 | Show your chart of 10 materials sorted as transparent, translucent or opaque.
+science8-u5-l4 | Show a sketch of what the letters looked like and a sentence naming the kind of lens.
+science8-u5-l5 | Hand in your short guide explaining what happens at an eye exam.
+science9-u1-l1 | Share 3 things you learned and the person's job (no name needed).
+science9-u1-l2 | Show the video or have your teacher watch the Grade 8s act out a solid, a liquid and a gas.
+science9-u1-l3 | Bring your list of 3 products with one element, one compound and one mixture named.
+science9-u1-l4 | Hand in your trading card with the symbol, atomic number, metal or non-metal, and 2 uses.
+science9-u1-l5 | Show photos or drawings of 3 physical and 3 chemical changes, with evidence for each.
+science9-u1-l6 | Show the word equation and your list of evidence that a chemical change happened.
+science9-u2-l1 | Hand in your 3-meal plan that follows Canada's Food Guide, with the cultural or traditional food marked.
+science9-u2-l2 | Bring your poster with the lake's fish advice and why it exists.
+science9-u2-l3 | Show your results for the 6 liquids, ranked by pH, with the indicator colours.
+science9-u2-l4 | Hand in your quality report with today's AQHI and the water report's main finding.
+science9-u2-l5 | Hand in your one-page guide: the location, what goes there and the hours.
+science9-u3-l1 | Show a photo or video of your cells connected in a row and whether the LED lit.
+science9-u3-l2 | Show your list of 3 safe things and 1 thing to fix, with an adult's initials.
+science9-u3-l3 | Show both circuits (photo or screenshot) and what happened when you removed a bulb from each.
+science9-u3-l4 | Show your table of 5 devices with watts, hours and daily kWh, which costs the most and your idea to cut it.
+science9-u3-l5 | Show your bar graph of the supply mix with the date and time, and the other day you compared.
+science9-u4-l1 | Show your counts of plant and bug kinds and how they compared with a classmate's square.
+science9-u4-l2 | Hand in your food web with 8+ species, one circled and an explanation of what would happen.
+science9-u4-l3 | Show your plant (or photos) with a 3-week log and a sentence on why it's a clone.
+science9-u4-l4 | Show your survey results for 10 people and a bar graph of the 3 traits.
+science9-u4-l5 | Show your poster or video and tell your teacher which class you shared it with.
+science9-u5-l1 | Show both stories and a few sentences comparing them, with your sources.
+science9-u5-l2 | Show a photo or sketch of your model with the scale, and tell your teacher which Grade 8 class you taught.
+science9-u5-l3 | Show your 2 weeks of dated sketches with the phases labelled and your prediction.
+science9-u5-l4 | Hand in your supply plan for air, water, food, exercise and waste, with your recycling ideas.
+science9-u5-l5 | Show your 1-minute argument (written or recorded) and the best point for the other side.
+la8-u1-l1 | Show your identity map with at least 6 branches and a photo, drawing or object for each.
+la8-u1-l2 | Hand in your narrative paragraph and 1–2 sentences about the story your family member told you.
+la8-u1-l3 | Retell the story to the class (or your teacher) and say what it teaches. Tell your teacher you had permission.
+la8-u1-l4 | Show your SMART goal, your 4-week tracker and your 3 sentences on how it went.
+la8-u1-l5 | Hand in a short write-up: what you did, who it helped and how it went.
+la8-u2-l1 | Show your 5 texts (no names) beside your formal rewrites.
+la8-u2-l2 | Show your teacher the email before you send it, then show the sent copy.
+la8-u2-l3 | Show your teacher the letter before you deliver it, and tell them who got it.
+la8-u2-l4 | Hand in the practice application, complete and with zero mistakes.
+la8-u2-l5 | Show a photo of what you made and a note from your family member saying you taught them using your own words.
+la8-u2-l6 | Your 3 classmates' names, and their final copies showing the fixes you helped with.
+la8-u3-l1 | Hand in your plot mountain with all six parts labelled with events from the movie or show.
+la8-u3-l2 | Show your two-column chart with a piece of proof for both the start and the end.
+la8-u3-l3 | Show your 3 opening sentences and which one each of your 3 readers picked.
+la8-u3-l4 | Show your photo and your two short descriptions, one cozy and one creepy.
+la8-u3-l5 | Hand in your script, then perform it for another class or show your teacher the recording.
+la8-u4-l1 | Show your 5 texts (or photos), your question for each, and how long your family member took.
+la8-u4-l2 | Hand in the article with facts and opinions highlighted in two colours, and which there was more of.
+la8-u4-l3 | Show the claim, your 2 trusted sources (with links) and your verdict: true, false or misleading.
+la8-u4-l4 | Show both sources and your notes on what each one included and left out.
+la8-u4-l5 | Show your 5 ads (or photos), the technique each uses and your rating for each.
+la8-u5-l1 | Hand in your change, your audience and what you want them to do.
+la8-u5-l2 | Show your teacher your letter, then show it was sent (an email copy or a note saying who you gave it to).
+la8-u5-l3 | Hand in your feedback for your classmate: 2 compliments, 1 revising idea and CUPS checked.
+la8-u5-l4 | Show your poster or video, and where it was displayed or shared.
+la8-u5-l5 | Tell your teacher who you presented to and the feedback you got.
+la8-u6-l1 | Show your 3 careers and your 5W + H questions for the first one.
+la8-u6-l2 | Show your notes from ALIS: 3 duties, education, wage range and one reading or writing task.
+la8-u6-l3 | Hand in your interview notes and the short profile you wrote from them.
+la8-u6-l4 | Show your 2-week tracker for both habits, signed by a teacher or coach.
+la8-u6-l5 | Show your portfolio with at least 5 items and tell your teacher who you explained it to.
+la9-u1-l1 | Show your map with 3 big choices, the motive behind each, and what each shows about the character.
+la9-u1-l2 | Show the song or film, its topic, its theme in one sentence and 2 pieces of evidence.
+la9-u1-l3 | Show the story (written or recorded) and a few sentences on the values and traditions it shows. Tell your teacher you had permission.
+la9-u1-l4 | Hand in your three-paragraph essay and show it in your portfolio.
+la9-u1-l5 | Tell your teacher what you led, and show your 3 ratings out of 5 with a reason for each.
+la9-u2-l1 | Show who you interviewed (relationship, not names), the skills they named and the ones you added to your portfolio.
+la9-u2-l2 | Show your first draft, the feedback you got and your final one-page résumé in your portfolio.
+la9-u2-l3 | Show the job posting (or a link) and your cover letter for it.
+la9-u2-l4 | Show your teacher the memo, then post it in the classroom.
+la9-u2-l5 | Show your references' contact information in your portfolio, and the email or how you asked.
+la9-u2-l6 | Hand in the feedback checklist filled out by your interviewer.
+la9-u3-l1 | Show your chapter log with a summary and a question for every chapter, and share your favourite question.
+la9-u3-l2 | Hand in your arc chart with a quote or event for the beginning, middle and end.
+la9-u3-l3 | Show the trailer's name and your list of 5 shots with what each choice makes you feel.
+la9-u3-l4 | Show your Venn diagram and which version is better, with 3 reasons.
+la9-u3-l5 | Show your review and where it was posted.
+la9-u4-l1 | Show the real headline and your three rewrites: biased for, biased against and neutral.
+la9-u4-l2 | Show both websites, a score out of 5 for each part of the test, and which one you'd trust.
+la9-u4-l3 | Show both crops of your photo with a caption for each.
+la9-u4-l4 | Show your notes on the 5 questions, and tell your teacher which Grade 8 group you presented to.
+la9-u4-l5 | Hand in your 3 privacy changes with a family member's initials.
+la9-u5-l1 | Show your T-chart with 4 reasons for each side and your thesis.
+la9-u5-l2 | Show 6 pieces of evidence (2 for each reason) with a source for each.
+la9-u5-l3 | Hand in your five-paragraph draft and show the final version in your portfolio.
+la9-u5-l4 | Show your essay with the spots you fixed marked, and who you read it to.
+la9-u5-l5 | Show your team's poster, announcement and video, and the names of the Grade 8 group you worked with.
+la9-u6-l1 | Show both pieces of writing and your notes on what improved and how you know.
+la9-u6-l2 | Show the 3 courses or programs and the career each connects to.
+la9-u6-l3 | Hand in your 5-sentence reflection.
+la9-u6-l4 | Show your transition plan with the support or idea your parent or guardian added.
+la9-u6-l5 | Present your portfolio, and tell your teacher who you invited.
+social8-u1-l1 | Show your shield with all 4 sections filled with words or pictures.
+social8-u1-l2 | Hand in a short summary of each of the 3 perspectives and who or where each came from.
+social8-u1-l3 | Bring the object or a photo, and explain to your teacher what it tells us about the past and who made it.
+social8-u1-l4 | Show your timeline with 8+ events and each decade marked.
+social8-u1-l5 | Share the territory, the Nation and the teaching or place name with your teacher or the class, and where you learned it.
+social8-u2-l1 | Show your poster or slide with 3 beliefs, 3 values and 3 knowledge items, and where each came from.
+social8-u2-l2 | Hand in your map with the 4 main islands, Tokyo (Edo), Nagasaki, the Pacific Ocean and a key.
+social8-u2-l3 | Show your 3 reasons for and 3 against, and lead the 5-minute debate in class.
+social8-u2-l4 | Hand in both diary entries: one from a Japanese fisher and one from an American sailor.
+social8-u2-l5 | Hand in your interview notes: the change, what people gained and lost, and one way it compares to the Meiji era.
+social8-u2-l6 | Share what you learned with the class (with your teacher's OK) and tell your teacher where you learned it.
+social8-u3-l1 | Show your example of a modern patron and 2–3 sentences on how it works.
+social8-u3-l2 | Hand in your Renaissance résumé with 5 skills.
+social8-u3-l3 | Show your chart with 3 similarities and 3 differences.
+social8-u3-l4 | Hand in your map with the route, the goods traded and the dangers labelled.
+social8-u3-l5 | Bring your poster connecting 3 things in your life to the Renaissance.
+social8-u4-l1 | Bring your drawing or model with the causeways, temple and chinampas labelled with how each met people's needs.
+social8-u4-l2 | Show your ranking of gold, God and glory and your paragraph or recording defending it.
+social8-u4-l3 | Show your cause-and-effect web with the causes ranked and your top one explained.
+social8-u4-l4 | Hand in your mini-dictionary of 5 words with the language each comes from and its meaning.
+social8-u4-l5 | Show your notes with at least 3 facts from each of you, and tell your teacher your partner's name.
+social8-u5-l1 | Hand in your 3-panel comic with one panel each for Japan, the Renaissance and the Aztecs.
+social8-u5-l2 | Say your 10 words (with meanings) to your teacher and tell them who you taught at home.
+social8-u5-l3 | Hand in your short review: what you watched, who made it, and whether it was fair and accurate, with a reason.
+social8-u5-l4 | Show your notes from 2 weeks and all 4 steps of the issue-analysis model completed.
+social8-u5-l5 | Hand in your group's report on what you did and what changed, with your group members' names.
+social9-u1-l1 | Show the news story (or link), which Charter right was involved and a short explanation of what happened.
+social9-u1-l2 | Show your chart with 6 individual and 4 collective rights and a real example for each.
+social9-u1-l3 | Share your 3 facts and your French phrase with your teacher, with where you found them.
+social9-u1-l4 | Hand in your map with the treaty number, the date, the Nations that signed and one promise.
+social9-u1-l5 | Hand in your notes: who the person is (no last name needed), what brought them here and the challenges they faced.
+social9-u2-l1 | Show 3 weeks of dated prices, your graph and a supply-and-demand explanation of any change.
+social9-u2-l2 | Show both speeches and 1–2 sentences on which was easier to argue and why.
+social9-u2-l3 | Bring your chart of 10 products, where each was made and how many came from the U.S.
+social9-u2-l4 | Hand in your career card with what they do, the training and the average pay from ALIS.
+social9-u2-l5 | Show your teacher the letter before sending, with your position and one fact for each side.
+social9-u2-l6 | Share what the union does for them and one thing they'd change (no names needed).
+social9-u3-l1 | Hand in your who's who chart with all 4 names and their roles.
+social9-u3-l2 | Show the bill's name or number, its current stage and what it would change.
+social9-u3-l3 | Show the 2 parties' positions on your issue, in their own words, with their websites.
+social9-u3-l4 | Hand in what you did (visit, video or interview) and 3 things that surprised you.
+social9-u3-l5 | Show your teacher the email or letter before sending, then show it was sent. Share any reply you get.
+social9-u4-l1 | Show your 5 people's answers (ages only, no names) sorted into standard of living and quality of life.
+social9-u4-l2 | Show your 3-day log of each ad that tempted you and how you felt.
+social9-u4-l3 | Show the service you used, which level of government pays for it and where you found that out.
+social9-u4-l4 | Hand in who the program helps, how it's paid for, and one argument for and one against expanding it.
+social9-u4-l5 | Show what each party says about the issue, from their own websites, written neutrally.
+social9-u5-l1 | Hand in your map of 3 industries, each with one benefit and one concern.
+social9-u5-l2 | Show your stakeholder notes and tell your teacher the role you played and the "council" vote.
+social9-u5-l3 | Show the graph (and its source), a description of the trend and one possible cause.
+social9-u5-l4 | Show both sources with facts and opinions highlighted in each.
+social9-u5-l5 | Give your speech or show your poster or video, and tell your teacher who you invited.
+cefl8-u1-l1 | Hand in your interview notes: the job, how technology changed it and the new skills needed.
+cefl8-u1-l2 | Show your ranked list of 8 skills with a real example for your top 3.
+cefl8-u1-l3 | Show or demonstrate your new skill, with 1–2 sentences on how it adds to your human capital.
+cefl8-u1-l4 | Hand in your profile: the person, their career path and the barriers they overcame.
+cefl8-u1-l5 | Show your career map with a long-term goal, 4+ milestones and a backup route.
+cefl8-u2-l1 | Show your chart with the pay, hours, duties and extras from the offer.
+cefl8-u2-l2 | Show the job, its ALIS hourly wage, and your weekly and yearly pay with your work.
+cefl8-u2-l3 | Show the benefit you chose, what it costs without insurance and where you found the price.
+cefl8-u2-l4 | Show your ranked list with your top 3 explained, and whether your family member's list matched.
+cefl8-u2-l5 | Show both postings, your comparison chart and your choice, then explain it to the class.
+cefl8-u2-l6 | Hand in the 3 most useful things you learned and which starters you used.
+cefl8-u3-l1 | Share how your family member felt and whether it was more or less than they expected.
+cefl8-u3-l2 | Show your poster or video explaining why a raise into a higher bracket doesn't lower take-home pay.
+cefl8-u3-l3 | Hand in your opinion with 2 reasons and the best argument from someone who disagrees.
+cefl8-u3-l4 | Show your list of public services from one day and your estimated cost for each.
+cefl8-u3-l5 | Bring your poster showing the 3 safety rights, each with a real example.
+cefl8-u4-l1 | Show your 10 costs sorted into fixed and variable, with the easiest to lower circled.
+cefl8-u4-l2 | Show your goal, your monthly budget and the variable cost you'd cut, with how much sooner you'd reach it.
+cefl8-u4-l3 | Show the 2 accounts and their rates, and your simple interest on $500 for each.
+cefl8-u4-l4 | Show both results from the calculator (age 14 and age 30) and the difference.
+cefl8-u4-l5 | Show your 4 weeks of balances, the percent return for each week and why you chose that investment.
+cefl8-u5-l1 | Show the program, the school, the admission requirements and how long it takes.
+cefl8-u5-l2 | Show the career, its Alberta wage and outlook from ALIS, and whether it matched what you expected.
+cefl8-u5-l3 | Show 3 scholarships or bursaries, who qualifies for each and how to apply.
+cefl8-u5-l4 | Hand in what you learned from the conversation and show the thank-you message you sent.
+cefl8-u5-l5 | Show your Grade 10–12 course plan signed by a parent, teacher or counsellor.
+cefl9-u1-l1 | Show your 3 examples, each with one job lost and one job created.
+cefl9-u1-l2 | Show your sort of 6 industries with one piece of data for each from ALIS or Job Bank.
+cefl9-u1-l3 | Show the claim, what ALIS or Job Bank says and whether it was accurate.
+cefl9-u1-l4 | Show proof of your 3+ hours (a note from the organizer) or your mini-business results, plus your reflection on 3 skills.
+cefl9-u1-l5 | Show the 3 postings (job and language) from Job Bank.
+cefl9-u2-l1 | Show both postings with the skills highlighted and your list of the ones you already have.
+cefl9-u2-l2 | Show your first brand statement, your 3 people's feedback and your revised version.
+cefl9-u2-l3 | Show both résumés with the changes highlighted and a sentence on why for each.
+cefl9-u2-l4 | Show your map or list of 10 places and how each one hires.
+cefl9-u2-l5 | Hand in your short reflection with an adult's initials saying you did the search together.
+cefl9-u2-l6 | Tell your teacher when you did your mock interview, and show your notes from interviewing a Grade 8.
+cefl9-u3-l1 | Show your completed sample return and whether the person got a refund or owed money.
+cefl9-u3-l2 | Hand in your plain-language explanation of 3 tax credits.
+cefl9-u3-l3 | Hand in your advice for both people: which account fits each and why.
+cefl9-u3-l4 | Show the costs and taxes you found and your estimate of what the driver really keeps.
+cefl9-u3-l5 | Hand in your one-page "know your rights" guide.
+cefl9-u4-l1 | Show your 3 offers with the interest rate and fees for each.
+cefl9-u4-l2 | Show the time and total interest for paying the minimum and for $100 a month.
+cefl9-u4-l3 | Hand in your 5-step credit plan.
+cefl9-u4-l4 | Show the ad, the tricks it uses and your calculation of the real cost of borrowing $500.
+cefl9-u4-l5 | Show both payoff plans for your 3 debts and which you'd choose, with a reason.
+cefl9-u5-l1 | Show the program and your true cost: tuition, fees, books, living costs and opportunity cost.
+cefl9-u5-l2 | Show both pathways, their true costs, ALIS wages and your payback estimate for each.
+cefl9-u5-l3 | Show your list of types of help and one thing you'd need to qualify.
+cefl9-u5-l4 | Hand in 3 things you learned about earning while learning, and who you interviewed or what you watched.
+cefl9-u5-l5 | Show your plan A, plan B and rationale in your portfolio, and tell your teacher who you presented it to.
