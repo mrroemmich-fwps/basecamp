@@ -234,10 +234,11 @@ function lessonCard(on, needSignIn) {
     <div class="row between" style="margin-top:4px"><strong style="font-size:1.15rem">🧭 ${esc(LX.title)}</strong><span class="pill">+${fmt(LX.reward)} ${D ? D.currency : PUB.currency}</span></div>
     ${LX.text ? `<p class="small" style="margin:6px 0 8px">${esc(LX.text)}</p>` : ''}
     ${LX.proof ? `<div class="proof"><strong>Proof of work:</strong> ${esc(LX.proof)}</div>` : ''}
-    ${!on ? needSignIn('claim it')
-      : mine && mine.pending ? '<span class="pill">Waiting for teacher</span>'
+    ${!on ? `<p class="small" style="margin:0 0 8px">Sign in first, then send it to your teacher.</p><button class="btn rust" onclick="goSignIn()">Sign in to claim it</button>`
+      : mine && mine.pending ? '<span class="pill">✓ Sent! Waiting for your teacher</span>'
       : left === 0 ? '<span class="pill low">✓ Completed</span>'
-      : `<button class="btn rust" onclick="submitExp('${esc(LX.id)}')">I did it</button>`}
+      : `<p class="small" style="margin:0 0 8px"><strong>Finished?</strong> Send it to your teacher, then show them your proof of work.</p>
+         <button class="btn rust" onclick="submitExp('${esc(LX.id)}')">Send to my teacher</button>`}
     <a class="small" style="margin-left:10px" href="${esc(lessonLink(LX.id))}">← Back to the lesson</a>
   </div>`;
 }
@@ -418,7 +419,12 @@ async function tryPin() {
   try {
     const r = await api('login', { studentId: picked.id, pin });
     remember(r.token); D = r.view; picked = null; pin = '';
-    render(); toast('Welcome back, ' + D.nickname + '!');
+    render();
+    if (LX && !LX.error) {   // came from a lesson: go straight back to the claim card
+      document.querySelector('nav.tabs button[data-p="expeditions"]').click();
+      setTimeout(() => { const c = $('.lxcard'); if (c) c.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 50);
+      toast('Welcome back, ' + D.nickname + '! Now tap "Send to my teacher".');
+    } else toast('Welcome back, ' + D.nickname + '!');
   } catch (e) {
     pin = '';
     const m = $('#pinMsg'); if (m) m.textContent = e.message;

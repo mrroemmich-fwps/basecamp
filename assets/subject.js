@@ -719,7 +719,7 @@
     const d = document.createElement('div'); d.className = 'lx';
     d.innerHTML = '<span class="lxpill">+' + r.reward + ' AvCash</span>' + (r.max > 1 ? '<span class="lxmax">up to ' + r.max + ' times</span>' : '') +
       (r.proof ? '<p class="lxproof"><b>Proof of work:</b> ' + r.proof.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]) + '</p>' : '') +
-      '<a class="lxbtn" href="../avalanche/?lesson=' + encodeURIComponent(b.dataset.lx) + '#expeditions">I did it →</a>';
+      '<a class="lxbtn" href="../avalanche/?lesson=' + encodeURIComponent(b.dataset.lx) + '#expeditions">Claim AvCash →</a>';
     b.querySelector('div').appendChild(d);
   });
   if (cached && Date.now() - cached.t < 120000) { paint(cached.r); return; }
