@@ -337,3 +337,26 @@
   html[data-size] table{display:block;overflow-x:auto;max-width:100%}
   html[data-size] .math{white-space:normal}
   html[data-size] .wsrow select{max-width:100%}
+
+  /* ---------- Notes ---------- */
+  .ntstyles{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0}
+  .ntstyles button{border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font:inherit;font-weight:700;cursor:pointer}
+  .ntstyles button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .linkbtn{border:0;background:none;color:var(--rust);font:inherit;font-size:.85em;font-weight:700;text-decoration:underline;cursor:pointer;padding:0 4px}
+  .ntpaper .ntlesson{margin:0 0 18px;break-inside:avoid-page}
+  .ntpaper .nthead{font-size:1.1em;border-bottom:1px solid #999;padding-bottom:2px;margin-bottom:6px}
+  .ntpaper .nthead span{color:#555;font-weight:400}
+  .ntpaper .ntican{margin:4px 0 8px}
+  .ntpaper .ntkey{margin:6px 0}
+  .ntpaper .ntkey .big-idea{background:none;border:0;padding:0;margin:0}
+  .ntpaper .blank{font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:1px;white-space:nowrap}
+  .ntpaper .ntbank{border:1px dashed #999;border-radius:6px;padding:6px 10px;margin:8px 0}
+  .ntpaper .ntex{border-left:3px solid #bbb;padding-left:10px;margin:8px 0}
+  .ntpaper .ntex h4{margin:0 0 4px}
+  .ntpaper .gridnote{font-style:italic;color:#555;margin:2px 0}
+  .ntpaper table.ntframe{width:100%;border-collapse:collapse;margin-top:6px}
+  .ntpaper table.ntframe td{border:1px solid #999;vertical-align:top;padding:6px 8px;height:72px}
+  .ntpaper table.ntframe td.cue{width:32%;font-size:.95em}
+  .ntpaper table.ntframe td.sum{height:90px;color:#555}
+  .ntpaper table{border-collapse:collapse} .ntpaper th,.ntpaper td{border:1px solid #bbb;padding:4px 6px}
+  html[data-size] .ntpaper table.ntframe{display:table}

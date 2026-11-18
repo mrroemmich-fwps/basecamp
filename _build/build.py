@@ -185,9 +185,15 @@ def build(spec):
                           for n, t in enumerate(spec['units'], 1))
     units_html, unit_cheats = pull_cheats(expand(tag_lesson_exps(''.join(open(os.path.join(B, f)).read() for f in spec['unit_files']), spec)))
     extra_js = ''
+    # Notes section (assets/notes.js) between Lessons and Practice; Practice and Resources move down one number
+    units_html = re.sub(r'<h2 class="sec" id="u(\d+)-practice"><span class="num">3</span>Practice</h2>',
+        lambda m: ('<h2 class="sec" id="u{0}-notes"><span class="num">3</span>Notes</h2>\n    <div class="notes" data-unit="{0}"><noscript>Turn on JavaScript to make notes.</noscript></div>\n\n'
+                   '    <h2 class="sec" id="u{0}-practice"><span class="num">4</span>Practice</h2>').format(m.group(1)), units_html)
+    units_html = re.sub(r'(<h2 class="sec" id="u\d+-resources"><span class="num">)4(</span>)', r'\g<1>5\2', units_html)
+    extra_js += '<script src="../assets/notes.js"></script>\n'
     if spec.get('practice'):   # math pages: the interactive Practice section (assets/practice.js)
         units_html = units_html.replace(PRACTICE, '<div class="pr"><noscript>Turn on JavaScript to use the practice tools.</noscript></div>')
-        extra_js = '<script src="../assets/practice-%s.js"></script>\n<script src="../assets/practice.js"></script>\n' % spec['practice']
+        extra_js += '<script src="../assets/practice-%s.js"></script>\n<script src="../assets/practice.js"></script>\n' % spec['practice']
     page_cheat = '<div id="cheat" class="cheat">%s</div>' % open(os.path.join(B, spec['cheat'])).read() if spec.get('cheat') else ''
     html = SHELL.format(title=spec['title'], grade=spec['grade'], subject=spec['subject'], tagline=spec['tagline'], nav=NAV,
                         units_html=units_html, cheat=page_cheat + unit_cheats, extra_js=extra_js, current=spec['current'], units_js=units_js)
