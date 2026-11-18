@@ -193,7 +193,9 @@ def build(spec):
     extra_js += '<script src="../assets/notes.js"></script>\n'
     if spec.get('practice'):   # math pages: the interactive Practice section (assets/practice.js)
         units_html = units_html.replace(PRACTICE, '<div class="pr"><noscript>Turn on JavaScript to use the practice tools.</noscript></div>')
-        extra_js += '<script src="../assets/practice-%s.js"></script>\n<script src="../assets/practice.js"></script>\n' % spec['practice']
+        more = os.path.exists(os.path.join(SITE, 'assets', 'practice-extra-%s.js' % spec['practice']))
+        extra_js += ('<script src="../assets/practice-{0}.js"></script>\n' + ('<script src="../assets/practice-extra-{0}.js"></script>\n' if more else '') +
+                     '<script src="../assets/practice.js"></script>\n').format(spec['practice'])
     page_cheat = '<div id="cheat" class="cheat">%s</div>' % open(os.path.join(B, spec['cheat'])).read() if spec.get('cheat') else ''
     html = SHELL.format(title=spec['title'], grade=spec['grade'], subject=spec['subject'], tagline=spec['tagline'], nav=NAV,
                         units_html=units_html, cheat=page_cheat + unit_cheats, extra_js=extra_js, current=spec['current'], units_js=units_js)
