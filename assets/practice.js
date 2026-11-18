@@ -73,20 +73,27 @@
     return Object.assign(q, { kind: 'num' });
   }
   let qLevel = 2;
-  // Build n questions, cycling through the lessons. rng decides which generator or bank item.
+  // Build up to n questions, cycling through the lessons. rng decides which generator or bank item.
+  // No question appears twice: generators get a few tries to make a new one, and bank items are used once.
+  // If the lessons run out of different questions, the set is shorter (set.short tells the worksheet why).
+  const qKey = q => String(q.html).replace(/\s+/g, ' ').trim().toLowerCase() + '|' + (q.choices || []).map(c => String(c).toLowerCase()).sort().join('|');
   function buildSet(lessons, n, lv, rng) {
-    qLevel = lv; const used = {}, out = [];
-    for (let i = 0; out.length < n && i < n * 3; i++) {
+    qLevel = lv; const used = {}, out = [], seen = new Set(), dry = new Set();
+    for (let i = 0; out.length < n && dry.size < lessons.length && i < n * 20; i++) {
       const L = lessons[i % lessons.length];
+      if (dry.has(L.id)) continue;
       const bankOK = L.bank.filter(it => !it.lv || (lv === 1 ? it.lv <= 2 : lv === 3 ? it.lv >= 2 : true));
-      const useGen = L.gens.length && (!bankOK.length || rng() < .75);
-      if (useGen) out.push(fromMaker(L, L.gens[Math.floor(rng() * L.gens.length)]));
-      else if (bankOK.length) {
-        used[L.id] = used[L.id] || shuffle(bankOK.map((_, k) => k), rng);
-        if (!used[L.id].length) used[L.id] = shuffle(bankOK.map((_, k) => k), rng);
-        out.push(fromBank(L, bankOK[used[L.id].pop()], rng));
+      if (!used[L.id]) used[L.id] = shuffle(bankOK.map((_, k) => k), rng);
+      const bankLeft = used[L.id].length > 0;
+      let q = null;
+      if (L.gens.length && (!bankLeft || rng() < .75)) {
+        for (let t = 0; t < 12 && !q; t++) { const g = fromMaker(L, L.gens[Math.floor(rng() * L.gens.length)]); if (!seen.has(qKey(g))) q = g; }
       }
+      while (!q && used[L.id].length) { const b = fromBank(L, bankOK[used[L.id].pop()], rng); if (!seen.has(qKey(b))) q = b; }
+      if (!q) { dry.add(L.id); continue; }
+      seen.add(qKey(q)); out.push(q);
     }
+    out.short = out.length < n;
     return out;
   }
   const calcBadge = (q, lv) => D.calcNotes === false ? '' : (lv === 1 || q.calc) ? '<span class="calc ok" title="You may use a calculator">🧮 Calculator OK</span>' : '<span class="calc no" title="Try it without a calculator">✏️ No calculator</span>';
@@ -143,7 +150,7 @@
     };
     const results = () => {
       $('.progress span', panel).style.width = '100%'; $('.count', panel).textContent = 'Done!';
-      slot.innerHTML = `<div class="result"><p class="big">${got} / ${qs.length}</p><p>${firstTry} right on the first try. ${got === qs.length ? '🏔️ You reached the summit!' : got >= 8 ? '🌲 Strong climb!' : '🥾 Keep at it. Every try builds the skill.'}</p>
+      slot.innerHTML = `<div class="result"><p class="big">${got} / ${qs.length}</p><p>${firstTry} right on the first try. ${got === qs.length ? '🏔️ You reached the summit!' : got >= qs.length * 0.8 ? '🌲 Strong climb!' : '🥾 Keep at it. Every try builds the skill.'}</p>
         ${missed.size ? '<p><strong>Worth another look:</strong></p><ul>' + [...missed].map(L => `<li><a href="#${L.id}" data-open="${L.id}">${esc(L.title)}</a></li>`).join('') + '</ul>' : ''}</div>`;
       nav.innerHTML = '<button class="btn">New practice set</button>'; $('button', nav).addEventListener('click', () => practiceSet(panel, lessons));
       openLinks(slot);
@@ -251,10 +258,12 @@
       const keyHTML = key ? `<div class="wskey"><div class="wshead"><div><strong>Answer key · ${esc(D.course)} · Unit ${unit}</strong><br><span>${L.name} · Version ${ver}</span></div></div><ol>${qs.map(q => `<li>${q.kind === 'choice' ? '<strong>(' + 'abcdefgh'[q.answer] + ')</strong> ' : ''}${esc(q.right)}</li>`).join('')}</ol></div>` : '';
       return head + `<ol class="wslist">${items}</ol>` + keyHTML;
     };
-    $('[data-role=prev]', panel).addEventListener('click', () => { const w = make(); $('.wsprev', panel).innerHTML = w ? '<div class="wspaper">' + sheetHTML(w) + '</div>' : '<p class="fb no">Pick at least one lesson.</p>'; });
+    const shortNote = w => w.qs.short ? `<p class="hint">These lessons have ${w.qs.length} different questions at this level, so the sheet has ${w.qs.length}. Pick more lessons for a longer sheet.</p>` : '';
+    $('[data-role=prev]', panel).addEventListener('click', () => { const w = make(); $('.wsprev', panel).innerHTML = w ? shortNote(w) + '<div class="wspaper">' + sheetHTML(w) + '</div>' : '<p class="fb no">Pick at least one lesson.</p>'; });
     $('[data-role=print]', panel).addEventListener('click', () => {
       const w = make(); if (!w) { $('.wsprev', panel).innerHTML = '<p class="fb no">Pick at least one lesson.</p>'; return; }
       let out = document.getElementById('ws-print'); if (!out) { out = document.createElement('div'); out.id = 'ws-print'; out.className = 'ws'; document.body.appendChild(out); }
+      $('.wsprev', panel).innerHTML = shortNote(w);
       out.innerHTML = sheetHTML(w); out.classList.add('printme'); document.body.classList.add('printing'); window.print();
       setTimeout(() => { document.body.classList.remove('printing'); out.classList.remove('printme'); }, 500);
     });
