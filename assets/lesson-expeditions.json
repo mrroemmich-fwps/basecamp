@@ -1304,7 +1304,7 @@
 "lessonTitle": "Water on Earth",
 "title": "Where Does My Water Come From?",
 "text": "Find out where your town or farm gets its water (a river, a lake, a well). Draw a map from the source to your tap.",
-"open": false,
+"open": true,
 "proof": "Hand in your labelled map from the water source to your tap."
 },
 {
@@ -1316,7 +1316,7 @@
 "lessonTitle": "Water quality",
 "title": "Water Tester",
 "text": "With your teacher's kit or test strips, test tap water, rain or snowmelt, and pond or slough water. Compare the pH and hardness in a chart.",
-"open": false,
+"open": true,
 "proof": "Show your chart comparing the pH and hardness of all 3 water samples."
 },
 {
@@ -1328,7 +1328,7 @@
 "lessonTitle": "The water cycle and the land",
 "title": "Water Cycle in a Bag",
 "text": "Put a little water in a sealed zip bag, tape it to a sunny window and watch it for a week. Draw and label each step of the water cycle you see.",
-"open": false,
+"open": true,
 "proof": "Show your labelled drawing of each step of the water cycle you saw, with the dates."
 },
 {
@@ -1340,7 +1340,7 @@
 "lessonTitle": "Life in the water",
 "title": "Pond Life",
 "text": "Look up (or visit with an adult) 3 animals that live in an Alberta pond, slough or lake. Draw each one and label one adaptation that helps it survive.",
-"open": false,
+"open": true,
 "proof": "Hand in drawings of 3 Alberta water animals, each with one adaptation labelled."
 },
 {
@@ -1352,7 +1352,7 @@
 "lessonTitle": "People and water",
 "title": "Water Saver",
 "text": "Track how much water your household uses in one day (showers, dishes, laundry). Make a plan with 3 ways your family could save water, and try one for a week.",
-"open": false,
+"open": true,
 "proof": "Show your one-day water log, your 3 ideas, and a note on the one your family tried for a week."
 },
 {
@@ -1616,7 +1616,7 @@
 "lessonTitle": "Chemicals for life",
 "title": "Plate Planner",
 "text": "Plan 3 meals for one day that follow Canada's Food Guide. Include at least one traditional or cultural food that matters to you or your family.",
-"open": false,
+"open": true,
 "proof": "Hand in your 3-meal plan that follows Canada's Food Guide, with the cultural or traditional food marked."
 },
 {
@@ -1628,7 +1628,7 @@
 "lessonTitle": "How chemicals spread",
 "title": "Fish Advisory",
 "text": "Look up Alberta's fish consumption advice for a lake near you. Make a simple poster for anglers explaining why it exists.",
-"open": false,
+"open": true,
 "proof": "Bring your poster with the lake's fish advice and why it exists."
 },
 {
@@ -1640,7 +1640,7 @@
 "lessonTitle": "Acids, bases and pH",
 "title": "Cabbage Indicator",
 "text": "With an adult, make red cabbage juice indicator. Test 6 kitchen liquids (vinegar, baking soda water, milk, lemon juice, soap, tap water) and rank them by pH.",
-"open": false,
+"open": true,
 "proof": "Show your results for the 6 liquids, ranked by pH, with the indicator colours."
 },
 {
@@ -1652,7 +1652,7 @@
 "lessonTitle": "Air and water quality",
 "title": "Quality Report",
 "text": "Check today's AQHI for your area and find your town's latest drinking water report online. Write a short \"quality report\" for your class.",
-"open": false,
+"open": true,
 "proof": "Hand in your quality report with today's AQHI and the water report's main finding."
 },
 {
@@ -1664,7 +1664,7 @@
 "lessonTitle": "Hazardous chemicals",
 "title": "Eco-Station Guide",
 "text": "Find where your community takes household hazardous waste. Make a one-page guide for your family listing what goes there and when it's open.",
-"open": false,
+"open": true,
 "proof": "Hand in your one-page guide: the location, what goes there and the hours."
 },
 {
