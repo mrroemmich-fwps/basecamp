@@ -2323,9 +2323,9 @@
 "lesson": 4,
 "lessonTitle": "Writing a memo",
 "title": "Store Memo",
-"text": "Write a real memo to the class about an Avalanche HQ change (new item, sale day, store hours) and post it in the classroom.",
+"text": "Write a real memo to the class about an Avalanche HQ change (new item, sale day, store hours) and email it to your teacher.",
 "open": true,
-"proof": "Show your teacher the memo, then post it in the classroom."
+"proof": "Email your memo to your teacher, with TO, FROM, DATE and SUBJECT lines and a clear message."
 },
 {
 "id": "la9-u2-l5",
@@ -2407,9 +2407,9 @@
 "lesson": 5,
 "lessonTitle": "Writing a review",
 "title": "Critic's Corner",
-"text": "Write a review of the novel or film and post it (with your teacher's help) on the school library page or in a class \"Critic's Corner\" binder.",
+"text": "Write a review of the novel or film and email it to your teacher.",
 "open": false,
-"proof": "Show your review and where it was posted."
+"proof": "Email your review to your teacher: your opinion, a star rating, at least 2 reasons with examples, and no spoilers."
 },
 {
 "id": "la9-u4-l1",
