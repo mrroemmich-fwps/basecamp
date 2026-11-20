@@ -652,13 +652,8 @@
   const tools = document.createElement('div'); tools.className = 'a11y'; tools.setAttribute('aria-label', 'Reading tools');
   // Text size: 5 steps. 1 is the normal size; each step makes everything on the page bigger.
   const SIZES = [['1', 'Normal'], ['2', 'Larger'], ['3', 'Large'], ['4', 'Extra large'], ['5', 'Largest']];
-  // Font: the site's usual font, a serif reading font, or OpenDyslexic.
-  const FONTS = [['std', 'Standard'], ['serif', 'Serif'], ['dys', 'Dyslexia-friendly']];
   tools.innerHTML = '<div class="sizes" id="sizePick" role="group" aria-label="Text size" hidden><span class="lbl">Text size</span>' +
       SIZES.map(([n, name]) => `<button type="button" data-size="${n}" aria-pressed="false" title="${name}"><span aria-hidden="true" class="s${n}">A</span><span class="sr">${name}</span></button>`).join('') + '</div>' +
-    '<div class="sizes fonts" id="fontPick" role="group" aria-label="Font" hidden><span class="lbl">Font</span>' +
-      FONTS.map(([k, name]) => `<button type="button" data-font="${k}" aria-pressed="false" title="${name}"><span aria-hidden="true" class="f-${k}">Aa</span><small>${name}</small></button>`).join('') + '</div>' +
-    '<button type="button" data-t="font" aria-expanded="false" aria-controls="fontPick" title="Font"><span aria-hidden="true" class="f-btn">Ff</span><span class="sr">Font</span></button>' +
     '<button type="button" data-t="size" aria-expanded="false" aria-controls="sizePick" title="Text size"><span aria-hidden="true">A</span><b aria-hidden="true">A</b><span class="sr">Text size</span></button>' +
     (canSpeak ? '<button type="button" data-t="speak" aria-pressed="false" title="Read aloud">🔊<span class="sr">Read aloud</span></button>' : '');
   document.body.appendChild(tools);
@@ -669,25 +664,8 @@
     sizeBox.querySelectorAll('[data-size]').forEach(b => b.setAttribute('aria-pressed', b.dataset.size === n));
     sizeBtn.classList.toggle('on', n !== '1'); store.set('bc-size', n);
   };
-  const fontBox = tools.querySelector('#fontPick'), fontBtn = tools.querySelector('[data-t=font]');
-  const setFont = k => {
-    if (!FONTS.some(f => f[0] === k)) k = 'std';
-    if (k === 'std') root.removeAttribute('data-font'); else root.setAttribute('data-font', k);
-    fontBox.querySelectorAll('[data-font]').forEach(b => b.setAttribute('aria-pressed', b.dataset.font === k));
-    fontBtn.classList.toggle('on', k !== 'std'); store.set('bc-font', k);
-  };
-  const openFont = open => { fontBox.hidden = !open; fontBtn.setAttribute('aria-expanded', open); if (open) { openPick(false); (fontBox.querySelector('[aria-pressed=true]') || fontBox.querySelector('button')).focus(); } };
-  const openPick = open => { sizeBox.hidden = !open; sizeBtn.setAttribute('aria-expanded', open); if (open) { if (fontBox) { fontBox.hidden = true; fontBtn.setAttribute('aria-expanded', false); } (sizeBox.querySelector('[aria-pressed=true]') || sizeBox.querySelector('button')).focus(); } };
-  fontBtn.addEventListener('click', () => openFont(fontBox.hidden));
-  fontBox.addEventListener('click', e => { const b = e.target.closest('[data-font]'); if (b) setFont(b.dataset.font); });
-  fontBox.addEventListener('keydown', e => {
-    const i = FONTS.findIndex(f => f[0] === (root.getAttribute('data-font') || 'std'));
-    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); setFont(FONTS[Math.min(FONTS.length - 1, i + 1)][0]); fontBox.querySelector('[aria-pressed=true]').focus(); }
-    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); setFont(FONTS[Math.max(0, i - 1)][0]); fontBox.querySelector('[aria-pressed=true]').focus(); }
-    if (e.key === 'Escape') { openFont(false); fontBtn.focus(); }
-  });
-  document.addEventListener('click', e => { if (!fontBox.hidden && !e.target.closest('.a11y')) openFont(false); });
-  setFont(store.get('bc-font') || 'std');
+  const openPick = open => { sizeBox.hidden = !open; sizeBtn.setAttribute('aria-expanded', open); if (open) { document.dispatchEvent(new CustomEvent('bc-picker', { detail: 'size' })); (sizeBox.querySelector('[aria-pressed=true]') || sizeBox.querySelector('button')).focus(); } };
+  document.addEventListener('bc-picker', e => { if (e.detail !== 'size' && !sizeBox.hidden) { sizeBox.hidden = true; sizeBtn.setAttribute('aria-expanded', false); } });
   sizeBtn.addEventListener('click', () => openPick(sizeBox.hidden));
   sizeBox.addEventListener('click', e => { const b = e.target.closest('[data-size]'); if (b) setSize(b.dataset.size); });
   sizeBox.addEventListener('keydown', e => {

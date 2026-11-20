@@ -1,3 +1,4 @@
+@import url("fontpick.css");
 
   :root{
     --gold:#e9b949; --rust:#c8553d; --ink:#22392b; --ink-2:#2f4d3a; --paper:#f3efe4; --card:#fffdf8;
@@ -361,31 +362,5 @@
   .ntpaper table{border-collapse:collapse} .ntpaper th,.ntpaper td{border:1px solid #bbb;padding:4px 6px}
   html[data-size] .ntpaper table.ntframe{display:table}
 
-  /* ---------- Font choice (reading tools) ---------- */
-  @font-face{font-family:"OpenDyslexic";src:url("fonts/opendyslexic-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
-  @font-face{font-family:"OpenDyslexic";src:url("fonts/opendyslexic-latin-700-normal.woff2") format("woff2");font-weight:600 900;font-style:normal;font-display:swap}
-  @font-face{font-family:"OpenDyslexic";src:url("fonts/opendyslexic-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
-  @font-face{font-family:"Merriweather";src:url("fonts/merriweather-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
-  @font-face{font-family:"Merriweather";src:url("fonts/merriweather-latin-700-normal.woff2") format("woff2");font-weight:600 900;font-style:normal;font-display:swap}
-  html[data-font="serif"] body, html[data-font="serif"] body :not(.math):not(.blank):not(h1):not(h2):not(h3):not(h4):not(.brand):not(.a11y span){font-family:Merriweather,Georgia,"Times New Roman",serif!important}
-  html[data-font="serif"] body{line-height:1.65}
-  html[data-font="dys"] body, html[data-font="dys"] body *:not(.math):not(.blank):not(.a11y span){font-family:OpenDyslexic,"Comic Sans MS",sans-serif!important}
-  html[data-font="dys"] body{line-height:1.7}
-  html[data-font="dys"] body *:not(.math):not(.blank):not(.a11y span){letter-spacing:-.06em!important;word-spacing:-.12em}
-  html[data-font="dys"] .a11y .fonts small{letter-spacing:-.04em}
-  html[data-font="dys"] h1,html[data-font="dys"] h2,html[data-font="dys"] h3{letter-spacing:0}
-  .a11y .f-btn{font-family:Merriweather,Georgia,serif!important;font-size:1.05em;letter-spacing:-.02em}
-  .a11y .fonts{flex-direction:column;align-items:stretch;min-width:210px}
-  .a11y .fonts .lbl{align-self:flex-start;margin:0 0 2px}
-  .a11y .fonts button{width:auto;height:auto;border-radius:10px;display:flex;align-items:center;gap:10px;padding:8px 10px;place-items:initial;text-align:left}
-  .a11y .fonts button span{font-size:22px;width:38px;text-align:center;flex:none}
-  .a11y .fonts button small{font-size:14px;font-weight:700}
-  .a11y .f-std{font-family:"Source Sans 3",system-ui,sans-serif!important}
-  .a11y .f-serif{font-family:Merriweather,Georgia,serif!important}
-  .a11y .f-dys{font-family:OpenDyslexic,sans-serif!important}
   .bar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
-  html[data-font="dys"] .brand{font-size:18px}
-  html[data-font="dys"] .top{font-size:15px}
   h1,a{overflow-wrap:anywhere}
-  html[data-font] main, html[data-size] main{overflow-wrap:anywhere}
-  html[data-font="dys"] h1,html[data-font="dys"] h2,html[data-font="dys"] h3,html[data-font="dys"] h4,html[data-font="dys"] .ltitle strong{line-height:1.35}

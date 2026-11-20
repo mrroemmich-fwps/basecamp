@@ -93,6 +93,7 @@ window.PAGE = {{
 }};
 </script>
 <script src="../assets/subject.js"></script>
+<script src="../assets/fontpick.js"></script>
 {extra_js}</body>
 </html>
 '''
@@ -284,6 +285,7 @@ INFO = '''<!doctype html>
   <div class="wrap"><span>8/9 Collab Basecamp · {title}</span><a href="../">← Back to Basecamp</a></div>
 </footer>
 <script src="../assets/subject.js"></script>
+<script src="../assets/fontpick.js"></script>
 <script src="../assets/hub.js"></script>
 </body>
 </html>
