@@ -43,6 +43,8 @@
   .bar{display:flex;align-items:center;gap:16px;min-height:62px}
   .brand{font-size:1.45rem;font-weight:800;text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
   .brand .hat{width:30px;height:30px;flex:none}
+  .brand{min-width:0} .brand span{overflow:hidden;text-overflow:ellipsis}
+  @media (max-width:360px){.brand{font-size:1.15rem;gap:8px}}
   nav.main{margin-left:auto}
   nav.main>ul{list-style:none;margin:0;padding:0;display:flex;gap:4px}
   nav.main li{position:relative}
