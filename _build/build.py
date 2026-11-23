@@ -197,6 +197,12 @@ def build(spec):
         more = os.path.exists(os.path.join(SITE, 'assets', 'practice-extra-%s.js' % spec['practice']))
         extra_js += ('<script src="../assets/practice-{0}.js"></script>\n' + ('<script src="../assets/practice-extra-{0}.js"></script>\n' if more else '') +
                      '<script src="../assets/practice.js"></script>\n').format(spec['practice'])
+        # The Unit Path (assets/path.js): one step after another, warm-up to unit quiz, at the top of each unit
+        if os.path.exists(os.path.join(SITE, 'assets', 'path-%s.js' % spec['practice'])):
+            units_html = re.sub(r'(<h2 class="sec" id="u(\d+)-lessons">)',
+                lambda m: '<div class="upath" id="u{0}-path" data-unit="{0}"><noscript>Turn on JavaScript to use your path.</noscript></div>\n\n    '.format(m.group(2)) + m.group(1), units_html)
+            units_html = re.sub(r'(<div class="jump">\s*)(<a href="#u(\d+)-goals">)', r'\1<a href="#u\3-path">🧭 My path</a>\2', units_html)
+            extra_js += '<script src="../assets/path-{0}.js"></script>\n<script src="../assets/path.js"></script>\n'.format(spec['practice'])
     page_cheat = '<div id="cheat" class="cheat">%s</div>' % open(os.path.join(B, spec['cheat'])).read() if spec.get('cheat') else ''
     html = SHELL.format(title=spec['title'], grade=spec['grade'], subject=spec['subject'], tagline=spec['tagline'], nav=NAV,
                         units_html=units_html, cheat=page_cheat + unit_cheats, extra_js=extra_js, current=spec['current'], units_js=units_js)

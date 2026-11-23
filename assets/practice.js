@@ -289,7 +289,8 @@
     $('.prstart button', panel).addEventListener('click', run);
   });
 
-  window.PR = { lessonsOf, buildSet };   // used by the automated tests
+  // Shared with the unit path (path.js) and the automated tests.
+  window.PR = { lessonsOf, buildSet, card, written, fromBank, mkRng, hash, shuffle, calcBadge, LEVELS, openLinks: el => openLinks(el) };
 
   /* ---------- calculator notes on the lesson Try-it boxes ---------- */
   $$('details.lesson').forEach(d => {
