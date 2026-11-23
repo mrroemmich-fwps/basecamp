@@ -24,7 +24,7 @@
   async function api(action, extra) {
     const res = await fetch(AV_API, { method: 'POST', body: JSON.stringify(Object.assign({ action, token: AUTH.token }, extra || {})) });
     const j = await res.json();
-    if (!j.ok) { if (j.code === 'signin') signOut(); const e = new Error(j.error || 'Something went wrong.'); e.code = j.code; throw e; }
+    if (!j.ok) { if (j.code === 'signin') signOut(); const e = new Error(/unknown request/i.test(j.error || '') ? 'Your teacher is still setting this up. Keep working; you can mark it done later.' : (j.error || 'Something went wrong.')); e.code = j.code; throw e; }
     return j.data;
   }
   function signOut() { const t = AUTH.token; AUTH.token = null; AUTH.name = ''; AUTH.done = {}; AUTH.loaded = false; ss.set('avToken', null); ss.set('avName', null);
