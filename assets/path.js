@@ -3,8 +3,9 @@
    One step after another, from warm-up to unit quiz:
      🔋 Warm-up → for each lesson: 📝 Guided notes · 📖 Lesson · 🎟️ Exit ticket
      → ✋ Mid-unit quiz (halfway) → 📄 Reference sheet → ★ Core practice → ★★ Challenge → 🏁 Unit quiz
-   Steps unlock in order. Progress is saved on the student's device (localStorage).
-   Teacher-unlocked devices (BC.PREVIEW) can open every step, print answer keys and reset.
+   Every step is open. When a student finishes one, they sign in (nickname + PIN, same as Avalanche HQ)
+   and it goes to their own tab in the Avalanche HQ sheet with the date (and score for quizzes and practice).
+   Their checkmarks come back from that sheet. Teacher preview (BC.PREVIEW) prints answer keys and sends nothing.
    Questions come from practice.js (window.PR); "explain" questions from path-mathN.js (window.PATHDATA);
    guided notes from notes.js (window.NOTES).
    ============================================================ */
@@ -15,9 +16,20 @@
   const $ = (s, el) => (el || document).querySelector(s), $$ = (s, el) => [...(el || document).querySelectorAll(s)];
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const TEACH = !!BC.PREVIEW, COURSE = ((document.querySelector('.hero h1, h1') || {}).textContent || document.title.split('·')[0]).trim();
-  const key = unit => 'bc-path-' + location.pathname.split('/').filter(Boolean).slice(-1)[0] + '-u' + unit;
-  const load = unit => { try { return JSON.parse(BC.store.get(key(unit)) || '{}'); } catch (e) { return {}; } };
-  const save = (unit, st) => BC.store.set(key(unit), JSON.stringify(st));
+
+  /* ---------- Avalanche HQ: students sign in (nickname + PIN) and each step they finish goes to their sheet ---------- */
+  const AV_API = 'https://script.google.com/macros/s/AKfycbxDcPBwBXI4-6xRHIJWYJLNxRyDhZLDHHgWo8BN2h6J9cMj9iEkdXGa3UuxRJxcYUd2fw/exec';
+  const ss = { get: k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { v == null ? sessionStorage.removeItem(k) : sessionStorage.setItem(k, v); } catch (e) {} } };
+  const AUTH = { token: ss.get('avToken'), name: ss.get('avName') || '', done: {}, loaded: false, boxes: [] };
+  async function api(action, extra) {
+    const res = await fetch(AV_API, { method: 'POST', body: JSON.stringify(Object.assign({ action, token: AUTH.token }, extra || {})) });
+    const j = await res.json();
+    if (!j.ok) { if (j.code === 'signin') signOut(); const e = new Error(j.error || 'Something went wrong.'); e.code = j.code; throw e; }
+    return j.data;
+  }
+  function signOut() { const t = AUTH.token; AUTH.token = null; AUTH.name = ''; AUTH.done = {}; AUTH.loaded = false; ss.set('avToken', null); ss.set('avName', null);
+    if (t) fetch(AV_API, { method: 'POST', body: JSON.stringify({ action: 'logout', token: t }) }).catch(() => {}); AUTH.boxes.forEach(b => b.redraw()); }
+  function gotProgress(p) { AUTH.done = p.done || {}; AUTH.loaded = true; if (p.nickname) { AUTH.name = p.nickname; ss.set('avName', p.nickname); } AUTH.boxes.forEach(b => b.redraw()); }
 
   /* ---------- questions ---------- */
   // Same questions every time for a given seed, so the screen version matches the printed one.
@@ -130,9 +142,9 @@
           ${wr.length ? '<p class="hint">Your written answers count when you tick what they include. Be honest: your teacher may check.</p>' : ''}
           <p>${pct >= 80 ? '✅ Strong work.' : pct >= 60 ? '🌲 Getting there. Look back at the lessons below.' : '🥾 Go back over these lessons, then try again.'}</p>
           ${review.size ? '<ul>' + [...review].map(L => `<li><a href="#${L.id}" data-open="${L.id}">${esc(L.title)}</a></li>`).join('') + '</ul>' : ''}
-          <button class="btn" data-role="finish">${'Save my result and continue'}</button></div>`;
+          <div class="row updonerow"><button class="btn gold" data-role="finish">✓ Send my result to my teacher</button></div></div>`;
         PR.openLinks(res);
-        $('[data-role=finish]', res).addEventListener('click', () => onDone({ score, max }));
+        $('[data-role=finish]', res).addEventListener('click', e => onDone({ score, max }, e.currentTarget));
       };
       $$('[data-look]', panel).forEach(x => x.addEventListener('change', paint));
       paint(); res.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -143,8 +155,8 @@
     let i = 0, got = 0;
     const next = () => {
       if (i >= qs.length) {
-        panel.insertAdjacentHTML('beforeend', `<div class="result"><p class="big">${got} / ${qs.length}</p><button class="btn" data-role="finish">Save and continue</button></div>`);
-        $('[data-role=finish]', panel).addEventListener('click', () => onDone({ score: got, max: qs.length })); return;
+        panel.insertAdjacentHTML('beforeend', `<div class="result"><p class="big">${got} / ${qs.length}</p><div class="row updonerow"><button class="btn gold" data-role="finish">✓ Send my result to my teacher</button></div></div>`);
+        $('[data-role=finish]', panel).addEventListener('click', e => onDone({ score: got, max: qs.length }, e.currentTarget)); return;
       }
       const c = PR.card(qs[i], lv, { onDone: (ok, tries) => { if (ok && !tries) got++; i++; setTimeout(next, 300); } });
       $('.pq-top', c).insertAdjacentHTML('afterbegin', `<b class="qn">${i + 1} of ${qs.length}</b>`);
@@ -154,10 +166,39 @@
     next();
   }
 
+  // Sign-in form, shown inside a path box. onIn runs after a good PIN.
+  let NICKS = null;
+  function signInForm(where, why, onIn) {
+    const f = document.createElement('div'); f.className = 'upsign';
+    f.innerHTML = `<p><strong>${esc(why)}</strong><br><span class="hint">Use the same nickname and PIN as Avalanche HQ.</span></p>
+      <div class="row"><label>Nickname <select data-k="nick"><option value="">Loading…</option></select></label>
+      <label>PIN <input data-k="pin" type="password" inputmode="numeric" autocomplete="off" maxlength="8" size="6"></label>
+      <button class="btn gold" data-k="go">Sign in</button><button class="btn ghost" data-k="x">Cancel</button></div><p class="upmsg" role="status"></p>`;
+    where.appendChild(f);
+    const sel = $('[data-k=nick]', f), msg = $('.upmsg', f);
+    (NICKS ? Promise.resolve(NICKS) : api('nicknames').then(n => (NICKS = n)))
+      .then(n => { sel.innerHTML = '<option value="">Pick your nickname</option>' + n.map(x => `<option value="${esc(x.id)}">${esc(x.nickname)}</option>`).join(''); })
+      .catch(() => { msg.textContent = 'Can\'t reach Avalanche HQ right now. Check your internet and try again.'; });
+    const go = async () => {
+      if (!sel.value) { msg.textContent = 'Pick your nickname first.'; return; }
+      const pin = $('[data-k=pin]', f).value.trim(); if (!pin) { msg.textContent = 'Type your PIN.'; return; }
+      msg.textContent = 'Signing in…'; $('[data-k=go]', f).disabled = true;
+      try {
+        const r = await api('login', { studentId: sel.value, pin });
+        AUTH.token = r.token; ss.set('avToken', r.token); AUTH.name = r.view && r.view.me ? r.view.me.nickname : sel.options[sel.selectedIndex].text; ss.set('avName', AUTH.name);
+        f.remove(); onIn();
+      } catch (e) { msg.textContent = e.message; $('[data-k=go]', f).disabled = false; $('[data-k=pin]', f).value = ''; }
+    };
+    $('[data-k=go]', f).addEventListener('click', go);
+    $('[data-k=pin]', f).addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+    $('[data-k=x]', f).addEventListener('click', () => f.remove());
+    sel.focus();
+  }
+
   /* ---------- build the path in each unit ---------- */
   $$('.upath[data-unit]').forEach(box => {
     const sec = box.closest('section[id^="unit-"]'); if (!sec) return;
-    const unit = Number(box.dataset.unit), unitTitle = ($('.unitHead h2', sec) || {}).textContent || '';
+    const unit = Number(box.dataset.unit), unitTitle = ($('.unitHead h2', sec) || {}).textContent || '', CK = box.dataset.course || '';
     const lessonEls = $$('details.lesson', sec); if (!lessonEls.length) { box.innerHTML = '<p class="hint">The path for this unit is coming soon.</p>'; return; }
     const src = PR.lessonsOf(sec), srcOf = d => src.find(L => L.id === d.id);
     const prevSec = document.getElementById('unit-' + (unit - 1));
@@ -165,61 +206,85 @@
     const half = Math.ceil(lessonEls.length / 2);
     const cheat = document.getElementById('cheat-u' + unit);
 
-    const steps = [{ id: 'warm', grp: 'Get ready', ic: '🔋', name: 'Warm-up', sub: prevSec ? '5 quick questions from last unit' : '5 easy questions to get started' }];
+    // Step ids match assets/path-steps.json (built by _build/build.py) and the rows on each student's sheet.
+    const steps = [{ id: 'u' + unit + '-warm', kind: 'warm', grp: 'Get ready', ic: '🔋', name: 'Warm-up', sub: prevSec ? '5 quick questions from last unit' : '5 easy questions to get started' }];
     lessonEls.forEach((d, i) => {
       const t = ($('.ltitle strong', d) || {}).textContent || 'Lesson ' + (i + 1), g = 'Lesson ' + (i + 1) + ': ' + t;
-      steps.push({ id: 'notes-' + d.id, grp: g, ic: '📝', name: 'Guided notes', d });
-      steps.push({ id: 'lesson-' + d.id, grp: g, ic: '📖', name: 'Lesson', d });
-      steps.push({ id: 'exit-' + d.id, grp: g, ic: '🎟️', name: 'Exit ticket', d });
-      if (i + 1 === half && lessonEls.length > 2) steps.push({ id: 'midquiz', grp: 'Check-in', ic: '✋', name: 'Mid-unit quiz', sub: 'Lessons 1–' + half });
+      steps.push({ id: d.id + '-notes', kind: 'notes', grp: g, ic: '📝', name: 'Guided notes', d });
+      steps.push({ id: d.id + '-lesson', kind: 'lesson', grp: g, ic: '📖', name: 'Lesson', d });
+      steps.push({ id: d.id + '-exit', kind: 'exit', grp: g, ic: '🎟️', name: 'Exit ticket', d });
+      if (i + 1 === half && lessonEls.length > 2) steps.push({ id: 'u' + unit + '-midquiz', kind: 'midquiz', grp: 'Check-in', ic: '✋', name: 'Mid-unit quiz', sub: 'Lessons 1–' + half });
     });
-    if (cheat) steps.push({ id: 'ref', grp: 'Wrap up', ic: '📄', name: 'Reference sheet', sub: 'The whole unit on one page' });
-    steps.push({ id: 'core', grp: 'Wrap up', ic: '★', name: 'Core practice', sub: '10 questions · Climb' });
-    steps.push({ id: 'chal', grp: 'Wrap up', ic: '★★', name: 'Challenge', sub: '8 questions · Summit' });
-    steps.push({ id: 'unitquiz', grp: 'Wrap up', ic: '🏁', name: 'Unit quiz', sub: 'Everything in the unit' });
+    if (cheat) steps.push({ id: 'u' + unit + '-ref', kind: 'ref', grp: 'Wrap up', ic: '📄', name: 'Reference sheet', sub: 'The whole unit on one page' });
+    steps.push({ id: 'u' + unit + '-core', kind: 'core', grp: 'Wrap up', ic: '★', name: 'Core practice', sub: '10 questions · Climb' });
+    steps.push({ id: 'u' + unit + '-chal', kind: 'chal', grp: 'Wrap up', ic: '★★', name: 'Challenge', sub: '8 questions · Summit' });
+    steps.push({ id: 'u' + unit + '-unitquiz', kind: 'unitquiz', grp: 'Wrap up', ic: '🏁', name: 'Unit quiz', sub: 'Everything in the unit' });
 
-    let st = load(unit), openId = null;
-    const isDone = s => !!(st[s.id]);
-    const unlocked = i => TEACH || steps.slice(0, i).every(isDone);
-    const mark = (s, result) => { st[s.id] = Object.assign({ at: Date.now() }, result || {}); save(unit, st); const i = steps.indexOf(s); openId = steps[i + 1] && unlocked(i + 1) ? steps[i + 1].id : null; draw(); };
+    let openId = null, tries = {};
+    const fid = s => CK + '-' + s.id, rec = s => AUTH.done[fid(s)], isDone = s => !!(rec(s) && rec(s).at);
 
-    box.innerHTML = `<div class="uphead"><div><strong>Your path through Unit ${unit}</strong><div class="hint">Do the steps in order. Each one opens when you finish the one before. Your progress is saved on this device.</div></div>
-      <div class="upbar"><span></span></div><div class="upcount small"></div></div><div class="upsteps"></div>
-      ${TEACH ? '<div class="upteach"><strong>Teacher:</strong> every step is open on this device. <button class="btn ghost small" data-role="exits">🖨️ All exit tickets + key</button> <button class="btn ghost small" data-role="reset">Reset this path on this device</button></div>' : ''}`;
-    if (TEACH) {
-      $('[data-role=exits]', box).addEventListener('click', () => printHTML(exitPaper(lessonEls.map(d => exitTicket(d, srcOf(d))), true)));
-      $('[data-role=reset]', box).addEventListener('click', () => { if (confirm('Clear the checkmarks for this unit on this device?')) { st = {}; save(unit, st); draw(); } });
+    // Finished a step: sign in if needed, then send it to the teacher's sheet.
+    async function mark(s, result, btn) {
+      if (TEACH) { note(btn, 'Teacher preview: nothing is sent from your device.'); advance(s); return; }
+      const send = async () => {
+        if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+        try {
+          const r = await api('pathDone', Object.assign({ course: CK, unit, step: s.id }, result || {}));
+          AUTH.done = r.done || AUTH.done; AUTH.loaded = true;
+          if (s.kind.endsWith('quiz')) tries[s.id] = (tries[s.id] || 0) + 1;
+          advance(s); flash('✓ Sent to your teacher' + (AUTH.name ? ' · ' + AUTH.name : ''));
+          if (btn && btn.isConnected) { btn.disabled = false; btn.textContent = '✓ Sent to your teacher'; }
+        } catch (e) {
+          if (btn) { btn.disabled = false; btn.textContent = 'Try sending again'; }
+          if (e.code === 'signin') signInForm(btn ? btn.parentNode : box, 'Sign in again to send this to your teacher.', send);
+          else note(btn, e.message);
+        }
+      };
+      if (!AUTH.token) signInForm(btn ? btn.parentNode : box, 'Sign in so your teacher gets this.', async () => { try { gotProgress(await api('pathProgress', { course: CK })); } catch (e) {} send(); });
+      else await send();
     }
+    const note = (btn, t) => { const where = btn ? btn.parentNode : box; let m = $('.upnote', where); if (!m) { m = document.createElement('p'); m.className = 'upnote'; where.appendChild(m); } m.textContent = t; };
+    const flash = t => { let f = $('.upflash', box); if (!f) { f = document.createElement('div'); f.className = 'upflash'; f.setAttribute('role', 'status'); $('.uphead', box).after(f); } f.textContent = t; clearTimeout(f._t); f._t = setTimeout(() => f.remove(), 4000); };
+    const advance = s => { const i = steps.indexOf(s); openId = null; draw(); const nx = steps.slice(i + 1).find(x => !isDone(x)); if (nx) { const b = $(`[data-step="${nx.id}"]`, box); if (b) b.classList.add('pulse'); } };
+
+    box.innerHTML = `<div class="uphead"><div><strong>Your path through Unit ${unit}</strong><div class="hint">Go in order from top to bottom. When you finish a step, mark it done and it goes to your teacher.</div></div>
+      <div class="upbar"><span></span></div><div class="upcount small"></div><div class="upwho small"></div></div><div class="upsteps"></div>
+      ${TEACH ? '<div class="upteach"><strong>Teacher:</strong> students\' checkmarks go to their own tab in the Avalanche HQ sheet. <button class="btn ghost small" data-role="exits">🖨️ All exit tickets + key</button></div>' : ''}`;
+    if (TEACH) $('[data-role=exits]', box).addEventListener('click', () => printHTML(exitPaper(lessonEls.map(d => exitTicket(d, srcOf(d))), true)));
 
     function draw() {
-      const done = steps.filter(isDone).length;
+      const done = steps.filter(isDone).length, nextStep = steps.find(x => !isDone(x));
       $('.upbar span', box).style.width = Math.round(done / steps.length * 100) + '%';
-      $('.upcount', box).textContent = done + ' of ' + steps.length + ' steps done' + (done === steps.length ? ' 🎉' : '');
+      $('.upcount', box).textContent = AUTH.token ? done + ' of ' + steps.length + ' steps done' + (done === steps.length ? ' 🎉' : '') : '';
+      $('.upwho', box).innerHTML = TEACH ? '' : AUTH.token ? `Signed in as <strong>${esc(AUTH.name || 'you')}</strong> · <button type="button" class="linkbtn" data-role="out">Not you? Sign out</button>`
+        : '<button type="button" class="btn small gold" data-role="in">Sign in to see your checkmarks</button>';
+      const o = $('[data-role=out]', box), inb = $('[data-role=in]', box);
+      if (o) o.addEventListener('click', signOut);
+      if (inb) inb.addEventListener('click', () => { if (!$('.upsign', box)) signInForm($('.uphead', box), 'Sign in to see what you have finished.', async () => { try { gotProgress(await api('pathProgress', { course: CK })); } catch (e) { flash(e.message); } }); });
       let html = '', grp = '';
-      steps.forEach((s, i) => {
+      steps.forEach(s => {
         if (s.grp !== grp) { if (grp) html += '</div></div>'; grp = s.grp; html += `<div class="upgrp"><div class="upgname">${esc(grp)}</div><div class="uprow">`; }
-        const ok = isDone(s), open = unlocked(i), next = !ok && open && (TEACH ? steps.slice(0, i).every(isDone) : true), r = st[s.id];
-        html += `<button type="button" class="upstep ${ok ? 'done' : open ? (next ? 'next' : 'open') : 'locked'} ${openId === s.id ? 'cur' : ''}" data-step="${s.id}" ${open ? '' : 'aria-disabled="true"'} aria-expanded="${openId === s.id}">
-          <span class="upic" aria-hidden="true">${ok ? '✓' : open ? s.ic : '🔒'}</span><span class="upname">${esc(s.name)}${s.sub ? `<small>${esc(s.sub)}</small>` : ''}${r && r.max ? `<small class="upscore">${r.score} / ${r.max}</small>` : ''}</span></button>`;
+        const ok = isDone(s), r = rec(s), when = ok ? new Date(r.at) : null;
+        html += `<button type="button" class="upstep ${ok ? 'done' : AUTH.token && s === nextStep ? 'next' : 'open'} ${openId === s.id ? 'cur' : ''}" data-step="${s.id}" aria-expanded="${openId === s.id}">
+          <span class="upic" aria-hidden="true">${ok ? '✓' : s.ic}</span><span class="upname">${esc(s.name)}${s.sub ? `<small>${esc(s.sub)}</small>` : ''}${ok ? `<small class="upscore">${r.score ? esc(r.score) + ' · ' : ''}${when && !isNaN(when) ? when.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : 'done'}</small>` : ''}</span></button>`;
       });
       html += '</div></div>';
       $('.upsteps', box).innerHTML = html;
-      $$('.upstep', box).forEach(b => b.addEventListener('click', () => {
-        const s = steps.find(x => x.id === b.dataset.step), i = steps.indexOf(s);
-        if (!unlocked(i)) { BC.toast ? BC.toast('Finish the step before this one first.') : alert('Finish the step before this one first.'); return; }
-        openId = openId === s.id ? null : s.id; draw();
-      }));
+      $$('.upstep', box).forEach(b => b.addEventListener('click', () => { openId = openId === b.dataset.step ? null : b.dataset.step; draw(); }));
       const s = steps.find(x => x.id === openId);
       if (s) { const b = $(`[data-step="${s.id}"]`, box), p = document.createElement('div'); p.className = 'uppanel'; b.closest('.upgrp').after(p); show(s, p); }
     }
+    box.redraw = draw; AUTH.boxes.push(box);
 
     function show(s, p) {
-      const doneBtn = label => { const b = document.createElement('button'); b.className = 'btn gold'; b.textContent = isDone(s) ? '✓ Done' : label; b.addEventListener('click', () => mark(s)); return b; };
+      const doneBtn = label => { const b = document.createElement('button'); b.className = 'btn gold'; b.textContent = isDone(s) ? '✓ Done (send again)' : label; b.addEventListener('click', () => mark(s, null, b));
+        const w = document.createElement('div'); w.className = 'row updonerow'; w.appendChild(b); return w; };
+      const finish = (r, btn) => mark(s, { score: r.score + ' / ' + r.max }, btn);
       p.innerHTML = `<h4>${s.ic} ${esc(s.name)}${s.d ? ' · ' + esc(($('.ltitle strong', s.d) || {}).textContent) : ''}</h4>`;
-      if (s.id === 'warm') {
+      if (s.kind === 'warm') {
         p.insertAdjacentHTML('beforeend', `<p class="hint">${prevSec ? 'A quick warm-up from last unit.' : 'Some easy questions to get your brain going.'} Two tries each.</p>`);
-        drill(p, PR.buildSet(warmFrom, 5, 1, Math.random), 1, r => mark(s, r));
-      } else if (s.id.startsWith('notes-')) {
+        drill(p, PR.buildSet(warmFrom, 5, 1, Math.random), 1, finish);
+      } else if (s.kind === 'notes') {
         const style = BC.store.get('bc-notes-style') || 'fill', help = Number(BC.store.get('bc-notes-help')) || 2;
         if (!NOTES) { p.insertAdjacentHTML('beforeend', '<p class="hint">Notes are in the Notes section of this unit.</p>'); p.appendChild(doneBtn('✓ I finished my notes')); return; }
         const o = { lessons: [NOTES.readLesson(s.d)], style, help, unit, unitTitle };
@@ -228,35 +293,35 @@
         $('[data-role=print]', p).addEventListener('click', () => printHTML('<div class="ntpaper">' + NOTES.sheetHTML(o) + '</div>'));
         $('[data-role=docx]', p).addEventListener('click', () => { const a = document.createElement('a'); a.href = URL.createObjectURL(NOTES.docx(o)); a.download = COURSE + ' Unit ' + unit + ' ' + o.lessons[0].title.replace(/[\\/:*?"<>|]/g, '') + ' notes.docx'; document.body.appendChild(a); a.click(); setTimeout(() => a.remove(), 500); });
         p.appendChild(doneBtn('✓ I finished my notes'));
-      } else if (s.id.startsWith('lesson-')) {
+      } else if (s.kind === 'lesson') {
         p.insertAdjacentHTML('beforeend', '<p class="hint">Work through the examples and the Try it questions. When you\'re done, tap the button at the bottom of the lesson (or here).</p><div class="row"><button class="btn" data-role="go">Open the lesson ↓</button></div>');
         $('[data-role=go]', p).addEventListener('click', () => { s.d.open = true; s.d.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
         p.appendChild(doneBtn('✓ I finished the lesson'));
-      } else if (s.id.startsWith('exit-')) {
+      } else if (s.kind === 'exit') {
         const t = exitTicket(s.d, srcOf(s.d));
         p.insertAdjacentHTML('beforeend', `<p class="hint">${t.qs.length ? t.qs.length + ' questions and one "explain how you know".' : 'One "explain how you know" question.'} No hints. Do it on screen, or print it and hand it in.</p><div class="row"><button class="btn ghost" data-role="print">🖨️ Print this exit ticket</button></div>`);
         $('[data-role=print]', p).addEventListener('click', () => printHTML(exitPaper([t], TEACH)));
-        testOnScreen(p, [{ qs: t.qs }, { qs: t.ex ? [Object.assign({}, t.ex, { lesson: 'Explain how you know' })] : [], written: true }], r => mark(s, r));
-      } else if (s.id === 'midquiz' || s.id === 'unitquiz') {
-        const mid = s.id === 'midquiz', els = mid ? lessonEls.slice(0, half) : lessonEls;
+        testOnScreen(p, [{ qs: t.qs }, { qs: t.ex ? [Object.assign({}, t.ex, { lesson: 'Explain how you know' })] : [], written: true }], finish);
+      } else if (s.kind === 'midquiz' || s.kind === 'unitquiz') {
+        const mid = s.kind === 'midquiz', els = mid ? lessonEls.slice(0, half) : lessonEls;
         const ls = src.filter(L => els.some(d => d.id === L.id));
-        const tries = (st[s.id] && st[s.id].tries) || 0, ver = 'ABC'[tries % 3];
-        const z = quiz(ls, els, mid ? { a: 4, b: 4, c: 1 } : { a: 6, b: 6, c: 2 }, unit + s.id + ver);
+        const n = tries[s.id] || 0, ver = 'ABC'[n % 3];
+        const z = quiz(ls, els, mid ? { a: 4, b: 4, c: 1 } : { a: 6, b: 6, c: 2 }, unit + s.kind + ver);
         const title = (mid ? 'Mid-unit quiz' : 'Unit quiz') + ' · Unit ' + unit, sub = esc(unitTitle) + ' · Version ' + ver;
         p.insertAdjacentHTML('beforeend', `<p class="hint">${mid ? 'Lessons 1 to ' + half : 'The whole unit'} · out of ${z.max} marks · about ${mid ? 20 : 35} minutes. Part A: choose the answer. Part B: short answer. Part C: explain.</p>
-          <div class="row"><button class="btn ghost" data-role="print">🖨️ Print the quiz${TEACH ? ' + answer key' : ''}</button>${tries ? `<span class="hint">Version ${ver} (a new set of questions)</span>` : ''}</div>`);
+          <div class="row"><button class="btn ghost" data-role="print">🖨️ Print the quiz${TEACH ? ' + answer key' : ''}</button>${n ? `<span class="hint">Version ${ver} (a new set of questions)</span>` : ''}</div>`);
         $('[data-role=print]', p).addEventListener('click', () => printHTML(quizPaper(z, title, sub, TEACH)));
         testOnScreen(p, [{ label: 'Part A · Choose the best answer (1 mark each)', qs: z.A, marks: 1 }, { label: 'Part B · Short answer (2 marks each)', qs: z.B, marks: 2 },
-          { label: 'Part C · Explain how you know (3 marks each)', qs: z.C, written: true, marks: 3 }], r => mark(s, Object.assign(r, { tries: tries + 1 })));
-      } else if (s.id === 'ref') {
+          { label: 'Part C · Explain how you know (3 marks each)', qs: z.C, written: true, marks: 3 }], (r, btn) => mark(s, { score: r.score + ' / ' + r.max + ' (v' + ver + ')' }, btn));
+      } else if (s.kind === 'ref') {
         p.insertAdjacentHTML('beforeend', '<p class="hint">Everything from this unit on one page. Keep it beside you for the practice and the quiz.</p><div class="row"><button class="btn ghost" data-role="print">🖨️ Print</button></div>');
         const c = cheat.cloneNode(true); c.removeAttribute('id'); c.className = 'cheatview'; p.appendChild(c);
         $('[data-role=print]', p).addEventListener('click', () => { cheat.classList.add('printme'); document.body.classList.add('printing'); window.print(); setTimeout(() => { document.body.classList.remove('printing'); cheat.classList.remove('printme'); }, 500); });
         p.appendChild(doneBtn('✓ I read it over'));
-      } else if (s.id === 'core' || s.id === 'chal') {
-        const lv = s.id === 'core' ? 2 : 3;
+      } else if (s.kind === 'core' || s.kind === 'chal') {
+        const lv = s.kind === 'core' ? 2 : 3;
         p.insertAdjacentHTML('beforeend', `<p class="hint">${lv === 2 ? 'Everyday numbers, from every lesson. A hint shows up after one wrong try.' : 'Bigger numbers and no hints. Show what you know.'}</p>`);
-        drill(p, PR.buildSet(src, lv === 2 ? 10 : 8, lv, Math.random), lv, r => mark(s, r));
+        drill(p, PR.buildSet(src, lv === 2 ? 10 : 8, lv, Math.random), lv, finish);
       }
       p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
@@ -264,13 +329,13 @@
 
     // At the end of each lesson: "Done with this lesson?"
     lessonEls.forEach(d => {
-      const s = steps.find(x => x.id === 'lesson-' + d.id), body = $('.lbody', d); if (!body || $('.updone', body)) return;
-      body.insertAdjacentHTML('beforeend', `<div class="updone"><button class="btn gold">✓ Done with this lesson · back to my path</button></div>`);
-      $('.updone button', body).addEventListener('click', () => {
-        const i = steps.indexOf(s);
-        if (!unlocked(i)) { alert('Do the guided notes for this lesson first (in your path at the top of the unit).'); box.scrollIntoView({ behavior: 'smooth' }); return; }
-        mark(s); box.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
+      const s = steps.find(x => x.id === d.id + '-lesson'), body = $('.lbody', d); if (!body || $('.updone', body)) return;
+      body.insertAdjacentHTML('beforeend', `<div class="updone"><button class="btn gold">✓ I finished this lesson</button> <a href="#u${unit}-path" class="small">back to my path ↑</a></div>`);
+      const b = $('.updone button', body);
+      b.addEventListener('click', () => mark(s, null, b));
     });
   });
+
+  // Signed in already (here or in Avalanche HQ, same browser tab)? Show their checkmarks.
+  if (AUTH.token && !TEACH && AUTH.boxes.length) api('pathProgress', { course: AUTH.boxes[0].dataset.course }).then(gotProgress).catch(() => {});
 })();

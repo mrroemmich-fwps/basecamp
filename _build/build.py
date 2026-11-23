@@ -181,6 +181,29 @@ def pull_cheats(html):
     html = re.sub(r'<!--CHEAT (\w+)-->(.*?)<!--/CHEAT-->', grab, html, flags=re.S)
     return html, '\n'.join(cheats)
 
+PATH_STEPS = {}   # filled by build(); written to assets/path-steps.json for each student's checklist in Avalanche HQ
+
+def path_steps(spec, units_html, unit_cheats):
+    """The Unit Path checklist for one course. Must match the steps path.js shows."""
+    units = []
+    for n, title in enumerate(spec['units'], 1):
+        m = re.search(r'<section id="unit-%d".*?</section>' % n, units_html, re.S)
+        if not m: continue
+        lessons = re.findall(r'<details class="lesson" id="(u%d-l\d+)".*?<span class="ltitle"><strong>(.*?)</strong>' % n, m.group(0), re.S)
+        if not lessons: continue
+        clean = lambda t: re.sub(r'<[^>]+>', '', t).replace('&amp;', '&').replace('&nbsp;', ' ').strip()
+        steps, half = [{'id': 'u%d-warm' % n, 'step': 'Warm-up', 'lesson': ''}], (len(lessons) + 1) // 2
+        for i, (lid, lt) in enumerate(lessons, 1):
+            for k, name in (('notes', 'Guided notes'), ('lesson', 'Lesson'), ('exit', 'Exit ticket')):
+                steps.append({'id': '%s-%s' % (lid, k), 'step': name, 'lesson': '%d · %s' % (i, clean(lt))})
+            if i == half and len(lessons) > 2:
+                steps.append({'id': 'u%d-midquiz' % n, 'step': 'Mid-unit quiz', 'lesson': 'Lessons 1–%d' % half})
+        if 'id="cheat-u%d"' % n in unit_cheats: steps.append({'id': 'u%d-ref' % n, 'step': 'Reference sheet', 'lesson': ''})
+        steps += [{'id': 'u%d-core' % n, 'step': 'Core practice ★', 'lesson': ''}, {'id': 'u%d-chal' % n, 'step': 'Challenge ★★', 'lesson': ''},
+                  {'id': 'u%d-unitquiz' % n, 'step': 'Unit quiz', 'lesson': ''}]
+        units.append({'n': n, 'title': title, 'steps': steps})
+    return {'title': spec['title'], 'units': units}
+
 def build(spec):
     units_js = ',\n'.join('    {{ n: {n}, title: {t}, open: {o} }}'.format(n=n, t=json.dumps(t), o='true' if n in spec['open'] else 'false')
                           for n, t in enumerate(spec['units'], 1))
@@ -200,7 +223,8 @@ def build(spec):
         # The Unit Path (assets/path.js): one step after another, warm-up to unit quiz, at the top of each unit
         if os.path.exists(os.path.join(SITE, 'assets', 'path-%s.js' % spec['practice'])):
             units_html = re.sub(r'(<h2 class="sec" id="u(\d+)-lessons">)',
-                lambda m: '<div class="upath" id="u{0}-path" data-unit="{0}"><noscript>Turn on JavaScript to use your path.</noscript></div>\n\n    '.format(m.group(2)) + m.group(1), units_html)
+                lambda m: '<div class="upath" id="u{0}-path" data-unit="{0}" data-course="{1}"><noscript>Turn on JavaScript to use your path.</noscript></div>\n\n    '.format(m.group(2), spec['folder']) + m.group(1), units_html)
+            PATH_STEPS[spec['folder']] = path_steps(spec, units_html, unit_cheats)
             units_html = re.sub(r'(<div class="jump">\s*)(<a href="#u(\d+)-goals">)', r'\1<a href="#u\3-path">🧭 My path</a>\2', units_html)
             extra_js += '<script src="../assets/path-{0}.js"></script>\n<script src="../assets/path.js"></script>\n'.format(spec['practice'])
     page_cheat = '<div id="cheat" class="cheat">%s</div>' % open(os.path.join(B, spec['cheat'])).read() if spec.get('cheat') else ''
@@ -321,3 +345,9 @@ if __name__ == '__main__':
         e['proof'] = proofs.get(e['id'], 'Show your teacher what you made or found, and explain what you learned.')
     json.dump(allx, open(jp, 'w'), ensure_ascii=False, indent=0)
     print('lesson expeditions', len(allx))
+    # Unit Path checklists for Avalanche HQ (one sheet per student)
+    pp = os.path.join(SITE, 'assets', 'path-steps.json')
+    allp = json.load(open(pp)) if os.path.exists(pp) else {}
+    allp.update(PATH_STEPS)
+    json.dump(allp, open(pp, 'w'), ensure_ascii=False, separators=(',', ':'))
+    print('path steps', {k: sum(len(u['steps']) for u in v['units']) for k, v in allp.items()})

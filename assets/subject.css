@@ -401,3 +401,15 @@
   .wswork.tall{height:120px}
   .exitsheet+.exitsheet{margin-top:26px}
   @media print{ .ws .exitsheet{break-inside:avoid} .ws .exitsheet+.exitsheet{break-before:auto;border-top:1px dashed #999;padding-top:12px} }
+  .upwho{flex-basis:100%;color:var(--muted)}
+  .linkbtn{background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;cursor:pointer;font:inherit}
+  .upsign{flex-basis:100%;background:#fdf3d6;border:2px solid var(--gold);border-radius:12px;padding:10px 12px;margin:8px 0}
+  .upsign p{margin:0 0 6px} .upsign .row{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+  .upsign label{display:flex;flex-direction:column;font-weight:700;font-size:.9rem;gap:2px}
+  .upsign select,.upsign input{font:inherit;border:2px solid var(--line);border-radius:10px;padding:6px 8px;background:#fff;max-width:100%}
+  .upmsg{min-height:1.2em;color:var(--bad);font-weight:600}
+  .upnote{flex-basis:100%;margin:4px 0;color:var(--bad);font-weight:600}
+  .upflash{background:#e2f2e6;border:2px solid var(--good);border-radius:10px;padding:6px 10px;margin:6px 0;font-weight:700}
+  .upstep.pulse{animation:uppulse 1.2s ease-in-out 3}
+  @keyframes uppulse{50%{box-shadow:0 0 0 6px rgba(233,185,73,.55)}}
+  .updonerow{justify-content:center}
